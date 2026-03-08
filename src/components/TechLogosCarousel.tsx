@@ -15,6 +15,16 @@ import slackLogo from "@/assets/logos/slack.png";
 import lovableLogo from "@/assets/logos/lovable.png";
 import chatgptLogo from "@/assets/logos/chatgpt.png";
 import heygenLogo from "@/assets/logos/heygen.png";
+import nicchileLogo from "@/assets/logos/nicchile.png";
+import nortonLogo from "@/assets/logos/norton.png";
+import authenticatorLogo from "@/assets/logos/authenticator.png";
+import linuxLogo from "@/assets/logos/linux.png";
+import notebooklmLogo from "@/assets/logos/notebooklm.png";
+import canvaLogo from "@/assets/logos/canva.png";
+import clipchampLogo from "@/assets/logos/clipchamp.png";
+import capcutLogo from "@/assets/logos/capcut.png";
+import geminiLogo from "@/assets/logos/gemini.png";
+import anciLogo from "@/assets/logos/anci.png";
 
 const logos = [
   { src: microsoftLogo, alt: "Microsoft" },
@@ -34,6 +44,16 @@ const logos = [
   { src: lovableLogo, alt: "Lovable" },
   { src: chatgptLogo, alt: "ChatGPT" },
   { src: heygenLogo, alt: "HeyGen" },
+  { src: nicchileLogo, alt: "NIC Chile" },
+  { src: nortonLogo, alt: "Norton" },
+  { src: authenticatorLogo, alt: "Microsoft Authenticator" },
+  { src: linuxLogo, alt: "Linux" },
+  { src: notebooklmLogo, alt: "NotebookLM" },
+  { src: canvaLogo, alt: "Canva" },
+  { src: clipchampLogo, alt: "Clipchamp" },
+  { src: capcutLogo, alt: "CapCut" },
+  { src: geminiLogo, alt: "Gemini" },
+  { src: anciLogo, alt: "ANCI" },
 ];
 
 const TechLogosCarousel = () => {
