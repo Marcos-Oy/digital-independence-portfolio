@@ -39,7 +39,7 @@ const CtaSection = () => {
             </a>
           </div>
           <a
-            href="https://www.independenciadigital.cl/registro"
+            href="https://independencia-digital.systeme.io/registro"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex bg-card text-foreground font-heading font-bold text-base px-8 py-4 rounded-lg shadow-card hover:shadow-card-hover transition-shadow"
