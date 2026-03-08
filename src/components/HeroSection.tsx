@@ -29,14 +29,6 @@ const HeroSection = () => {
           >
             Quiero Mi Independencia Digital
           </a>
-          <a
-            href="https://www.independenciadigital.cl/vsl"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-card text-foreground font-heading font-semibold text-base px-8 py-4 rounded-lg border border-border shadow-card hover:shadow-card-hover transition-shadow"
-          >
-            Ver Video Explicativo
-          </a>
         </div>
       </div>
     </section>
