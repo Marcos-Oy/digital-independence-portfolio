@@ -92,6 +92,13 @@ const logos = [
   { src: hostingerLogo, alt: "Hostinger" },
   { src: manychatLogo, alt: "ManyChat" },
   { src: calendlyLogo, alt: "Calendly" },
+  { src: hpLogo, alt: "HP" },
+  { src: lenovoLogo, alt: "Lenovo" },
+  { src: brotherLogo, alt: "Brother" },
+  { src: epsonLogo, alt: "Epson" },
+  { src: ciscoLogo, alt: "Cisco" },
+  { src: webLogo, alt: "Web" },
+  { src: gammaLogo, alt: "Gamma" },
 ];
 
 const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
