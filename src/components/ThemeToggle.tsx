@@ -19,16 +19,6 @@ const ThemeToggle = () => {
     }
   }, [dark]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") {
-      setDark(true);
-    } else if (saved === "light") {
-      setDark(false);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setDark(true);
-    }
-  }, []);
 
   return (
     <button
