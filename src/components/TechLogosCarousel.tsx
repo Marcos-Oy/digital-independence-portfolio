@@ -77,6 +77,14 @@ const logos = [
   { src: onedriveLogo, alt: "OneDrive" },
   { src: googledriveLogo, alt: "Google Drive" },
   { src: mcpLogo, alt: "Model Context Protocol" },
+  { src: windows11Logo, alt: "Windows 11 Pro" },
+  { src: vscodeLogo, alt: "VS Code" },
+  { src: visualstudioLogo, alt: "Visual Studio" },
+  { src: auroraLogo, alt: "Aurora" },
+  { src: elevenlabsTextLogo, alt: "ElevenLabs" },
+  { src: hostingerLogo, alt: "Hostinger" },
+  { src: manychatLogo, alt: "ManyChat" },
+  { src: calendlyLogo, alt: "Calendly" },
 ];
 
 const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
