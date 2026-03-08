@@ -49,32 +49,36 @@ const PlanSection = () => {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {phases.map((phase, i) => (
+          {phases.slice(0, 3).map((phase, i) => (
             <div
               key={phase.title}
-              className={`relative bg-card rounded-2xl p-6 border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group ${
-                i === 4 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2" : ""
-              }`}
+              className="relative bg-card rounded-2xl p-6 border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group"
             >
-              {/* Phase badge */}
               <span className="absolute -top-3 left-6 gradient-brand text-primary-foreground text-xs font-bold px-3 py-1 rounded-full font-heading shadow-brand">
                 Fase {i + 1}
               </span>
-
               <div className="flex justify-center mt-4 mb-5">
-                <img
-                  src={phase.img}
-                  alt={phase.title}
-                  className="h-20 md:h-24 object-contain group-hover:scale-105 transition-transform duration-300"
-                />
+                <img src={phase.img} alt={phase.title} className="h-20 md:h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
               </div>
-
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2 text-center">
-                {phase.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed text-center">
-                {phase.desc}
-              </p>
+              <h3 className="font-heading font-bold text-lg text-foreground mb-2 text-center">{phase.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed text-center">{phase.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto mt-6">
+          {phases.slice(3).map((phase, i) => (
+            <div
+              key={phase.title}
+              className="relative bg-card rounded-2xl p-6 border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+            >
+              <span className="absolute -top-3 left-6 gradient-brand text-primary-foreground text-xs font-bold px-3 py-1 rounded-full font-heading shadow-brand">
+                Fase {i + 4}
+              </span>
+              <div className="flex justify-center mt-4 mb-5">
+                <img src={phase.img} alt={phase.title} className="h-20 md:h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-foreground mb-2 text-center">{phase.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed text-center">{phase.desc}</p>
             </div>
           ))}
         </div>
