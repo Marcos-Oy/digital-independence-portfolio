@@ -1,3 +1,5 @@
+import { Instagram, Facebook, Mail } from "lucide-react";
+
 const CtaSection = () => {
   return (
     <section id="contacto" className="py-20 md:py-28 bg-background">
@@ -7,8 +9,35 @@ const CtaSection = () => {
             ¿Listo para tu Independencia Digital?
           </h2>
           <p className="text-primary-foreground/80 mb-8 max-w-lg mx-auto">
-            Agenda una sesión de diagnóstico gratuita para descubrir cómo aplicar este sistema en tu negocio.
+            Contáctanos por cualquiera de estos canales.
           </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+            <a
+              href="https://www.instagram.com/_marcos.oyarzo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+              <span className="font-medium">_marcos.oyarzo</span>
+            </a>
+            <a
+              href="https://www.facebook.com/IndependenciaDigital.cl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+            >
+              <Facebook className="w-5 h-5" />
+              <span className="font-medium">IndependenciaDigital.cl</span>
+            </a>
+            <a
+              href="mailto:contacto@independenciadigital.cl"
+              className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+            >
+              <Mail className="w-5 h-5" />
+              <span className="font-medium">contacto@independenciadigital.cl</span>
+            </a>
+          </div>
           <a
             href="https://www.independenciadigital.cl/registro"
             target="_blank"
