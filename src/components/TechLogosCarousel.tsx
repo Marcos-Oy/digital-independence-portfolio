@@ -108,6 +108,15 @@ const logos = [
   { src: ciscoLogo, alt: "Cisco" },
   { src: webLogo, alt: "Web" },
   { src: gammaLogo, alt: "Gamma" },
+  { src: sqlserverLogo, alt: "SQL Server" },
+  { src: oracleLogo, alt: "Oracle" },
+  { src: mysqlLogo, alt: "MySQL" },
+  { src: jiraLogo, alt: "Jira" },
+  { src: clickupLogo, alt: "ClickUp" },
+  { src: trelloLogo, alt: "Trello" },
+  { src: laravelLogo, alt: "Laravel" },
+  { src: phpLogo, alt: "PHP" },
+  { src: googlelabsLogo, alt: "Google Labs" },
 ];
 
 const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
