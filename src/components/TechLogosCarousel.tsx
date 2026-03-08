@@ -33,6 +33,14 @@ import googlemeetLogo from "@/assets/logos/googlemeet.png";
 import onedriveLogo from "@/assets/logos/onedrive.png";
 import googledriveLogo from "@/assets/logos/googledrive.png";
 import mcpLogo from "@/assets/logos/mcp.png";
+import windows11Logo from "@/assets/logos/windows11.png";
+import vscodeLogo from "@/assets/logos/vscode.png";
+import visualstudioLogo from "@/assets/logos/visualstudio.png";
+import auroraLogo from "@/assets/logos/aurora.png";
+import elevenlabsTextLogo from "@/assets/logos/elevenlabs-text.png";
+import hostingerLogo from "@/assets/logos/hostinger.png";
+import manychatLogo from "@/assets/logos/manychat.png";
+import calendlyLogo from "@/assets/logos/calendly.png";
 
 const logos = [
   { src: microsoftLogo, alt: "Microsoft" },
@@ -69,6 +77,14 @@ const logos = [
   { src: onedriveLogo, alt: "OneDrive" },
   { src: googledriveLogo, alt: "Google Drive" },
   { src: mcpLogo, alt: "Model Context Protocol" },
+  { src: windows11Logo, alt: "Windows 11 Pro" },
+  { src: vscodeLogo, alt: "VS Code" },
+  { src: visualstudioLogo, alt: "Visual Studio" },
+  { src: auroraLogo, alt: "Aurora" },
+  { src: elevenlabsTextLogo, alt: "ElevenLabs" },
+  { src: hostingerLogo, alt: "Hostinger" },
+  { src: manychatLogo, alt: "ManyChat" },
+  { src: calendlyLogo, alt: "Calendly" },
 ];
 
 const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
