@@ -44,6 +44,16 @@ const logos = [
   { src: lovableLogo, alt: "Lovable" },
   { src: chatgptLogo, alt: "ChatGPT" },
   { src: heygenLogo, alt: "HeyGen" },
+  { src: nicchileLogo, alt: "NIC Chile" },
+  { src: nortonLogo, alt: "Norton" },
+  { src: authenticatorLogo, alt: "Microsoft Authenticator" },
+  { src: linuxLogo, alt: "Linux" },
+  { src: notebooklmLogo, alt: "NotebookLM" },
+  { src: canvaLogo, alt: "Canva" },
+  { src: clipchampLogo, alt: "Clipchamp" },
+  { src: capcutLogo, alt: "CapCut" },
+  { src: geminiLogo, alt: "Gemini" },
+  { src: anciLogo, alt: "ANCI" },
 ];
 
 const TechLogosCarousel = () => {
