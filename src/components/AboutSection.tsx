@@ -1,5 +1,5 @@
 import marcos from "@/assets/marcos.jpg";
-import { GraduationCap, ShieldCheck, BrainCircuit, Target } from "lucide-react";
+import { GraduationCap, ShieldCheck, BrainCircuit, Target, Globe } from "lucide-react";
 
 const credentials = [
   { icon: Target, text: "Fundador y Arquitecto de Independencia Digital" },
