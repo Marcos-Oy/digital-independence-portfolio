@@ -68,17 +68,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile CTA - always visible below logo */}
-        <div className="md:hidden mt-2">
-          <a
-            href="https://independencia-digital.systeme.io/registro"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-center gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-lg shadow-brand hover:opacity-90 transition-opacity"
-          >
-            Quiero Mi Independencia
-          </a>
-        </div>
       </div>
 
       {/* Mobile menu */}
