@@ -154,9 +154,9 @@ const TechLogosCarousel = () => {
   };
 
   return (
-    <section className="py-12 bg-muted/30 overflow-hidden">
+    <section className="py-12 overflow-hidden" style={{ background: "hsl(210, 20%, 96%)" }}>
       <div className="container mx-auto px-4 mb-6">
-        <p className="text-center text-sm font-semibold tracking-widest uppercase text-muted-foreground">
+        <p className="text-center text-sm font-semibold tracking-widest uppercase" style={{ color: "hsl(215, 15%, 45%)" }}>
           Tecnologías que implementamos
         </p>
       </div>
@@ -169,8 +169,8 @@ const TechLogosCarousel = () => {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, hsl(210, 20%, 96%), transparent)" }} />
+        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, hsl(210, 20%, 96%), transparent)" }} />
 
         <div
           ref={trackRef}
