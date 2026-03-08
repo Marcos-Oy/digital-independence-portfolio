@@ -22,27 +22,29 @@ const AboutSection = () => {
         </div>
 
         <div className="flex flex-col md:flex-row items-center gap-12 max-w-4xl mx-auto">
-          <div className="relative shrink-0">
-            <div className="w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-brand">
-              <img
-                src={marcos}
-                alt="Marcos Oyarzo"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-            <div className="absolute -bottom-3 -right-3 gradient-brand rounded-lg px-4 py-2 shadow-brand">
-              <span className="text-primary-foreground font-heading font-bold text-sm">
-                Marcos Oyarzo
-              </span>
+          <div className="flex flex-col items-center shrink-0">
+            <div className="relative">
+              <div className="w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-brand">
+                <img
+                  src={marcos}
+                  alt="Marcos Oyarzo"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div className="absolute -bottom-3 -right-3 gradient-brand rounded-lg px-4 py-2 shadow-brand">
+                <span className="text-primary-foreground font-heading font-bold text-sm">
+                  Marcos Oyarzo
+                </span>
+              </div>
             </div>
             <a
               href="https://www.moyarzo.cl"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors bg-muted px-4 py-2 rounded-lg border border-border"
             >
               <Globe className="w-4 h-4" />
-              www.moyarzo.cl
+              Revisa mi portafolio profesional
             </a>
           </div>
 
