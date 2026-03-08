@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 const ThemeToggle = () => {
   const [dark, setDark] = useState(() => {
     if (typeof window !== "undefined") {
-      return document.documentElement.classList.contains("dark");
+      const saved = localStorage.getItem("theme");
+      return saved === "dark";
     }
     return false;
   });
@@ -18,16 +19,6 @@ const ThemeToggle = () => {
     }
   }, [dark]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") {
-      setDark(true);
-    } else if (saved === "light") {
-      setDark(false);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setDark(true);
-    }
-  }, []);
 
   return (
     <button
