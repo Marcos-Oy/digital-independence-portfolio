@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState, useCallback } from "react";
 import microsoftLogo from "@/assets/logos/microsoft.png";
 import googleLogo from "@/assets/logos/google.png";
 import excelLogo from "@/assets/logos/excel.png";
@@ -25,6 +26,13 @@ import clipchampLogo from "@/assets/logos/clipchamp.png";
 import capcutLogo from "@/assets/logos/capcut.png";
 import geminiLogo from "@/assets/logos/gemini.png";
 import anciLogo from "@/assets/logos/anci.png";
+import githubLogo from "@/assets/logos/github.png";
+import gitlabLogo from "@/assets/logos/gitlab.png";
+import teamsLogo from "@/assets/logos/teams.png";
+import googlemeetLogo from "@/assets/logos/googlemeet.png";
+import onedriveLogo from "@/assets/logos/onedrive.png";
+import googledriveLogo from "@/assets/logos/googledrive.png";
+import mcpLogo from "@/assets/logos/mcp.png";
 
 const logos = [
   { src: microsoftLogo, alt: "Microsoft" },
@@ -54,9 +62,67 @@ const logos = [
   { src: capcutLogo, alt: "CapCut" },
   { src: geminiLogo, alt: "Gemini" },
   { src: anciLogo, alt: "ANCI" },
+  { src: githubLogo, alt: "GitHub" },
+  { src: gitlabLogo, alt: "GitLab" },
+  { src: teamsLogo, alt: "Microsoft Teams" },
+  { src: googlemeetLogo, alt: "Google Meet" },
+  { src: onedriveLogo, alt: "OneDrive" },
+  { src: googledriveLogo, alt: "Google Drive" },
+  { src: mcpLogo, alt: "Model Context Protocol" },
 ];
 
+const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
+const SPEED = 0.5; // px per frame
+
 const TechLogosCarousel = () => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const offsetRef = useRef(0);
+  const animRef = useRef<number>(0);
+  const isDragging = useRef(false);
+  const dragStart = useRef(0);
+  const dragOffset = useRef(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const totalWidth = logos.length * ITEM_WIDTH;
+
+  const animate = useCallback(() => {
+    if (!isDragging.current && !isPaused) {
+      offsetRef.current -= SPEED;
+      if (Math.abs(offsetRef.current) >= totalWidth) {
+        offsetRef.current += totalWidth;
+      }
+    }
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
+    }
+    animRef.current = requestAnimationFrame(animate);
+  }, [isPaused, totalWidth]);
+
+  useEffect(() => {
+    animRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animRef.current);
+  }, [animate]);
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    isDragging.current = true;
+    dragStart.current = e.clientX;
+    dragOffset.current = offsetRef.current;
+    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDragging.current) return;
+    const diff = e.clientX - dragStart.current;
+    offsetRef.current = dragOffset.current + diff;
+  };
+
+  const handlePointerUp = () => {
+    isDragging.current = false;
+    // Normalize offset
+    while (offsetRef.current > 0) offsetRef.current -= totalWidth;
+    while (Math.abs(offsetRef.current) >= totalWidth) offsetRef.current += totalWidth;
+  };
+
   return (
     <section className="py-12 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-4 mb-6">
@@ -64,20 +130,33 @@ const TechLogosCarousel = () => {
           Tecnologías que implementamos
         </p>
       </div>
-      <div className="relative">
+      <div
+        className="relative touch-pan-y select-none cursor-grab active:cursor-grabbing"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-scroll">
-          {[...logos, ...logos].map((logo, i) => (
+        <div
+          ref={trackRef}
+          className="flex will-change-transform"
+          style={{ width: "max-content" }}
+        >
+          {[...logos, ...logos, ...logos].map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 mx-8 flex items-center justify-center h-16 w-32 opacity-80 hover:opacity-100 transition-all duration-300"
+              className="flex-shrink-0 mx-4 flex items-center justify-center h-16 w-32 opacity-80 hover:opacity-100 transition-opacity duration-300"
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="max-h-full max-w-full object-contain"
+                className="max-h-full max-w-full object-contain pointer-events-none"
+                draggable={false}
               />
             </div>
           ))}
