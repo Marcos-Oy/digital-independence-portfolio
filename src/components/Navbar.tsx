@@ -14,7 +14,6 @@ const Navbar = () => {
   ];
 
   return (
-    <>
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto py-3 px-4">
         {/* Main row */}
@@ -86,21 +85,20 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href="https://independencia-digital.systeme.io/registro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-lg"
+              >
+                Quiero Mi Independencia
+              </a>
+            </li>
           </ul>
         </div>
       )}
     </nav>
-
-      {/* Mobile floating CTA */}
-      <a
-        href="https://independencia-digital.systeme.io/registro"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="md:hidden fixed bottom-4 left-4 right-4 z-50 block text-center gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-3 rounded-xl shadow-brand hover:opacity-90 transition-opacity"
-      >
-        Quiero Mi Independencia Digital
-      </a>
-    </>
   );
 };
 
