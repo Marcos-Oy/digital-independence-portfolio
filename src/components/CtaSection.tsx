@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Mail, Globe } from "lucide-react";
+import { Instagram, Facebook, Mail } from "lucide-react";
 
 const CtaSection = () => {
   return (
@@ -36,15 +36,6 @@ const CtaSection = () => {
             >
               <Mail className="w-5 h-5" />
               <span className="font-medium">contacto@independenciadigital.cl</span>
-            </a>
-            <a
-              href="https://www.moyarzo.cl"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
-            >
-              <Globe className="w-5 h-5" />
-              <span className="font-medium">moyarzo.cl</span>
             </a>
           </div>
           <a
