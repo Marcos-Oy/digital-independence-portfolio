@@ -48,6 +48,15 @@ import epsonLogo from "@/assets/logos/epson.png";
 import ciscoLogo from "@/assets/logos/cisco.png";
 import webLogo from "@/assets/logos/web.png";
 import gammaLogo from "@/assets/logos/gamma.png";
+import sqlserverLogo from "@/assets/logos/sqlserver.png";
+import oracleLogo from "@/assets/logos/oracle.png";
+import mysqlLogo from "@/assets/logos/mysql.png";
+import jiraLogo from "@/assets/logos/jira.png";
+import clickupLogo from "@/assets/logos/clickup.png";
+import trelloLogo from "@/assets/logos/trello.png";
+import laravelLogo from "@/assets/logos/laravel.png";
+import phpLogo from "@/assets/logos/php.png";
+import googlelabsLogo from "@/assets/logos/googlelabs.png";
 
 const logos = [
   { src: microsoftLogo, alt: "Microsoft" },
@@ -99,6 +108,15 @@ const logos = [
   { src: ciscoLogo, alt: "Cisco" },
   { src: webLogo, alt: "Web" },
   { src: gammaLogo, alt: "Gamma" },
+  { src: sqlserverLogo, alt: "SQL Server" },
+  { src: oracleLogo, alt: "Oracle" },
+  { src: mysqlLogo, alt: "MySQL" },
+  { src: jiraLogo, alt: "Jira" },
+  { src: clickupLogo, alt: "ClickUp" },
+  { src: trelloLogo, alt: "Trello" },
+  { src: laravelLogo, alt: "Laravel" },
+  { src: phpLogo, alt: "PHP" },
+  { src: googlelabsLogo, alt: "Google Labs" },
 ];
 
 const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
