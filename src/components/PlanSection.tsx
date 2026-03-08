@@ -48,42 +48,35 @@ const PlanSection = () => {
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Timeline line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 gradient-brand opacity-20" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {phases.map((phase, i) => (
+            <div
+              key={phase.title}
+              className={`relative bg-card rounded-2xl p-6 border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group ${
+                i === 4 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2" : ""
+              }`}
+            >
+              {/* Phase badge */}
+              <span className="absolute -top-3 left-6 gradient-brand text-primary-foreground text-xs font-bold px-3 py-1 rounded-full font-heading shadow-brand">
+                Fase {i + 1}
+              </span>
 
-          {phases.map((phase, i) => {
-            const isLeft = i % 2 === 0;
-            return (
-              <div
-                key={phase.title}
-                className={`flex flex-col md:flex-row items-center gap-6 mb-12 ${
-                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className={`md:w-1/2 ${isLeft ? "md:text-right md:pr-12" : "md:text-left md:pl-12"}`}>
-                  <span className="inline-block gradient-brand text-primary-foreground text-xs font-bold px-3 py-1 rounded-full mb-3 font-heading">
-                    Fase {i + 1}
-                  </span>
-                  <h3 className="font-heading font-bold text-xl text-foreground mb-2">
-                    {phase.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {phase.desc}
-                  </p>
-                </div>
-                {/* Center dot */}
-                <div className="hidden md:flex w-4 h-4 rounded-full gradient-brand shadow-brand z-10 shrink-0" />
-                <div className="md:w-1/2 flex justify-center">
-                  <img
-                    src={phase.img}
-                    alt={phase.title}
-                    className="h-24 md:h-28 object-contain"
-                  />
-                </div>
+              <div className="flex justify-center mt-4 mb-5">
+                <img
+                  src={phase.img}
+                  alt={phase.title}
+                  className="h-20 md:h-24 object-contain group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
-            );
-          })}
+
+              <h3 className="font-heading font-bold text-lg text-foreground mb-2 text-center">
+                {phase.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed text-center">
+                {phase.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
