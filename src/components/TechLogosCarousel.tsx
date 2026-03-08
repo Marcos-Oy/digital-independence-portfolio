@@ -15,6 +15,16 @@ import slackLogo from "@/assets/logos/slack.png";
 import lovableLogo from "@/assets/logos/lovable.png";
 import chatgptLogo from "@/assets/logos/chatgpt.png";
 import heygenLogo from "@/assets/logos/heygen.png";
+import nicchileLogo from "@/assets/logos/nicchile.png";
+import nortonLogo from "@/assets/logos/norton.png";
+import authenticatorLogo from "@/assets/logos/authenticator.png";
+import linuxLogo from "@/assets/logos/linux.png";
+import notebooklmLogo from "@/assets/logos/notebooklm.png";
+import canvaLogo from "@/assets/logos/canva.png";
+import clipchampLogo from "@/assets/logos/clipchamp.png";
+import capcutLogo from "@/assets/logos/capcut.png";
+import geminiLogo from "@/assets/logos/gemini.png";
+import anciLogo from "@/assets/logos/anci.png";
 
 const logos = [
   { src: microsoftLogo, alt: "Microsoft" },
