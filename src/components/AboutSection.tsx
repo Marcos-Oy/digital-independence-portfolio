@@ -35,6 +35,15 @@ const AboutSection = () => {
                 Marcos Oyarzo
               </span>
             </div>
+            <a
+              href="https://www.moyarzo.cl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+            >
+              <Globe className="w-4 h-4" />
+              www.moyarzo.cl
+            </a>
           </div>
 
           <div className="flex-1">
