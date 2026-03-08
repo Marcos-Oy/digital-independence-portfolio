@@ -37,7 +37,7 @@ const Navbar = () => {
         </ul>
 
         <a
-          href="https://www.independenciadigital.cl/registro"
+          href="https://independencia-digital.systeme.io/registro"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:inline-flex gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-lg shadow-brand hover:opacity-90 transition-opacity"
@@ -78,7 +78,7 @@ const Navbar = () => {
             ))}
             <li>
               <a
-                href="https://www.independenciadigital.cl/registro"
+                href="https://independencia-digital.systeme.io/registro"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-lg"

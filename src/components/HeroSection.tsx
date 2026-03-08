@@ -22,7 +22,7 @@ const HeroSection = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
           <a
-            href="https://www.independenciadigital.cl/registro"
+            href="https://independencia-digital.systeme.io/registro"
             target="_blank"
             rel="noopener noreferrer"
             className="gradient-brand text-primary-foreground font-heading font-bold text-base px-8 py-4 rounded-lg shadow-brand hover:opacity-90 transition-opacity"
