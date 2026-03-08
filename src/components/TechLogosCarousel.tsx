@@ -41,6 +41,13 @@ import elevenlabsTextLogo from "@/assets/logos/elevenlabs-text.png";
 import hostingerLogo from "@/assets/logos/hostinger.png";
 import manychatLogo from "@/assets/logos/manychat.png";
 import calendlyLogo from "@/assets/logos/calendly.png";
+import hpLogo from "@/assets/logos/hp.png";
+import lenovoLogo from "@/assets/logos/lenovo.png";
+import brotherLogo from "@/assets/logos/brother.png";
+import epsonLogo from "@/assets/logos/epson.png";
+import ciscoLogo from "@/assets/logos/cisco.png";
+import webLogo from "@/assets/logos/web.png";
+import gammaLogo from "@/assets/logos/gamma.png";
 
 const logos = [
   { src: microsoftLogo, alt: "Microsoft" },
