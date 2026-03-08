@@ -32,13 +32,13 @@ const ServicesSection = () => {
   return (
     <section id="servicios" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3 font-heading">
-            Servicios
-          </p>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-6">
             ¿Qué hace la Independencia Digital?
           </h2>
+          <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+            Ayudamos a personas, profesionales independientes y dueños de PyMEs a contar con una estructura digital clara, eficiente y alineada a sus objetivos, logrando resultados visibles a partir de los primeros <strong className="text-foreground">90 días</strong>, sin confusión tecnológica ni pérdida de tiempo operativa, con el <strong className="text-foreground">Plan 360 – para la Independencia Digital</strong> de las 5 fases, eliminando el caos digital y dejando sus operaciones funcionando con herramientas seguras y mayor eficiencia, sin depender de nadie externo.
+          </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {services.map((s, i) => (
