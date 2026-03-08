@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Mail } from "lucide-react";
+import { Instagram, Facebook, Mail, Globe } from "lucide-react";
 
 const CtaSection = () => {
   return (
