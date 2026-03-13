@@ -16,6 +16,21 @@ const Index = () => {
       <HeroSection />
       <ServicesSection />
       <TechLogosCarousel />
+      
+      {/* CTA intermedio */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <a
+            href="https://independencia-digital.systeme.io/registro"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex gradient-brand text-primary-foreground font-heading font-semibold text-base md:text-lg px-8 py-4 rounded-xl shadow-brand hover:opacity-90 transition-opacity"
+          >
+            Quiero Mi Independencia Digital
+          </a>
+        </div>
+      </section>
+
       <BenefitsSection />
       <PlanSection />
       <AboutSection />
