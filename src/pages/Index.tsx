@@ -16,9 +16,10 @@ const Index = () => {
       <HeroSection />
       <ServicesSection />
       <TechLogosCarousel />
+      <BenefitsSection />
       
-      {/* CTA intermedio */}
-      <section className="py-16 md:py-20 bg-background">
+      {/* CTA intermedio antes de Plan 360 */}
+      <section className="py-16 md:py-20 bg-muted">
         <div className="container mx-auto px-4 text-center">
           <a
             href="https://independencia-digital.systeme.io/registro"
@@ -31,7 +32,6 @@ const Index = () => {
         </div>
       </section>
 
-      <BenefitsSection />
       <PlanSection />
       <AboutSection />
       <CtaSection />
