@@ -19,7 +19,7 @@ const Index = () => {
       <BenefitsSection />
       
       {/* CTA intermedio antes de Plan 360 */}
-      <section className="py-16 md:py-20 bg-muted">
+      <section className="py-8 md:py-10 bg-muted">
         <div className="container mx-auto px-4 text-center">
           <a
             href="https://independencia-digital.systeme.io/registro"
