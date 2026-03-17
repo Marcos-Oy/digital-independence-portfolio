@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="flex items-center gap-3">
           <img src={logo} alt="Independencia Digital" className="h-8 w-8" />
           <span className="font-heading font-bold text-sm text-foreground">
-            Independencia Digital
+            Independencia Digital <span className="text-base">🇨🇱</span>
           </span>
         </div>
         <p className="text-xs text-muted-foreground">
