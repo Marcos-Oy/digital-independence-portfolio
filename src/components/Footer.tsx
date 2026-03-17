@@ -1,4 +1,5 @@
 import logo from "@/assets/logo.png";
+import chileFlag from "@/assets/chile-flag.png";
 
 const Footer = () => {
   return (

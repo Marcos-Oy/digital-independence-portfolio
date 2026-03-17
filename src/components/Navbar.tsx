@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "@/assets/logo.png";
+import chileFlag from "@/assets/chile-flag.png";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
