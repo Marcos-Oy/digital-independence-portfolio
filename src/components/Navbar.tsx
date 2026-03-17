@@ -24,7 +24,7 @@ const Navbar = () => {
             <span className="font-heading font-bold text-lg text-foreground">
               Independencia <span className="text-gradient-brand">Digital</span>
             </span>
-            <span className="text-xl leading-none" title="Servicios en Chile">🇨🇱</span>
+            <img src={chileFlag} alt="Chile" className="h-5 w-auto" title="Servicios en Chile" />
           </a>
 
           {/* Desktop nav */}
