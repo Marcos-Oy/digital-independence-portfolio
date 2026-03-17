@@ -11,7 +11,7 @@ const CtaSection = () => {
           <p className="text-primary-foreground/80 mb-8 max-w-lg mx-auto">
             Contáctanos por cualquiera de estos canales.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-6 mb-8">
             <a
               href="https://www.instagram.com/_marcos.oyarzo"
               target="_blank"
