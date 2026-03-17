@@ -32,7 +32,7 @@ const CtaSection = () => {
             </a>
             <a
               href="mailto:contacto@independenciadigital.cl"
-              className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors text-sm sm:text-base break-all sm:break-normal"
             >
               <Mail className="w-5 h-5" />
               <span className="font-medium">contacto@independenciadigital.cl</span>
