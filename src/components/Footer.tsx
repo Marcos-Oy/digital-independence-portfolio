@@ -12,7 +12,7 @@ const Footer = () => {
           </span>
         </div>
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Independencia Digital. Todos los derechos reservados.
+          © {new Date().getFullYear()} Independencia Digital — Marcos Alberto Oyarzo Alvarez. Todos los derechos reservados.
         </p>
       </div>
     </footer>

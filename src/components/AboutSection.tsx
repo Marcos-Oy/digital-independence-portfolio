@@ -2,7 +2,7 @@ import marcos from "@/assets/marcos.jpg";
 import { GraduationCap, ShieldCheck, BrainCircuit, Target, Globe } from "lucide-react";
 
 const credentials = [
-  { icon: Target, text: "Fundador y Arquitecto de Independencia Digital" },
+  { icon: Target, text: "CEO y Fundador de Independencia Digital" },
   { icon: GraduationCap, text: "Ingeniero en Informática – Estrategia Web, Ciberseguridad, Automatización y Analítica" },
   { icon: ShieldCheck, text: "Máster Europeo en Ciberseguridad y Transformación Digital" },
   { icon: BrainCircuit, text: "Amplio conocimiento en IA Generativa para el ámbito Corporativo" },
@@ -33,7 +33,7 @@ const AboutSection = () => {
               </div>
               <div className="absolute -bottom-3 -right-3 gradient-brand rounded-lg px-4 py-2 shadow-brand">
                 <span className="text-primary-foreground font-heading font-bold text-sm">
-                  Marcos Oyarzo
+                  Marcos Alberto Oyarzo Alvarez
                 </span>
               </div>
             </div>
