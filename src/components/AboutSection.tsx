@@ -2,7 +2,7 @@ import marcos from "@/assets/marcos.jpg";
 import { GraduationCap, ShieldCheck, BrainCircuit, Target, Globe } from "lucide-react";
 
 const credentials = [
-  { icon: Target, text: "Fundador y Arquitecto de Independencia Digital" },
+  { icon: Target, text: "CEO y Fundador de Independencia Digital" },
   { icon: GraduationCap, text: "Ingeniero en Informática – Estrategia Web, Ciberseguridad, Automatización y Analítica" },
   { icon: ShieldCheck, text: "Máster Europeo en Ciberseguridad y Transformación Digital" },
   { icon: BrainCircuit, text: "Amplio conocimiento en IA Generativa para el ámbito Corporativo" },
