@@ -33,7 +33,7 @@ const AboutSection = () => {
               </div>
               <div className="absolute -bottom-3 -right-3 gradient-brand rounded-lg px-4 py-2 shadow-brand">
                 <span className="text-primary-foreground font-heading font-bold text-sm">
-                  Marcos Oyarzo
+                  Marcos Alberto Oyarzo Alvarez
                 </span>
               </div>
             </div>
