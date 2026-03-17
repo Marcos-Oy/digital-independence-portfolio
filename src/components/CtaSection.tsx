@@ -4,7 +4,7 @@ const CtaSection = () => {
   return (
     <section id="contacto" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto gradient-brand rounded-2xl p-10 md:p-16 text-center shadow-brand">
+        <div className="max-w-3xl mx-auto gradient-brand rounded-2xl p-6 sm:p-10 md:p-16 text-center shadow-brand overflow-hidden">
           <h2 className="font-heading font-bold text-2xl md:text-4xl text-primary-foreground mb-4">
             ¿Listo para tu Independencia Digital?
           </h2>
