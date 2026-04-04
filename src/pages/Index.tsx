@@ -40,7 +40,9 @@ const Index = () => {
       <CtaSection />
       <Footer />
       <WhatsAppButton />
-      <ChatBot />
+      <Suspense fallback={null}>
+        <ChatBot />
+      </Suspense>
     </div>
   );
 };
