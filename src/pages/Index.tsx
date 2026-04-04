@@ -1,4 +1,3 @@
-import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -9,8 +8,7 @@ import AboutSection from "@/components/AboutSection";
 import CtaSection from "@/components/CtaSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-
-const ChatBot = lazy(() => import("@/components/ChatBot"));
+import ChatBot from "@/components/ChatBot";
 
 const Index = () => {
   return (
@@ -40,9 +38,7 @@ const Index = () => {
       <CtaSection />
       <Footer />
       <WhatsAppButton />
-      <Suspense fallback={null}>
-        <ChatBot />
-      </Suspense>
+      <ChatBot />
     </div>
   );
 };
