@@ -176,7 +176,7 @@ const ChatBot = () => {
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3">
             {messages.length === 0 && (
               <div className="text-center py-8 space-y-2">
-                <img src={chatbotIcon} alt="Bot" className="w-10 h-10 mx-auto" />
+                <RobotIcon className="w-10 h-10 text-muted-foreground/50" />
                 <p className="text-sm text-muted-foreground">
                   ¡Hola! 👋 Soy el asistente de Independencia Digital.
                 </p>
