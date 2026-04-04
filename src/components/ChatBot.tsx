@@ -1,11 +1,34 @@
-import { useState, useRef, useEffect, lazy, Suspense } from "react";
+import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
-
-const ReactMarkdown = lazy(() => import("react-markdown"));
 
 type Message = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+
+/** Simple markdown-like rendering: bold, line breaks */
+const SimpleMarkdown = ({ text }: { text: string }) => {
+  const lines = text.split("\n");
+  return (
+    <div className="space-y-1">
+      {lines.map((line, i) => {
+        if (!line.trim()) return <br key={i} />;
+        // Bold: **text**
+        const parts = line.split(/(\*\*[^*]+\*\*)/g);
+        return (
+          <p key={i} className="m-0 leading-relaxed">
+            {parts.map((part, j) =>
+              part.startsWith("**") && part.endsWith("**") ? (
+                <strong key={j} className="font-semibold">{part.slice(2, -2)}</strong>
+              ) : (
+                <span key={j}>{part}</span>
+              )
+            )}
+          </p>
+        );
+      })}
+    </div>
+  );
+};
 
 const ChatBot = () => {
   const [open, setOpen] = useState(false);
@@ -170,11 +193,7 @@ const ChatBot = () => {
                   }`}
                 >
                   {msg.role === "assistant" ? (
-                    <div className="prose prose-sm max-w-none dark:prose-invert [&>p]:m-0 [&>ul]:my-1 [&>ol]:my-1">
-                      <Suspense fallback={<span>{msg.content}</span>}>
-                        <ReactMarkdown>{msg.content}</ReactMarkdown>
-                      </Suspense>
-                    </div>
+                    <SimpleMarkdown text={msg.content} />
                   ) : (
                     msg.content
                   )}
