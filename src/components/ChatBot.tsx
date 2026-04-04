@@ -178,7 +178,7 @@ const ChatBot = () => {
               <div className="text-center py-8 space-y-2">
                 <RobotIcon className="w-10 h-10 text-muted-foreground/50" />
                 <p className="text-sm text-muted-foreground">
-                  ¡Hola! 👋 Soy el asistente de Independencia Digital.
+                  ¡Hola! 👋 Soy <strong>Marbot IArzo</strong>, el asistente de Independencia Digital.
                 </p>
                 <p className="text-xs text-muted-foreground/70">
                   Pregúntame sobre nuestros servicios, el Plan 360 o cómo podemos ayudarte.
