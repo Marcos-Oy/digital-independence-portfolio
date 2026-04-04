@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
-import ReactMarkdown from "react-markdown";
+
+const ReactMarkdown = lazy(() => import("react-markdown"));
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -170,7 +171,9 @@ const ChatBot = () => {
                 >
                   {msg.role === "assistant" ? (
                     <div className="prose prose-sm max-w-none dark:prose-invert [&>p]:m-0 [&>ul]:my-1 [&>ol]:my-1">
-                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      <Suspense fallback={<span>{msg.content}</span>}>
+                        <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      </Suspense>
                     </div>
                   ) : (
                     msg.content
