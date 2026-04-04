@@ -16,7 +16,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ServicesSection />
-      <TechLogosCarousel />
+      <SafeTechLogosCarousel />
       <BenefitsSection />
       
       {/* CTA intermedio antes de Plan 360 */}
