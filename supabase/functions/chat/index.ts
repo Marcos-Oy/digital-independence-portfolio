@@ -16,7 +16,7 @@ Tu rol es responder preguntas sobre los servicios de Independencia Digital de fo
 Es una consultora que ayuda a profesionales independientes y PyMEs de servicios a recuperar el control de su ecosistema digital, dejando de depender de técnicos o agencias externas.
 
 ## Plan 360 – Para la Independencia Digital
-Es la metodología principal, un acompañamiento guiado de 5 fases:
+Es la metodología principal, un acompañamiento guiado de 5 fases. Cada fase dura aproximadamente 1 mes, por lo que el plan completo se ejecuta en un máximo de 5 meses.
 
 **Fase 1: Arquitectura TI y Dirección Tecnológica (Cimientos)**
 - Organización integral de cuentas, correos, accesos y archivos en la nube
