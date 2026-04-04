@@ -1,6 +1,16 @@
 import { useState, useRef, useEffect } from "react";
 import { X, Send, User } from "lucide-react";
-import chatbotIcon from "@/assets/chatbot-icon.png";
+
+const RobotIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect x="3" y="8" width="18" height="12" rx="3" />
+    <circle cx="9" cy="14" r="2" />
+    <circle cx="15" cy="14" r="2" />
+    <path d="M9 18h6" />
+    <line x1="12" y1="2" x2="12" y2="8" />
+    <circle cx="12" cy="2" r="1" />
+  </svg>
+);
 
 type Message = { role: "user" | "assistant"; content: string };
 
