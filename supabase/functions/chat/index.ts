@@ -21,7 +21,7 @@ Es la metodología principal, un acompañamiento guiado de 5 fases:
 **Fase 1: Arquitectura TI y Dirección Tecnológica (Cimientos)**
 - Organización integral de cuentas, correos, accesos y archivos en la nube
 - Evaluación de equipos y herramientas digitales
-- Hoja de ruta estratégica a 6-12 meses
+- Hoja de ruta estratégica personalizada
 
 **Fase 2: Arquitectura de Presencia Digital Integral**
 - Sitio web profesional y landing pages
