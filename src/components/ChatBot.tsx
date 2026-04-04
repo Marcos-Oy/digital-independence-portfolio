@@ -164,7 +164,7 @@ const ChatBot = () => {
             <RobotIcon className="w-6 h-6 text-primary-foreground" />
             <div>
               <p className="text-sm font-heading font-semibold text-primary-foreground">
-                Asistente Digital
+                Marbot IArzo
               </p>
               <p className="text-xs text-primary-foreground/80">
                 Independencia Digital
