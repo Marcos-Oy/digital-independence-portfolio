@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { X, Send, User } from "lucide-react";
+import chatbotIcon from "@/assets/chatbot-icon.png";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -141,7 +142,7 @@ const ChatBot = () => {
         {open ? (
           <X className="w-6 h-6 text-primary-foreground" />
         ) : (
-          <MessageCircle className="w-6 h-6 text-primary-foreground" />
+          <img src={chatbotIcon} alt="Chat" className="w-9 h-9 rounded-full" />
         )}
       </button>
 
@@ -150,7 +151,7 @@ const ChatBot = () => {
         <div className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] h-[500px] max-h-[calc(100vh-8rem)] bg-card border border-border rounded-2xl shadow-xl flex flex-col overflow-hidden animate-fade-in">
           {/* Header */}
           <div className="gradient-brand px-4 py-3 flex items-center gap-3">
-            <Bot className="w-6 h-6 text-primary-foreground" />
+            <img src={chatbotIcon} alt="Bot" className="w-6 h-6 rounded-full" />
             <div>
               <p className="text-sm font-heading font-semibold text-primary-foreground">
                 Asistente Digital
@@ -165,7 +166,7 @@ const ChatBot = () => {
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3">
             {messages.length === 0 && (
               <div className="text-center py-8 space-y-2">
-                <Bot className="w-10 h-10 mx-auto text-muted-foreground/50" />
+                <img src={chatbotIcon} alt="Bot" className="w-10 h-10 mx-auto" />
                 <p className="text-sm text-muted-foreground">
                   ¡Hola! 👋 Soy el asistente de Independencia Digital.
                 </p>
@@ -182,7 +183,7 @@ const ChatBot = () => {
               >
                 {msg.role === "assistant" && (
                   <div className="w-7 h-7 rounded-full gradient-brand flex items-center justify-center flex-shrink-0 mt-1">
-                    <Bot className="w-4 h-4 text-primary-foreground" />
+                    <img src={chatbotIcon} alt="Bot" className="w-5 h-5 rounded-full" />
                   </div>
                 )}
                 <div
@@ -209,7 +210,7 @@ const ChatBot = () => {
             {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
               <div className="flex gap-2 items-start">
                 <div className="w-7 h-7 rounded-full gradient-brand flex items-center justify-center flex-shrink-0">
-                  <Bot className="w-4 h-4 text-primary-foreground" />
+                  <img src={chatbotIcon} alt="Bot" className="w-5 h-5 rounded-full" />
                 </div>
                 <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
                   <div className="flex gap-1">
