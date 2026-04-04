@@ -151,7 +151,7 @@ const ChatBot = () => {
         <div className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] h-[500px] max-h-[calc(100vh-8rem)] bg-card border border-border rounded-2xl shadow-xl flex flex-col overflow-hidden animate-fade-in">
           {/* Header */}
           <div className="gradient-brand px-4 py-3 flex items-center gap-3">
-            <Bot className="w-6 h-6 text-primary-foreground" />
+            <img src={chatbotIcon} alt="Bot" className="w-6 h-6 rounded-full" />
             <div>
               <p className="text-sm font-heading font-semibold text-primary-foreground">
                 Asistente Digital
