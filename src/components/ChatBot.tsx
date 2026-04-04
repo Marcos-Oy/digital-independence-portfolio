@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { X, Send, User } from "lucide-react";
+import chatbotIcon from "@/assets/chatbot-icon.png";
 
 type Message = { role: "user" | "assistant"; content: string };
 
