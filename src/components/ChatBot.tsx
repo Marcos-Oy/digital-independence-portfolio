@@ -220,7 +220,7 @@ const ChatBot = () => {
             {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
               <div className="flex gap-2 items-start">
                 <div className="w-7 h-7 rounded-full gradient-brand flex items-center justify-center flex-shrink-0">
-                  <img src={chatbotIcon} alt="Bot" className="w-5 h-5 rounded-full" />
+                  <RobotIcon className="w-4 h-4 text-primary-foreground" />
                 </div>
                 <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
                   <div className="flex gap-1">
