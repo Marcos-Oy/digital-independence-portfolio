@@ -152,7 +152,7 @@ const ChatBot = () => {
         {open ? (
           <X className="w-6 h-6 text-primary-foreground" />
         ) : (
-          <img src={chatbotIcon} alt="Chat" className="w-9 h-9 rounded-full" />
+          <RobotIcon className="w-7 h-7 text-primary-foreground" />
         )}
       </button>
 
