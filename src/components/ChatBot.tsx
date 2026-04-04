@@ -183,7 +183,7 @@ const ChatBot = () => {
               >
                 {msg.role === "assistant" && (
                   <div className="w-7 h-7 rounded-full gradient-brand flex items-center justify-center flex-shrink-0 mt-1">
-                    <Bot className="w-4 h-4 text-primary-foreground" />
+                    <img src={chatbotIcon} alt="Bot" className="w-5 h-5 rounded-full" />
                   </div>
                 )}
                 <div
