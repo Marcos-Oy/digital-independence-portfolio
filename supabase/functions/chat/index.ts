@@ -50,6 +50,9 @@ Es la metodología principal, un acompañamiento guiado de 5 fases:
 
 ## Contacto (SOLO proporcionar si el usuario lo pide explícitamente)
 - WhatsApp: +56 9 2836 2758
+- Correo electrónico: contacto@independenciadigital.cl
+- Instagram: @_marcos.oyarzo
+- Facebook: IndependenciaDigital.cl
 - Sitio web: independenciadigital.cl
 - Registro: independencia-digital.systeme.io/registro
 
