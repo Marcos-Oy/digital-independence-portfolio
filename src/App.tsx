@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
+import LandingIndex from "./pages/LandingIndex";
 import Fundador from "./pages/Fundador";
 import ArquitecturaTI from "./pages/ArquitecturaTI";
 import PresenciaDigital from "./pages/PresenciaDigital";
@@ -49,7 +50,7 @@ const App = () => (
           <Route path="/inteligenciaartificial" element={<InteligenciaArtificial />} />
 
           {/* Landing pages — para campañas */}
-          <Route path="/landing" element={<LandingPage />} />
+          <Route path="/landing" element={<LandingIndex />} />
           <Route path="/landing/general" element={<LandingPage />} />
           <Route path="/landing/arquitecturati" element={<LandingArquitecturaTI />} />
           <Route path="/landing/presenciadigital" element={<LandingPresenciaDigital />} />
