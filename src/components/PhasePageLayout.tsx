@@ -36,33 +36,33 @@ const PhasePageLayout = ({
       <SiteNavbar />
 
       {/* Hero */}
-      <section className="gradient-hero pt-28 pb-16 md:pt-36 md:pb-24">
+      <section className="gradient-hero pt-28 pb-12 md:pt-36 md:pb-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
             <ArrowLeft className="w-4 h-4" /> Volver al inicio
           </Link>
-          <div className="flex flex-col md:flex-row items-center gap-10">
-            <div className="flex-1">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10">
+            <div className="flex-1 w-full text-center md:text-left">
               <span className="inline-flex gradient-brand text-primary-foreground text-xs font-bold px-3 py-1 rounded-full font-heading shadow-brand mb-4">
                 Fase {phaseNum} — {subtitle}
               </span>
-              <h1 className="font-heading font-black text-3xl md:text-5xl leading-tight text-foreground mb-6">
+              <h1 className="font-heading font-black text-2xl sm:text-3xl md:text-5xl leading-tight text-foreground mb-6 break-words">
                 {title}
               </h1>
-              <p className="text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed">
+              <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto md:mx-0 mb-8 leading-relaxed">
                 {heroDescription}
               </p>
               <a
                 href="https://independencia-digital.systeme.io/registro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex gradient-brand text-primary-foreground font-heading font-bold text-base px-8 py-4 rounded-lg shadow-brand hover:opacity-90 transition-opacity"
+                className="inline-flex gradient-brand text-primary-foreground font-heading font-bold text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 rounded-lg shadow-brand hover:opacity-90 transition-opacity"
               >
                 Comenzar con esta Fase →
               </a>
             </div>
-            <div className="shrink-0">
-              <img src={img} alt={title} className="h-40 md:h-56 object-contain" />
+            <div className="shrink-0 w-full md:w-auto flex justify-center">
+              <img src={img} alt={title} className="h-32 sm:h-40 md:h-56 object-contain max-w-full" />
             </div>
           </div>
         </div>

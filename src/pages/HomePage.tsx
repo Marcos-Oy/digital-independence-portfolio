@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
 import SafeTechLogosCarousel from "@/components/SafeTechLogosCarousel";
-import AboutSection from "@/components/AboutSection";
+import AboutBrandSection from "@/components/AboutBrandSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ChatBot from "@/components/ChatBot";
 import logoFull from "@/assets/logo-full.png";
@@ -67,8 +67,8 @@ const faqs = [
     a: "Para personas, profesionales independientes y dueños de PyMEs que quieren ordenar, proteger y escalar su operación digital sin depender de terceros.",
   },
   {
-    q: "¿Cuánto dura el programa completo?",
-    a: "El Plan 360 tiene 5 fases de 1 mes cada una, completándose en un máximo de 5 meses.",
+    q: "¿Cómo se desarrolla la mentoría?",
+    a: "El programa se desarrolla a través de sesiones grupales y acompañamiento personalizado de profesionales especializados, para que avances con apoyo real en cada fase.",
   },
   {
     q: "¿Necesito conocimientos técnicos previos?",
@@ -76,7 +76,7 @@ const faqs = [
   },
   {
     q: "¿Qué herramientas se usan?",
-    a: "Usamos herramientas accesibles y prácticas como Google Workspace, Cloudflare, WordPress, Canva, ChatGPT, entre otras. No usamos soluciones corporativas complejas como Azure o AWS.",
+    a: "Usamos herramientas accesibles y prácticas como Google Workspace, Cloudflare, WordPress, Canva, ChatGPT, entre otras, siempre adaptadas al perfil de profesionales independientes y PyMEs.",
   },
   {
     q: "¿El servicio es solo para Chile?",
@@ -150,14 +150,14 @@ const HomePage = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
-              <Clock className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">5 Meses</h3>
-              <p className="text-sm text-muted-foreground">Programa completo con 1 fase por mes</p>
+              <Users className="w-8 h-8 text-primary mx-auto mb-3" />
+              <h3 className="font-heading font-bold text-foreground mb-2">Sesiones Grupales</h3>
+              <p className="text-sm text-muted-foreground">Aprende junto a otros profesionales y PyMEs</p>
             </div>
             <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
-              <Users className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">Mentoría 1:1</h3>
-              <p className="text-sm text-muted-foreground">Acompañamiento personalizado paso a paso</p>
+              <Brain className="w-8 h-8 text-primary mx-auto mb-3" />
+              <h3 className="font-heading font-bold text-foreground mb-2">Acompañamiento Profesional</h3>
+              <p className="text-sm text-muted-foreground">Profesionales especializados a tu lado en cada fase</p>
             </div>
             <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
               <Shield className="w-8 h-8 text-primary mx-auto mb-3" />
@@ -182,8 +182,8 @@ const HomePage = () => {
               Las 5 Fases de tu Independencia Digital
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Un camino paso a paso para que tu operación digital esté ordenada, protegida y lista para escalar.
-              Cada fase dura 1 mes. Programa completo en máximo 5 meses.
+              Un camino paso a paso para que tu operación digital esté ordenada, protegida y lista para escalar,
+              con sesiones grupales y acompañamiento de profesionales especializados.
             </p>
           </div>
 
@@ -234,8 +234,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Sobre Nosotros / Quién da el entrenamiento */}
-      <AboutSection />
+      {/* Sobre Nosotros - la marca */}
+      <AboutBrandSection />
 
       {/* FAQ */}
       <section id="faq" className="py-20 md:py-28 bg-muted">

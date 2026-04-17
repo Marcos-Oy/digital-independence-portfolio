@@ -49,7 +49,8 @@ const SiteFooter = () => {
             <ul className="space-y-2">
               <li><Link to="/" className="text-xs text-muted-foreground hover:text-primary transition-colors">Inicio</Link></li>
               <li><Link to="/#metodologia" className="text-xs text-muted-foreground hover:text-primary transition-colors">Metodología</Link></li>
-              <li><Link to="/#sobremi" className="text-xs text-muted-foreground hover:text-primary transition-colors">Sobre Nosotros</Link></li>
+              <li><Link to="/#sobrenosotros" className="text-xs text-muted-foreground hover:text-primary transition-colors">Sobre Nosotros</Link></li>
+              <li><Link to="/fundador" className="text-xs text-muted-foreground hover:text-primary transition-colors">Fundador</Link></li>
               <li><Link to="/#faq" className="text-xs text-muted-foreground hover:text-primary transition-colors">FAQ</Link></li>
             </ul>
           </div>

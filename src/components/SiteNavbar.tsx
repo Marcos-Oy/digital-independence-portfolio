@@ -12,7 +12,7 @@ const SiteNavbar = () => {
     { label: "Inicio", href: "/" },
     { label: "Servicios", href: "/#servicios" },
     { label: "Metodología", href: "/#metodologia" },
-    { label: "Sobre Nosotros", href: "/#sobremi" },
+    { label: "Sobre Nosotros", href: "/#sobrenosotros" },
     { label: "FAQ", href: "/#faq" },
     { label: "Contacto", href: "/#contacto" },
   ];
