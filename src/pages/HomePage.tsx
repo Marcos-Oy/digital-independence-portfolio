@@ -187,8 +187,9 @@ const HomePage = () => {
               Las 5 Fases de tu Independencia Digital
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Un camino paso a paso para que tu operación digital esté ordenada, protegida y lista para escalar,
-              con sesiones grupales y acompañamiento de profesionales especializados.
+              Cada fase es <strong className="text-foreground">independiente</strong> y puedes contratarlas por separado.
+              El orden que proponemos es solo una <strong className="text-foreground">recomendación</strong> para comenzar
+              con cimientos sólidos y escalar digitalmente paso a paso.
             </p>
           </div>
 
