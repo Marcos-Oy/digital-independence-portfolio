@@ -11,7 +11,7 @@ import fase2 from "@/assets/fase2.png";
 import fase3 from "@/assets/fase3.png";
 import fase4 from "@/assets/fase4.png";
 import fase5 from "@/assets/fase5.png";
-import { CheckCircle2, Clock, Users, Shield, BarChart3, Brain, Server, ChevronRight, Instagram, Facebook, Mail } from "lucide-react";
+import { CheckCircle2, Clock, Users, Shield, BarChart3, Brain, Server, ChevronRight, Instagram, Facebook, Mail, UserCheck, MessageCircle } from "lucide-react";
 
 const phases = [
   {
@@ -148,16 +148,21 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
               <Users className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="font-heading font-bold text-foreground mb-2">Sesiones Grupales</h3>
               <p className="text-sm text-muted-foreground">Aprende junto a otros profesionales y PyMEs</p>
             </div>
             <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
-              <Brain className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">Acompañamiento Profesional</h3>
-              <p className="text-sm text-muted-foreground">Profesionales especializados a tu lado en cada fase</p>
+              <UserCheck className="w-8 h-8 text-primary mx-auto mb-3" />
+              <h3 className="font-heading font-bold text-foreground mb-2">Mentoría 1:1</h3>
+              <p className="text-sm text-muted-foreground">Acompañamiento personalizado paso a paso</p>
+            </div>
+            <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
+              <MessageCircle className="w-8 h-8 text-primary mx-auto mb-3" />
+              <h3 className="font-heading font-bold text-foreground mb-2">Chat y Llamadas</h3>
+              <p className="text-sm text-muted-foreground">Soporte continuo cuando lo necesites</p>
             </div>
             <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
               <Shield className="w-8 h-8 text-primary mx-auto mb-3" />
