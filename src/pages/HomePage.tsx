@@ -143,8 +143,8 @@ const HomePage = () => {
               Somos una consultora de <strong className="text-foreground">mentorías tecnológicas profesionales</strong> que
               ayuda a personas, profesionales independientes y dueños de PyMEs a contar con una estructura digital
               clara, eficiente y alineada a sus objetivos. Nuestro <strong className="text-foreground">Plan 360</strong> de
-              5 fases entrega resultados visibles a partir del primer mes, eliminando el caos digital y logrando
-              autonomía total sin depender de nadie externo.
+              5 fases entrega resultados visibles a partir de los <strong className="text-foreground">primeros 90 días</strong> de
+              implementación constante, eliminando el caos digital y logrando autonomía total sin depender de nadie externo.
             </p>
           </div>
 

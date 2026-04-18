@@ -41,7 +41,7 @@ const AboutSection = () => {
               href="https://www.moyarzo.cl"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors bg-muted px-4 py-2 rounded-lg border border-border"
+              className="mt-8 inline-flex items-center gap-2 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3 rounded-lg shadow-brand hover:opacity-90 hover:scale-105 transition-all"
             >
               <Globe className="w-4 h-4" />
               Revisa mi portafolio profesional
