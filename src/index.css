@@ -36,8 +36,8 @@
 
     --radius: 0.75rem;
 
-    --tech-carousel: 210 20% 96%;
-    --tech-carousel-foreground: 215 15% 45%;
+    --tech-carousel: 0 0% 100%;
+    --tech-carousel-foreground: 215 15% 35%;
 
     --gradient-brand: linear-gradient(135deg, hsl(213, 100%, 30%), hsl(175, 55%, 45%));
     --gradient-brand-hover: linear-gradient(135deg, hsl(213, 100%, 25%), hsl(175, 55%, 38%));
