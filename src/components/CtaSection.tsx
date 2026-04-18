@@ -40,8 +40,6 @@ const CtaSection = () => {
           </div>
           <a
             href="https://independencia-digital.systeme.io/registro"
-            target="_blank"
-            rel="noopener noreferrer"
             className="inline-flex bg-card text-foreground font-heading font-bold text-base px-8 py-4 rounded-lg shadow-card hover:shadow-card-hover transition-shadow"
           >
             Quiero Mi Independencia Digital →
