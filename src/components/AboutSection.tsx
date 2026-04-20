@@ -31,11 +31,13 @@ const AboutSection = () => {
                   className="w-full h-full object-cover object-top"
                 />
               </div>
-              <div className="absolute -bottom-3 -right-3 gradient-brand rounded-lg px-4 py-2 shadow-brand">
-                <span className="text-primary-foreground font-heading font-bold text-sm">
-                  Marcos Alberto Oyarzo Alvarez
-                </span>
-              </div>
+            </div>
+            <div className="mt-5 text-center">
+              <p className="font-heading font-bold text-lg text-foreground leading-tight">
+                Marcos Alberto Oyarzo Alvarez
+              </p>
+              <p className="text-xs uppercase tracking-widest text-secondary font-semibold mt-1">
+                Fundador & CEO
             </div>
             <a
               href="https://www.moyarzo.cl"
