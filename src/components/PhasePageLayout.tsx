@@ -3,8 +3,8 @@ import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ChatBot from "@/components/ChatBot";
+import PhaseDetailedSection, { type PhaseModule } from "@/components/PhaseDetailedSection";
 import { CheckCircle2, ChevronRight, ArrowLeft } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
 interface PhasePageProps {
   phaseNum: number;
@@ -15,6 +15,9 @@ interface PhasePageProps {
   whatIs: string;
   benefits: string[];
   tools: string[];
+  modules?: PhaseModule[];
+  detailedIntro?: string;
+  outcome?: string;
   prevPhase?: { label: string; href: string };
   nextPhase?: { label: string; href: string };
 }
@@ -28,6 +31,9 @@ const PhasePageLayout = ({
   whatIs,
   benefits,
   tools,
+  modules,
+  detailedIntro,
+  outcome,
   prevPhase,
   nextPhase,
 }: PhasePageProps) => {
@@ -101,7 +107,15 @@ const PhasePageLayout = ({
         </div>
       </section>
 
-      {/* Herramientas */}
+      {/* Detalle de módulos */}
+      {modules && modules.length > 0 && (
+        <PhaseDetailedSection
+          intro={detailedIntro ?? "Estos son los módulos que cubriremos durante esta fase. Despliega cada uno para ver lo que trabajaremos en detalle."}
+          outcome={outcome ?? "Al finalizar esta fase contarás con los entregables implementados, validados con tu mentor y listos para escalar."}
+          modules={modules}
+        />
+      )}
+
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
