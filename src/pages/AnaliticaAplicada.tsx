@@ -18,6 +18,42 @@ const AnaliticaAplicada = () => (
       "Autonomía para consultar y entender tus números en cualquier momento.",
     ]}
     tools={["Power BI", "Excel", "Google Workspace", "Access", "SQL Server", "Oracle", "MySQL"]}
+    detailedIntro="Analítica Aplicada parte por ordenar tus datos, identificar tus KPIs y termina con tableros visuales que te entregan información para decidir."
+    outcome="Tendrás tus indicadores clave definidos, tus fuentes de datos conectadas y al menos un dashboard interactivo en Power BI listo para revisar tu negocio en tiempo real."
+    modules={[
+      {
+        title: "Datos en tu negocio",
+        points: [
+          "Identificación de los datos que ya generas y los que faltan.",
+          "Definición de KPIs e indicadores clave por área.",
+          "Buenas prácticas de orden y calidad del dato.",
+        ],
+      },
+      {
+        title: "Excel y bases de datos",
+        points: [
+          "Modelos de datos limpios en Excel para PyMEs.",
+          "Introducción a bases de datos (Access, SQL).",
+          "Cómo integrar información de CRM, ERP o ventas.",
+        ],
+      },
+      {
+        title: "Visualización con Power BI",
+        points: [
+          "Conexión de múltiples fuentes de datos.",
+          "Diseño de dashboards visuales y filtros interactivos.",
+          "Publicación y compartición segura del tablero.",
+        ],
+      },
+      {
+        title: "Cultura de decisiones con datos",
+        points: [
+          "Lectura e interpretación de métricas.",
+          "Reportes automáticos periódicos.",
+          "Cómo iterar tu estrategia con base en resultados.",
+        ],
+      },
+    ]}
     prevPhase={{ label: "Fase 3: Ciberseguridad", href: "/ciberseguridad" }}
     nextPhase={{ label: "Fase 5: IA y Automatización", href: "/inteligenciaartificial" }}
   />

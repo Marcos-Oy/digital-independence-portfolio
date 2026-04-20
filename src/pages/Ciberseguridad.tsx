@@ -18,6 +18,42 @@ const Ciberseguridad = () => (
       "Tranquilidad de saber que tu información y la de tus clientes está protegida.",
     ]}
     tools={["Norton", "Microsoft Authenticator", "Cloudflare", "Google Workspace", "ANCI", "Linux"]}
+    detailedIntro="Ciberseguridad Aplicada se trabaja por niveles de protección, partiendo por hábitos básicos hasta resiliencia operativa de tu negocio."
+    outcome="Tendrás contraseñas robustas, MFA activado en todas tus cuentas críticas, antivirus y respaldos funcionando, y un plan claro de qué hacer ante un incidente."
+    modules={[
+      {
+        title: "Identidad digital y contraseñas",
+        points: [
+          "Higiene de contraseñas y uso de gestores seguros.",
+          "Activación de autenticación multifactor (MFA/2FA).",
+          "Revisión y limpieza de cuentas antiguas.",
+        ],
+      },
+      {
+        title: "Protección de dispositivos",
+        points: [
+          "Configuración de antivirus profesional en computador y móvil.",
+          "Hardening básico de Windows y navegadores.",
+          "Buenas prácticas para redes Wi-Fi y conexiones públicas.",
+        ],
+      },
+      {
+        title: "Respaldo y resiliencia",
+        points: [
+          "Estrategia de respaldos 3-2-1 para información crítica.",
+          "Pruebas de restauración para validar que los backups funcionan.",
+          "Plan básico ante pérdida de equipo, robo o ransomware.",
+        ],
+      },
+      {
+        title: "Conciencia y prevención",
+        points: [
+          "Cómo detectar phishing, smishing e ingeniería social.",
+          "Protección de datos personales y de clientes.",
+          "Marco normativo aplicable y referencias de la ANCI.",
+        ],
+      },
+    ]}
     prevPhase={{ label: "Fase 2: Presencia Digital", href: "/presenciadigital" }}
     nextPhase={{ label: "Fase 4: Analítica Aplicada", href: "/analiticaaplicada" }}
   />
