@@ -38,6 +38,7 @@ const AboutSection = () => {
               </p>
               <p className="text-xs uppercase tracking-widest text-secondary font-semibold mt-1">
                 Fundador & CEO
+              </p>
             </div>
             <a
               href="https://www.moyarzo.cl"
