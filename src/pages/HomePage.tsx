@@ -260,6 +260,9 @@ const HomePage = () => {
       {/* Sobre Nosotros - la marca */}
       <AboutBrandSection />
 
+      {/* Enfoque de la Mentoría */}
+      <MentorshipApproachSection />
+
       {/* FAQ */}
       <section id="faq" className="py-20 md:py-28 bg-muted">
         <div className="container mx-auto px-4">
