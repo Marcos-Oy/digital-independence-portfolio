@@ -3,8 +3,8 @@ import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ChatBot from "@/components/ChatBot";
+import PhaseDetailedSection, { type PhaseModule } from "@/components/PhaseDetailedSection";
 import { CheckCircle2, ChevronRight, ArrowLeft } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
 interface PhasePageProps {
   phaseNum: number;
@@ -15,6 +15,9 @@ interface PhasePageProps {
   whatIs: string;
   benefits: string[];
   tools: string[];
+  modules?: PhaseModule[];
+  detailedIntro?: string;
+  outcome?: string;
   prevPhase?: { label: string; href: string };
   nextPhase?: { label: string; href: string };
 }
@@ -28,6 +31,9 @@ const PhasePageLayout = ({
   whatIs,
   benefits,
   tools,
+  modules,
+  detailedIntro,
+  outcome,
   prevPhase,
   nextPhase,
 }: PhasePageProps) => {
