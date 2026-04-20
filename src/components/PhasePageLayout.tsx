@@ -107,7 +107,15 @@ const PhasePageLayout = ({
         </div>
       </section>
 
-      {/* Herramientas */}
+      {/* Detalle de módulos */}
+      {modules && modules.length > 0 && (
+        <PhaseDetailedSection
+          intro={detailedIntro ?? "Estos son los módulos que cubriremos durante esta fase. Despliega cada uno para ver lo que trabajaremos en detalle."}
+          outcome={outcome ?? "Al finalizar esta fase contarás con los entregables implementados, validados con tu mentor y listos para escalar."}
+          modules={modules}
+        />
+      )}
+
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
