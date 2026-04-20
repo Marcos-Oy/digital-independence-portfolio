@@ -69,23 +69,39 @@ const faqs = [
   },
   {
     q: "¿Cómo se desarrolla la mentoría?",
-    a: "El programa se desarrolla a través de sesiones grupales y acompañamiento personalizado de profesionales especializados, para que avances con apoyo real en cada fase.",
+    a: "A través de una plataforma centralizada con canales por módulo, sesiones grupales semanales, sesiones 1:1 con agenda, comunicación directa por chat y llamadas con el mentor, y materiales descargables.",
+  },
+  {
+    q: "¿Recibiré un correo corporativo?",
+    a: "Sí. Cada discípulo recibe un correo corporativo profesional como parte del programa, junto con el acompañamiento para configurarlo y dejarlo operativo dentro de su ecosistema digital.",
+  },
+  {
+    q: "¿Cuándo veré resultados?",
+    a: "Los resultados tangibles comienzan a verse a partir de los primeros 90 días de implementación constante. Los primeros tres meses son de cimentación, automatización y validación del embudo.",
+  },
+  {
+    q: "¿Las fases son obligatorias o puedo elegir?",
+    a: "Las fases son independientes y puedes contratarlas por separado. El orden propuesto es solo una recomendación para comenzar con cimientos sólidos y escalar paso a paso.",
+  },
+  {
+    q: "¿Cuánto dura cada fase?",
+    a: "La duración es variable y personalizada, según el avance del discípulo y la complejidad técnica de su negocio. Los contenidos se habilitan por etapas y cada módulo construye la base del siguiente.",
   },
   {
     q: "¿Necesito conocimientos técnicos previos?",
-    a: "No. La mentoría es paso a paso y está diseñada para que cualquier persona pueda implementar lo aprendido, sin importar su nivel técnico.",
+    a: "No. La mentoría es paso a paso y está diseñada para que cualquier persona pueda implementar lo aprendido, con validación del mentor en cada etapa.",
+  },
+  {
+    q: "¿Cómo es el soporte durante la mentoría?",
+    a: "Las dudas generales se canalizan en la plataforma. Las sesiones 1:1 se reservan para temas relevantes (revisión, decisiones, desbloqueo técnico). Se recomienda avanzar en cada módulo antes de solicitar ayuda.",
   },
   {
     q: "¿Qué herramientas se usan?",
-    a: "Usamos herramientas accesibles y prácticas como Google Workspace, Cloudflare, WordPress, Canva, ChatGPT, entre otras, siempre adaptadas al perfil de profesionales independientes y PyMEs.",
+    a: "Usamos herramientas accesibles y prácticas como Google Workspace, Microsoft 365, Cloudflare, WordPress, Canva, Power BI, n8n, ChatGPT y Lovable, adaptadas a profesionales y PyMEs.",
   },
   {
     q: "¿El servicio es solo para Chile?",
-    a: "Actualmente ofrecemos nuestros servicios enfocados en el mercado chileno, con herramientas y estrategias adaptadas al contexto local.",
-  },
-  {
-    q: "¿Qué pasa después de las 5 fases?",
-    a: "Al completar el programa, tendrás autonomía total sobre tu ecosistema digital. Opcionalmente, ofrecemos seguimiento y asesoría continua.",
+    a: "Actualmente nuestros servicios están enfocados en el mercado chileno, con herramientas y estrategias adaptadas al contexto local.",
   },
 ];
 
