@@ -72,10 +72,6 @@ const faqs = [
     a: "A través de una plataforma centralizada con canales por módulo, sesiones grupales semanales, sesiones 1:1 con agenda, comunicación directa por chat y llamadas con el mentor, y materiales descargables.",
   },
   {
-    q: "¿Recibiré un correo corporativo?",
-    a: "Sí. Cada discípulo recibe un correo corporativo profesional como parte del programa, junto con el acompañamiento para configurarlo y dejarlo operativo dentro de su ecosistema digital.",
-  },
-  {
     q: "¿Cuándo veré resultados?",
     a: "Los resultados tangibles comienzan a verse a partir de los primeros 90 días de implementación constante. Los primeros tres meses son de cimentación, automatización y validación del embudo.",
   },
