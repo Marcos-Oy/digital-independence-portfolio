@@ -76,11 +76,11 @@ Para obtener resultados reales se espera: aplicar lo aprendido en cada módulo, 
 - **Sitio web profesional**: corporativo, portafolio o landing pages, con publicación vía GitHub + Cloudflare, optimización móvil y velocidad. Incluye chatbot con IA básico.
 - **SEO y visibilidad**: Google Search Console, SEO on-page, Google Maps / perfil de negocio.
 - **Redes sociales profesionales**: Instagram Business, Página de Facebook, WhatsApp Business optimizadas.
-- **Meta Business y centralización**: integrar Facebook + Instagram + WhatsApp, gestión unificada y Meta Pixel instalado.
-- **Publicidad digital y analítica**: Meta Ads, segmentación, métricas, medición con pixel.
+- **Meta Business y centralización**: integrar Facebook + Instagram + WhatsApp con gestión unificada y bases técnicas listas para tracking publicitario.
+- **Publicidad digital y analítica**: Meta Ads, segmentación, métricas y medición de campañas.
 - **Producción de contenido e IA aplicada**: equipamiento básico, encuadre, iluminación, audio, teleprompter, GPT y Canva AI para piezas y copies, automatización básica de respuestas.
 
-**Acción concreta:** dominio + web publicada + redes activas + Meta Business centralizado + pixel funcionando + primeras campañas listas.
+**Acción concreta:** dominio + web publicada + redes activas + Meta Business centralizado + tracking configurado + primeras campañas listas.
 
 ---
 

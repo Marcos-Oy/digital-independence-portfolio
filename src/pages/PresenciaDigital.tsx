@@ -8,13 +8,13 @@ const PresenciaDigital = () => (
     subtitle="Visibilidad"
     img={fase2}
     heroDescription="Creamos o mejoramos tu sitio web profesional y configuramos tus redes sociales de forma estratégica para que tu negocio sea visible y atractivo en internet."
-    whatIs="En esta fase nos enfocamos en tu presencia online. Si no tienes sitio web, lo creamos desde cero con herramientas accesibles. Si ya tienes uno, lo optimizamos para que sea profesional, rápido y seguro. Además, configuramos tus redes sociales de negocio (Instagram Business, WhatsApp Business, Google Business Profile) y conectamos las herramientas publicitarias necesarias como Meta Pixel y Google Ads para que estés listo para campañas futuras."
+    whatIs="En esta fase nos enfocamos en tu presencia online. Si no tienes sitio web, lo creamos desde cero con herramientas accesibles. Si ya tienes uno, lo optimizamos para que sea profesional, rápido y seguro. Además, configuramos tus redes sociales de negocio (Instagram Business, WhatsApp Business, Google Business Profile) y dejamos las bases listas para que puedas escalar con publicidad cuando lo decidas."
     benefits={[
       "Sitio web profesional, rápido y optimizado para móviles.",
       "Dominio propio configurado con DNS seguro (Cloudflare).",
       "Perfiles de redes sociales de negocio configurados estratégicamente.",
       "WhatsApp Business, Instagram Business y Google Business activos.",
-      "Conexión de Meta Pixel y herramientas de tracking.",
+      "Bases técnicas listas para conectar herramientas de tracking y publicidad.",
       "Presencia digital coherente y profesional en todos los canales.",
     ]}
     tools={["WordPress", "Lovable", "Cloudflare", "Hostinger", "NIC Chile", "Canva", "Systeme.io", "ManyChat", "Calendly", "Meta Ads"]}
@@ -50,7 +50,7 @@ const PresenciaDigital = () => (
         points: [
           "Formularios de contacto, agenda con Calendly y captura de leads.",
           "Integración con Systeme.io y bots básicos con ManyChat.",
-          "Instalación de Meta Pixel y eventos de conversión.",
+          "Configuración base para tracking y eventos de conversión.",
         ],
       },
     ]}

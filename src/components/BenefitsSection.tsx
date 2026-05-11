@@ -6,7 +6,7 @@ const benefits = [
   "No más caos entre correos, archivos y redes.",
   "Sitio web profesional, optimizado y seguro.",
   "Configuración completa de Instagram, WhatsApp Business y Google Business.",
-  "Conexión de herramientas publicitarias (Meta Ads, Google Ads, Pixel).",
+  "Conexión de herramientas publicitarias (Meta Ads, Google Ads).",
   "Recuperas el control total de tu operación digital.",
 ];
 
