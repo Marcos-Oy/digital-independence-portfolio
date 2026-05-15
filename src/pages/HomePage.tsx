@@ -14,7 +14,7 @@ import fase3 from "@/assets/fase3.png";
 import fase4 from "@/assets/fase4.png";
 import fase5 from "@/assets/fase5.png";
 import MentorshipApproachSection from "@/components/MentorshipApproachSection";
-import { CheckCircle2, Clock, Users, Shield, BarChart3, Brain, Server, ChevronRight, Instagram, Facebook, Mail, UserCheck, MessageCircle } from "lucide-react";
+import { CheckCircle2, Clock, Users, Shield, BarChart3, Brain, Server, ChevronRight, Instagram, Facebook, Mail, UserCheck, MessageCircle, Briefcase, Globe } from "lucide-react";
 
 const phases = [
   {
@@ -183,6 +183,90 @@ const HomePage = () => {
               <Shield className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="font-heading font-bold text-foreground mb-2">Autonomía Total</h3>
               <p className="text-sm text-muted-foreground">Sin depender de técnicos externos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Servicios adicionales: Asesorías y Agencia */}
+      <section id="servicios-extra" className="py-20 md:py-28 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3 font-heading">
+              Más allá de la mentoría
+            </p>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+              Asesorías y Agencia Digital
+            </h2>
+            <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+              Si no buscas un proceso completo de mentoría, también ofrecemos servicios puntuales para resolver
+              necesidades específicas de tu organización o crear tu presencia online llave en mano.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="bg-card rounded-2xl p-8 border border-border shadow-card hover:shadow-card-hover transition-all duration-300">
+              <div className="w-14 h-14 rounded-xl gradient-brand flex items-center justify-center mb-5">
+                <Briefcase className="w-7 h-7 text-primary-foreground" />
+              </div>
+              <h3 className="font-heading font-bold text-xl text-foreground mb-2">Asesorías y Consultorías</h3>
+              <p className="text-sm text-secondary font-semibold mb-3">Para organizaciones, municipios y empresas</p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+                Sesiones de asesoría puntual y consultorías a medida para resolver desafíos digitales concretos
+                (auditorías, planes de transformación, capacitaciones in-company y sesiones estratégicas).
+              </p>
+              <ul className="space-y-2 mb-6">
+                {[
+                  "Auditoría digital y diagnóstico inicial",
+                  "Planes de transformación digital",
+                  "Capacitaciones in-company",
+                  "Sesiones estratégicas por proyecto",
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-2 text-sm text-foreground">
+                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#contacto"
+                className="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:gap-2 transition-all"
+              >
+                Solicitar asesoría <ChevronRight className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="bg-card rounded-2xl p-8 border border-border shadow-card hover:shadow-card-hover transition-all duration-300">
+              <div className="w-14 h-14 rounded-xl gradient-brand flex items-center justify-center mb-5">
+                <Globe className="w-7 h-7 text-primary-foreground" />
+              </div>
+              <h3 className="font-heading font-bold text-xl text-foreground mb-2">Agencia Digital</h3>
+              <p className="text-sm text-secondary font-semibold mb-3">Tu sitio web llave en mano, con dominio propio</p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+                ¿Solo quieres tu página web y listo? También lo hacemos. Diseñamos y desarrollamos tu sitio,
+                portafolio o landing page con tu propio dominio y posicionamiento SEO para que aparezcas en Google
+                y conviertas visitas en clientes.
+              </p>
+              <ul className="space-y-2 mb-6">
+                {[
+                  "Sitios web corporativos e institucionales",
+                  "Portafolios web para profesionales",
+                  "Landing pages de alta conversión",
+                  "Registro y configuración de dominio propio",
+                  "Posicionamiento SEO técnico y de contenidos",
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-2 text-sm text-foreground">
+                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#contacto"
+                className="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:gap-2 transition-all"
+              >
+                Cotizar mi sitio web <ChevronRight className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
