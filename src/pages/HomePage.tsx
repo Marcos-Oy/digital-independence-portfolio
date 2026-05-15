@@ -261,6 +261,9 @@ const HomePage = () => {
       {/* Enfoque de la Mentoría */}
       <MentorshipApproachSection />
 
+      {/* Reseñas */}
+      <ReviewsSection />
+
       {/* FAQ */}
       <section id="faq" className="py-20 md:py-28 bg-muted">
         <div className="container mx-auto px-4">
