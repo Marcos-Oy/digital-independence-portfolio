@@ -6,6 +6,7 @@ import AboutBrandSection from "@/components/AboutBrandSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ChatBot from "@/components/ChatBot";
 import WelcomeModal from "@/components/WelcomeModal";
+import ReviewsSection from "@/components/ReviewsSection";
 import logoFull from "@/assets/logo-full.png";
 import fase1 from "@/assets/fase1.png";
 import fase2 from "@/assets/fase2.png";
