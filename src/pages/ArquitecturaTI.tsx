@@ -55,6 +55,14 @@ const ArquitecturaTI = () => (
           "Buenas prácticas de mantenimiento y orden digital.",
         ],
       },
+      {
+        title: "Innovación Tecnológica y Transformación Digital",
+        points: [
+          "Qué es Innovación Tecnológica y cómo aplicarla en tu negocio.",
+          "Principios de Transformación Digital paso a paso, sin tecnicismos.",
+          "Tecnologías Habilitadoras: cloud, automatización, IA, datos e IoT y cómo elegirlas.",
+        ],
+      },
     ]}
     nextPhase={{ label: "Fase 2: Presencia Digital", href: "/presenciadigital" }}
   />
