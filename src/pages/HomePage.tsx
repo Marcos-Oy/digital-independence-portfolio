@@ -326,6 +326,7 @@ const HomePage = () => {
       <SiteFooter />
       <WhatsAppButton />
       <ChatBot />
+      <WelcomeModal />
     </div>
   );
 };
