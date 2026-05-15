@@ -121,10 +121,8 @@ const ReviewsSection = () => {
         body: { name, city, service, rating, comment },
       });
       if (error) {
-        // Try to extract server-side message
         let msg = "No fue posible enviar tu reseña.";
-        // @ts-expect-error supabase FunctionsHttpError carries context
-        const ctx = error.context;
+        const ctx = (error as { context?: Response }).context;
         try {
           const body = ctx ? await ctx.json() : null;
           if (body?.error) msg = body.error;
