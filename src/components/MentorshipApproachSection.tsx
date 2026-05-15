@@ -27,9 +27,9 @@ const items = [
     desc: "Canales por módulo, materiales descargables, recursos prácticos y apoyo con herramientas de IA.",
   },
   {
-    icon: Mail,
-    title: "Correo corporativo",
-    desc: "Cada discípulo recibe un correo corporativo profesional con su propia identidad digital incluida.",
+    icon: Wrench,
+    title: "Implementación práctica",
+    desc: "No es solo teoría: aplicamos cada módulo directamente sobre tu negocio, validando los resultados con el mentor.",
   },
 ];
 
