@@ -14,7 +14,7 @@ import fase3 from "@/assets/fase3.png";
 import fase4 from "@/assets/fase4.png";
 import fase5 from "@/assets/fase5.png";
 import MentorshipApproachSection from "@/components/MentorshipApproachSection";
-import { CheckCircle2, Clock, Users, Shield, BarChart3, Brain, Server, ChevronRight, Instagram, Facebook, Mail, UserCheck, MessageCircle } from "lucide-react";
+import { CheckCircle2, Clock, Users, Shield, BarChart3, Brain, Server, ChevronRight, Instagram, Facebook, Mail, UserCheck, MessageCircle, Briefcase, Globe } from "lucide-react";
 
 const phases = [
   {
