@@ -111,7 +111,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4 flex flex-col items-center text-center">
           <img src={logoFull} alt="Independencia Digital" className="h-20 md:h-28 mb-8 animate-fade-in" />
           <h1 className="font-heading font-black text-3xl md:text-5xl lg:text-6xl leading-tight max-w-4xl mb-6 animate-fade-in-up text-foreground">
-            Mentorías Tecnológicas{" "}
+            Entrenamiento con Mentorías Tecnológicas{" "}
             <span className="text-gradient-brand">Profesionales</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
