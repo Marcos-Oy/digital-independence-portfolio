@@ -1,4 +1,4 @@
-import { Users, UserCheck, MessageCircle, CalendarClock, GraduationCap, Mail } from "lucide-react";
+import { Users, UserCheck, MessageCircle, CalendarClock, GraduationCap, Wrench } from "lucide-react";
 
 const items = [
   {
