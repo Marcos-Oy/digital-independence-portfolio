@@ -41,13 +41,57 @@ const SimpleMarkdown = ({ text }: { text: string }) => {
   );
 };
 
+const SUGGESTED_QUESTIONS = [
+  "¿Qué es el Plan 360?",
+  "¿Cómo funciona la mentoría 1:1?",
+  "¿Cuánto dura el programa?",
+  "¿Recibiré un correo corporativo?",
+  "¿Qué incluye Arquitectura TI?",
+  "¿Trabajan con PyMEs en Chile?",
+  "¿Qué herramientas voy a aprender?",
+  "¿Cómo agendo una sesión?",
+];
+
+const pickRandom = <T,>(arr: T[], n: number): T[] => {
+  const copy = [...arr];
+  const out: T[] = [];
+  while (out.length < n && copy.length) {
+    out.push(copy.splice(Math.floor(Math.random() * copy.length), 1)[0]);
+  }
+  return out;
+};
+
+const playPopSound = () => {
+  try {
+    const Ctx = (window.AudioContext || (window as any).webkitAudioContext);
+    if (!Ctx) return;
+    const ctx = new Ctx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(420, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.12);
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.25);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.28);
+  } catch {
+    /* noop */
+  }
+};
+
 const ChatBot = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [suggestions] = useState<string[]>(() => pickRandom(SUGGESTED_QUESTIONS, 3));
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const autoOpenedRef = useRef(false);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -61,8 +105,23 @@ const ChatBot = () => {
     }
   }, [open]);
 
-  const sendMessage = async () => {
-    const trimmed = input.trim();
+  // Auto-open after 10s (once per session)
+  useEffect(() => {
+    if (autoOpenedRef.current) return;
+    try {
+      if (sessionStorage.getItem("chatbot_auto_opened")) return;
+    } catch { /* noop */ }
+    const t = window.setTimeout(() => {
+      autoOpenedRef.current = true;
+      try { sessionStorage.setItem("chatbot_auto_opened", "1"); } catch { /* noop */ }
+      setOpen(true);
+      playPopSound();
+    }, 10000);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  const sendMessage = async (overrideText?: string) => {
+    const trimmed = (overrideText ?? input).trim();
     if (!trimmed || isLoading) return;
 
     const userMsg: Message = { role: "user", content: trimmed };
@@ -70,6 +129,7 @@ const ChatBot = () => {
     setMessages(allMessages);
     setInput("");
     setIsLoading(true);
+
 
     let assistantSoFar = "";
 
@@ -175,14 +235,31 @@ const ChatBot = () => {
           {/* Messages */}
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3">
             {messages.length === 0 && (
-              <div className="text-center py-8 space-y-2">
-                <RobotIcon className="w-10 h-10 text-muted-foreground/50" />
-                <p className="text-sm text-muted-foreground">
-                  ¡Hola! 👋 Soy <strong>Marbot IArzo</strong>, el asistente de Independencia Digital.
-                </p>
-                <p className="text-xs text-muted-foreground/70">
-                  Pregúntame sobre nuestros servicios, el Plan 360 o cómo podemos ayudarte.
-                </p>
+              <div className="py-6 space-y-4">
+                <div className="text-center space-y-2">
+                  <RobotIcon className="w-10 h-10 text-muted-foreground/50 mx-auto" />
+                  <p className="text-sm text-muted-foreground">
+                    ¡Hola! 👋 Soy <strong>Marbot IArzo</strong>, el asistente de Independencia Digital.
+                  </p>
+                  <p className="text-xs text-muted-foreground/70">
+                    Pregúntame sobre nuestros servicios, el Plan 360 o cómo podemos ayudarte.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-muted-foreground/80 px-1">
+                    Preguntas frecuentes:
+                  </p>
+                  {suggestions.map((q) => (
+                    <button
+                      key={q}
+                      onClick={() => sendMessage(q)}
+                      disabled={isLoading}
+                      className="w-full text-left text-xs bg-muted hover:bg-primary/10 hover:text-primary text-foreground rounded-xl px-3 py-2 transition-colors border border-border"
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 
