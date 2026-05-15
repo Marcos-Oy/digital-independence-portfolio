@@ -45,7 +45,7 @@ const SUGGESTED_QUESTIONS = [
   "¿Qué es el Plan 360?",
   "¿Cómo funciona la mentoría 1:1?",
   "¿Cuánto dura el programa?",
-  "¿Recibiré un correo corporativo?",
+  "¿Hacen también sitios web por encargo?",
   "¿Qué incluye Arquitectura TI?",
   "¿Trabajan con PyMEs en Chile?",
   "¿Qué herramientas voy a aprender?",

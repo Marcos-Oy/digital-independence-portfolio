@@ -32,10 +32,10 @@ const ArquitecturaTI = () => (
         ],
       },
       {
-        title: "Suite ofimática y correo corporativo",
+        title: "Suite ofimática y correo profesional",
         points: [
-          "Configuración de Microsoft 365 o Google Workspace.",
-          "Creación de tus correos corporativos (cada discípulo recibe su correo profesional).",
+          "Configuración de Microsoft 365 o Google Workspace en tu propio dominio.",
+          "Te enseñamos a crear y administrar tus correos profesionales con tu marca.",
           "Firmas, alias y configuración de buzones por área.",
         ],
       },
