@@ -17,11 +17,12 @@ const extraServices = [
     icon: Globe,
     title: "Agencia Digital",
     subtitle: "Sitios, portafolios y landing pages a medida",
-    desc: "Si prefieres que lo hagamos por ti, nuestra unidad de agencia diseña y desarrolla tu presencia online completa: sitios web profesionales, portafolios, landing pages de campaña y posicionamiento SEO técnico para que aparezcas en Google y conviertas visitas en clientes.",
+    desc: "¿Solo quieres tu página web y listo? También lo hacemos. Nuestra unidad de agencia diseña y desarrolla tu presencia online completa (sitio web, portafolio o landing page) con tu propio dominio y posicionamiento SEO para que aparezcas en Google y conviertas visitas en clientes.",
     bullets: [
       "Sitios web corporativos e institucionales",
       "Portafolios web para profesionales",
       "Landing pages de alta conversión",
+      "Registro y configuración de dominio propio",
       "Posicionamiento SEO técnico y de contenidos",
     ],
   },
