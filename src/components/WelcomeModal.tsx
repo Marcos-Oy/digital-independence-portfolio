@@ -31,13 +31,11 @@ const WelcomeModal = () => {
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-background/70 backdrop-blur-sm animate-fade-in p-4"
-      onClick={close}
       role="dialog"
       aria-modal="true"
     >
       <div
         className="relative bg-card border border-border rounded-2xl shadow-2xl max-w-md w-full p-8 text-center animate-fade-in-up"
-        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={close}
