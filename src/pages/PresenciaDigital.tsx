@@ -54,6 +54,14 @@ const PresenciaDigital = () => (
           "Configuración base para tracking y eventos de conversión.",
         ],
       },
+      {
+        title: "Dirección de Marketing",
+        points: [
+          "Definición de propuesta de valor, segmentación y posicionamiento.",
+          "Diseño de embudo de conversión y recorrido del cliente.",
+          "Planificación de contenidos, oferta y métricas clave para crecer.",
+        ],
+      },
     ]}
     prevPhase={{ label: "Fase 1: Arquitectura TI", href: "/arquitecturati" }}
     nextPhase={{ label: "Fase 3: Ciberseguridad", href: "/ciberseguridad" }}
