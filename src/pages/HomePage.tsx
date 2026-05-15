@@ -272,6 +272,9 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Tecnologías */}
+      <SafeTechLogosCarousel />
+
       {/* Metodología - Las 5 Fases */}
       <section id="metodologia" className="py-20 md:py-28 bg-muted">
         <div className="container mx-auto px-4">
