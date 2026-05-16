@@ -24,6 +24,11 @@ const WelcomeModal = () => {
     } catch {
       /* noop */
     }
+    try {
+      window.dispatchEvent(new CustomEvent("welcome-modal-closed"));
+    } catch {
+      /* noop */
+    }
   };
 
   if (!open) return null;

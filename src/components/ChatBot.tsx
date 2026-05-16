@@ -66,18 +66,29 @@ const playPopSound = () => {
     const Ctx = (window.AudioContext || (window as any).webkitAudioContext);
     if (!Ctx) return;
     const ctx = new Ctx();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(420, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.12);
-    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime + 0.02);
-    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.25);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.28);
+    // Try to resume in case of autoplay policy
+    if (ctx.state === "suspended") {
+      ctx.resume().catch(() => { /* noop */ });
+    }
+
+    const master = ctx.createGain();
+    master.connect(ctx.destination);
+    master.gain.setValueAtTime(0.0001, ctx.currentTime);
+    master.gain.exponentialRampToValueAtTime(0.9, ctx.currentTime + 0.01);
+    master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4);
+
+    // Two oscillators stacked for a fuller, louder "pop"
+    const mkOsc = (type: OscillatorType, fStart: number, fEnd: number, dur: number) => {
+      const osc = ctx.createOscillator();
+      osc.type = type;
+      osc.frequency.setValueAtTime(fStart, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(fEnd, ctx.currentTime + dur);
+      osc.connect(master);
+      osc.start();
+      osc.stop(ctx.currentTime + dur + 0.05);
+    };
+    mkOsc("sine", 480, 1100, 0.18);
+    mkOsc("triangle", 240, 600, 0.22);
   } catch {
     /* noop */
   }
@@ -105,20 +116,49 @@ const ChatBot = () => {
     }
   }, [open]);
 
-  // Auto-open after 10s (once per session)
+  // Auto-open 10s after the welcome modal is closed (once per session)
   useEffect(() => {
     if (autoOpenedRef.current) return;
     try {
       if (sessionStorage.getItem("chatbot_auto_opened")) return;
     } catch { /* noop */ }
-    const t = window.setTimeout(() => {
-      autoOpenedRef.current = true;
-      try { sessionStorage.setItem("chatbot_auto_opened", "1"); } catch { /* noop */ }
-      setOpen(true);
-      playPopSound();
-    }, 10000);
-    return () => window.clearTimeout(t);
+
+    let timerId: number | null = null;
+
+    const startTimer = () => {
+      if (timerId !== null || autoOpenedRef.current) return;
+      timerId = window.setTimeout(() => {
+        autoOpenedRef.current = true;
+        try { sessionStorage.setItem("chatbot_auto_opened", "1"); } catch { /* noop */ }
+        setOpen(true);
+        playPopSound();
+      }, 10000);
+    };
+
+    // If welcome modal was already dismissed (e.g. on subsequent navigation), start right away
+    try {
+      if (sessionStorage.getItem("welcome_modal_seen")) {
+        startTimer();
+      }
+    } catch { /* noop */ }
+
+    const onClosed = () => startTimer();
+    window.addEventListener("welcome-modal-closed", onClosed);
+
+    return () => {
+      window.removeEventListener("welcome-modal-closed", onClosed);
+      if (timerId !== null) window.clearTimeout(timerId);
+    };
   }, []);
+
+  // Play sound on manual open too
+  const handleToggle = () => {
+    setOpen((prev) => {
+      const next = !prev;
+      if (next) playPopSound();
+      return next;
+    });
+  };
 
   const sendMessage = async (overrideText?: string) => {
     const trimmed = (overrideText ?? input).trim();
@@ -205,7 +245,7 @@ const ChatBot = () => {
     <>
       {/* Floating button */}
       <button
-        onClick={() => setOpen(!open)}
+        onClick={handleToggle}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform gradient-brand"
         aria-label="Abrir chat"
       >
