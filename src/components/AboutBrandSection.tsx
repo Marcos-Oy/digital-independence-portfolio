@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Compass, Users, Sparkles, ShieldCheck, ArrowRight } from "lucide-react";
+import robotImg from "@/assets/autonomia-digital-robot.png";
 
 const pillars = [
   {
@@ -44,16 +45,27 @@ const AboutBrandSection = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {pillars.map((p) => (
-            <div key={p.title} className="bg-card rounded-xl p-6 border border-border shadow-card">
-              <div className="w-12 h-12 rounded-lg gradient-brand flex items-center justify-center mb-4 shadow-brand">
-                <p.icon className="w-6 h-6 text-primary-foreground" />
+        <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-12 items-center max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-6 order-2 lg:order-1">
+            {pillars.map((p) => (
+              <div key={p.title} className="bg-card rounded-xl p-6 border border-border shadow-card">
+                <div className="w-12 h-12 rounded-lg gradient-brand flex items-center justify-center mb-4 shadow-brand">
+                  <p.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-2">{p.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
               </div>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">{p.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <div className="order-1 lg:order-2 flex justify-center">
+            <img
+              src={robotImg}
+              alt="Autonomía Digital — robot sosteniendo una planta sobre laptop con dashboards"
+              loading="lazy"
+              className="w-56 sm:w-64 md:w-72 lg:w-[320px] h-auto rounded-2xl shadow-brand"
+            />
+          </div>
         </div>
 
         <div className="text-center mt-12">
