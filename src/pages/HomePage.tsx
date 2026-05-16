@@ -16,6 +16,7 @@ import fase5 from "@/assets/fase5.png";
 import MentorshipApproachSection from "@/components/MentorshipApproachSection";
 import { CheckCircle2, Clock, Users, Shield, BarChart3, Brain, Server, ChevronRight, Instagram, Facebook, Mail, UserCheck, MessageCircle, Briefcase, Globe } from "lucide-react";
 import bannerServiciosExtra from "@/assets/banner-servicios-extra.png";
+import bannerHero from "@/assets/banner-hero.png";
 
 const phases = [
   {
@@ -110,8 +111,19 @@ const HomePage = () => {
       <SiteNavbar />
 
       {/* Hero */}
-      <section className="gradient-hero pt-28 pb-20 md:pt-36 md:pb-28">
-        <div className="container mx-auto px-4 flex flex-col items-center text-center">
+      <section className="relative gradient-hero pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+        >
+          <img
+            src={bannerHero}
+            alt=""
+            className="w-full h-full object-cover opacity-30 dark:opacity-25"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/90" />
+        </div>
+        <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
           <img src={logoFull} alt="Independencia Digital" className="h-20 md:h-28 mb-8 animate-fade-in" />
           <h1 className="font-heading font-black text-3xl md:text-5xl lg:text-6xl leading-tight max-w-4xl mb-6 animate-fade-in-up text-foreground">
             Entrenamiento con Mentorías Tecnológicas{" "}
