@@ -17,6 +17,7 @@ import MentorshipApproachSection from "@/components/MentorshipApproachSection";
 import { CheckCircle2, Clock, Users, Shield, BarChart3, Brain, Server, ChevronRight, Instagram, Facebook, Mail, UserCheck, MessageCircle, Briefcase, Globe } from "lucide-react";
 import bannerServiciosExtra from "@/assets/banner-servicios-extra.png";
 import bannerHero from "@/assets/banner-hero.png";
+import bannerPlan360 from "@/assets/banner-plan360.png";
 
 const phases = [
   {
@@ -119,9 +120,9 @@ const HomePage = () => {
           <img
             src={bannerHero}
             alt=""
-            className="w-full h-full object-cover opacity-30 dark:opacity-25"
+            className="w-full h-full object-cover opacity-70 dark:opacity-55"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/30 to-background/70" />
         </div>
         <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
           <img src={logoFull} alt="Independencia Digital" className="h-20 md:h-28 mb-8 animate-fade-in" />
@@ -205,16 +206,28 @@ const HomePage = () => {
       <SafeTechLogosCarousel />
 
       {/* Metodología - Las 5 Fases */}
-      <section id="metodologia" className="py-20 md:py-28 bg-muted">
-        <div className="container mx-auto px-4">
+      <section id="metodologia" className="relative py-20 md:py-28 bg-muted overflow-hidden">
+        {/* Banner background detrás del título */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-[460px] md:h-[520px] pointer-events-none"
+        >
+          <img
+            src={bannerPlan360}
+            alt=""
+            className="w-full h-full object-cover opacity-70 dark:opacity-55"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-muted/60 to-muted" />
+        </div>
+        <div className="relative container mx-auto px-4">
           <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3 font-heading">
+            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3 font-heading drop-shadow-sm">
               Plan 360
             </p>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4 drop-shadow-sm">
               Las 5 Fases de tu Independencia Digital
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-foreground/90 max-w-2xl mx-auto">
               Cada fase es <strong className="text-foreground">independiente</strong> y puedes contratarlas por separado.
               El orden que proponemos es solo una <strong className="text-foreground">recomendación</strong> para comenzar
               con cimientos sólidos y escalar digitalmente paso a paso.
@@ -284,9 +297,9 @@ const HomePage = () => {
           <img
             src={bannerServiciosExtra}
             alt=""
-            className="w-full h-full object-cover opacity-25 dark:opacity-30"
+            className="w-full h-full object-cover opacity-65 dark:opacity-55"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/70 to-muted" />
+          <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/60 to-muted" />
         </div>
 
         <div className="relative container mx-auto px-4">
@@ -318,6 +331,7 @@ const HomePage = () => {
                 {[
                   "Auditoría digital y diagnóstico inicial",
                   "Planes de transformación digital",
+                  "Ciberseguridad: gestión, estrategia y capacitación",
                   "Capacitaciones in-company",
                   "Sesiones estratégicas por proyecto",
                 ].map((b) => (
