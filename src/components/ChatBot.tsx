@@ -110,11 +110,8 @@ const ChatBot = () => {
     }
   }, [messages]);
 
-  useEffect(() => {
-    if (open && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [open]);
+  // Nota: NO hacemos autofocus al abrir el chat para evitar que se abra el teclado
+  // automáticamente en móviles. El usuario hace tap en el input cuando quiere escribir.
 
   // Auto-open 10s after the welcome modal is closed (once per session)
   useEffect(() => {
@@ -151,11 +148,11 @@ const ChatBot = () => {
     };
   }, []);
 
-  // Play sound on manual open too
+  // Play sound on manual open/close
   const handleToggle = () => {
     setOpen((prev) => {
       const next = !prev;
-      if (next) playPopSound();
+      playPopSound();
       return next;
     });
   };
