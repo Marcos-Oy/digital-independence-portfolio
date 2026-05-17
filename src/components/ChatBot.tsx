@@ -61,31 +61,64 @@ const pickRandom = <T,>(arr: T[], n: number): T[] => {
   return out;
 };
 
-const playPopSound = () => {
+// Persistent AudioContext unlocked on first user gesture so it works even
+// when the chatbot opens automatically via setTimeout (no gesture available then).
+let sharedCtx: AudioContext | null = null;
+let unlocked = false;
+
+const getCtx = (): AudioContext | null => {
   try {
     const Ctx = (window.AudioContext || (window as any).webkitAudioContext);
-    if (!Ctx) return;
-    const ctx = new Ctx();
-    // Try to resume in case of autoplay policy
+    if (!Ctx) return null;
+    if (!sharedCtx) sharedCtx = new Ctx();
+    return sharedCtx;
+  } catch {
+    return null;
+  }
+};
+
+const unlockAudio = () => {
+  if (unlocked) return;
+  const ctx = getCtx();
+  if (!ctx) return;
+  // Resume the context inside a user gesture
+  if (ctx.state === "suspended") {
+    ctx.resume().catch(() => { /* noop */ });
+  }
+  // Play a near-silent buffer to fully unlock on iOS/Safari
+  try {
+    const buffer = ctx.createBuffer(1, 1, 22050);
+    const src = ctx.createBufferSource();
+    src.buffer = buffer;
+    src.connect(ctx.destination);
+    src.start(0);
+  } catch { /* noop */ }
+  unlocked = true;
+};
+
+const playPopSound = () => {
+  try {
+    const ctx = getCtx();
+    if (!ctx) return;
     if (ctx.state === "suspended") {
       ctx.resume().catch(() => { /* noop */ });
     }
 
+    const now = ctx.currentTime;
     const master = ctx.createGain();
     master.connect(ctx.destination);
-    master.gain.setValueAtTime(0.0001, ctx.currentTime);
-    master.gain.exponentialRampToValueAtTime(0.9, ctx.currentTime + 0.01);
-    master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4);
+    master.gain.setValueAtTime(0.0001, now);
+    master.gain.exponentialRampToValueAtTime(0.9, now + 0.01);
+    master.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
 
-    // Two oscillators stacked for a fuller, louder "pop"
     const mkOsc = (type: OscillatorType, fStart: number, fEnd: number, dur: number) => {
       const osc = ctx.createOscillator();
       osc.type = type;
-      osc.frequency.setValueAtTime(fStart, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(fEnd, ctx.currentTime + dur);
+      osc.frequency.setValueAtTime(fStart, now);
+      osc.frequency.exponentialRampToValueAtTime(fEnd, now + dur);
       osc.connect(master);
-      osc.start();
-      osc.stop(ctx.currentTime + dur + 0.05);
+      osc.start(now);
+      osc.stop(now + dur + 0.05);
     };
     mkOsc("sine", 480, 1100, 0.18);
     mkOsc("triangle", 240, 600, 0.22);
@@ -132,6 +165,15 @@ const ChatBot = () => {
       }, 10000);
     };
 
+    // Unlock the AudioContext on ANY first user gesture so the auto-open
+    // sound (triggered later from setTimeout, outside a gesture) still works.
+    const gestureUnlock = () => {
+      unlockAudio();
+    };
+    window.addEventListener("pointerdown", gestureUnlock, { once: true });
+    window.addEventListener("keydown", gestureUnlock, { once: true });
+    window.addEventListener("touchstart", gestureUnlock, { once: true, passive: true });
+
     // If welcome modal was already dismissed (e.g. on subsequent navigation), start right away
     try {
       if (sessionStorage.getItem("welcome_modal_seen")) {
@@ -139,17 +181,24 @@ const ChatBot = () => {
       }
     } catch { /* noop */ }
 
-    const onClosed = () => startTimer();
+    const onClosed = () => {
+      unlockAudio(); // modal close IS a user gesture — unlock here too
+      startTimer();
+    };
     window.addEventListener("welcome-modal-closed", onClosed);
 
     return () => {
       window.removeEventListener("welcome-modal-closed", onClosed);
+      window.removeEventListener("pointerdown", gestureUnlock);
+      window.removeEventListener("keydown", gestureUnlock);
+      window.removeEventListener("touchstart", gestureUnlock);
       if (timerId !== null) window.clearTimeout(timerId);
     };
   }, []);
 
   // Play sound on manual open/close
   const handleToggle = () => {
+    unlockAudio();
     setOpen((prev) => {
       const next = !prev;
       playPopSound();
