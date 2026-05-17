@@ -20,8 +20,9 @@ const SiteFooter = () => {
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img src={logo} alt="Independencia Digital" className="h-8 w-8" />
-              <span className="font-heading font-bold text-sm text-foreground flex items-center gap-1.5">
-                Independencia Digital <img src={chileFlag} alt="Chile" className="h-4 w-auto inline-block" />
+              <span className="font-heading font-bold text-sm flex items-center gap-1.5">
+                <span className="text-gradient-brand">Independencia Digital</span>
+                <img src={chileFlag} alt="Chile" className="h-4 w-auto inline-block" />
               </span>
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed">
