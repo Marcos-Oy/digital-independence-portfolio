@@ -40,8 +40,9 @@ const SiteNavbar = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="Independencia Digital" className="h-10 w-10" />
-            <span className="font-heading font-bold text-lg text-foreground">
-              Independencia <span className="text-gradient-brand">Digital</span>
+            <span className="font-heading font-bold text-lg">
+              <span className="text-[#2E6FB5]">Independencia</span>{" "}
+              <span className="text-[#3CB878]">Digital</span>
             </span>
             <img src={chileFlag} alt="Chile" className="h-5 w-auto" title="Servicios en Chile" />
           </Link>
