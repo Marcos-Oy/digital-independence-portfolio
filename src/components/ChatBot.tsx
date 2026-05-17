@@ -165,6 +165,15 @@ const ChatBot = () => {
       }, 10000);
     };
 
+    // Unlock the AudioContext on ANY first user gesture so the auto-open
+    // sound (triggered later from setTimeout, outside a gesture) still works.
+    const gestureUnlock = () => {
+      unlockAudio();
+    };
+    window.addEventListener("pointerdown", gestureUnlock, { once: true });
+    window.addEventListener("keydown", gestureUnlock, { once: true });
+    window.addEventListener("touchstart", gestureUnlock, { once: true, passive: true });
+
     // If welcome modal was already dismissed (e.g. on subsequent navigation), start right away
     try {
       if (sessionStorage.getItem("welcome_modal_seen")) {
@@ -172,17 +181,24 @@ const ChatBot = () => {
       }
     } catch { /* noop */ }
 
-    const onClosed = () => startTimer();
+    const onClosed = () => {
+      unlockAudio(); // modal close IS a user gesture — unlock here too
+      startTimer();
+    };
     window.addEventListener("welcome-modal-closed", onClosed);
 
     return () => {
       window.removeEventListener("welcome-modal-closed", onClosed);
+      window.removeEventListener("pointerdown", gestureUnlock);
+      window.removeEventListener("keydown", gestureUnlock);
+      window.removeEventListener("touchstart", gestureUnlock);
       if (timerId !== null) window.clearTimeout(timerId);
     };
   }, []);
 
   // Play sound on manual open/close
   const handleToggle = () => {
+    unlockAudio();
     setOpen((prev) => {
       const next = !prev;
       playPopSound();
