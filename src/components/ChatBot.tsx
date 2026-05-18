@@ -61,70 +61,96 @@ const pickRandom = <T,>(arr: T[], n: number): T[] => {
   return out;
 };
 
-// Persistent AudioContext unlocked on first user gesture so it works even
-// when the chatbot opens automatically via setTimeout (no gesture available then).
-let sharedCtx: AudioContext | null = null;
-let unlocked = false;
+// ---- Pop sound: HTMLAudio with a generated WAV (most reliable on mobile) ----
+// We pre-build a tiny WAV data URI once, and after the first user gesture we
+// prime an Audio element so playback works even when triggered from a timeout.
 
-const getCtx = (): AudioContext | null => {
-  try {
-    const Ctx = (window.AudioContext || (window as any).webkitAudioContext);
-    if (!Ctx) return null;
-    if (!sharedCtx) sharedCtx = new Ctx();
-    return sharedCtx;
-  } catch {
-    return null;
+const buildPopWavDataUri = (): string => {
+  const sampleRate = 44100;
+  const duration = 0.22; // seconds
+  const total = Math.floor(sampleRate * duration);
+  const buffer = new ArrayBuffer(44 + total * 2);
+  const view = new DataView(buffer);
+
+  const writeStr = (off: number, s: string) => {
+    for (let i = 0; i < s.length; i++) view.setUint8(off + i, s.charCodeAt(i));
+  };
+  writeStr(0, "RIFF");
+  view.setUint32(4, 36 + total * 2, true);
+  writeStr(8, "WAVE");
+  writeStr(12, "fmt ");
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, 1, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * 2, true);
+  view.setUint16(32, 2, true);
+  view.setUint16(34, 16, true);
+  writeStr(36, "data");
+  view.setUint32(40, total * 2, true);
+
+  for (let i = 0; i < total; i++) {
+    const t = i / sampleRate;
+    // Pitch sweep 500Hz -> 1100Hz, exponential decay envelope
+    const freq = 500 + (1100 - 500) * (t / duration);
+    const env = Math.exp(-t * 14);
+    const sample =
+      env *
+      (0.6 * Math.sin(2 * Math.PI * freq * t) +
+        0.3 * Math.sin(2 * Math.PI * (freq * 0.5) * t));
+    const s = Math.max(-1, Math.min(1, sample));
+    view.setInt16(44 + i * 2, s * 0x7fff, true);
   }
+
+  // Convert to base64
+  const bytes = new Uint8Array(buffer);
+  let binary = "";
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  return "data:audio/wav;base64," + btoa(binary);
+};
+
+let popDataUri: string | null = null;
+let popAudioPool: HTMLAudioElement[] = [];
+let poolIdx = 0;
+let primed = false;
+
+const getPopUri = () => {
+  if (!popDataUri) popDataUri = buildPopWavDataUri();
+  return popDataUri;
 };
 
 const unlockAudio = () => {
-  if (unlocked) return;
-  const ctx = getCtx();
-  if (!ctx) return;
-  // Resume the context inside a user gesture
-  if (ctx.state === "suspended") {
-    ctx.resume().catch(() => { /* noop */ });
-  }
-  // Play a near-silent buffer to fully unlock on iOS/Safari
-  try {
-    const buffer = ctx.createBuffer(1, 1, 22050);
-    const src = ctx.createBufferSource();
-    src.buffer = buffer;
-    src.connect(ctx.destination);
-    src.start(0);
-  } catch { /* noop */ }
-  unlocked = true;
+  if (primed) return;
+  const uri = getPopUri();
+  // Build a small pool of pre-loaded Audio elements
+  popAudioPool = Array.from({ length: 3 }, () => {
+    const a = new Audio(uri);
+    a.volume = 0.9;
+    a.preload = "auto";
+    // Prime: play muted then pause to satisfy mobile autoplay policies
+    a.muted = true;
+    a.play().then(() => {
+      a.pause();
+      a.currentTime = 0;
+      a.muted = false;
+    }).catch(() => {
+      a.muted = false;
+    });
+    return a;
+  });
+  primed = true;
 };
 
 const playPopSound = () => {
   try {
-    const ctx = getCtx();
-    if (!ctx) return;
-    if (ctx.state === "suspended") {
-      ctx.resume().catch(() => { /* noop */ });
-    }
-
-    const now = ctx.currentTime;
-    const master = ctx.createGain();
-    master.connect(ctx.destination);
-    master.gain.setValueAtTime(0.0001, now);
-    master.gain.exponentialRampToValueAtTime(0.9, now + 0.01);
-    master.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
-
-    const mkOsc = (type: OscillatorType, fStart: number, fEnd: number, dur: number) => {
-      const osc = ctx.createOscillator();
-      osc.type = type;
-      osc.frequency.setValueAtTime(fStart, now);
-      osc.frequency.exponentialRampToValueAtTime(fEnd, now + dur);
-      osc.connect(master);
-      osc.start(now);
-      osc.stop(now + dur + 0.05);
-    };
-    mkOsc("sine", 480, 1100, 0.18);
-    mkOsc("triangle", 240, 600, 0.22);
-  } catch {
-    /* noop */
-  }
+    if (!primed) unlockAudio();
+    const audio = popAudioPool[poolIdx % popAudioPool.length] ?? new Audio(getPopUri());
+    poolIdx++;
+    audio.currentTime = 0;
+    audio.volume = 0.9;
+    const p = audio.play();
+    if (p && typeof p.catch === "function") p.catch(() => { /* noop */ });
+  } catch { /* noop */ }
 };
 
 const ChatBot = () => {
