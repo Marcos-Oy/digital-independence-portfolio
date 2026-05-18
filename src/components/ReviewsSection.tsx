@@ -166,7 +166,17 @@ const ReviewsSection = () => {
               Aún no hay reseñas publicadas. ¡Sé el primero en dejar la tuya!
             </p>
           ) : (
-            <Carousel opts={{ align: "start", loop: reviews.length > 2 }} className="max-w-5xl mx-auto">
+            <Carousel
+              opts={{ align: "start", loop: reviews.length > 2, dragFree: true }}
+              plugins={[
+                Autoplay({
+                  delay: 3500,
+                  stopOnInteraction: false,
+                  stopOnMouseEnter: true,
+                }),
+              ]}
+              className="max-w-5xl mx-auto"
+            >
               <CarouselContent>
                 {reviews.map((r) => (
                   <CarouselItem key={r.id} className="md:basis-1/2 lg:basis-1/3">
