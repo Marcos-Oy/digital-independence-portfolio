@@ -153,12 +153,16 @@ const playPopSound = () => {
   } catch { /* noop */ }
 };
 
+const SUGG_FULL = /\|\|SUGGESTIONS:(.*?)\|\|/gs;
+const SUGG_PARTIAL = /\|\|SUGGESTIONS:.*$/s;
+
 const ChatBot = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions] = useState<string[]>(() => pickRandom(SUGGESTED_QUESTIONS, 3));
+  const [chips, setChips] = useState<string[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const autoOpenedRef = useRef(false);
@@ -236,25 +240,29 @@ const ChatBot = () => {
     const trimmed = (overrideText ?? input).trim();
     if (!trimmed || isLoading) return;
 
+    setChips([]);
     const userMsg: Message = { role: "user", content: trimmed };
     const allMessages = [...messages, userMsg];
     setMessages(allMessages);
     setInput("");
     setIsLoading(true);
 
-
     let assistantSoFar = "";
+
+    const cleanRaw = (raw: string) =>
+      raw.replace(SUGG_FULL, "").replace(SUGG_PARTIAL, "").trimEnd();
 
     const upsertAssistant = (chunk: string) => {
       assistantSoFar += chunk;
+      const clean = cleanRaw(assistantSoFar);
       setMessages((prev) => {
         const last = prev[prev.length - 1];
         if (last?.role === "assistant") {
           return prev.map((m, i) =>
-            i === prev.length - 1 ? { ...m, content: assistantSoFar } : m
+            i === prev.length - 1 ? { ...m, content: clean } : m
           );
         }
-        return [...prev, { role: "assistant", content: assistantSoFar }];
+        return [...prev, { role: "assistant", content: clean }];
       });
     };
 
@@ -308,6 +316,13 @@ const ChatBot = () => {
       }
     } catch {
       upsertAssistant("Lo siento, no pude conectarme. Intenta de nuevo más tarde.");
+    }
+
+    // Parse suggestion chips from completed response
+    const suggMatch = /\|\|SUGGESTIONS:(.*?)\|\|/s.exec(assistantSoFar);
+    if (suggMatch) {
+      const parsed = suggMatch[1].split("|").map(s => s.trim()).filter(Boolean).slice(0, 3);
+      setChips(parsed);
     }
 
     setIsLoading(false);
@@ -376,31 +391,43 @@ const ChatBot = () => {
             )}
 
             {messages.map((msg, i) => (
-              <div
-                key={i}
-                className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-              >
-                {msg.role === "assistant" && (
-                  <div className="w-7 h-7 rounded-full gradient-brand flex items-center justify-center flex-shrink-0 mt-1">
-                    <RobotIcon className="w-4 h-4 text-primary-foreground" />
+              <div key={i}>
+                <div className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                  {msg.role === "assistant" && (
+                    <div className="w-7 h-7 rounded-full gradient-brand flex items-center justify-center flex-shrink-0 mt-1">
+                      <RobotIcon className="w-4 h-4 text-primary-foreground" />
+                    </div>
+                  )}
+                  <div
+                    className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${
+                      msg.role === "user"
+                        ? "bg-primary text-primary-foreground rounded-br-md"
+                        : "bg-muted text-foreground rounded-bl-md"
+                    }`}
+                  >
+                    {msg.role === "assistant" ? (
+                      <SimpleMarkdown text={msg.content} />
+                    ) : (
+                      msg.content
+                    )}
                   </div>
-                )}
-                <div
-                  className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${
-                    msg.role === "user"
-                      ? "bg-primary text-primary-foreground rounded-br-md"
-                      : "bg-muted text-foreground rounded-bl-md"
-                  }`}
-                >
-                  {msg.role === "assistant" ? (
-                    <SimpleMarkdown text={msg.content} />
-                  ) : (
-                    msg.content
+                  {msg.role === "user" && (
+                    <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center flex-shrink-0 mt-1">
+                      <User className="w-4 h-4 text-muted-foreground" />
+                    </div>
                   )}
                 </div>
-                {msg.role === "user" && (
-                  <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center flex-shrink-0 mt-1">
-                    <User className="w-4 h-4 text-muted-foreground" />
+                {msg.role === "assistant" && i === messages.length - 1 && chips.length > 0 && !isLoading && (
+                  <div className="flex flex-wrap gap-1.5 mt-2 ml-9">
+                    {chips.map((chip) => (
+                      <button
+                        key={chip}
+                        onClick={() => sendMessage(chip)}
+                        className="text-xs bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1.5 hover:bg-primary/20 active:scale-[0.97] transition-all duration-150"
+                      >
+                        {chip}
+                      </button>
+                    ))}
                   </div>
                 )}
               </div>

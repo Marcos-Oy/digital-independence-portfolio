@@ -82,14 +82,10 @@ const ServicePageLayout = ({ service }: Props) => {
       {/* Promesa y cliente correcto */}
       <section className="py-16 md:py-20 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden max-w-5xl mx-auto">
             <div className="bg-card p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">Cliente correcto</p>
               <p className="text-sm text-muted-foreground leading-relaxed">{service.rightClient}</p>
-            </div>
-            <div className="bg-card p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">Factor tiempo</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{service.timeFactor}</p>
             </div>
             <div className="bg-card p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">Promesa de valor</p>

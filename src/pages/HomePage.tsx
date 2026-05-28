@@ -158,12 +158,11 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
+            <div className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
               {[
                 { n: "11", label: "Servicios especializados" },
                 { n: "5", label: "Áreas de consultoría" },
                 { n: "4", label: "Segmentos atendidos" },
-                { n: "100%", label: "Digital y online" },
               ].map(({ n, label }) => (
                 <div key={label} className="bg-card px-6 py-8 text-center">
                   <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground mb-1.5">{n}</p>
