@@ -211,7 +211,7 @@ export const SERVICES: Service[] = [
     slug: "presencia-digital",
     title: "Presencia Digital",
     shortTitle: "Presencia Digital",
-    navLabel: "Página web y Google Maps",
+    navLabel: "Presencia digital y páginas web",
     area: "desarrollo-presencia",
     areaLabel: "Desarrollo y Presencia Digital",
     icon: Globe,

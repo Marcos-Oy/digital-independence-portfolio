@@ -96,6 +96,27 @@ export default {
           from: { opacity: "0", transform: "translateX(24px)" },
           to: { opacity: "1", transform: "translateX(0)" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-18px)" },
+        },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0px) translateX(0px)" },
+          "33%": { transform: "translateY(-12px) translateX(8px)" },
+          "66%": { transform: "translateY(8px) translateX(-6px)" },
+        },
+        "shimmer-slide": {
+          from: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(200%)" },
+        },
+        "page-in": {
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          from: { opacity: "0", transform: "scale(0.96)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s cubic-bezier(0.25, 1, 0.5, 1)",
@@ -104,6 +125,11 @@ export default {
         "fade-in": "fade-in 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards",
         "slide-up": "slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "slide-in-right": "slide-in-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "float": "float 6s ease-in-out infinite",
+        "float-slow": "float-slow 9s ease-in-out infinite",
+        "shimmer-slide": "shimmer-slide 2.2s cubic-bezier(0.4,0,0.6,1) infinite",
+        "page-in": "page-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "scale-in": "scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
     },
   },

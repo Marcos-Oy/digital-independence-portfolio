@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ScrollReveal from "@/components/ScrollReveal";
 import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
 import SafeTechLogosCarousel from "@/components/SafeTechLogosCarousel";
@@ -79,6 +80,10 @@ const HomePage = () => {
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
           <img src={bannerHero} alt="" className="w-full h-full object-cover opacity-60 dark:opacity-45" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/80" />
+          {/* Ambient orbs */}
+          <div className="hero-orb w-96 h-96 bg-primary/8 top-1/4 -left-20 animate-float" style={{ animationDelay: "0s" }} />
+          <div className="hero-orb w-72 h-72 bg-secondary/8 top-1/3 right-0 animate-float" style={{ animationDelay: "2s" }} />
+          <div className="hero-orb w-56 h-56 bg-primary/5 bottom-1/4 left-1/3 animate-float-slow" style={{ animationDelay: "1s" }} />
         </div>
 
         <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
@@ -117,7 +122,7 @@ const HomePage = () => {
               href={`https://wa.me/${WHATSAPP}?text=${waText("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+              className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
             >
               Agendar diagnóstico gratis
               <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
@@ -136,7 +141,7 @@ const HomePage = () => {
       <section id="quienes-somos" className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-[1fr_auto] gap-12 items-end mb-16">
+            <ScrollReveal className="grid md:grid-cols-[1fr_auto] gap-12 items-end mb-16">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                   Quiénes somos
@@ -151,9 +156,9 @@ const HomePage = () => {
                   Mercado Público.
                 </p>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
+            <ScrollReveal variant="scale" delay={100} className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
               {[
                 { n: "11", label: "Servicios especializados" },
                 { n: "5", label: "Áreas de consultoría" },
@@ -164,7 +169,7 @@ const HomePage = () => {
                   <p className="text-xs text-muted-foreground leading-snug">{label}</p>
                 </div>
               ))}
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -173,41 +178,42 @@ const HomePage = () => {
       <section id="segmentos" className="py-20 md:py-28 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-12">
+            <ScrollReveal className="mb-12">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                 A quién servimos
               </p>
               <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight">
                 Cuatro segmentos,<br className="hidden md:block" /> un mismo método.
               </h2>
-            </div>
+            </ScrollReveal>
 
             <div className="grid md:grid-cols-2 gap-4">
               {SEGMENTS.map((s, i) => {
                 const Icon = s.icon;
                 return (
-                  <Link
-                    key={s.id}
-                    to={`/segmentos/${s.slug}`}
-                    className="group bg-card border border-border rounded-2xl p-7 hover:border-primary/30 hover:shadow-card-hover transition-all duration-300 flex gap-5 items-start"
-                  >
-                    <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
-                      <Icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2 mb-1.5">
-                        <h3 className="font-heading font-bold text-base text-foreground">{s.shortTitle}</h3>
-                        <span className="text-xs text-muted-foreground shrink-0 hidden sm:block">
-                          {s.ticket}
+                  <ScrollReveal key={s.id} delay={i * 80} variant="scale">
+                    <Link
+                      to={`/segmentos/${s.slug}`}
+                      className="group bg-card border border-border rounded-2xl p-7 hover:border-primary/30 hover:shadow-card-hover transition-all duration-300 flex gap-5 items-start"
+                    >
+                      <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2 mb-1.5">
+                          <h3 className="font-heading font-bold text-base text-foreground">{s.shortTitle}</h3>
+                          <span className="text-xs text-muted-foreground shrink-0 hidden sm:block">
+                            {s.ticket}
+                          </span>
+                        </div>
+                        <p className="text-xs text-secondary font-semibold mb-2.5 uppercase tracking-wide">{s.audience}</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">{s.description}</p>
+                        <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold mt-3">
+                          Ver segmento <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
                         </span>
                       </div>
-                      <p className="text-xs text-secondary font-semibold mb-2.5 uppercase tracking-wide">{s.audience}</p>
-                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">{s.description}</p>
-                      <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold mt-3">
-                        Ver segmento <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
-                      </span>
-                    </div>
-                  </Link>
+                    </Link>
+                  </ScrollReveal>
                 );
               })}
             </div>
@@ -224,7 +230,7 @@ const HomePage = () => {
 
         <div className="relative container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-14">
+            <ScrollReveal className="mb-14">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                 Portafolio
               </p>
@@ -234,13 +240,13 @@ const HomePage = () => {
               <p className="text-muted-foreground max-w-xl">
                 11 soluciones contratables por separado. Elige por lo que necesitas hoy.
               </p>
-            </div>
+            </ScrollReveal>
 
             <div className="space-y-14">
               {AREAS.map((area, i) => {
                 const list = SERVICES.filter((s) => s.area === area.id);
                 return (
-                  <div key={area.id}>
+                  <ScrollReveal key={area.id} delay={i * 60}>
                     <div className="flex items-baseline gap-4 mb-6">
                       <span className="font-heading font-extrabold text-4xl text-border leading-none select-none">
                         0{i + 1}
@@ -279,20 +285,20 @@ const HomePage = () => {
                         );
                       })}
                     </div>
-                  </div>
+                  </ScrollReveal>
                 );
               })}
             </div>
 
-            <div className="text-center mt-14">
+            <ScrollReveal delay={100} className="text-center mt-14">
               <Link
                 to="/servicios"
-                className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+                className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
               >
                 Ver portafolio completo
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
               </Link>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -310,7 +316,7 @@ const HomePage = () => {
       <section id="faq" className="py-20 md:py-28 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto grid md:grid-cols-[280px_1fr] gap-12">
-            <div className="md:sticky md:top-28 h-fit">
+            <ScrollReveal variant="left" className="md:sticky md:top-28 h-fit">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                 FAQ
               </p>
@@ -320,13 +326,13 @@ const HomePage = () => {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Si tu pregunta no está aquí, escríbenos por WhatsApp. Respondemos personalmente.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="divide-y divide-border">
+            <ScrollReveal delay={100} className="divide-y divide-border">
               {faqs.map((faq) => (
                 <FaqItem key={faq.q} q={faq.q} a={faq.a} />
               ))}
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -334,7 +340,7 @@ const HomePage = () => {
       {/* Contacto */}
       <section id="contacto" className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
+          <ScrollReveal variant="scale" className="max-w-3xl mx-auto">
             <div className="rounded-2xl overflow-hidden">
               {/* Inner double-bezel */}
               <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/30 via-border to-secondary/20">
@@ -391,7 +397,7 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
