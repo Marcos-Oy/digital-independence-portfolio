@@ -252,52 +252,14 @@ const ChatBot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions] = useState<string[]>(() => pickRandom(SUGGESTED_QUESTIONS, 3));
   const [chips, setChips] = useState<string[]>([]);
-  const [keyboardStyle, setKeyboardStyle] = useState<React.CSSProperties>({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const autoOpenedRef = useRef(false);
-  const baseHRef = useRef(0);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, [messages]);
 
-  useEffect(() => {
-    if (!open) { setKeyboardStyle({}); return; }
-    if (window.innerWidth >= 768) return;
-
-    baseHRef.current = window.innerHeight;
-    const vv = window.visualViewport;
-
-    const apply = () => {
-      // Android: window.innerHeight shrinks when keyboard opens
-      const androidKbH = baseHRef.current - window.innerHeight;
-      if (androidKbH > 100) {
-        setKeyboardStyle({ bottom: 8, maxHeight: window.innerHeight - 96 });
-        return;
-      }
-      // iOS: visualViewport.height shrinks, window.innerHeight stays
-      if (vv) {
-        const iosKbH = window.innerHeight - vv.height;
-        if (iosKbH > 100) {
-          setKeyboardStyle({ bottom: iosKbH + 8, maxHeight: vv.height - 96 });
-          return;
-        }
-      }
-      setKeyboardStyle({});
-    };
-
-    window.addEventListener("resize", apply);
-    vv?.addEventListener("resize", apply);
-    vv?.addEventListener("scroll", apply);
-
-    return () => {
-      window.removeEventListener("resize", apply);
-      vv?.removeEventListener("resize", apply);
-      vv?.removeEventListener("scroll", apply);
-      setKeyboardStyle({});
-    };
-  }, [open]);
 
   useEffect(() => {
     if (autoOpenedRef.current) return;
@@ -367,7 +329,7 @@ const ChatBot = () => {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed z-50 flex flex-col overflow-hidden animate-fade-in bg-card border border-border shadow-xl rounded-2xl bottom-24 left-4 right-4 max-h-[70vh] md:left-auto md:right-6 md:w-[360px] md:h-[500px] md:max-h-[calc(100vh-8rem)]" style={keyboardStyle}>
+        <div className="fixed z-50 flex flex-col overflow-hidden animate-fade-in bg-card border border-border shadow-xl rounded-2xl bottom-24 left-4 right-4 max-h-[70vh] md:left-auto md:right-6 md:w-[360px] md:h-[500px] md:max-h-[calc(100vh-8rem)]">
           {/* Header */}
           <div className="gradient-brand px-4 py-3 flex items-center gap-3 shrink-0">
             <RobotIcon className="w-6 h-6 text-primary-foreground" />
@@ -475,20 +437,6 @@ const ChatBot = () => {
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onFocus={() => {
-                  if (window.innerWidth >= 768) return;
-                  setTimeout(() => {
-                    const vv = window.visualViewport;
-                    const androidKbH = baseHRef.current - window.innerHeight;
-                    if (androidKbH > 100) {
-                      setKeyboardStyle({ bottom: 8, maxHeight: window.innerHeight - 96 });
-                    } else if (vv && window.innerHeight - vv.height > 100) {
-                      const iosKbH = window.innerHeight - vv.height;
-                      setKeyboardStyle({ bottom: iosKbH + 8, maxHeight: vv.height - 96 });
-                    }
-                  }, 350);
-                }}
-                onBlur={() => setTimeout(() => setKeyboardStyle({}), 200)}
                 placeholder="Escribe tu pregunta..."
                 className="flex-1 bg-muted text-foreground text-sm rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60"
                 disabled={isLoading}
