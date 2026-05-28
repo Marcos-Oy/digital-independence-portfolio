@@ -13,6 +13,29 @@ import {
   type ServiceArea,
 } from "@/data/services";
 
+const STOP_WORDS = new Set([
+  "quiero", "necesito", "para", "mi", "empresa", "tengo", "como", "que", "es",
+  "un", "una", "el", "la", "los", "las", "de", "del", "con", "en", "y", "o",
+  "a", "se", "nos", "me", "te", "le", "lo", "su", "sus", "hay", "hacer",
+  "tener", "ser", "ver", "mas", "pero", "si", "no", "por", "al", "les",
+  "algo", "muy", "bien", "mal", "sin",
+]);
+
+const norm = (s: string) =>
+  s.toLowerCase()
+   .normalize("NFD")
+   .replace(/[\u0300-\u036f]/g, "")
+   .replace(/[^a-z0-9s]/g, " ");
+
+const getWords = (q: string) =>
+  norm(q).split(/s+/).filter((w) => w.length > 2 && !STOP_WORDS.has(w));
+
+const scoreService = (slug: string, haystack: string, words: string[]): number => {
+  const tags = (SEARCH_TAGS[slug] ?? []).map(norm).join(" ");
+  const full = haystack + " " + tags;
+  return words.reduce((acc, w) => acc + (full.includes(w) ? 1 : 0), 0);
+};
+
 const ALL_MODALITIES: ServiceModality[] = ["consultoria", "asesoria", "mentoria"];
 
 const Servicios = () => {

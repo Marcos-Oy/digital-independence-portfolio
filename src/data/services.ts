@@ -408,5 +408,79 @@ export const SERVICES: Service[] = [
   },
 ];
 
+
+export const SEARCH_TAGS: Record<string, string[]> = {
+  'arquitectura-ti': [
+    'orden tecnologia', 'organizar sistemas', 'infraestructura', 'google workspace',
+    'microsoft 365', 'correo empresa', 'servidor', 'nube', 'cloud', 'dominio',
+    'hosting', 'cloudflare', 'dns', 'redes', 'vpn', 'caos tecnologico',
+    'no tengo orden en mi empresa', 'quiero organizar mi tecnologia',
+  ],
+  'presencia-digital': [
+    'pagina web', 'sitio web', 'web', 'pagina internet', 'quiero una web',
+    'paginas webs', 'crear pagina', 'hacer pagina', 'diseño web', 'landing',
+    'aparecer en google', 'seo', 'google', 'redes sociales', 'instagram',
+    'facebook', 'quiero vender online', 'tienda online', 'catalogo digital',
+    'marketing digital', 'posicionamiento', 'visibilidad', 'presencia online',
+    'me buscan en internet', 'no tengo pagina', 'quiero salir en google',
+  ],
+  'ciberseguridad': [
+    'seguridad', 'hackear', 'hacker', 'robo datos', 'proteger empresa',
+    'contraseñas', 'virus', 'malware', 'ransomware', 'phishing', 'estafa',
+    'antivirus', 'backup', 'respaldo', 'me hackearon', 'ciberataque',
+    'proteccion', 'vulnerabilidad', 'robo informacion', 'datos seguros',
+    'ciberseguridad', 'seguro', 'proteger mis datos',
+  ],
+  'software-medida': [
+    'sistema', 'software', 'aplicacion', 'app', 'programa', 'desarrollar',
+    'automatizar', 'automatizacion', 'proceso manual', 'planilla excel',
+    'base de datos', 'sistema a medida', 'sistema propio', 'erp', 'crm',
+    'quiero un sistema', 'quiero automatizar', 'cansado de excel',
+    'gestion empresa', 'control inventario', 'facturacion', 'cotizacion',
+  ],
+  'ia-corporativa': [
+    'inteligencia artificial', 'ia', 'chatbot', 'bot', 'robot', 'automatizar',
+    'automatizacion', 'n8n', 'flujos trabajo', 'agente ia', 'clon digital',
+    'reducir costos', 'ahorrar tiempo', 'productividad', 'whatsapp automatico',
+    'responder automatico', 'contenido automatico', 'video ia', 'voz ia',
+    'quiero usar ia', 'inteligencia en mi negocio', 'atencion automatizada',
+  ],
+  'soporte-ti': [
+    'soporte', 'ayuda computador', 'problema computador', 'soporte tecnico',
+    'asistencia tecnica', 'arreglar', 'configurar', 'instalar', 'impresora',
+    'red wifi', 'internet lento', 'correo no funciona', 'no puedo entrar',
+    'no funciona', 'problema tecnico', 'mantenimiento',
+  ],
+  'cto-externo': [
+    'director tecnologia', 'cto', 'lider tecnologico', 'estrategia tecnologica',
+    'no tengo jefe de tecnologia', 'quien me guia', 'toma de decisiones ti',
+    'roadmap tecnologico', 'planificacion tecnologica', 'gerente ti',
+    'necesito alguien que me guie', 'asesor tecnologico', 'direccion ti',
+  ],
+  'diagnostico-ti': [
+    'diagnostico', 'auditoria', 'revisar sistemas', 'evaluar tecnologia',
+    'que tengo mal', 'que necesito mejorar', 'analisis tecnologico',
+    'no se por donde empezar', 'quiero saber que falla', 'primer paso',
+    'consultoria inicial', 'revision', 'estado actual',
+  ],
+  'capacitacion': [
+    'capacitacion', 'curso', 'entrenar', 'aprender', 'formacion', 'taller',
+    'ensenar uso tecnologia', 'mis empleados no saben usar', 'office',
+    'excel', 'word', 'teams', 'correo', 'herramientas digitales',
+    'transformacion digital equipo', 'adoptacion tecnologica',
+  ],
+  'mercado-publico': [
+    'mercado publico', 'licitacion', 'propuesta', 'bases', 'ley de compras',
+    'gobierno', 'municipio', 'servicio publico', 'organismo estado',
+    'ficha empresa', 'registro proveedor', 'contrato estado',
+    'quiero venderle al estado', 'postular licitacion',
+  ],
+  'plan-360': [
+    'todo incluido', 'servicio completo', 'plan completo', 'todo en uno',
+    'acompañamiento total', 'necesito todo', 'desde cero', 'empresa nueva',
+    'emprendimiento', 'startup', 'quiero todo resuelto',
+  ],
+};
+
 export const getServiceBySlug = (slug: string) =>
   SERVICES.find((s) => s.slug === slug);
