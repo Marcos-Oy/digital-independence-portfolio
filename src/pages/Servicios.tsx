@@ -25,10 +25,10 @@ const norm = (s: string) =>
   s.toLowerCase()
    .normalize("NFD")
    .replace(/[\u0300-\u036f]/g, "")
-   .replace(/[^a-z0-9s]/g, " ");
+   .replace(/[^a-z0-9 ]/g, " ");
 
 const getWords = (q: string) =>
-  norm(q).split(/s+/).filter((w) => w.length > 2 && !STOP_WORDS.has(w));
+  norm(q).split(" ").filter((w) => w.length > 2 && !STOP_WORDS.has(w));
 
 const scoreService = (slug: string, haystack: string, words: string[]): number => {
   const tags = (SEARCH_TAGS[slug] ?? []).map(norm).join(" ");
@@ -56,19 +56,26 @@ const Servicios = () => {
     setSearchParams({}, { replace: true });
   };
 
-  const q = query.trim().toLowerCase();
+  const q = query.trim();
+  const words = getWords(q);
+  const isSearching = words.length > 0;
 
-  const filtered = SERVICES.filter((s) => {
-    const matchesQuery =
-      !q ||
-      [s.title, s.navLabel, s.summary, s.areaLabel, ...s.includes]
-        .join(" ")
-        .toLowerCase()
-        .includes(q);
-    const matchesModality = !activeModality || s.modality.includes(activeModality);
-    const matchesArea = !activeArea || s.area === activeArea;
-    return matchesQuery && matchesModality && matchesArea;
-  });
+  const filtered = SERVICES
+    .filter((s) => {
+      if (isSearching) {
+        const haystack = norm([s.title, s.navLabel, s.summary, s.areaLabel, ...s.includes].join(" "));
+        if (scoreService(s.slug, haystack, words) === 0) return false;
+      }
+      const matchesModality = !activeModality || s.modality.includes(activeModality);
+      const matchesArea = !activeArea || s.area === activeArea;
+      return matchesModality && matchesArea;
+    })
+    .sort((a, b) => {
+      if (!isSearching) return 0;
+      const ha = norm([a.title, a.navLabel, a.summary, a.areaLabel, ...a.includes].join(" "));
+      const hb = norm([b.title, b.navLabel, b.summary, b.areaLabel, ...b.includes].join(" "));
+      return scoreService(b.slug, hb, words) - scoreService(a.slug, ha, words);
+    });
 
   const visibleAreas = AREAS.filter((area) =>
     filtered.some((s) => s.area === area.id)
