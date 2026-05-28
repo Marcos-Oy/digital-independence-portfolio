@@ -12,6 +12,11 @@ import {
   Radar,
   Lightbulb,
   Brain,
+  LayoutGrid,
+  TrendingDown,
+  Layers,
+  ShieldCheck,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -56,31 +61,36 @@ export interface Service {
   modality: ServiceModality[];
 }
 
-export const AREAS: { id: ServiceArea; label: string; desc: string }[] = [
+export const AREAS: { id: ServiceArea; label: string; desc: string; icon: LucideIcon }[] = [
   {
     id: "estrategia-direccion-ti",
     label: "Estrategia y Dirección TI",
-    desc: "Diseñamos, construimos y dirigimos la infraestructura tecnológica de tu negocio.",
+    desc: "Diseñamos, construimos y dirigimos la infraestructura tecnológica de tu negocio: arquitectura, transformación digital y dirección estratégica activa.",
+    icon: LayoutGrid,
   },
   {
     id: "optimizacion-costos",
     label: "Optimización y Costos TI",
-    desc: "Reducimos tu gasto en tecnología sin sacrificar rendimiento ni seguridad.",
+    desc: "Reducimos tu gasto en tecnología entre un 30% y un 50% sin sacrificar rendimiento ni seguridad, con soporte mensual predecible.",
+    icon: TrendingDown,
   },
   {
     id: "desarrollo-presencia",
     label: "Desarrollo y Presencia Digital",
-    desc: "Sitios, software a medida y marketing digital con criterio técnico.",
+    desc: "Sitios web, software a medida y marketing digital con criterio técnico. Desde tu primera página hasta sistemas que escalan.",
+    icon: Layers,
   },
   {
     id: "seguridad-inteligencia",
     label: "Seguridad e Inteligencia Tecnológica",
-    desc: "Ciberseguridad, vigilancia e innovación aplicada al negocio.",
+    desc: "Ciberseguridad técnica y humana, cumplimiento normativo y vigilancia tecnológica continua para que cada decisión sea informada.",
+    icon: ShieldCheck,
   },
   {
     id: "ia-corporativa",
     label: "Inteligencia Artificial Corporativa",
-    desc: "Agentes, automatización y clones digitales que operan tu negocio.",
+    desc: "Agentes con memoria, automatización no-code y clones digitales que liberan a tu equipo del trabajo manual repetitivo.",
+    icon: Sparkles,
   },
 ];
 

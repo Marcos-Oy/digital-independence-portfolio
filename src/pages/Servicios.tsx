@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -10,18 +10,28 @@ import {
   MODALITY_LABELS,
   MODALITY_COLORS,
   type ServiceModality,
+  type ServiceArea,
 } from "@/data/services";
 
 const ALL_MODALITIES: ServiceModality[] = ["consultoria", "asesoria", "mentoria"];
 
 const Servicios = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState("");
   const [activeModality, setActiveModality] = useState<ServiceModality | null>(null);
+  const [activeArea, setActiveArea] = useState<ServiceArea | null>(
+    () => (searchParams.get("area") as ServiceArea | null) ?? null
+  );
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     document.title = "Servicios | Independencia Digital";
   }, []);
+
+  const clearArea = () => {
+    setActiveArea(null);
+    setSearchParams({}, { replace: true });
+  };
 
   const q = query.trim().toLowerCase();
 
@@ -33,14 +43,16 @@ const Servicios = () => {
         .toLowerCase()
         .includes(q);
     const matchesModality = !activeModality || s.modality.includes(activeModality);
-    return matchesQuery && matchesModality;
+    const matchesArea = !activeArea || s.area === activeArea;
+    return matchesQuery && matchesModality && matchesArea;
   });
 
   const visibleAreas = AREAS.filter((area) =>
     filtered.some((s) => s.area === area.id)
   );
 
-  const isFiltering = q.length > 0 || activeModality !== null;
+  const activeAreaData = activeArea ? AREAS.find((a) => a.id === activeArea) : null;
+  const isFiltering = q.length > 0 || activeModality !== null || activeArea !== null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -114,16 +126,41 @@ const Servicios = () => {
         </div>
       </section>
 
+      {/* Active area banner */}
+      {activeAreaData && (
+        <div className="bg-primary/5 border-b border-primary/15">
+          <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <activeAreaData.icon className="w-4 h-4 text-primary shrink-0" />
+              <span className="text-sm font-semibold text-foreground truncate">
+                {activeAreaData.label}
+              </span>
+              <span className="text-xs text-muted-foreground hidden sm:inline truncate">
+                — {filtered.length} servicio{filtered.length !== 1 ? "s" : ""}
+              </span>
+            </div>
+            <button
+              onClick={clearArea}
+              className="shrink-0 flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/70 transition-colors"
+            >
+              <X className="w-3.5 h-3.5" /> Ver todas las áreas
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Results */}
       {visibleAreas.length === 0 ? (
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4 text-center">
             <p className="text-muted-foreground text-sm">
-              No se encontraron servicios para <strong>"{query}"</strong>
-              {activeModality && ` en la modalidad ${MODALITY_LABELS[activeModality]}`}.
+              No se encontraron servicios
+              {q && <> para <strong>"{query}"</strong></>}
+              {activeModality && <> con modalidad <strong>{MODALITY_LABELS[activeModality]}</strong></>}
+              {activeAreaData && <> en el área <strong>{activeAreaData.label}</strong></>}.
             </p>
             <button
-              onClick={() => { setQuery(""); setActiveModality(null); }}
+              onClick={() => { setQuery(""); setActiveModality(null); clearArea(); }}
               className="mt-4 text-xs font-semibold text-primary hover:underline"
             >
               Limpiar filtros
@@ -201,7 +238,7 @@ const Servicios = () => {
             <p className="text-xs text-muted-foreground">
               {filtered.length} servicio{filtered.length !== 1 ? "s" : ""} encontrado{filtered.length !== 1 ? "s" : ""}.{" "}
               <button
-                onClick={() => { setQuery(""); setActiveModality(null); }}
+                onClick={() => { setQuery(""); setActiveModality(null); clearArea(); }}
                 className="text-primary font-semibold hover:underline"
               >
                 Limpiar filtros

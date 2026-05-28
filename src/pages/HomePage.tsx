@@ -10,7 +10,7 @@ import logoFull from "@/assets/logo-full.png";
 import bannerHero from "@/assets/banner-hero.png";
 import bannerPlan360 from "@/assets/banner-plan360.png";
 import { ChevronRight, ChevronDown, Instagram, Facebook, Mail } from "lucide-react";
-import { SERVICES, AREAS } from "@/data/services";
+import { AREAS, SERVICES } from "@/data/services";
 import { SEGMENTS } from "@/data/segments";
 
 const WHATSAPP = "56928362758";
@@ -218,7 +218,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Servicios */}
+      {/* Servicios — 5 área cards */}
       <section id="servicios" className="relative py-20 md:py-28 bg-background overflow-hidden">
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-96 pointer-events-none">
           <img src={bannerPlan360} alt="" className="w-full h-full object-cover opacity-40 dark:opacity-30" />
@@ -235,59 +235,56 @@ const HomePage = () => {
                 Cinco áreas de servicio
               </h2>
               <p className="text-muted-foreground max-w-xl">
-                11 soluciones contratables por separado. Elige por lo que necesitas hoy.
+                11 soluciones contratables por separado. Elige el área que necesitas.
               </p>
             </ScrollReveal>
 
-            <div className="space-y-14">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {AREAS.map((area, i) => {
-                const list = SERVICES.filter((s) => s.area === area.id);
+                const AreaIcon = area.icon;
+                const count = SERVICES.filter((s) => s.area === area.id).length;
                 return (
-                  <ScrollReveal key={area.id} delay={i * 60}>
-                    <div className="flex items-baseline gap-4 mb-6">
-                      <span className="font-heading font-extrabold text-4xl text-border leading-none select-none">
+                  <ScrollReveal key={area.id} delay={i * 70} variant="scale">
+                    <Link
+                      to={`/servicios?area=${area.id}`}
+                      className="group relative bg-card border border-border rounded-2xl p-7 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col h-full overflow-hidden"
+                    >
+                      {/* Large muted number background */}
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-4 right-5 font-heading font-extrabold text-6xl text-border/40 leading-none select-none pointer-events-none"
+                      >
                         0{i + 1}
                       </span>
-                      <div>
-                        <h3 className="font-heading font-bold text-lg text-foreground leading-tight">
-                          {area.label}
-                        </h3>
-                        <p className="text-xs text-muted-foreground mt-0.5">{area.desc}</p>
-                      </div>
-                    </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {list.map((s) => {
-                        const Icon = s.icon;
-                        return (
-                          <Link
-                            key={s.slug}
-                            to={`/servicios/${s.slug}`}
-                            className="group bg-card border border-border rounded-xl p-5 hover:border-primary/25 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col"
-                          >
-                            <div className="flex items-center gap-3 mb-3.5">
-                              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
-                                <Icon className="w-4.5 h-4.5 text-primary" />
-                              </div>
-                              <h4 className="font-heading font-bold text-sm text-foreground leading-tight">{s.title}</h4>
-                            </div>
-                            <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-3">
-                              {s.summary}
-                            </p>
-                            <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold">
-                              Ver servicio
-                              <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
-                            </span>
-                          </Link>
-                        );
-                      })}
-                    </div>
+                      <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 mb-5 group-hover:bg-primary/15 transition-colors duration-200">
+                        <AreaIcon className="w-5 h-5 text-primary" />
+                      </div>
+
+                      <h3 className="font-heading font-bold text-base text-foreground leading-tight mb-3">
+                        {area.label}
+                      </h3>
+
+                      <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-5">
+                        {area.desc}
+                      </p>
+
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] font-semibold text-muted-foreground bg-muted px-2.5 py-1 rounded-full">
+                          {count} servicio{count !== 1 ? "s" : ""}
+                        </span>
+                        <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold">
+                          Ver área
+                          <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
+                        </span>
+                      </div>
+                    </Link>
                   </ScrollReveal>
                 );
               })}
             </div>
 
-            <ScrollReveal delay={100} className="text-center mt-14">
+            <ScrollReveal delay={100} className="text-center mt-12">
               <Link
                 to="/servicios"
                 className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
