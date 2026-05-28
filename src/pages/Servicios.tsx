@@ -9,6 +9,7 @@ import {
   AREAS,
   MODALITY_LABELS,
   MODALITY_COLORS,
+  SEARCH_TAGS,
   type ServiceModality,
   type ServiceArea,
 } from "@/data/services";
