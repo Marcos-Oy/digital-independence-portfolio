@@ -263,21 +263,25 @@ const ChatBot = () => {
 
   useEffect(() => {
     if (!open) { setKeyboardStyle({}); return; }
+    if (window.innerWidth >= 768) { setKeyboardStyle({}); return; }
     const vv = window.visualViewport;
     if (!vv) return;
     const update = () => {
-      if (window.innerWidth >= 768) return;
-      const keyboardH = window.innerHeight - vv.height - vv.offsetTop;
-      if (keyboardH > 50) {
-        setKeyboardStyle({ bottom: keyboardH + 8, maxHeight: vv.height - 80 });
-      } else {
-        setKeyboardStyle({});
-      }
+      setKeyboardStyle({
+        top: vv.offsetTop + 8,
+        height: vv.height - 88,
+        bottom: "auto",
+        maxHeight: "none",
+      });
     };
     vv.addEventListener("resize", update);
     vv.addEventListener("scroll", update);
     update();
-    return () => { vv.removeEventListener("resize", update); vv.removeEventListener("scroll", update); };
+    return () => {
+      vv.removeEventListener("resize", update);
+      vv.removeEventListener("scroll", update);
+      setKeyboardStyle({});
+    };
   }, [open]);
 
   useEffect(() => {
@@ -456,6 +460,7 @@ const ChatBot = () => {
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onFocus={() => setTimeout(() => inputRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" }), 150)}
                 placeholder="Escribe tu pregunta..."
                 className="flex-1 bg-muted text-foreground text-sm rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60"
                 disabled={isLoading}
