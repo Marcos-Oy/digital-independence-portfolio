@@ -252,6 +252,7 @@ const ChatBot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions] = useState<string[]>(() => pickRandom(SUGGESTED_QUESTIONS, 3));
   const [chips, setChips] = useState<string[]>([]);
+  const [keyboardStyle, setKeyboardStyle] = useState<React.CSSProperties>({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const autoOpenedRef = useRef(false);
@@ -259,6 +260,25 @@ const ChatBot = () => {
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, [messages]);
+
+  useEffect(() => {
+    if (!open) { setKeyboardStyle({}); return; }
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const update = () => {
+      if (window.innerWidth >= 768) return;
+      const keyboardH = window.innerHeight - vv.height - vv.offsetTop;
+      if (keyboardH > 50) {
+        setKeyboardStyle({ bottom: keyboardH + 8, maxHeight: vv.height - 80 });
+      } else {
+        setKeyboardStyle({});
+      }
+    };
+    vv.addEventListener("resize", update);
+    vv.addEventListener("scroll", update);
+    update();
+    return () => { vv.removeEventListener("resize", update); vv.removeEventListener("scroll", update); };
+  }, [open]);
 
   useEffect(() => {
     if (autoOpenedRef.current) return;
@@ -328,7 +348,7 @@ const ChatBot = () => {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed z-50 flex flex-col overflow-hidden animate-fade-in bg-card border border-border shadow-xl rounded-2xl bottom-24 left-4 right-4 max-h-[70vh] md:left-auto md:right-6 md:w-[360px] md:h-[500px] md:max-h-[calc(100vh-8rem)]">
+        <div className="fixed z-50 flex flex-col overflow-hidden animate-fade-in bg-card border border-border shadow-xl rounded-2xl bottom-24 left-4 right-4 max-h-[70vh] md:left-auto md:right-6 md:w-[360px] md:h-[500px] md:max-h-[calc(100vh-8rem)]" style={keyboardStyle}>
           {/* Header */}
           <div className="gradient-brand px-4 py-3 flex items-center gap-3 shrink-0">
             <RobotIcon className="w-6 h-6 text-primary-foreground" />
