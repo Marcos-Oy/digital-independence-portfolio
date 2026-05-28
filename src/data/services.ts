@@ -417,8 +417,9 @@ export const SEARCH_TAGS: Record<string, string[]> = {
     'no tengo orden en mi empresa', 'quiero organizar mi tecnologia',
   ],
   'presencia-digital': [
-    'pagina web', 'sitio web', 'web', 'pagina internet', 'quiero una web',
-    'paginas webs', 'crear pagina', 'hacer pagina', 'diseño web', 'landing',
+    'pagina web', 'paginas web', 'sitio web', 'sitios web', 'web', 'pagina internet',
+    'quiero una web', 'paginas webs', 'sitios webs', 'crear pagina', 'hacer pagina',
+    'necesito una pagina', 'quiero un sitio', 'diseño web', 'landing',
     'aparecer en google', 'seo', 'google', 'redes sociales', 'instagram',
     'facebook', 'quiero vender online', 'tienda online', 'catalogo digital',
     'marketing digital', 'posicionamiento', 'visibilidad', 'presencia online',
