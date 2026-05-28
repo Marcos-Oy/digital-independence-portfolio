@@ -345,11 +345,16 @@ const ChatBot = () => {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] h-[500px] max-h-[calc(100vh-8rem)] bg-card border border-border rounded-2xl shadow-xl flex flex-col overflow-hidden animate-fade-in">
+        <div className="
+          fixed z-50 flex flex-col overflow-hidden animate-fade-in
+          bg-card border border-border shadow-xl
+          inset-x-0 top-0 h-dvh rounded-none
+          md:inset-auto md:rounded-2xl md:bottom-24 md:right-6 md:w-[360px] md:h-[500px] md:max-h-[calc(100vh-8rem)]
+        ">
           {/* Header */}
-          <div className="gradient-brand px-4 py-3 flex items-center gap-3">
+          <div className="gradient-brand px-4 py-3 flex items-center gap-3 shrink-0">
             <RobotIcon className="w-6 h-6 text-primary-foreground" />
-            <div>
+            <div className="flex-1">
               <p className="text-sm font-heading font-semibold text-primary-foreground">
                 Marbot IArzo
               </p>
@@ -357,6 +362,13 @@ const ChatBot = () => {
                 Independencia Digital
               </p>
             </div>
+            <button
+              onClick={handleToggle}
+              className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-primary-foreground transition-colors duration-150"
+              aria-label="Cerrar chat"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
 
           {/* Messages */}
@@ -450,7 +462,7 @@ const ChatBot = () => {
           </div>
 
           {/* Input */}
-          <div className="border-t border-border p-3">
+          <div className="border-t border-border p-3 shrink-0 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
