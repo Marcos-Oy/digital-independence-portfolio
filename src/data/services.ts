@@ -22,6 +22,20 @@ export type ServiceArea =
   | "seguridad-inteligencia"
   | "ia-corporativa";
 
+export type ServiceModality = "consultoria" | "asesoria" | "mentoria";
+
+export const MODALITY_LABELS: Record<ServiceModality, string> = {
+  consultoria: "Consultoría",
+  asesoria: "Asesoría",
+  mentoria: "Mentoría",
+};
+
+export const MODALITY_COLORS: Record<ServiceModality, string> = {
+  consultoria: "bg-primary/10 text-primary border-primary/20",
+  asesoria: "bg-secondary/10 text-secondary border-secondary/20",
+  mentoria: "bg-accent/10 text-accent border-accent/20",
+};
+
 export interface Service {
   slug: string;
   title: string;
@@ -39,6 +53,7 @@ export interface Service {
   includes: string[];
   tools?: string[];
   segments: ("emprendedores" | "pymes" | "empresas" | "publico")[];
+  modality: ServiceModality[];
 }
 
 export const AREAS: { id: ServiceArea; label: string; desc: string }[] = [
@@ -98,6 +113,7 @@ export const SERVICES: Service[] = [
     ],
     tools: ["Microsoft 365", "Google Workspace", "Cloudflare", "Hostinger", "SQL"],
     segments: ["emprendedores", "pymes", "empresas", "publico"],
+    modality: ["consultoria"],
   },
   {
     slug: "transformacion-digital",
@@ -125,6 +141,7 @@ export const SERVICES: Service[] = [
       "Ciberseguridad integrada al proceso",
     ],
     segments: ["pymes", "empresas", "publico"],
+    modality: ["consultoria", "asesoria"],
   },
   {
     slug: "direccion-ti",
@@ -153,6 +170,7 @@ export const SERVICES: Service[] = [
       "Onboarding tecnológico de colaboradores",
     ],
     segments: ["pymes", "empresas", "publico"],
+    modality: ["consultoria"],
   },
   {
     slug: "optimizacion-costos-ti",
@@ -180,6 +198,7 @@ export const SERVICES: Service[] = [
       "Plan de reducción de costos priorizado",
     ],
     segments: ["emprendedores", "pymes", "empresas", "publico"],
+    modality: ["consultoria"],
   },
   {
     slug: "soporte-ti-gestionado",
@@ -206,6 +225,7 @@ export const SERVICES: Service[] = [
       "Reporte mensual de incidentes",
     ],
     segments: ["pymes", "empresas"],
+    modality: ["consultoria"],
   },
   {
     slug: "presencia-digital",
@@ -233,6 +253,7 @@ export const SERVICES: Service[] = [
       "Hosting con Cloudflare y Hostinger",
     ],
     segments: ["emprendedores", "pymes"],
+    modality: ["consultoria"],
   },
   {
     slug: "desarrollo-software",
@@ -260,6 +281,7 @@ export const SERVICES: Service[] = [
       "Despliegue en producción",
     ],
     segments: ["pymes", "empresas", "publico"],
+    modality: ["consultoria"],
   },
   {
     slug: "marketing-digital",
@@ -287,6 +309,7 @@ export const SERVICES: Service[] = [
       "Tres niveles: mentoría, asesoría y consultoría",
     ],
     segments: ["emprendedores", "pymes", "empresas", "publico"],
+    modality: ["consultoria", "asesoria", "mentoria"],
   },
   {
     slug: "ciberseguridad",
@@ -314,6 +337,7 @@ export const SERVICES: Service[] = [
       "Módulos diferenciales: infantil y de género",
     ],
     segments: ["emprendedores", "pymes", "empresas", "publico"],
+    modality: ["consultoria", "asesoria"],
   },
   {
     slug: "vigilancia-innovacion",
@@ -341,6 +365,7 @@ export const SERVICES: Service[] = [
       "Recomendaciones de implementación priorizadas",
     ],
     segments: ["pymes", "empresas", "publico"],
+    modality: ["consultoria", "asesoria"],
   },
   {
     slug: "ia-corporativa",
@@ -369,6 +394,7 @@ export const SERVICES: Service[] = [
     ],
     tools: ["N8N", "ManyChat", "HeyGen", "ElevenLabs", "ChatGPT", "Claude", "Gemini"],
     segments: ["pymes", "empresas", "publico"],
+    modality: ["consultoria"],
   },
 ];
 

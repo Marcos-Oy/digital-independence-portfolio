@@ -3,7 +3,7 @@ import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "@/components/ScrollReveal";
 import { CheckCircle2, ArrowLeft, Clock, Target, Users } from "lucide-react";
-import { type Service } from "@/data/services";
+import { type Service, MODALITY_LABELS, MODALITY_COLORS } from "@/data/services";
 import { SEGMENTS } from "@/data/segments";
 
 const segmentLabel: Record<string, string> = {
@@ -48,9 +48,20 @@ const ServicePageLayout = ({ service }: Props) => {
               <Icon className="w-7 h-7 text-primary" />
             </ScrollReveal>
             <ScrollReveal delay={80} className="flex-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
-                {service.areaLabel}
-              </p>
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary">
+                  {service.areaLabel}
+                </p>
+                <span className="text-border">·</span>
+                {service.modality.map((m) => (
+                  <span
+                    key={m}
+                    className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full border ${MODALITY_COLORS[m]}`}
+                  >
+                    {MODALITY_LABELS[m]}
+                  </span>
+                ))}
+              </div>
               <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground mb-4 leading-tight tracking-tight">
                 {service.title}
               </h1>
