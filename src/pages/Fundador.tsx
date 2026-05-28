@@ -49,8 +49,8 @@ const Fundador = () => {
                 Mercado Público.
               </p>
               <p>
-                Mi promesa es clara: durante los <strong>primeros 90 días</strong> de trabajo conjunto, tu
-                tecnología deja de ser un problema y se convierte en el motor real del crecimiento del negocio.
+                Mi promesa es clara: en poco tiempo de trabajo conjunto, tu tecnología deja de ser un
+                problema y se convierte en el motor real del crecimiento del negocio.
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
                 <a

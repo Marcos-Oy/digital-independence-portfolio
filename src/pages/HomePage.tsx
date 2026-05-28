@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "¿En cuánto tiempo veo resultados?",
-    a: "Nuestra promesa general es que durante los primeros 90 días de trabajo conjunto tu tecnología deje de ser un problema y se convierta en el motor real de tu crecimiento.",
+    a: "Depende del servicio y tu punto de partida. En el diagnóstico inicial evaluamos tu situación y te damos una hoja de ruta con tiempos reales para tu caso.",
   },
   {
     q: "¿Atienden a personas naturales y empresas?",
@@ -106,8 +106,7 @@ const HomePage = () => {
             style={{ animationDelay: "0.2s" }}
           >
             Desde arquitectura TI y desarrollo de software hasta ciberseguridad e inteligencia artificial.
-            Durante los primeros <strong className="text-foreground font-semibold">90 días</strong> de trabajo
-            conjunto, tu tecnología deja de ser un problema.
+            Atendemos emprendedores, PyMEs, grandes empresas y el sector público.
           </p>
 
           <div
@@ -151,10 +150,6 @@ const HomePage = () => {
                   naturales y jurídicas, incluyendo el sector público mediante licitaciones en
                   Mercado Público.
                 </p>
-              </div>
-              <div className="hidden md:flex flex-col gap-1 text-right shrink-0">
-                <span className="font-heading font-extrabold text-5xl text-primary leading-none">90</span>
-                <span className="text-xs text-muted-foreground font-medium uppercase tracking-widest">días promesa</span>
               </div>
             </div>
 

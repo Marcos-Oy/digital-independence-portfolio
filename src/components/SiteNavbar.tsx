@@ -57,23 +57,35 @@ const SiteNavbar = () => {
                 </button>
                 {openMenu === "servicios" && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 animate-slide-up">
-                    <div className="bg-card border border-border rounded-xl shadow-card-hover p-2 min-w-[260px] grid">
-                      <Link
-                        to="/servicios"
-                        className="px-3 py-2 text-sm font-semibold text-foreground hover:bg-muted rounded-lg transition-colors duration-150"
-                      >
-                        Ver todos los servicios →
-                      </Link>
-                      <div className="border-t border-border my-1.5" />
-                      {SERVICES.map((s) => (
+                    <div className="bg-card border border-border rounded-xl shadow-card-hover p-3 w-[580px]">
+                      <div className="grid grid-cols-2 gap-0.5 mb-2">
+                        {SERVICES.map((s) => {
+                          const SIcon = s.icon;
+                          return (
+                            <Link
+                              key={s.slug}
+                              to={`/servicios/${s.slug}`}
+                              className="flex items-start gap-2.5 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors duration-150 group"
+                            >
+                              <div className="w-7 h-7 rounded-md bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-primary/15 transition-colors">
+                                <SIcon className="w-3.5 h-3.5 text-primary" />
+                              </div>
+                              <div className="min-w-0">
+                                <p className="text-sm font-semibold text-foreground leading-tight">{s.navLabel}</p>
+                                <p className="text-xs text-muted-foreground leading-snug mt-0.5 line-clamp-1">{s.tagline}</p>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                      <div className="border-t border-border pt-2">
                         <Link
-                          key={s.slug}
-                          to={`/servicios/${s.slug}`}
-                          className="px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-colors duration-150"
+                          to="/servicios"
+                          className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-primary hover:bg-muted rounded-lg transition-colors duration-150"
                         >
-                          {s.title}
+                          Ver todos los servicios →
                         </Link>
-                      ))}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -189,7 +201,7 @@ const SiteNavbar = () => {
                         onClick={() => setOpen(false)}
                         className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
                       >
-                        {s.title}
+                        {s.navLabel}
                       </Link>
                     ))}
                   </div>

@@ -26,6 +26,7 @@ export interface Service {
   slug: string;
   title: string;
   shortTitle: string;
+  navLabel: string;
   area: ServiceArea;
   areaLabel: string;
   icon: LucideIcon;
@@ -73,6 +74,7 @@ export const SERVICES: Service[] = [
     slug: "arquitectura-ti",
     title: "Arquitectura TI",
     shortTitle: "Arquitectura TI",
+    navLabel: "Orden en tu tecnología",
     area: "estrategia-direccion-ti",
     areaLabel: "Estrategia y Dirección TI",
     icon: Server,
@@ -101,6 +103,7 @@ export const SERVICES: Service[] = [
     slug: "transformacion-digital",
     title: "Transformación Digital",
     shortTitle: "Transformación Digital",
+    navLabel: "Digitaliza tu negocio",
     area: "estrategia-direccion-ti",
     areaLabel: "Estrategia y Dirección TI",
     icon: Workflow,
@@ -127,6 +130,7 @@ export const SERVICES: Service[] = [
     slug: "direccion-ti",
     title: "Dirección de Departamento TI y Talento",
     shortTitle: "Dirección de TI (CTO Externo)",
+    navLabel: "Tu director de tecnología",
     area: "estrategia-direccion-ti",
     areaLabel: "Estrategia y Dirección TI",
     icon: Building2,
@@ -154,6 +158,7 @@ export const SERVICES: Service[] = [
     slug: "optimizacion-costos-ti",
     title: "Reducción de Costos TI",
     shortTitle: "Reducción de Costos TI",
+    navLabel: "Gasta menos en tecnología",
     area: "optimizacion-costos",
     areaLabel: "Optimización y Costos TI",
     icon: Wallet,
@@ -180,6 +185,7 @@ export const SERVICES: Service[] = [
     slug: "soporte-ti-gestionado",
     title: "Soporte TI Gestionado",
     shortTitle: "Soporte TI Gestionado",
+    navLabel: "Soporte técnico mensual",
     area: "optimizacion-costos",
     areaLabel: "Optimización y Costos TI",
     icon: Headphones,
@@ -205,6 +211,7 @@ export const SERVICES: Service[] = [
     slug: "presencia-digital",
     title: "Presencia Digital",
     shortTitle: "Presencia Digital",
+    navLabel: "Página web y Google Maps",
     area: "desarrollo-presencia",
     areaLabel: "Desarrollo y Presencia Digital",
     icon: Globe,
@@ -231,6 +238,7 @@ export const SERVICES: Service[] = [
     slug: "desarrollo-software",
     title: "Desarrollo de Software Web",
     shortTitle: "Desarrollo de Software",
+    navLabel: "Apps y sistemas web a medida",
     area: "desarrollo-presencia",
     areaLabel: "Desarrollo y Presencia Digital",
     icon: Code2,
@@ -257,6 +265,7 @@ export const SERVICES: Service[] = [
     slug: "marketing-digital",
     title: "Dirección de Marketing Digital",
     shortTitle: "Marketing Digital",
+    navLabel: "Publicidad y marketing digital",
     area: "desarrollo-presencia",
     areaLabel: "Desarrollo y Presencia Digital",
     icon: Megaphone,
@@ -283,6 +292,7 @@ export const SERVICES: Service[] = [
     slug: "ciberseguridad",
     title: "Ciberseguridad: Gestión y Estrategia",
     shortTitle: "Ciberseguridad",
+    navLabel: "Seguridad informática",
     area: "seguridad-inteligencia",
     areaLabel: "Seguridad e Inteligencia Tecnológica",
     icon: Shield,
@@ -309,6 +319,7 @@ export const SERVICES: Service[] = [
     slug: "vigilancia-innovacion",
     title: "Vigilancia e Innovación Tecnológica",
     shortTitle: "Vigilancia e Innovación",
+    navLabel: "Tendencias y oportunidades TI",
     area: "seguridad-inteligencia",
     areaLabel: "Seguridad e Inteligencia Tecnológica",
     icon: Radar,
@@ -335,6 +346,7 @@ export const SERVICES: Service[] = [
     slug: "ia-corporativa",
     title: "Inteligencia Artificial Corporativa",
     shortTitle: "IA Corporativa",
+    navLabel: "Automatización e inteligencia artificial",
     area: "ia-corporativa",
     areaLabel: "Inteligencia Artificial Corporativa",
     icon: Brain,

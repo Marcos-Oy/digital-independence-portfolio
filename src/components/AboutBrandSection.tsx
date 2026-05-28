@@ -21,7 +21,7 @@ const pillars = [
   {
     n: "04",
     title: "Promesa",
-    desc: "Durante los primeros 90 días de trabajo conjunto, tu tecnología deja de ser un problema y se convierte en el motor real del crecimiento de tu negocio.",
+    desc: "Comenzamos con un diagnóstico sin costo, definimos una hoja de ruta priorizada y actuamos con dirección tecnológica activa desde el primer día.",
   },
 ];
 
