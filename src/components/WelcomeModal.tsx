@@ -26,6 +26,8 @@ const WelcomeModal = () => {
   const close = () => {
     setVisible(false);
     setTimeout(() => setOpen(false), 350);
+    try { sessionStorage.setItem("welcome_modal_seen", "1"); } catch { }
+    window.dispatchEvent(new Event("welcome-modal-closed"));
   };
 
   if (!open) return null;
