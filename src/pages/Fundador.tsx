@@ -39,9 +39,8 @@ const Fundador = () => {
             <div className="space-y-6 text-foreground/90 leading-relaxed text-base md:text-lg">
               <p>
                 Ingeniero en Informática con especialización en Ciberseguridad, Transformación Digital e
-                Inteligencia Artificial Generativa. Fundador de <strong>Independencia Digital SpA</strong>, una
-                consultora tecnológica chilena con marca registrada en INAPI y operación formal vía Sociedad por
-                Acciones.
+                Inteligencia Artificial Generativa. Fundador de <strong>Independencia Digital</strong>, una
+                consultora tecnológica chilena.
               </p>
               <p>
                 Diseño, construyo y dirijo la infraestructura tecnológica de mis clientes desde la arquitectura TI

@@ -42,7 +42,7 @@ const SimpleMarkdown = ({ text }: { text: string }) => {
 };
 
 const SUGGESTED_QUESTIONS = [
-  "¿Qué es Independencia Digital SpA?",
+  "¿Qué es Independencia Digital?",
   "¿Cómo funciona el diagnóstico inicial?",
   "¿En qué áreas de servicio trabajan?",
   "¿Hacen sitios web y software a medida?",
@@ -351,7 +351,7 @@ const ChatBot = () => {
                 <div className="text-center space-y-2">
                   <RobotIcon className="w-10 h-10 text-muted-foreground/50 mx-auto" />
                   <p className="text-sm text-muted-foreground">
-                    ¡Hola! 👋 Soy <strong>Marbot IArzo</strong>, el asistente de Independencia Digital SpA.
+                    ¡Hola! 👋 Soy <strong>Marbot IArzo</strong>, el asistente de Independencia Digital.
                   </p>
                   <p className="text-xs text-muted-foreground/70">
                     Pregúntame sobre nuestros servicios, áreas de consultoría o cómo podemos ayudar a tu negocio.

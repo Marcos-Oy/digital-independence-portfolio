@@ -63,7 +63,6 @@ const SegmentPageLayout = ({ segment }: Props) => {
               { label: "Tamaño en Chile", value: segment.size },
               { label: "Ticket promedio", value: segment.ticket },
               { label: "Puerta de entrada", value: segment.entryPoint },
-              { label: "Lenguaje", value: segment.tone === "cercano" ? "Cercano y directo" : "Corporativo, con métricas y ROI" },
             ].map((f) => (
               <div key={f.label} className="bg-card p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-1.5">

@@ -40,11 +40,11 @@ const AboutBrandSection = () => {
                 ¿Qué es Independencia Digital?
               </h2>
               <p className="text-muted-foreground leading-relaxed max-w-2xl text-base">
-                <strong className="text-foreground font-semibold">Independencia Digital SpA</strong> es
-                una consultora tecnológica chilena constituida formalmente (RUT 78.430.447-7).
-                Diseñamos, construimos y dirigimos la infraestructura tecnológica de emprendedores,
-                profesionales independientes, PyMEs, grandes empresas y organismos del sector público,
-                actuando como tu Director de Tecnología externo sin el costo de un CTO full-time.
+                <strong className="text-foreground font-semibold">Independencia Digital</strong> es
+                una consultora tecnológica chilena que diseña, construye y dirige la infraestructura
+                tecnológica de emprendedores, profesionales independientes, PyMEs, grandes empresas
+                y organismos del sector público, actuando como tu Director de Tecnología externo
+                sin el costo de un CTO full-time.
               </p>
             </div>
             <div className="hidden md:block">

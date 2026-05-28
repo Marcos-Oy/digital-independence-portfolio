@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "¿Trabajan con Mercado Público?",
-    a: "Sí. Estamos constituidos como SpA con RUT 78.430.447-7 y participamos en licitaciones de ChileCompra para ciberseguridad, formación, infraestructura TI y transformación digital.",
+    a: "Sí. Participamos en licitaciones de ChileCompra para ciberseguridad, formación, infraestructura TI y transformación digital.",
   },
   {
     q: "¿Cómo es el primer contacto?",
@@ -90,7 +90,7 @@ const HomePage = () => {
 
           {/* Eyebrow tag */}
           <span className="inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 text-[11px] font-semibold uppercase tracking-[0.15em] px-4 py-1.5 rounded-full mb-6 animate-fade-in">
-            Consultora Tecnológica · Chile · SpA
+            Consultora Tecnológica · Chile
           </span>
 
           <h1
@@ -147,9 +147,9 @@ const HomePage = () => {
                   sin el costo de uno a tiempo completo.
                 </h2>
                 <p className="text-muted-foreground leading-relaxed max-w-xl">
-                  Independencia Digital SpA es una consultora tecnológica chilena (RUT 78.430.447-7).
-                  Atendemos personas naturales y jurídicas, incluyendo el sector público mediante
-                  licitaciones en Mercado Público.
+                  Independencia Digital es una consultora tecnológica chilena que atiende personas
+                  naturales y jurídicas, incluyendo el sector público mediante licitaciones en
+                  Mercado Público.
                 </p>
               </div>
               <div className="hidden md:flex flex-col gap-1 text-right shrink-0">
@@ -163,7 +163,7 @@ const HomePage = () => {
                 { n: "11", label: "Servicios especializados" },
                 { n: "5", label: "Áreas de consultoría" },
                 { n: "4", label: "Segmentos atendidos" },
-                { n: "SpA", label: "Empresa formal con RUT" },
+                { n: "100%", label: "Digital y online" },
               ].map(({ n, label }) => (
                 <div key={label} className="bg-card px-6 py-8 text-center">
                   <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground mb-1.5">{n}</p>

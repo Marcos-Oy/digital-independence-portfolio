@@ -20,7 +20,7 @@ const SiteFooter = () => {
               </span>
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Consultora tecnológica chilena (SpA). Diseñamos, construimos y dirigimos la infraestructura
+              Consultora tecnológica chilena. Diseñamos, construimos y dirigimos la infraestructura
               tecnológica de emprendedores, PyMEs, grandes empresas y sector público.
             </p>
           </div>
@@ -107,7 +107,7 @@ const SiteFooter = () => {
 
         <div className="border-t border-border pt-6 text-center">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Independencia Digital SpA · RUT 78.430.447-7
+            © {new Date().getFullYear()} Independencia Digital
           </p>
         </div>
       </div>

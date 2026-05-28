@@ -49,10 +49,10 @@ const WelcomeModal = () => {
         <img src={logo} alt="Independencia Digital" className="w-10 h-10 shrink-0 rounded-lg" />
         <div className="flex-1 min-w-0">
           <p className="font-heading font-bold text-sm text-foreground leading-snug mb-1">
-            Independencia Digital SpA
+            Independencia Digital
           </p>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Consultora TI chilena. RUT 78.430.447-7.
+            Consultora tecnológica chilena.
           </p>
           <button
             onClick={close}
