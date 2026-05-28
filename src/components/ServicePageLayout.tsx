@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import ChatBot from "@/components/ChatBot";
 import ScrollReveal from "@/components/ScrollReveal";
 import { CheckCircle2, ArrowLeft, Clock, Target, Users } from "lucide-react";
 import { type Service } from "@/data/services";
@@ -188,8 +186,6 @@ const ServicePageLayout = ({ service }: Props) => {
       </section>
 
       <SiteFooter />
-      <WhatsAppButton />
-      <ChatBot />
     </div>
   );
 };

@@ -5,9 +5,6 @@ import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
 import SafeTechLogosCarousel from "@/components/SafeTechLogosCarousel";
 import AboutBrandSection from "@/components/AboutBrandSection";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import ChatBot from "@/components/ChatBot";
-import WelcomeModal from "@/components/WelcomeModal";
 import ReviewsSection from "@/components/ReviewsSection";
 import logoFull from "@/assets/logo-full.png";
 import bannerHero from "@/assets/banner-hero.png";
@@ -402,9 +399,6 @@ const HomePage = () => {
       </section>
 
       <SiteFooter />
-      <WhatsAppButton />
-      <ChatBot />
-      <WelcomeModal />
     </div>
   );
 };

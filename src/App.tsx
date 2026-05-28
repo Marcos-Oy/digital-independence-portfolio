@@ -11,6 +11,8 @@ import Servicios from "./pages/Servicios";
 import Servicio from "./pages/Servicio";
 import Segmento from "./pages/Segmento";
 import NotFound from "./pages/NotFound";
+import WhatsAppButton from "./components/WhatsAppButton";
+import ChatBot from "./components/ChatBot";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +52,8 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <AnimatedRoutes />
+        <WhatsAppButton />
+        <ChatBot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

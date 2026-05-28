@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import ChatBot from "@/components/ChatBot";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { SERVICES, AREAS } from "@/data/services";
 import { useEffect } from "react";
@@ -79,8 +77,6 @@ const Servicios = () => {
       })}
 
       <SiteFooter />
-      <WhatsAppButton />
-      <ChatBot />
     </div>
   );
 };

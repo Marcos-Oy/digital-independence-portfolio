@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import ChatBot from "@/components/ChatBot";
 import { ArrowLeft, Linkedin, Globe } from "lucide-react";
 import marcosImg from "@/assets/marcos.jpg";
 
@@ -107,8 +105,6 @@ const Fundador = () => {
       </section>
 
       <SiteFooter />
-      <WhatsAppButton />
-      <ChatBot />
     </div>
   );
 };
