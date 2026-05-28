@@ -1,18 +1,82 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import chileFlag from "@/assets/chile-flag.png";
 import ThemeToggle from "./ThemeToggle";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, X, Search } from "lucide-react";
 import { SERVICES } from "@/data/services";
 import { SEGMENTS } from "@/data/segments";
+
+const normS = (s: string) =>
+  s.toLowerCase()
+   .replace(/[aáàä]/g, "a").replace(/[eéèë]/g, "e")
+   .replace(/[iíìï]/g, "i").replace(/[oóòö]/g, "o")
+   .replace(/[uúùü]/g, "u").replace(/n/g, "n")
+   .replace(/[^a-z0-9 ]/g, " ");
+
+interface SearchResult {
+  label: string;
+  sublabel: string;
+  href: string;
+  type: "servicio" | "segmento" | "pagina";
+}
+
+const STATIC_PAGES: SearchResult[] = [
+  { label: "Inicio", sublabel: "Página principal", href: "/", type: "pagina" },
+  { label: "Portafolio de servicios", sublabel: "Todos los servicios", href: "/servicios", type: "pagina" },
+  { label: "Fundador", sublabel: "Marcos Oyarzo — Director", href: "/fundador", type: "pagina" },
+  { label: "Contacto", sublabel: "Escríbenos o agenda un diagnóstico", href: "/#contacto", type: "pagina" },
+];
+
+const ALL_RESULTS: SearchResult[] = [
+  ...SERVICES.map((s) => ({
+    label: s.title,
+    sublabel: s.summary ?? s.tagline ?? "",
+    href: `/servicios/${s.slug}`,
+    type: "servicio" as const,
+  })),
+  ...SEGMENTS.map((s) => ({
+    label: s.title,
+    sublabel: s.description.slice(0, 80) + "…",
+    href: `/segmentos/${s.slug}`,
+    type: "segmento" as const,
+  })),
+  ...STATIC_PAGES,
+];
+
+const TYPE_LABEL: Record<SearchResult["type"], string> = {
+  servicio: "Servicio",
+  segmento: "Segmento",
+  pagina: "Página",
+};
+
+const searchAll = (q: string): SearchResult[] => {
+  const norm = normS(q.trim());
+  if (norm.length < 2) return [];
+  const words = norm.split(" ").filter((w) => w.length > 1);
+  if (words.length === 0) return [];
+  return ALL_RESULTS.filter((r) => {
+    const hay = normS(r.label + " " + r.sublabel);
+    return words.some((w) => hay.includes(w));
+  }).sort((a, b) => {
+    const ha = normS(a.label + " " + a.sublabel);
+    const hb = normS(b.label + " " + b.sublabel);
+    const sa = words.reduce((acc, w) => acc + (ha.includes(w) ? 1 : 0), 0);
+    const sb = words.reduce((acc, w) => acc + (hb.includes(w) ? 1 : 0), 0);
+    return sb - sa;
+  });
+};
 
 const WHATSAPP = "56928362758";
 
 const SiteNavbar = () => {
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<"servicios" | "segmentos" | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const goSection = (id: string) => {
     setOpen(false);
@@ -23,6 +87,41 @@ const SiteNavbar = () => {
       window.location.href = `/#${id}`;
     }
   };
+
+  const openSearch = () => {
+    setSearchOpen(true);
+    setSearchQuery("");
+    setTimeout(() => searchInputRef.current?.focus(), 50);
+  };
+
+  const closeSearch = useCallback(() => {
+    setSearchOpen(false);
+    setSearchQuery("");
+  }, []);
+
+  const handleResultClick = (href: string) => {
+    closeSearch();
+    if (href.startsWith("/#")) {
+      if (location.pathname === "/") {
+        const id = href.slice(2);
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.href = href;
+      }
+    } else {
+      navigate(href);
+    }
+  };
+
+  useEffect(() => {
+    if (!searchOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeSearch(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [searchOpen, closeSearch]);
+
+  const results = searchAll(searchQuery);
+  const hasQuery = searchQuery.trim().length >= 2;
 
   return (
     <>
@@ -131,6 +230,13 @@ const SiteNavbar = () => {
             </ul>
 
             <div className="flex items-center gap-2">
+              <button
+                onClick={openSearch}
+                aria-label="Buscar en el sitio"
+                className="p-2 rounded-lg hover:bg-muted transition-colors duration-200 text-muted-foreground hover:text-foreground"
+              >
+                <Search className="w-4 h-4" />
+              </button>
               <ThemeToggle />
               <a
                 href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
@@ -161,6 +267,71 @@ const SiteNavbar = () => {
           </div>
         </div>
       </nav>
+
+      {/* Search overlay */}
+      {searchOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center pt-24 px-4 pb-8">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+            onClick={closeSearch}
+          />
+          {/* Panel */}
+          <div className="relative w-full max-w-xl bg-card border border-border rounded-2xl shadow-card-hover overflow-hidden animate-fade-in-up">
+            {/* Input row */}
+            <div className="flex items-center gap-2 px-4 py-3.5 border-b border-border">
+              <Search className="w-4 h-4 text-muted-foreground shrink-0" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Buscar servicios, segmentos, páginas…"
+                className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+              />
+              <button
+                onClick={closeSearch}
+                className="p-1 rounded-md text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            {/* Results */}
+            <div className="max-h-[60vh] overflow-y-auto">
+              {!hasQuery && (
+                <p className="text-xs text-muted-foreground px-4 py-5 text-center">
+                  Escribe al menos 2 caracteres para buscar
+                </p>
+              )}
+              {hasQuery && results.length === 0 && (
+                <p className="text-xs text-muted-foreground px-4 py-5 text-center">
+                  Sin resultados para <strong>"{searchQuery}"</strong>
+                </p>
+              )}
+              {hasQuery && results.length > 0 && (
+                <ul className="py-2">
+                  {results.map((r, i) => (
+                    <li key={i}>
+                      <button
+                        onClick={() => handleResultClick(r.href)}
+                        className="w-full flex items-start gap-3 px-4 py-3 hover:bg-muted transition-colors text-left"
+                      >
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-semibold text-foreground leading-tight">{r.label}</p>
+                          <p className="text-xs text-muted-foreground leading-snug mt-0.5 line-clamp-1">{r.sublabel}</p>
+                        </div>
+                        <span className="shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-muted text-muted-foreground mt-0.5">
+                          {TYPE_LABEL[r.type]}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile overlay */}
       {open && (
