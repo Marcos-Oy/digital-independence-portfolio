@@ -4,9 +4,6 @@ import { X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 // ─── Edita esto para actualizar el contenido del modal ────────────────────────
-// Cambia MODAL_ID cada vez que quieras que vuelva a aparecer (ej. para un evento)
-const MODAL_ID = "welcome-v1";
-
 const CONTENT = {
   eyebrow: "Bienvenido",
   title: "Independencia Digital",
@@ -15,37 +12,24 @@ const CONTENT = {
     label: "Explorar el sitio",
     to: "/servicios",
   },
-  dismiss: "Ahora no",
 };
 // ─────────────────────────────────────────────────────────────────────────────
-
-const STORAGE_KEY = `modal_seen_${MODAL_ID}`;
 
 const WelcomeModal = () => {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    try {
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        const t = setTimeout(() => {
-          setOpen(true);
-          requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)));
-        }, 900);
-        return () => clearTimeout(t);
-      }
-    } catch {
+    const t = setTimeout(() => {
       setOpen(true);
       requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)));
-    }
+    }, 900);
+    return () => clearTimeout(t);
   }, []);
 
   const close = () => {
     setVisible(false);
-    setTimeout(() => {
-      setOpen(false);
-      try { localStorage.setItem(STORAGE_KEY, "1"); } catch { /* noop */ }
-    }, 350);
+    setTimeout(() => setOpen(false), 350);
   };
 
   if (!open) return null;
@@ -56,10 +40,9 @@ const WelcomeModal = () => {
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      {/* Backdrop */}
+      {/* Backdrop — no cierra al hacer clic */}
       <div
         className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-        onClick={close}
         aria-hidden="true"
       />
 
@@ -106,22 +89,14 @@ const WelcomeModal = () => {
               {CONTENT.body}
             </p>
 
-            <div className="flex flex-col gap-2.5 w-full">
-              <Link
-                to={CONTENT.cta.to}
-                onClick={close}
-                className="btn-shimmer inline-flex items-center justify-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
-              >
-                {CONTENT.cta.label}
-                <span className="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-              </Link>
-              <button
-                onClick={close}
-                className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 py-1.5"
-              >
-                {CONTENT.dismiss}
-              </button>
-            </div>
+            <Link
+              to={CONTENT.cta.to}
+              onClick={close}
+              className="btn-shimmer inline-flex items-center justify-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 w-full"
+            >
+              {CONTENT.cta.label}
+              <span className="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
+            </Link>
           </div>
         </div>
       </div>
