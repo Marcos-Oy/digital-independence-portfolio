@@ -13,6 +13,7 @@ import Segmento from "./pages/Segmento";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ChatBot from "./components/ChatBot";
+import WelcomeModal from "./components/WelcomeModal";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const App = () => (
         <AnimatedRoutes />
         <WhatsAppButton />
         <ChatBot />
+        <WelcomeModal />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

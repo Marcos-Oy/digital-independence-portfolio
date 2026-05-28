@@ -110,8 +110,8 @@ export default {
           to: { transform: "translateX(200%)" },
         },
         "page-in": {
-          from: { opacity: "0", transform: "translateY(10px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
+          from: { opacity: "0" },
+          to: { opacity: "1" },
         },
         "scale-in": {
           from: { opacity: "0", transform: "scale(0.96)" },
