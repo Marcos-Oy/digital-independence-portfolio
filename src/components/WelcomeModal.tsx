@@ -52,7 +52,7 @@ const WelcomeModal = () => {
             Independencia Digital SpA
           </p>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Consultora TI chilena. RUT 78.430.447-7 · Coquimbo, Chile.
+            Consultora TI chilena. RUT 78.430.447-7.
           </p>
           <button
             onClick={close}

@@ -107,10 +107,7 @@ const SiteFooter = () => {
 
         <div className="border-t border-border pt-6 text-center">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Independencia Digital SpA · RUT 78.430.447-7 · Coquimbo, Chile
-          </p>
-          <p className="text-xs text-muted-foreground/60 mt-1">
-            Marca registrada INAPI · Razón social: Servicios Tecnológicos y Consultorías Independencia Digital SpA
+            © {new Date().getFullYear()} Independencia Digital SpA · RUT 78.430.447-7
           </p>
         </div>
       </div>

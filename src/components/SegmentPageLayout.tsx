@@ -62,7 +62,6 @@ const SegmentPageLayout = ({ segment }: Props) => {
               { label: "Tipo de cliente", value: segment.audience },
               { label: "Tamaño en Chile", value: segment.size },
               { label: "Ticket promedio", value: segment.ticket },
-              { label: "Canal de venta", value: segment.channel },
               { label: "Puerta de entrada", value: segment.entryPoint },
               { label: "Lenguaje", value: segment.tone === "cercano" ? "Cercano y directo" : "Corporativo, con métricas y ROI" },
             ].map((f) => (
