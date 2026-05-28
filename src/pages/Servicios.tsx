@@ -24,8 +24,8 @@ const Servicios = () => {
           >
             <ArrowLeft className="w-4 h-4" /> Volver al inicio
           </Link>
-          <h1 className="font-heading font-black text-3xl md:text-5xl text-foreground mb-4">
-            Portafolio de <span className="text-gradient-brand">servicios</span>
+          <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground mb-4 leading-tight tracking-tight">
+            Portafolio de <span className="text-primary">servicios</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
             Diseñamos, construimos y dirigimos la infraestructura tecnológica de emprendedores, PyMEs,
@@ -56,18 +56,19 @@ const Servicios = () => {
                     <Link
                       key={s.slug}
                       to={`/servicios/${s.slug}`}
-                      className="bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                      className="group bg-card border border-border rounded-xl p-6 hover:border-primary/25 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col"
                     >
-                      <div className="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center mb-4">
-                        <Icon className="w-6 h-6 text-primary-foreground" />
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-200">
+                        <Icon className="w-5 h-5 text-primary" />
                       </div>
-                      <h3 className="font-heading font-bold text-lg text-foreground mb-2">{s.title}</h3>
+                      <h3 className="font-heading font-bold text-base text-foreground mb-2">{s.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                         {s.summary}
                       </p>
-                      <div className="flex items-center gap-1 text-primary text-sm font-medium">
-                        Ver servicio <ChevronRight className="w-4 h-4" />
-                      </div>
+                      <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold">
+                        Ver servicio
+                        <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
+                      </span>
                     </Link>
                   );
                 })}

@@ -20,11 +20,11 @@ const Fundador = () => {
           >
             <ArrowLeft className="w-4 h-4" /> Volver al inicio
           </Link>
-          <p className="text-xs font-semibold uppercase tracking-widest text-secondary mb-2 font-heading">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
             Fundador y CEO
           </p>
-          <h1 className="font-heading font-black text-3xl md:text-5xl text-foreground mb-4">
-            Marcos Alberto <span className="text-gradient-brand">Oyarzo Alvarez</span>
+          <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground mb-4 leading-tight tracking-tight">
+            Marcos Alberto <span className="text-primary">Oyarzo Alvarez</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             Director de Tecnología externo para PyMEs, grandes empresas y organismos del sector público.
@@ -73,18 +73,24 @@ const Fundador = () => {
 
       <section className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto gradient-brand rounded-2xl p-8 md:p-14 text-center shadow-brand">
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-primary-foreground mb-4">
-              ¿Conversamos sobre tu negocio?
-            </h2>
-            <a
-              href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola Marcos, quiero agendar un diagnóstico con Independencia Digital.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex bg-card text-foreground font-heading font-bold px-8 py-4 rounded-lg shadow-card hover:shadow-card-hover transition-shadow"
-            >
-              Agendar diagnóstico por WhatsApp →
-            </a>
+          <div className="max-w-3xl mx-auto p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/30 via-border to-secondary/20">
+            <div className="bg-card rounded-[calc(1rem-1.5px)] px-8 py-12 md:px-14 md:py-16 text-center">
+              <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
+                ¿Conversamos sobre tu negocio?
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
+                Agenda un diagnóstico sin costo y encuentra el punto de partida ideal para tu caso.
+              </p>
+              <a
+                href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola Marcos, quiero agendar un diagnóstico con Independencia Digital.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+              >
+                Agendar diagnóstico por WhatsApp
+                <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

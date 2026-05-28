@@ -40,26 +40,27 @@ const ServicePageLayout = ({ service }: Props) => {
             <ArrowLeft className="w-4 h-4" /> Volver al inicio
           </Link>
           <div className="flex flex-col md:flex-row items-start gap-8">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl gradient-brand flex items-center justify-center shrink-0 shadow-brand">
-              <Icon className="w-8 h-8 md:w-10 md:h-10 text-primary-foreground" />
+            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <Icon className="w-7 h-7 text-primary" />
             </div>
             <div className="flex-1">
-              <p className="text-xs font-semibold uppercase tracking-widest text-secondary mb-2 font-heading">
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
                 {service.areaLabel}
               </p>
-              <h1 className="font-heading font-black text-3xl md:text-5xl text-foreground mb-4 leading-tight">
+              <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground mb-4 leading-tight tracking-tight">
                 {service.title}
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-8">
+              <p className="text-base md:text-lg text-muted-foreground max-w-3xl mb-8 leading-relaxed">
                 {service.tagline}
               </p>
               <a
                 href={`https://wa.me/${WHATSAPP}?text=${waMsg}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex gradient-brand text-primary-foreground font-heading font-bold px-6 py-3 rounded-lg shadow-brand hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
               >
-                Cotizar este servicio →
+                Cotizar este servicio
+                <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
               </a>
             </div>
           </div>
@@ -81,20 +82,17 @@ const ServicePageLayout = ({ service }: Props) => {
       {/* Promesa y cliente correcto */}
       <section className="py-16 md:py-20 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-card">
-              <Users className="w-8 h-8 text-primary mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">Cliente correcto</h3>
+          <div className="grid md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden max-w-5xl mx-auto">
+            <div className="bg-card p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">Cliente correcto</p>
               <p className="text-sm text-muted-foreground leading-relaxed">{service.rightClient}</p>
             </div>
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-card">
-              <Clock className="w-8 h-8 text-primary mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">Factor tiempo</h3>
+            <div className="bg-card p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">Factor tiempo</p>
               <p className="text-sm text-muted-foreground leading-relaxed">{service.timeFactor}</p>
             </div>
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-card">
-              <Target className="w-8 h-8 text-primary mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">Promesa de valor</h3>
+            <div className="bg-card p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">Promesa de valor</p>
               <p className="text-sm text-muted-foreground leading-relaxed">{service.valuePromise}</p>
             </div>
           </div>
@@ -165,21 +163,24 @@ const ServicePageLayout = ({ service }: Props) => {
       {/* CTA */}
       <section className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto gradient-brand rounded-2xl p-8 md:p-14 text-center shadow-brand">
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-primary-foreground mb-4">
-              ¿Hablamos de tu caso?
-            </h2>
-            <p className="text-primary-foreground/80 mb-8 max-w-lg mx-auto">
-              Agenda un diagnóstico sin costo y evalúa cómo aplicar {service.shortTitle} a tu negocio.
-            </p>
-            <a
-              href={`https://wa.me/${WHATSAPP}?text=${waMsg}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex bg-card text-foreground font-heading font-bold px-8 py-4 rounded-lg shadow-card hover:shadow-card-hover transition-shadow"
-            >
-              Agendar diagnóstico por WhatsApp →
-            </a>
+          <div className="max-w-3xl mx-auto p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/30 via-border to-secondary/20">
+            <div className="bg-card rounded-[calc(1rem-1.5px)] px-8 py-12 md:px-14 md:py-16 text-center">
+              <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
+                ¿Hablamos de tu caso?
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
+                Agenda un diagnóstico sin costo y evalúa cómo aplicar {service.shortTitle} a tu negocio.
+              </p>
+              <a
+                href={`https://wa.me/${WHATSAPP}?text=${waMsg}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+              >
+                Agendar diagnóstico por WhatsApp
+                <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

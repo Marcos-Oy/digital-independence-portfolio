@@ -14,7 +14,7 @@ const LandingNavbar = ({ dark, onToggleTheme }: LandingNavbarProps) => {
           <div className="flex items-center gap-3">
             <img src={logo} alt="Independencia Digital" className="h-10 w-10" />
             <span className="font-heading font-bold text-lg text-foreground">
-              Independencia <span className="text-gradient-brand">Digital</span>
+              Independencia Digital
             </span>
           </div>
           <LocalThemeToggle dark={dark} onToggle={onToggleTheme} />

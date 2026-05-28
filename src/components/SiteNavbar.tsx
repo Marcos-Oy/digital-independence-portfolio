@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import chileFlag from "@/assets/chile-flag.png";
 import ThemeToggle from "./ThemeToggle";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import { SERVICES } from "@/data/services";
 import { SEGMENTS } from "@/data/segments";
 
@@ -25,198 +25,229 @@ const SiteNavbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto py-3 px-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-            <img src={logo} alt="Independencia Digital" className="h-10 w-10" />
-            <span className="font-heading font-bold text-lg">
-              <span className="text-[#2E6FB5]">Independencia</span>{" "}
-              <span className="text-[#3CB878]">Digital</span>
-            </span>
-            <img src={chileFlag} alt="Chile" className="h-5 w-auto" title="Servicios en Chile" />
-          </Link>
+    <>
+      {/* Floating island nav */}
+      <nav className="fixed top-4 left-4 right-4 z-50 mx-auto max-w-6xl">
+        <div className="bg-card/90 backdrop-blur-md border border-border rounded-2xl shadow-card px-5 py-3">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
+              <img src={logo} alt="Independencia Digital" className="h-9 w-9" />
+              <span className="font-heading font-bold text-base leading-none">
+                <span className="text-[#2E6FB5]">Independencia</span>{" "}
+                <span className="text-[#3CB878]">Digital</span>
+              </span>
+              <img src={chileFlag} alt="Chile" className="h-4 w-auto hidden sm:block" title="Servicios en Chile" />
+            </Link>
 
-          {/* Desktop */}
-          <ul className="hidden lg:flex items-center gap-7">
-            <li>
-              <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-                Inicio
-              </Link>
-            </li>
-            <li
-              className="relative"
-              onMouseEnter={() => setOpenMenu("servicios")}
-              onMouseLeave={() => setOpenMenu(null)}
-            >
-              <button className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1">
-                Servicios <ChevronDown className="w-3.5 h-3.5" />
-              </button>
-              {openMenu === "servicios" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
-                  <div className="bg-card border border-border rounded-xl shadow-card-hover p-2 min-w-[280px] grid">
-                    <Link
-                      to="/servicios"
-                      className="px-3 py-2 text-sm font-semibold text-foreground hover:bg-muted rounded-md"
-                    >
-                      Ver todos los servicios →
-                    </Link>
-                    <div className="border-t border-border my-1" />
-                    {SERVICES.map((s) => (
-                      <Link
-                        key={s.slug}
-                        to={`/servicios/${s.slug}`}
-                        className="px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-primary rounded-md transition-colors"
-                      >
-                        {s.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </li>
-            <li
-              className="relative"
-              onMouseEnter={() => setOpenMenu("segmentos")}
-              onMouseLeave={() => setOpenMenu(null)}
-            >
-              <button className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1">
-                Segmentos <ChevronDown className="w-3.5 h-3.5" />
-              </button>
-              {openMenu === "segmentos" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
-                  <div className="bg-card border border-border rounded-xl shadow-card-hover p-2 min-w-[240px] grid">
-                    {SEGMENTS.map((s) => (
-                      <Link
-                        key={s.id}
-                        to={`/segmentos/${s.slug}`}
-                        className="px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-primary rounded-md transition-colors"
-                      >
-                        {s.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </li>
-            <li>
-              <Link to="/fundador" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-                Fundador
-              </Link>
-            </li>
-            <li>
-              <button
-                onClick={() => goSection("contacto")}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            {/* Desktop links */}
+            <ul className="hidden lg:flex items-center gap-6">
+              <li>
+                <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+                  Inicio
+                </Link>
+              </li>
+              <li
+                className="relative"
+                onMouseEnter={() => setOpenMenu("servicios")}
+                onMouseLeave={() => setOpenMenu(null)}
               >
-                Contacto
-              </button>
-            </li>
-          </ul>
-
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <a
-              href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden lg:inline-flex gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-lg shadow-brand hover:opacity-90 transition-opacity"
-            >
-              Agendar diagnóstico
-            </a>
-            <button
-              onClick={() => setOpen(!open)}
-              className="lg:hidden p-2 text-foreground"
-              aria-label="Menu"
-            >
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-                {open ? <path d="M6 6l12 12M6 18L18 6" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {open && (
-        <div className="lg:hidden bg-card border-t border-border animate-fade-in max-h-[80vh] overflow-y-auto">
-          <ul className="flex flex-col p-4 gap-2">
-            <li>
-              <Link to="/" onClick={() => setOpen(false)} className="block py-2 text-sm font-semibold text-foreground">
-                Inicio
-              </Link>
-            </li>
-            <li>
-              <details className="group">
-                <summary className="cursor-pointer py-2 text-sm font-semibold text-foreground flex items-center justify-between list-none">
-                  Servicios <ChevronDown className="w-4 h-4 group-open:rotate-180 transition-transform" />
-                </summary>
-                <div className="pl-4 py-1 flex flex-col gap-1.5">
-                  <Link
-                    to="/servicios"
-                    onClick={() => setOpen(false)}
-                    className="text-sm text-primary font-medium py-1"
-                  >
-                    Ver todos →
-                  </Link>
-                  {SERVICES.map((s) => (
-                    <Link
-                      key={s.slug}
-                      to={`/servicios/${s.slug}`}
-                      onClick={() => setOpen(false)}
-                      className="text-sm text-muted-foreground hover:text-primary py-1"
-                    >
-                      {s.title}
-                    </Link>
-                  ))}
-                </div>
-              </details>
-            </li>
-            <li>
-              <details className="group">
-                <summary className="cursor-pointer py-2 text-sm font-semibold text-foreground flex items-center justify-between list-none">
-                  Segmentos <ChevronDown className="w-4 h-4 group-open:rotate-180 transition-transform" />
-                </summary>
-                <div className="pl-4 py-1 flex flex-col gap-1.5">
-                  {SEGMENTS.map((s) => (
-                    <Link
-                      key={s.id}
-                      to={`/segmentos/${s.slug}`}
-                      onClick={() => setOpen(false)}
-                      className="text-sm text-muted-foreground hover:text-primary py-1"
-                    >
-                      {s.title}
-                    </Link>
-                  ))}
-                </div>
-              </details>
-            </li>
-            <li>
-              <Link to="/fundador" onClick={() => setOpen(false)} className="block py-2 text-sm font-semibold text-foreground">
-                Fundador
-              </Link>
-            </li>
-            <li>
-              <button
-                onClick={() => goSection("contacto")}
-                className="block py-2 text-sm font-semibold text-foreground text-left w-full"
+                <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-1">
+                  Servicios
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openMenu === "servicios" ? "rotate-180" : ""}`} />
+                </button>
+                {openMenu === "servicios" && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 animate-slide-up">
+                    <div className="bg-card border border-border rounded-xl shadow-card-hover p-2 min-w-[260px] grid">
+                      <Link
+                        to="/servicios"
+                        className="px-3 py-2 text-sm font-semibold text-foreground hover:bg-muted rounded-lg transition-colors duration-150"
+                      >
+                        Ver todos los servicios →
+                      </Link>
+                      <div className="border-t border-border my-1.5" />
+                      {SERVICES.map((s) => (
+                        <Link
+                          key={s.slug}
+                          to={`/servicios/${s.slug}`}
+                          className="px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-colors duration-150"
+                        >
+                          {s.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </li>
+              <li
+                className="relative"
+                onMouseEnter={() => setOpenMenu("segmentos")}
+                onMouseLeave={() => setOpenMenu(null)}
               >
-                Contacto
-              </button>
-            </li>
-            <li className="pt-2">
+                <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-1">
+                  Segmentos
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openMenu === "segmentos" ? "rotate-180" : ""}`} />
+                </button>
+                {openMenu === "segmentos" && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 animate-slide-up">
+                    <div className="bg-card border border-border rounded-xl shadow-card-hover p-2 min-w-[220px] grid">
+                      {SEGMENTS.map((s) => (
+                        <Link
+                          key={s.id}
+                          to={`/segmentos/${s.slug}`}
+                          className="px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-colors duration-150"
+                        >
+                          {s.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </li>
+              <li>
+                <Link to="/fundador" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+                  Fundador
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => goSection("contacto")}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+                >
+                  Contacto
+                </button>
+              </li>
+            </ul>
+
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
               <a
                 href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-lg"
+                className="hidden lg:inline-flex items-center gap-2.5 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
               >
                 Agendar diagnóstico
               </a>
-            </li>
-          </ul>
+              {/* Hamburger / X toggle */}
+              <button
+                onClick={() => setOpen(!open)}
+                className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200 text-foreground"
+                aria-label={open ? "Cerrar menú" : "Abrir menú"}
+              >
+                <div className="relative w-5 h-5">
+                  <span className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${open ? "opacity-100 rotate-0" : "opacity-0 rotate-90"}`}>
+                    <X className="w-5 h-5" />
+                  </span>
+                  <span className={`absolute inset-0 flex flex-col justify-center gap-[5px] transition-all duration-300 ${open ? "opacity-0 -rotate-90" : "opacity-100 rotate-0"}`}>
+                    <span className="block h-[1.5px] w-5 bg-current rounded-full" />
+                    <span className="block h-[1.5px] w-5 bg-current rounded-full" />
+                    <span className="block h-[1.5px] w-4 bg-current rounded-full" />
+                  </span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile overlay */}
+      {open && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <div
+            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+            onClick={() => setOpen(false)}
+          />
+          <div className="absolute top-20 left-4 right-4 mx-auto max-w-6xl bg-card border border-border rounded-2xl shadow-card-hover overflow-hidden animate-fade-in-up">
+            <ul className="flex flex-col p-4 gap-1">
+              <li>
+                <Link
+                  to="/"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted rounded-lg transition-colors"
+                >
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <details className="group">
+                  <summary className="flex items-center justify-between px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted rounded-lg cursor-pointer list-none transition-colors">
+                    Servicios
+                    <ChevronDown className="w-4 h-4 text-muted-foreground group-open:rotate-180 transition-transform duration-200" />
+                  </summary>
+                  <div className="pl-4 pt-1 pb-2 flex flex-col gap-0.5">
+                    <Link
+                      to="/servicios"
+                      onClick={() => setOpen(false)}
+                      className="px-3 py-2 text-sm text-primary font-semibold hover:bg-muted rounded-lg transition-colors"
+                    >
+                      Ver todos →
+                    </Link>
+                    {SERVICES.map((s) => (
+                      <Link
+                        key={s.slug}
+                        to={`/servicios/${s.slug}`}
+                        onClick={() => setOpen(false)}
+                        className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+                      >
+                        {s.title}
+                      </Link>
+                    ))}
+                  </div>
+                </details>
+              </li>
+              <li>
+                <details className="group">
+                  <summary className="flex items-center justify-between px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted rounded-lg cursor-pointer list-none transition-colors">
+                    Segmentos
+                    <ChevronDown className="w-4 h-4 text-muted-foreground group-open:rotate-180 transition-transform duration-200" />
+                  </summary>
+                  <div className="pl-4 pt-1 pb-2 flex flex-col gap-0.5">
+                    {SEGMENTS.map((s) => (
+                      <Link
+                        key={s.id}
+                        to={`/segmentos/${s.slug}`}
+                        onClick={() => setOpen(false)}
+                        className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+                      >
+                        {s.title}
+                      </Link>
+                    ))}
+                  </div>
+                </details>
+              </li>
+              <li>
+                <Link
+                  to="/fundador"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted rounded-lg transition-colors"
+                >
+                  Fundador
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => goSection("contacto")}
+                  className="flex items-center w-full px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted rounded-lg transition-colors text-left"
+                >
+                  Contacto
+                </button>
+              </li>
+              <li className="pt-2 border-t border-border mt-1">
+                <a
+                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-center gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-3 rounded-full shadow-brand active:scale-[0.97] transition-all duration-200"
+                >
+                  Agendar diagnóstico
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       )}
-    </nav>
+    </>
   );
 };
 

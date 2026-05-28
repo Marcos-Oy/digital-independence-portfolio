@@ -22,13 +22,18 @@ type Review = {
 };
 
 const SERVICES = [
-  "Plan 360 (Mentoría completa)",
-  "Fase 1: Arquitectura TI",
-  "Fase 2: Presencia Digital",
-  "Fase 3: Ciberseguridad",
-  "Fase 4: Analítica Aplicada",
-  "Fase 5: Inteligencia Artificial",
-  "Asesoría puntual",
+  "Arquitectura TI",
+  "Transformación Digital",
+  "Dirección de TI (CTO Externo)",
+  "Reducción de Costos TI",
+  "Soporte TI Gestionado",
+  "Presencia Digital",
+  "Desarrollo de Software Web",
+  "Dirección de Marketing Digital",
+  "Ciberseguridad",
+  "Vigilancia e Innovación Tecnológica",
+  "Inteligencia Artificial Corporativa",
+  "Consultoría puntual",
 ];
 
 const StarRow = ({
@@ -149,11 +154,14 @@ const ReviewsSection = () => {
     <section id="resenas" className="py-20 bg-muted/40">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-heading font-black text-3xl md:text-4xl text-foreground mb-3">
-            Reseñas de <span className="text-gradient-brand">nuestros discípulos</span>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+            Testimonios
+          </p>
+          <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground mb-3 leading-tight">
+            Lo que dicen nuestros clientes
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Lo que dicen quienes ya están viviendo su Independencia Digital.
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
+            Experiencias reales de personas y empresas que ya trabajan con Independencia Digital.
           </p>
         </div>
 
