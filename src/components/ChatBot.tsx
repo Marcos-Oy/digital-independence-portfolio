@@ -328,12 +328,7 @@ const ChatBot = () => {
 
       {/* Chat window */}
       {open && (
-        <div className="
-          fixed z-50 flex flex-col overflow-hidden animate-fade-in
-          bg-card border border-border shadow-xl
-          inset-x-0 top-0 h-dvh rounded-none
-          md:inset-auto md:rounded-2xl md:bottom-24 md:right-6 md:w-[360px] md:h-[500px] md:max-h-[calc(100vh-8rem)]
-        ">
+        <div className="fixed z-50 flex flex-col overflow-hidden animate-fade-in bg-card border border-border shadow-xl rounded-2xl bottom-24 left-4 right-4 max-h-[70vh] md:left-auto md:right-6 md:w-[360px] md:h-[500px] md:max-h-[calc(100vh-8rem)]">
           {/* Header */}
           <div className="gradient-brand px-4 py-3 flex items-center gap-3 shrink-0">
             <RobotIcon className="w-6 h-6 text-primary-foreground" />
