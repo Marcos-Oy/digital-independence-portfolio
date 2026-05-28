@@ -6,22 +6,22 @@ const pillars = [
   {
     icon: Compass,
     title: "Nuestra Misión",
-    desc: "Acompañar a personas, profesionales independientes y PyMEs en su transformación digital, entregando estructura, seguridad y autonomía real.",
+    desc: "Diseñar, construir y dirigir la infraestructura tecnológica de emprendedores, PyMEs, grandes empresas y organismos públicos en Chile, con visión de expansión latinoamericana.",
   },
   {
     icon: Users,
-    title: "Para quién es",
-    desc: "Profesionales independientes, emprendedores y PyMEs que quieren digitalizar su negocio sin depender de terceros y sin caer en soluciones costosas o complejas.",
+    title: "A quién atendemos",
+    desc: "Personas naturales (emprendedores, profesionales independientes) y personas jurídicas (PyMEs, grandes empresas, sector público vía Mercado Público / ChileCompra).",
   },
   {
     icon: Sparkles,
     title: "Nuestro enfoque",
-    desc: "Programa de digitalización paso a paso, con sesiones grupales y acompañamiento de profesionales especializados durante toda la mentoría.",
+    desc: "Cinco áreas de servicio con 11 soluciones contratables por separado. Diagnóstico inicial sin costo, hoja de ruta priorizada y dirección tecnológica activa.",
   },
   {
     icon: ShieldCheck,
     title: "Nuestra promesa",
-    desc: "Que termines la mentoría con un ecosistema digital ordenado, protegido y escalable — y con la capacidad de administrarlo tú mismo.",
+    desc: "Durante los primeros 90 días de trabajo conjunto, tu tecnología deja de ser un problema y se convierte en el motor real del crecimiento de tu negocio.",
   },
 ];
 
@@ -37,11 +37,11 @@ const AboutBrandSection = () => {
             ¿Qué es Independencia Digital?
           </h2>
           <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-            <strong className="text-foreground">Independencia Digital</strong> es un programa de digitalización
-            diseñado para personas, profesionales independientes y PyMEs que quieren ordenar, proteger y escalar
-            su operación digital. A través de mentorías tecnológicas profesionales, sesiones grupales y
-            acompañamiento de profesionales especializados, te entregamos las herramientas y el conocimiento
-            para que tomes el control real de tu ecosistema digital.
+            <strong className="text-foreground">Independencia Digital SpA</strong> es una consultora tecnológica
+            chilena constituida formalmente (RUT 78.430.447-7). Diseñamos, construimos y dirigimos la
+            infraestructura tecnológica de emprendedores, profesionales independientes, PyMEs, grandes empresas
+            y organismos del sector público, actuando como tu Director de Tecnología externo sin el costo de un
+            CTO full-time.
           </p>
         </div>
 

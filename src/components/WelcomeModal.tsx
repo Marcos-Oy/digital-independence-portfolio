@@ -59,8 +59,11 @@ const WelcomeModal = () => {
         <h2 className="font-heading font-black text-2xl md:text-3xl text-foreground mb-3">
           Bienvenid@ a <span className="text-gradient-brand">Independencia Digital</span>
         </h2>
-        <p className="text-sm md:text-base text-muted-foreground mb-6">
-          Entrenamiento con Mentorías Tecnológicas Profesionales para personas, profesionales independientes y PyMEs.
+        <p className="text-sm md:text-base text-muted-foreground mb-2">
+          Consultora tecnológica chilena (SpA) que diseña, construye y dirige la infraestructura tecnológica de emprendedores, PyMEs, grandes empresas y organismos del sector público.
+        </p>
+        <p className="text-xs text-muted-foreground/70 mb-6">
+          RUT 78.430.447-7 · Coquimbo, Chile
         </p>
 
         <button

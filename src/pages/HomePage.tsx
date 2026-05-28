@@ -121,7 +121,7 @@ const HomePage = () => {
             </div>
             <div className="bg-card border border-border rounded-xl p-6 shadow-card text-center">
               <BarChart3 className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">7 servicios · 5 áreas</h3>
+              <h3 className="font-heading font-bold text-foreground mb-2">11 servicios · 5 áreas</h3>
               <p className="text-sm text-muted-foreground">Portafolio integral de consultoría</p>
             </div>
           </div>

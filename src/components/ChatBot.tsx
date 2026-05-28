@@ -42,14 +42,14 @@ const SimpleMarkdown = ({ text }: { text: string }) => {
 };
 
 const SUGGESTED_QUESTIONS = [
-  "¿Qué es el Plan 360?",
-  "¿Cómo funciona la mentoría 1:1?",
-  "¿Cuánto dura el programa?",
-  "¿Hacen también sitios web por encargo?",
+  "¿Qué es Independencia Digital SpA?",
+  "¿Cómo funciona el diagnóstico inicial?",
+  "¿En qué áreas de servicio trabajan?",
+  "¿Hacen sitios web y software a medida?",
   "¿Qué incluye Arquitectura TI?",
-  "¿Trabajan con PyMEs en Chile?",
-  "¿Qué herramientas voy a aprender?",
-  "¿Cómo agendo una sesión?",
+  "¿Trabajan con PyMEs y sector público?",
+  "¿Qué es la IA Corporativa?",
+  "¿Cómo agendo un diagnóstico gratis?",
 ];
 
 const pickRandom = <T,>(arr: T[], n: number): T[] => {
@@ -351,10 +351,10 @@ const ChatBot = () => {
                 <div className="text-center space-y-2">
                   <RobotIcon className="w-10 h-10 text-muted-foreground/50 mx-auto" />
                   <p className="text-sm text-muted-foreground">
-                    ¡Hola! 👋 Soy <strong>Marbot IArzo</strong>, el asistente de Independencia Digital.
+                    ¡Hola! 👋 Soy <strong>Marbot IArzo</strong>, el asistente de Independencia Digital SpA.
                   </p>
                   <p className="text-xs text-muted-foreground/70">
-                    Pregúntame sobre nuestros servicios, el Plan 360 o cómo podemos ayudarte.
+                    Pregúntame sobre nuestros servicios, áreas de consultoría o cómo podemos ayudar a tu negocio.
                   </p>
                 </div>
                 <div className="space-y-2">
