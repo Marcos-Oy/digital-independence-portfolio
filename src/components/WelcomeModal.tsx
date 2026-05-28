@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { X } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logoFull from "@/assets/logo-full.png";
 
 // ─── Edita esto para actualizar el contenido del modal ────────────────────────
 const CONTENT = {
@@ -10,7 +10,7 @@ const CONTENT = {
   body: "Consultora tecnológica chilena. Diseñamos, construimos y dirigimos la infraestructura tecnológica de tu negocio.",
   cta: {
     label: "Explorar el sitio",
-    to: "/servicios",
+    to: "/",
   },
 };
 // ─────────────────────────────────────────────────────────────────────────────
@@ -69,9 +69,9 @@ const WelcomeModal = () => {
         <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/25 via-border to-secondary/20">
           <div className="bg-card rounded-[calc(1rem-1.5px)] px-7 py-8 flex flex-col items-center text-center">
             <img
-              src={logo}
+              src={logoFull}
               alt="Independencia Digital"
-              className="w-14 h-14 rounded-xl mb-5 shadow-card"
+              className="h-16 w-auto mb-5"
             />
 
             <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-secondary mb-2">
