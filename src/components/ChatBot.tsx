@@ -256,6 +256,7 @@ const ChatBot = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const autoOpenedRef = useRef(false);
+  const baseHRef = useRef(0);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -263,23 +264,37 @@ const ChatBot = () => {
 
   useEffect(() => {
     if (!open) { setKeyboardStyle({}); return; }
-    if (window.innerWidth >= 768) { setKeyboardStyle({}); return; }
+    if (window.innerWidth >= 768) return;
+
+    baseHRef.current = window.innerHeight;
     const vv = window.visualViewport;
-    if (!vv) return;
-    const update = () => {
-      setKeyboardStyle({
-        top: vv.offsetTop + 8,
-        height: vv.height - 88,
-        bottom: "auto",
-        maxHeight: "none",
-      });
+
+    const apply = () => {
+      // Android: window.innerHeight shrinks when keyboard opens
+      const androidKbH = baseHRef.current - window.innerHeight;
+      if (androidKbH > 100) {
+        setKeyboardStyle({ bottom: 8, maxHeight: window.innerHeight - 96 });
+        return;
+      }
+      // iOS: visualViewport.height shrinks, window.innerHeight stays
+      if (vv) {
+        const iosKbH = window.innerHeight - vv.height;
+        if (iosKbH > 100) {
+          setKeyboardStyle({ bottom: iosKbH + 8, maxHeight: vv.height - 96 });
+          return;
+        }
+      }
+      setKeyboardStyle({});
     };
-    vv.addEventListener("resize", update);
-    vv.addEventListener("scroll", update);
-    update();
+
+    window.addEventListener("resize", apply);
+    vv?.addEventListener("resize", apply);
+    vv?.addEventListener("scroll", apply);
+
     return () => {
-      vv.removeEventListener("resize", update);
-      vv.removeEventListener("scroll", update);
+      window.removeEventListener("resize", apply);
+      vv?.removeEventListener("resize", apply);
+      vv?.removeEventListener("scroll", apply);
       setKeyboardStyle({});
     };
   }, [open]);
@@ -460,7 +475,20 @@ const ChatBot = () => {
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onFocus={() => setTimeout(() => inputRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" }), 150)}
+                onFocus={() => {
+                  if (window.innerWidth >= 768) return;
+                  setTimeout(() => {
+                    const vv = window.visualViewport;
+                    const androidKbH = baseHRef.current - window.innerHeight;
+                    if (androidKbH > 100) {
+                      setKeyboardStyle({ bottom: 8, maxHeight: window.innerHeight - 96 });
+                    } else if (vv && window.innerHeight - vv.height > 100) {
+                      const iosKbH = window.innerHeight - vv.height;
+                      setKeyboardStyle({ bottom: iosKbH + 8, maxHeight: vv.height - 96 });
+                    }
+                  }, 350);
+                }}
+                onBlur={() => setTimeout(() => setKeyboardStyle({}), 200)}
                 placeholder="Escribe tu pregunta..."
                 className="flex-1 bg-muted text-foreground text-sm rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60"
                 disabled={isLoading}
