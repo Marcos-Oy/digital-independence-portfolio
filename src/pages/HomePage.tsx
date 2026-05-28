@@ -8,101 +8,39 @@ import ChatBot from "@/components/ChatBot";
 import WelcomeModal from "@/components/WelcomeModal";
 import ReviewsSection from "@/components/ReviewsSection";
 import logoFull from "@/assets/logo-full.png";
-import fase1 from "@/assets/fase1.png";
-import fase2 from "@/assets/fase2.png";
-import fase3 from "@/assets/fase3.png";
-import fase4 from "@/assets/fase4.png";
-import fase5 from "@/assets/fase5.png";
-import MentorshipApproachSection from "@/components/MentorshipApproachSection";
-import { CheckCircle2, Clock, Users, Shield, BarChart3, Brain, Server, ChevronRight, Instagram, Facebook, Mail, UserCheck, MessageCircle, Briefcase, Globe } from "lucide-react";
-import bannerServiciosExtra from "@/assets/banner-servicios-extra.png";
 import bannerHero from "@/assets/banner-hero.png";
 import bannerPlan360 from "@/assets/banner-plan360.png";
+import { ChevronRight, Instagram, Facebook, Mail, Clock, Shield, BarChart3 } from "lucide-react";
+import { SERVICES, AREAS } from "@/data/services";
+import { SEGMENTS } from "@/data/segments";
 
-const phases = [
-  {
-    img: fase1,
-    num: 1,
-    title: "Arquitectura TI",
-    subtitle: "Cimientos",
-    desc: "Organizamos tus cuentas, correos, archivos y accesos sobre una base clara y escalable.",
-    href: "/arquitecturati",
-    icon: Server,
-  },
-  {
-    img: fase2,
-    num: 2,
-    title: "Presencia Digital",
-    subtitle: "Visibilidad",
-    desc: "Construimos o mejoramos tu sitio web profesional y configuramos tus redes sociales de forma estratégica.",
-    href: "/presenciadigital",
-    icon: Users,
-  },
-  {
-    img: fase3,
-    num: 3,
-    title: "Ciberseguridad",
-    subtitle: "Protección",
-    desc: "Protege tus datos y clientes mediante contraseñas, prácticas seguras, backups y verificación.",
-    href: "/ciberseguridad",
-    icon: Shield,
-  },
-  {
-    img: fase4,
-    num: 4,
-    title: "Analítica Aplicada",
-    subtitle: "Decisiones",
-    desc: "Convierte tus datos en decisiones claras mediante tableros de control en tiempo real.",
-    href: "/analiticaaplicada",
-    icon: BarChart3,
-  },
-  {
-    img: fase5,
-    num: 5,
-    title: "IA y Automatización",
-    subtitle: "Escala",
-    desc: "Implementa herramientas de IA de forma segura para automatizar ventas, tareas y reportes.",
-    href: "/inteligenciaartificial",
-    icon: Brain,
-  },
-];
+const WHATSAPP = "56928362758";
+const waText = (m: string) => encodeURIComponent(m);
 
 const faqs = [
   {
-    q: "¿Para quién es este servicio?",
-    a: "Para personas, profesionales independientes y dueños de PyMEs que quieren ordenar, proteger y escalar su operación digital sin depender de terceros.",
+    q: "¿Qué hace exactamente Independencia Digital?",
+    a: "Somos una consultora tecnológica chilena. Diseñamos, construimos y dirigimos la infraestructura tecnológica de emprendedores, profesionales independientes, PyMEs, grandes empresas y organismos públicos.",
   },
   {
-    q: "¿Cómo se desarrolla la mentoría?",
-    a: "A través de una plataforma centralizada con canales por módulo, sesiones grupales semanales, sesiones 1:1 con agenda, comunicación directa por chat y llamadas con el mentor, y materiales descargables.",
+    q: "¿En cuánto tiempo veo resultados?",
+    a: "Nuestra promesa general es que durante los primeros 90 días de trabajo conjunto tu tecnología deje de ser un problema y se convierta en el motor real de tu crecimiento. Cada servicio tiene su propio factor tiempo detallado en su página.",
   },
   {
-    q: "¿Cuándo veré resultados?",
-    a: "Los resultados tangibles comienzan a verse a partir de los primeros 90 días de implementación constante. Los primeros tres meses son de cimentación, automatización y validación del embudo.",
+    q: "¿Atienden a personas naturales y empresas?",
+    a: "Sí. Trabajamos con personas naturales (emprendedores, profesionales independientes) y personas jurídicas (PyMEs, grandes empresas y sector público vía Mercado Público).",
   },
   {
-    q: "¿Las fases son obligatorias o puedo elegir?",
-    a: "Las fases son independientes y puedes contratarlas por separado. El orden propuesto es solo una recomendación para comenzar con cimientos sólidos y escalar paso a paso.",
+    q: "¿Necesito contratar todos los servicios?",
+    a: "No. Cada servicio es independiente y se contrata por separado. En el primer diagnóstico identificamos qué necesitas y proponemos una hoja de ruta priorizada.",
   },
   {
-    q: "¿Cuánto dura cada fase?",
-    a: "La duración es variable y personalizada, según el avance del discípulo y la complejidad técnica de su negocio. Los contenidos se habilitan por etapas y cada módulo construye la base del siguiente.",
+    q: "¿Trabajan con Mercado Público?",
+    a: "Sí. Estamos constituidos como SpA con registro INAPI activo y participamos en licitaciones de ChileCompra para ciberseguridad, formación, infraestructura TI y transformación digital.",
   },
   {
-    q: "¿Necesito conocimientos técnicos previos?",
-    a: "No. La mentoría es paso a paso y está diseñada para que cualquier persona pueda implementar lo aprendido, con validación del mentor en cada etapa.",
-  },
-  {
-    q: "¿Cómo es el soporte durante la mentoría?",
-    a: "Las dudas generales se canalizan en la plataforma. Las sesiones 1:1 se reservan para temas relevantes (revisión, decisiones, desbloqueo técnico). Se recomienda avanzar en cada módulo antes de solicitar ayuda.",
-  },
-  {
-    q: "¿Qué herramientas se usan?",
-    a: "Usamos herramientas accesibles y prácticas como Google Workspace, Microsoft 365, Cloudflare, WordPress, Canva, Power BI, n8n, ChatGPT y Lovable, adaptadas a profesionales y PyMEs.",
-  },
-  {
-    q: "¿El servicio es solo para Chile?",
-    a: "Actualmente nuestros servicios están enfocados en el mercado chileno, con herramientas y estrategias adaptadas al contexto local.",
+    q: "¿Cómo es el primer contacto?",
+    a: "Agendas un diagnóstico inicial por WhatsApp o correo. Te entendemos, revisamos tu situación actual y te proponemos los servicios que tienen sentido para tu caso, sin compromiso.",
   },
 ];
 
@@ -113,91 +51,195 @@ const HomePage = () => {
 
       {/* Hero */}
       <section className="relative gradient-hero pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-        >
-          <img
-            src={bannerHero}
-            alt=""
-            className="w-full h-full object-cover opacity-70 dark:opacity-55"
-          />
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+          <img src={bannerHero} alt="" className="w-full h-full object-cover opacity-70 dark:opacity-55" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/30 to-background/70" />
         </div>
         <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
           <img src={logoFull} alt="Independencia Digital" className="h-20 md:h-28 mb-8 animate-fade-in" />
-          <h1 className="font-heading font-black text-3xl md:text-5xl lg:text-6xl leading-tight max-w-4xl mb-6 animate-fade-in-up text-foreground">
-            Entrenamiento con Mentorías Tecnológicas{" "}
-            <span className="text-gradient-brand">Profesionales</span>
+          <p className="text-xs md:text-sm font-semibold uppercase tracking-widest text-secondary mb-4 font-heading">
+            Consultora Tecnológica · Chile
+          </p>
+          <h1 className="font-heading font-black text-3xl md:text-5xl lg:text-6xl leading-tight max-w-5xl mb-6 animate-fade-in-up text-foreground">
+            Diseñamos, construimos y dirigimos tu{" "}
+            <span className="text-gradient-brand">infraestructura tecnológica</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
-            Ayudamos a personas, profesionales independientes y PyMEs a crear, proteger y optimizar
-            su ecosistema digital con un programa práctico de 5 fases.
+          <p
+            className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-8 animate-fade-in-up"
+            style={{ animationDelay: "0.15s" }}
+          >
+            Desde arquitectura TI y desarrollo de software hasta ciberseguridad e inteligencia artificial, para
+            que durante los primeros <strong className="text-foreground">90 días</strong> de trabajo conjunto
+            tu tecnología deje de ser un problema y se convierta en el motor real de tu crecimiento.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
             <a
-              href="https://independencia-digital.systeme.io/registro"
+              href={`https://wa.me/${WHATSAPP}?text=${waText("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="gradient-brand text-primary-foreground font-heading font-bold text-base px-8 py-4 rounded-lg shadow-brand hover:opacity-90 transition-opacity"
             >
-              Quiero Mi Independencia Digital
+              Agendar diagnóstico gratis
             </a>
             <Link
-              to="/#servicios"
-              onClick={() => {
-                setTimeout(() => {
-                  document.getElementById("servicios")?.scrollIntoView({ behavior: "smooth" });
-                }, 100);
-              }}
+              to="/servicios"
               className="border border-border bg-card text-foreground font-heading font-semibold text-base px-8 py-4 rounded-lg hover:bg-muted transition-colors"
             >
-              Conocer Servicios
+              Ver servicios
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ¿Qué es Independencia Digital? */}
-      <section id="servicios" className="py-20 md:py-28 bg-background">
+      {/* Sobre nosotros (consultora TI) */}
+      <section id="quienes-somos" className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-12">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3 font-heading">
-              Nuestro Servicio
+              Quiénes somos
             </p>
             <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-6">
-              ¿Qué es Independencia Digital?
+              Tu Director de Tecnología externo
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-              Somos una consultora de <strong className="text-foreground">mentorías tecnológicas profesionales</strong> que
-              ayuda a personas, profesionales independientes y dueños de PyMEs a contar con una estructura digital
-              clara, eficiente y alineada a sus objetivos. Nuestro <strong className="text-foreground">Plan 360</strong> de
-              5 fases entrega resultados visibles a partir de los <strong className="text-foreground">primeros 90 días</strong> de
-              implementación constante, eliminando el caos digital y logrando autonomía total sin depender de nadie externo.
+              Independencia Digital SpA es una consultora tecnológica chilena. Atendemos personas naturales y
+              jurídicas, incluyendo el sector público mediante licitaciones en Mercado Público. Operamos desde
+              Chile con visión de expansión latinoamericana.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
-              <Users className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">Sesiones Grupales</h3>
-              <p className="text-sm text-muted-foreground">Aprende junto a otros profesionales y PyMEs</p>
+          <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="bg-card border border-border rounded-xl p-6 shadow-card text-center">
+              <Clock className="w-8 h-8 text-primary mx-auto mb-3" />
+              <h3 className="font-heading font-bold text-foreground mb-2">Promesa 90 días</h3>
+              <p className="text-sm text-muted-foreground">Tu tecnología deja de ser un problema</p>
             </div>
-            <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
-              <UserCheck className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">Mentoría 1:1</h3>
-              <p className="text-sm text-muted-foreground">Acompañamiento personalizado paso a paso</p>
-            </div>
-            <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
-              <MessageCircle className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">Chat y Llamadas</h3>
-              <p className="text-sm text-muted-foreground">Soporte continuo cuando lo necesites</p>
-            </div>
-            <div className="bg-card rounded-xl p-6 border border-border shadow-card text-center">
+            <div className="bg-card border border-border rounded-xl p-6 shadow-card text-center">
               <Shield className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-heading font-bold text-foreground mb-2">Autonomía Total</h3>
-              <p className="text-sm text-muted-foreground">Sin depender de técnicos externos</p>
+              <h3 className="font-heading font-bold text-foreground mb-2">SpA + INAPI</h3>
+              <p className="text-sm text-muted-foreground">Sociedad formal y marca registrada</p>
             </div>
+            <div className="bg-card border border-border rounded-xl p-6 shadow-card text-center">
+              <BarChart3 className="w-8 h-8 text-primary mx-auto mb-3" />
+              <h3 className="font-heading font-bold text-foreground mb-2">7 servicios · 5 áreas</h3>
+              <p className="text-sm text-muted-foreground">Portafolio integral de consultoría</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Segmentos */}
+      <section id="segmentos" className="py-20 md:py-28 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3 font-heading">
+              A quién servimos
+            </p>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+              Cuatro segmentos, un mismo método
+            </h2>
+            <p className="text-muted-foreground">
+              Adaptamos lenguaje, alcance y entregables según el tipo de cliente.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+            {SEGMENTS.map((s) => {
+              const Icon = s.icon;
+              return (
+                <Link
+                  key={s.id}
+                  to={`/segmentos/${s.slug}`}
+                  className="bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                >
+                  <div className="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-foreground mb-1">{s.shortTitle}</h3>
+                  <p className="text-xs text-secondary font-semibold mb-3">{s.audience}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{s.description}</p>
+                  <div className="flex items-center gap-1 text-primary text-sm font-medium">
+                    Ver segmento <ChevronRight className="w-4 h-4" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Áreas y Servicios */}
+      <section id="servicios" className="relative py-20 md:py-28 bg-background overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-[420px] md:h-[480px] pointer-events-none"
+        >
+          <img src={bannerPlan360} alt="" className="w-full h-full object-cover opacity-50 dark:opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
+        </div>
+        <div className="relative container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3 font-heading">
+              Portafolio
+            </p>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+              Cinco áreas de servicio
+            </h2>
+            <p className="text-foreground/80">
+              Cada área agrupa servicios contratables por separado. Elige por lo que necesitas hoy.
+            </p>
+          </div>
+
+          <div className="space-y-12 max-w-6xl mx-auto">
+            {AREAS.map((area, i) => {
+              const list = SERVICES.filter((s) => s.area === area.id);
+              return (
+                <div key={area.id}>
+                  <div className="mb-6">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1 font-heading">
+                      Área {i + 1}
+                    </p>
+                    <h3 className="font-heading font-bold text-xl md:text-2xl text-foreground mb-1">
+                      {area.label}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{area.desc}</p>
+                  </div>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {list.map((s) => {
+                      const Icon = s.icon;
+                      return (
+                        <Link
+                          key={s.slug}
+                          to={`/servicios/${s.slug}`}
+                          className="bg-card border border-border rounded-2xl p-5 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                        >
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-10 h-10 rounded-lg gradient-brand flex items-center justify-center shrink-0">
+                              <Icon className="w-5 h-5 text-primary-foreground" />
+                            </div>
+                            <h4 className="font-heading font-bold text-base text-foreground">{s.title}</h4>
+                          </div>
+                          <p className="text-sm text-muted-foreground leading-relaxed mb-3 flex-1">
+                            {s.summary}
+                          </p>
+                          <div className="flex items-center gap-1 text-primary text-sm font-medium">
+                            Ver servicio <ChevronRight className="w-4 h-4" />
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/servicios"
+              className="inline-flex gradient-brand text-primary-foreground font-heading font-semibold px-6 py-3 rounded-lg shadow-brand hover:opacity-90 transition-opacity"
+            >
+              Ver portafolio completo →
+            </Link>
           </div>
         </div>
       </section>
@@ -205,185 +247,8 @@ const HomePage = () => {
       {/* Tecnologías */}
       <SafeTechLogosCarousel />
 
-      {/* Metodología - Las 5 Fases */}
-      <section id="metodologia" className="relative py-20 md:py-28 bg-muted overflow-hidden">
-        {/* Banner background detrás del título */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-[460px] md:h-[520px] pointer-events-none"
-        >
-          <img
-            src={bannerPlan360}
-            alt=""
-            className="w-full h-full object-cover opacity-70 dark:opacity-55"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-muted/60 to-muted" />
-        </div>
-        <div className="relative container mx-auto px-4">
-          <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3 font-heading drop-shadow-sm">
-              Plan 360
-            </p>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4 drop-shadow-sm">
-              Las 5 Fases de tu Independencia Digital
-            </h2>
-            <p className="text-foreground/90 max-w-2xl mx-auto">
-              Cada fase es <strong className="text-foreground">independiente</strong> y puedes contratarlas por separado.
-              El orden que proponemos es solo una <strong className="text-foreground">recomendación</strong> para comenzar
-              con cimientos sólidos y escalar digitalmente paso a paso.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {phases.slice(0, 3).map((phase) => (
-              <Link
-                key={phase.title}
-                to={phase.href}
-                className="relative bg-card rounded-2xl p-6 border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group block"
-              >
-                <span className="absolute -top-3 left-6 gradient-brand text-primary-foreground text-xs font-bold px-3 py-1 rounded-full font-heading shadow-brand">
-                  Fase {phase.num}
-                </span>
-                <div className="flex justify-center mt-4 mb-5">
-                  <img src={phase.img} alt={phase.title} className="h-20 md:h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-                </div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-1 text-center">{phase.title}</h3>
-                <p className="text-xs text-secondary font-semibold text-center mb-2">{phase.subtitle}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed text-center mb-4">{phase.desc}</p>
-                <div className="flex items-center justify-center gap-1 text-primary text-sm font-medium">
-                  Ver más <ChevronRight className="w-4 h-4" />
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto mt-6">
-            {phases.slice(3).map((phase) => (
-              <Link
-                key={phase.title}
-                to={phase.href}
-                className="relative bg-card rounded-2xl p-6 border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group block w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
-              >
-                <span className="absolute -top-3 left-6 gradient-brand text-primary-foreground text-xs font-bold px-3 py-1 rounded-full font-heading shadow-brand">
-                  Fase {phase.num}
-                </span>
-                <div className="flex justify-center mt-4 mb-5">
-                  <img src={phase.img} alt={phase.title} className="h-20 md:h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-                </div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-1 text-center">{phase.title}</h3>
-                <p className="text-xs text-secondary font-semibold text-center mb-2">{phase.subtitle}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed text-center mb-4">{phase.desc}</p>
-                <div className="flex items-center justify-center gap-1 text-primary text-sm font-medium">
-                  Ver más <ChevronRight className="w-4 h-4" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sobre Nosotros - la marca */}
+      {/* Sobre la marca */}
       <AboutBrandSection />
-
-      {/* Enfoque de la Mentoría */}
-      <MentorshipApproachSection />
-
-      {/* Servicios adicionales: Asesorías y Agencia (van después del enfoque por ser complementarios) */}
-      <section id="servicios-extra" className="relative py-20 md:py-28 bg-muted overflow-hidden">
-        {/* Banner background detrás del título */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-[420px] md:h-[480px] pointer-events-none"
-        >
-          <img
-            src={bannerServiciosExtra}
-            alt=""
-            className="w-full h-full object-cover opacity-65 dark:opacity-55"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/60 to-muted" />
-        </div>
-
-        <div className="relative container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3 font-heading">
-              Más allá de la mentoría
-            </p>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4 drop-shadow-sm">
-              Asesorías y Agencia Digital
-            </h2>
-            <p className="text-foreground/90 leading-relaxed text-base md:text-lg">
-              Si no buscas un proceso completo de mentoría, también ofrecemos servicios puntuales para resolver
-              necesidades específicas de tu organización o crear tu presencia online llave en mano.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <div className="bg-card/95 backdrop-blur-sm rounded-2xl p-8 border border-border shadow-card hover:shadow-card-hover transition-all duration-300">
-              <div className="w-14 h-14 rounded-xl gradient-brand flex items-center justify-center mb-5">
-                <Briefcase className="w-7 h-7 text-primary-foreground" />
-              </div>
-              <h3 className="font-heading font-bold text-xl text-foreground mb-2">Asesorías y Consultorías</h3>
-              <p className="text-sm text-secondary font-semibold mb-3">Para organizaciones, municipios y empresas</p>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-                Sesiones de asesoría puntual y consultorías a medida para resolver desafíos digitales concretos
-                (auditorías, planes de transformación, capacitaciones in-company y sesiones estratégicas).
-              </p>
-              <ul className="space-y-2 mb-6">
-                {[
-                  "Auditoría digital y diagnóstico inicial",
-                  "Planes de transformación digital",
-                  "Ciberseguridad: gestión, estrategia y capacitación",
-                  "Capacitaciones in-company",
-                  "Sesiones estratégicas por proyecto",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-sm text-foreground">
-                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="#contacto"
-                className="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:gap-2 transition-all"
-              >
-                Solicitar asesoría <ChevronRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            <div className="bg-card/95 backdrop-blur-sm rounded-2xl p-8 border border-border shadow-card hover:shadow-card-hover transition-all duration-300">
-              <div className="w-14 h-14 rounded-xl gradient-brand flex items-center justify-center mb-5">
-                <Globe className="w-7 h-7 text-primary-foreground" />
-              </div>
-              <h3 className="font-heading font-bold text-xl text-foreground mb-2">Agencia Digital</h3>
-              <p className="text-sm text-secondary font-semibold mb-3">Tu sitio web llave en mano, con dominio propio</p>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-                ¿Solo quieres tu página web y listo? También lo hacemos. Diseñamos y desarrollamos tu sitio,
-                portafolio o landing page con tu propio dominio y posicionamiento SEO para que aparezcas en Google
-                y conviertas visitas en clientes.
-              </p>
-              <ul className="space-y-2 mb-6">
-                {[
-                  "Sitios web corporativos e institucionales",
-                  "Portafolios web para profesionales",
-                  "Landing pages de alta conversión",
-                  "Registro y configuración de dominio propio",
-                  "Posicionamiento SEO técnico y de contenidos",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-sm text-foreground">
-                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="#contacto"
-                className="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:gap-2 transition-all"
-              >
-                Cotizar mi sitio web <ChevronRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Reseñas */}
       <ReviewsSection />
@@ -415,37 +280,50 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CTA / Contacto */}
+      {/* Contacto */}
       <section id="contacto" className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto gradient-brand rounded-2xl p-6 sm:p-10 md:p-16 text-center shadow-brand overflow-hidden">
             <h2 className="font-heading font-bold text-2xl md:text-4xl text-primary-foreground mb-4">
-              ¿Listo para tu Independencia Digital?
+              ¿Hablamos de tu tecnología?
             </h2>
             <p className="text-primary-foreground/80 mb-8 max-w-lg mx-auto">
-              Contáctanos por cualquiera de estos canales.
+              Agenda un diagnóstico inicial sin costo. Te respondemos personalmente.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-6 mb-8">
-              <a href="https://www.instagram.com/_marcos.oyarzo" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
+              <a
+                href="https://www.instagram.com/_marcos.oyarzo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              >
                 <Instagram className="w-5 h-5" />
                 <span className="font-medium">_marcos.oyarzo</span>
               </a>
-              <a href="https://www.facebook.com/IndependenciaDigital.cl" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
+              <a
+                href="https://www.facebook.com/IndependenciaDigital.cl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              >
                 <Facebook className="w-5 h-5" />
                 <span className="font-medium">IndependenciaDigital.cl</span>
               </a>
-              <a href="mailto:contacto@independenciadigital.cl" className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors text-sm sm:text-base break-all sm:break-normal">
+              <a
+                href="mailto:contacto@independenciadigital.cl"
+                className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors text-sm sm:text-base break-all sm:break-normal"
+              >
                 <Mail className="w-5 h-5" />
                 <span className="font-medium">contacto@independenciadigital.cl</span>
               </a>
             </div>
             <a
-              href="https://independencia-digital.systeme.io/registro"
+              href={`https://wa.me/${WHATSAPP}?text=${waText("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex bg-card text-foreground font-heading font-bold text-base px-8 py-4 rounded-lg shadow-card hover:shadow-card-hover transition-shadow"
             >
-              Quiero Mi Independencia Digital →
+              Agendar diagnóstico por WhatsApp →
             </a>
           </div>
         </div>
