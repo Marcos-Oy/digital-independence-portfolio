@@ -253,8 +253,15 @@ const ChatBot = () => {
     setInput("");
     setIsLoading(true);
 
-    const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
-    const AUTH = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    // Fallbacks hardcodeados: en Cloudflare Pages el .env no existe y las
+    // VITE_* quedan undefined. La anon key es publishable (segura en cliente).
+    const SUPA_URL =
+      import.meta.env.VITE_SUPABASE_URL ||
+      "https://rixyvhofpietdsomjbwj.supabase.co";
+    const AUTH =
+      import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpeHl2aG9mcGlldGRzb21qYndqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNjI3OTEsImV4cCI6MjA5MDgzODc5MX0.4g-ythW7dMO3wlyZPBPwSHvCDmgLqeXpzBbfn1IZJ98";
+    const CHAT_URL = `${SUPA_URL}/functions/v1/chat`;
 
     try {
       const resp = await fetch(CHAT_URL, {
@@ -317,12 +324,11 @@ const ChatBot = () => {
       if (!assistantText) throw new Error("Empty response");
       setChips([]);
     } catch (err) {
-      console.error("Chat IA falló, usando fallback local:", err);
-      // Fallback a respuestas locales si la IA falla
-      const { text, chips: newChips } = getBotResponse(trimmed);
+      console.error("Chat IA falló:", err);
+      const text =
+        "Disculpa, tuve un problema para responder ahora mismo. Por favor escríbenos directo por **WhatsApp: +56 9 2836 2758** y te ayudamos al tiro.";
       setMessages((prev) => {
         const copy = [...prev];
-        // Si insertamos un assistant vacío, lo reemplazamos
         if (copy[copy.length - 1]?.role === "assistant" && !copy[copy.length - 1].content) {
           copy[copy.length - 1] = { role: "assistant", content: text };
         } else {
@@ -330,7 +336,7 @@ const ChatBot = () => {
         }
         return copy;
       });
-      setChips(newChips);
+      setChips([]);
     } finally {
       setIsLoading(false);
     }
