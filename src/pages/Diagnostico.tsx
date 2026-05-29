@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { Send, ArrowLeft } from "lucide-react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { Send, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
 import marcosImg from "@/assets/marcos.jpg";
 
@@ -40,15 +40,27 @@ const LOADING_STEPS = [
   "Listo. Iniciando conversación…",
 ];
 
+const GREETING =
+  "¡Hola! Soy **Marcos Oyarzo**, fundador de Independencia Digital. Bienvenido a tu sesión de diagnóstico gratuita. Cuéntame, ¿en qué etapa está tu negocio y qué te tiene preocupado o frenado a nivel tecnológico?";
+
+// Pausa "humana" antes de empezar a escribir (ms)
+const thinkingDelay = (text: string) =>
+  Math.min(2800, 700 + Math.min(text.length, 240) * 6 + Math.random() * 600);
+
+// Velocidad de tipeo "humana" por carácter (ms)
+const typeSpeed = () => 18 + Math.random() * 22;
+
 export default function Diagnostico() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const [booting, setBooting] = useState(true);
   const [bootStep, setBootStep] = useState(0);
   const [bootProgress, setBootProgress] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const greetedRef = useRef(false);
 
   useEffect(() => {
     if (!booting) return;
@@ -77,17 +89,52 @@ export default function Diagnostico() {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, isTyping]);
+
+  // Simula a una persona escribiendo: muestra "escribiendo…" un rato y luego
+  // tipea el texto carácter por carácter.
+  const typeAssistantMessage = useCallback(async (fullText: string) => {
+    setIsTyping(true);
+    await new Promise((r) => setTimeout(r, thinkingDelay(fullText)));
+    setIsTyping(false);
+    setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+
+    for (let i = 1; i <= fullText.length; i++) {
+      await new Promise((r) => setTimeout(r, typeSpeed()));
+      const partial = fullText.slice(0, i);
+      setMessages((prev) => {
+        const copy = [...prev];
+        const last = copy[copy.length - 1];
+        if (last?.role === "assistant") {
+          copy[copy.length - 1] = { ...last, content: partial };
+        }
+        return copy;
+      });
+      // Pausa extra al terminar oración para sentirse más humano
+      const ch = fullText[i - 1];
+      if (ch === "." || ch === "!" || ch === "?" || ch === "\n") {
+        await new Promise((r) => setTimeout(r, 180 + Math.random() * 220));
+      }
+    }
+  }, []);
+
+  // Saludo inicial del clon de Marcos al terminar el boot
+  useEffect(() => {
+    if (booting || greetedRef.current) return;
+    greetedRef.current = true;
+    typeAssistantMessage(GREETING);
+  }, [booting, typeAssistantMessage]);
 
   const sendMessage = async (text?: string) => {
     const trimmed = (text ?? input).trim();
-    if (!trimmed || isLoading) return;
+    if (!trimmed || isLoading || isTyping) return;
 
     const userMsg: Message = { role: "user", content: trimmed };
     const nextHistory = [...messages, userMsg];
     setMessages(nextHistory);
     setInput("");
     setIsLoading(true);
+    setIsTyping(true);
 
     try {
       const resp = await fetch(CHAT_URL, {
@@ -98,8 +145,8 @@ export default function Diagnostico() {
 
       if (!resp.ok || !resp.body) throw new Error(`HTTP ${resp.status}`);
 
-      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
-
+      // Acumulamos la respuesta completa primero (sin mostrarla) para luego
+      // tipearla con efecto humano.
       const reader = resp.body.getReader();
       const decoder = new TextDecoder();
       let buffer = "";
@@ -122,29 +169,25 @@ export default function Diagnostico() {
           try {
             const parsed = JSON.parse(jsonStr);
             const delta = parsed.choices?.[0]?.delta?.content as string | undefined;
-            if (delta) {
-              assistantText += delta;
-              setMessages((prev) => {
-                const copy = [...prev];
-                const last = copy[copy.length - 1];
-                if (last?.role === "assistant") {
-                  copy[copy.length - 1] = { ...last, content: assistantText };
-                }
-                return copy;
-              });
-            }
+            if (delta) assistantText += delta;
           } catch { /* skip */ }
         }
       }
-    } catch {
-      setMessages((prev) => [...prev, {
-        role: "assistant",
-        content: "Tuve un problema al conectar. Escríbeme directamente al WhatsApp: +56 9 2836 2758.",
-      }]);
-    } finally {
+
       setIsLoading(false);
+      setIsTyping(false);
+      if (assistantText) {
+        await typeAssistantMessage(assistantText);
+      }
+    } catch {
+      setIsLoading(false);
+      setIsTyping(false);
+      await typeAssistantMessage(
+        "Disculpa, tuve un problema para conectar. Vuelve a escribirme en un momento o usa el botón de WhatsApp del sitio."
+      );
     }
   };
+
 
   if (booting) {
     return (
