@@ -146,6 +146,60 @@ export default function Diagnostico() {
     }
   };
 
+  if (booting) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[100dvh] bg-background px-6 overflow-hidden relative">
+        {/* Fondo animado */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-primary/30 blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full bg-accent/30 blur-3xl animate-pulse [animation-delay:600ms]" />
+        </div>
+
+        <div className="relative z-10 flex flex-col items-center text-center max-w-sm w-full animate-fade-in">
+          {/* Avatar con anillos */}
+          <div className="relative mb-6">
+            <span className="absolute inset-0 -m-3 rounded-full border-2 border-primary/40 animate-ping" />
+            <span className="absolute inset-0 -m-1 rounded-full border border-primary/60 animate-pulse" />
+            <img
+              src={marcosImg}
+              alt="Marcos Oyarzo"
+              className="relative w-24 h-24 rounded-full object-cover object-top shadow-xl ring-4 ring-background"
+            />
+            <span className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-background animate-pulse" />
+          </div>
+
+          <h2 className="font-heading font-bold text-xl text-foreground mb-1">
+            Cargando sesión privada
+          </h2>
+          <p className="text-sm text-muted-foreground mb-6">
+            Preparando tu diagnóstico con <strong>Marcos Oyarzo</strong>
+          </p>
+
+          {/* Barra de progreso */}
+          <div className="w-full h-1.5 rounded-full bg-muted overflow-hidden mb-4">
+            <div
+              className="h-full gradient-brand transition-[width] duration-200 ease-out"
+              style={{ width: `${bootProgress}%` }}
+            />
+          </div>
+
+          {/* Paso actual */}
+          <div className="h-6 flex items-center justify-center gap-2">
+            <span className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:0ms]" />
+            <span className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:150ms]" />
+            <span className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:300ms]" />
+            <span
+              key={bootStep}
+              className="text-xs text-muted-foreground font-medium ml-2 animate-fade-in"
+            >
+              {LOADING_STEPS[bootStep]}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col h-[100dvh] bg-background">
       {/* Header */}
