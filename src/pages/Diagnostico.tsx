@@ -247,9 +247,6 @@ export default function Diagnostico() {
     <div className="flex flex-col h-[100dvh] bg-background">
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-border bg-card shrink-0 shadow-sm">
-        <Link to="/" className="text-muted-foreground hover:text-foreground mr-1">
-          <ArrowLeft className="w-5 h-5" />
-        </Link>
         <div className="relative">
           <img
             src={marcosImg}
@@ -260,16 +257,18 @@ export default function Diagnostico() {
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-heading font-semibold text-sm text-foreground leading-tight">Marcos Oyarzo</p>
-          <p className="text-xs text-green-500 font-medium">En línea · CTO Externo — Independencia Digital</p>
+          <p className="text-xs text-green-500 font-medium">
+            {isTyping ? "escribiendo…" : "En línea · CTO Externo — Independencia Digital"}
+          </p>
         </div>
-        <a
-          href="https://wa.me/56928362758"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-primary font-medium border border-primary/30 rounded-full px-3 py-1 hover:bg-primary/10 transition-colors"
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground font-medium border border-border rounded-full px-3 py-1 hover:bg-muted hover:text-foreground transition-colors"
+          aria-label="Salir del diagnóstico"
         >
-          WhatsApp
-        </a>
+          <LogOut className="w-3.5 h-3.5" />
+          Salir
+        </Link>
       </div>
 
       {/* Messages */}
@@ -303,14 +302,14 @@ export default function Diagnostico() {
           </div>
         ))}
 
-        {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
-          <div className="flex items-end gap-2 justify-start">
+        {isTyping && (
+          <div className="flex items-end gap-2 justify-start animate-fade-in">
             <img src={marcosImg} alt="Marcos" className="w-7 h-7 rounded-full object-cover object-top shrink-0" />
             <div className="bg-card border border-border rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm">
               <div className="flex gap-1">
-                <span className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-bounce [animation-delay:0ms]" />
-                <span className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-bounce [animation-delay:150ms]" />
-                <span className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-bounce [animation-delay:300ms]" />
+                <span className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce [animation-delay:0ms]" />
+                <span className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce [animation-delay:150ms]" />
+                <span className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce [animation-delay:300ms]" />
               </div>
             </div>
           </div>
