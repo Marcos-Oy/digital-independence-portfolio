@@ -301,11 +301,28 @@ const ChatBot = () => {
   }, [open]);
 
   const applyKb = () => {
-    // El reposicionamiento lo hace visualViewport; aquí solo aseguramos
-    // que el input quede a la vista tras un breve delay (iOS).
+    if (window.innerWidth >= 768) return;
+
+    // Detección de navegadores in-app (Instagram, Facebook, TikTok, LinkedIn)
+    const ua = navigator.userAgent || "";
+    const isInApp = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|Messenger|Line|MicroMessenger|TikTok|LinkedInApp/i.test(ua);
+
+    // Fallback: si visualViewport no reacciona en 500ms, asumimos teclado abierto
+    // y empujamos el chat con un estimado (~42% del alto). Necesario para
+    // Instagram in-app browser, donde visualViewport no dispara resize.
     setTimeout(() => {
+      const vv = window.visualViewport;
+      const kbDetected = vv && (window.innerHeight - vv.height - vv.offsetTop) > 80;
+      if (!kbDetected) {
+        const h0 = window.innerHeight;
+        const est = Math.round(h0 * (isInApp ? 0.45 : 0.4));
+        setKbStyle({
+          bottom: `${est + 16}px`,
+          maxHeight: `${h0 - est - 32}px`,
+        });
+      }
       inputRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-    }, 350);
+    }, 500);
   };
 
   const clearKb = () => {
