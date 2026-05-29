@@ -64,27 +64,49 @@ export default function Diagnostico() {
   const [bootProgress, setBootProgress] = useState(0);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [closingSession, setClosingSession] = useState(false);
-  const [viewportH, setViewportH] = useState<number | null>(null);
+  const [viewportFrame, setViewportFrame] = useState({ height: 0, top: 0 });
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const greetedRef = useRef(false);
   const exitingRef = useRef(false);
+  const inputFocusedRef = useRef(false);
 
-  // Ajustar altura al teclado virtual en móviles. El navegador in-app de
-  // Instagram/Facebook no dispara visualViewport de forma fiable, así que
-  // también escuchamos window.resize y usamos el mínimo.
+  // Ajustar la sesión al teclado virtual en móviles. Instagram/Facebook WebView
+  // a veces no informa bien el teclado, por eso pre-reducimos el alto al enfocar.
   useEffect(() => {
+    const isTouchMobile = () =>
+      window.matchMedia("(max-width: 768px) and (pointer: coarse)").matches;
+
     const update = () => {
-      const vv = window.visualViewport?.height ?? window.innerHeight;
-      const ih = window.innerHeight;
-      setViewportH(Math.min(vv, ih));
+      const vv = window.visualViewport;
+      const innerHeight = window.innerHeight;
+      const rawHeight = vv?.height ?? innerHeight;
+      const top = vv?.offsetTop ?? 0;
+      const keyboardGap = innerHeight - rawHeight - top;
+      const keyboardDetected = keyboardGap > 80 || rawHeight < innerHeight - 80;
+      const fallbackKeyboard = Math.min(360, Math.max(260, innerHeight * 0.42));
+      const visibleHeight =
+        inputFocusedRef.current && isTouchMobile() && !keyboardDetected
+          ? innerHeight - fallbackKeyboard
+          : Math.min(rawHeight, innerHeight);
+
+      setViewportFrame({
+        height: Math.max(320, Math.round(visibleHeight)),
+        top: Math.max(0, Math.round(top)),
+      });
     };
+
     update();
     window.addEventListener("resize", update);
     window.addEventListener("orientationchange", update);
     window.visualViewport?.addEventListener("resize", update);
     window.visualViewport?.addEventListener("scroll", update);
+    const focusedPoll = window.setInterval(() => {
+      if (inputFocusedRef.current) update();
+    }, 120);
+
     return () => {
+      window.clearInterval(focusedPoll);
       window.removeEventListener("resize", update);
       window.removeEventListener("orientationchange", update);
       window.visualViewport?.removeEventListener("resize", update);
@@ -93,15 +115,23 @@ export default function Diagnostico() {
   }, []);
 
   const scrollInputIntoView = () => {
-    // Doble intento: el teclado de Instagram tarda en aparecer.
-    setTimeout(() => {
+    inputFocusedRef.current = true;
+    // Varios intentos: Instagram abre el teclado tarde y sin eventos fiables.
+    [0, 180, 380, 750, 1200].forEach((delay) => window.setTimeout(() => {
       inputRef.current?.scrollIntoView({ block: "end", behavior: "smooth" });
       if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }, 300);
-    setTimeout(() => {
-      inputRef.current?.scrollIntoView({ block: "end", behavior: "smooth" });
-      if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }, 700);
+    }, delay));
+  };
+
+  const handleInputBlur = () => {
+    inputFocusedRef.current = false;
+    window.setTimeout(() => {
+      const vv = window.visualViewport;
+      setViewportFrame({
+        height: Math.round(Math.min(vv?.height ?? window.innerHeight, window.innerHeight)),
+        top: Math.max(0, Math.round(vv?.offsetTop ?? 0)),
+      });
+    }, 120);
   };
 
   // Interceptar el botón "atrás" del navegador para pedir confirmación.
@@ -292,8 +322,11 @@ export default function Diagnostico() {
 
   return (
     <div
-      className="flex flex-col bg-background"
-      style={{ height: viewportH ? `${viewportH}px` : "100dvh" }}
+      className="fixed inset-x-0 top-0 flex flex-col bg-background overflow-hidden overscroll-contain"
+      style={{
+        height: viewportFrame.height ? `${viewportFrame.height}px` : "100dvh",
+        top: viewportFrame.top ? `${viewportFrame.top}px` : 0,
+      }}
     >
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-border bg-card shrink-0 shadow-sm">
@@ -378,6 +411,7 @@ export default function Diagnostico() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onFocus={scrollInputIntoView}
+            onBlur={handleInputBlur}
             placeholder="Escribe tu mensaje..."
             disabled={isLoading || isTyping}
             className="flex-1 min-w-0 bg-muted text-foreground text-base sm:text-sm rounded-full px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60 disabled:opacity-60"
