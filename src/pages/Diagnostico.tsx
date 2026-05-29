@@ -327,12 +327,12 @@ export default function Diagnostico() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Escribe tu mensaje..."
-            disabled={isLoading}
+            disabled={isLoading || isTyping}
             className="flex-1 bg-muted text-foreground text-sm rounded-full px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60 disabled:opacity-60"
           />
           <button
             type="submit"
-            disabled={!input.trim() || isLoading}
+            disabled={!input.trim() || isLoading || isTyping}
             className="w-10 h-10 rounded-full gradient-brand flex items-center justify-center disabled:opacity-40 hover:opacity-90 transition-opacity shrink-0"
           >
             <Send className="w-4 h-4 text-primary-foreground" />
