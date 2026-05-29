@@ -5,7 +5,7 @@ import marcosImg from "@/assets/marcos.jpg";
 
 const SUPA_URL =
   import.meta.env.VITE_SUPABASE_URL || "https://rixyvhofpietdsomjbwj.supabase.co";
-const CHAT_URL = `${SUPA_URL}/functions/v1/diagnostico`;
+const CHAT_URL = `${SUPA_URL}/functions/v1/chat`;
 
 type Message = { role: "user" | "assistant"; content: string };
 
