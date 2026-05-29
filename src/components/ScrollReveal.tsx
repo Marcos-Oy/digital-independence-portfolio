@@ -30,10 +30,11 @@ const ScrollReveal = ({ children, className = "", delay = 0, variant = "up", as:
 
   const variantClass = { up: "sr", left: "sr-left", scale: "sr-scale" }[variant];
 
+  const TagAny = Tag as any;
   return (
-    <Tag ref={ref as React.RefObject<HTMLDivElement>} className={`${variantClass} ${className}`}>
+    <TagAny ref={ref} className={`${variantClass} ${className}`}>
       {children}
-    </Tag>
+    </TagAny>
   );
 };
 
