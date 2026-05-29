@@ -51,9 +51,83 @@ considerar cambiar de modelo (ej. de `google/gemini-3-flash-preview` a
 
 ---
 
+## ⚡ Regla #2 — Checklist algorítmica para crear un chatbot nuevo (no te saltes ningún paso)
+
+> **Error real ya cometido**: se creó la edge function `diagnostico` con su propio
+> `SYSTEM_PROMPT`, pero el frontend (`src/pages/Diagnostico.tsx`) seguía
+> apuntando a `/functions/v1/chat`. Resultado: la página nueva mostraba al
+> bot viejo. **Causa raíz**: faltó el paso 4 (cambiar la URL en el frontend).
+> Para que esto no vuelva a pasar, sigue **literalmente** estos pasos en orden:
+
+### Pasos (no saltarse ninguno)
+
+```
+PASO 1 — Elegir un nombre único para el bot
+   • Ejemplo: "diagnostico", "clientes-chat", "soporte"
+   • Debe ser kebab-case, sin espacios, sin acentos.
+   • Este nombre se va a repetir en 3 lugares (recuérdalo).
+
+PASO 2 — Crear la edge function
+   • Crear archivo: supabase/functions/<NOMBRE>/index.ts
+   • Copiar el esqueleto de §4.1 de este documento.
+   • Editar SOLO la constante SYSTEM_PROMPT (la personalidad del bot).
+   • NO tocar nada más del esqueleto.
+
+PASO 3 — Crear el componente o página del frontend
+   • Si es una página completa: src/pages/<Nombre>.tsx
+   • Si es un widget flotante: src/components/<Nombre>.tsx
+   • Copiar la lógica de fetch + parser SSE de src/components/ChatBot.tsx
+     o de src/pages/Diagnostico.tsx (ambos sirven de referencia).
+
+PASO 4 — ⚠️ CONECTAR EL FRONTEND CON LA EDGE FUNCTION ⚠️
+   • Dentro del componente/página del PASO 3, ubicar la línea:
+        const CHAT_URL = `${SUPA_URL}/functions/v1/XXX`;
+   • Reemplazar XXX por el NOMBRE EXACTO del PASO 1.
+   • Si no haces esto, el frontend va a hablar con el bot equivocado.
+   • Este es EL paso que más se olvida. Verifícalo dos veces.
+
+PASO 5 — Montar la página/componente en el router o en App.tsx
+   • Si es página: agregar <Route path="/<ruta>" element={<Nombre />} />
+     en src/App.tsx.
+   • Si es widget global: agregar <Nombre /> dentro de <BrowserRouter>
+     en src/App.tsx.
+
+PASO 6 — Verificar end-to-end (obligatorio)
+   • Abrir la ruta en el preview.
+   • Mandar un mensaje cualquiera al bot.
+   • Confirmar que la respuesta refleja el SYSTEM_PROMPT NUEVO
+     (no el del bot viejo).
+   • Si responde con la personalidad equivocada → volver al PASO 4.
+   • Si da error de red → revisar logs con
+     supabase--edge_function_logs { function_name: "<NOMBRE>" }.
+
+PASO 7 — (Opcional) Persistencia
+   • Solo si el bot necesita guardar datos: crear tabla con migración,
+     GRANTs y RLS según §5.
+   • Solo si es para staff/admin: implementar auth + user_roles (§5.3).
+```
+
+### Verificación rápida — "¿Conecté bien?"
+
+Buscar en el frontend del bot la línea con `/functions/v1/`. El nombre
+después de esa barra **TIENE QUE COINCIDIR EXACTAMENTE** con el nombre
+de la carpeta dentro de `supabase/functions/`.
+
+```bash
+# Pista mental:
+supabase/functions/<NOMBRE>/index.ts   ←→   /functions/v1/<NOMBRE>
+                  ^^^^^^^^                                ^^^^^^^^
+                  ESTOS DOS NOMBRES SON LA MISMA PALABRA
+```
+
+Si no coinciden, el bot **nunca** va a usar tu SYSTEM_PROMPT nuevo.
+
+---
+
 
 
 ## 1. ¿Qué backend usa este proyecto?
+
 
 Este proyecto **NO** está conectado a una cuenta personal de Supabase del
 usuario (Marcos / `@github`). Usa **Lovable Cloud**, que es el backend
