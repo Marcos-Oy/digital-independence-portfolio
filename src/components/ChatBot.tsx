@@ -252,7 +252,6 @@ const ChatBot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions] = useState<string[]>(() => pickRandom(SUGGESTED_QUESTIONS, 3));
   const [chips, setChips] = useState<string[]>([]);
-  const [kbStyle, setKbStyle] = useState<React.CSSProperties>({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const autoOpenedRef = useRef(false);
@@ -260,32 +259,6 @@ const ChatBot = () => {
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, [messages]);
-
-  const handleInputFocus = () => {
-    if (window.innerWidth >= 768) return;
-    const h0 = window.innerHeight;
-    setTimeout(() => {
-      const diff = h0 - window.innerHeight;
-      if (diff <= 50) {
-        const est = Math.round(h0 * 0.42);
-        setKbStyle({ transform: `translateY(-${est}px)`, maxHeight: `${h0 - est - 96}px` });
-      }
-    }, 350);
-  };
-
-  const handleInputBlur = () => {
-    setTimeout(() => setKbStyle({}), 100);
-  };
-
-  // Cuando el transform está activo, capturamos el botón Back de Android con history
-  useEffect(() => {
-    if (Object.keys(kbStyle).length === 0) return;
-    history.pushState({ chatKb: true }, "");
-    const onPop = () => setKbStyle({});
-    window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, [kbStyle]);
-
 
   useEffect(() => {
     if (autoOpenedRef.current) return;
@@ -355,7 +328,7 @@ const ChatBot = () => {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed z-50 flex flex-col overflow-hidden animate-fade-in bg-card border border-border shadow-xl rounded-2xl bottom-24 left-4 right-4 max-h-[70vh] md:left-auto md:right-6 md:w-[360px] md:h-[500px] md:max-h-[calc(100vh-8rem)]" style={kbStyle}>
+        <div className="fixed z-50 flex flex-col overflow-hidden animate-fade-in bg-card border border-border shadow-xl rounded-2xl bottom-24 left-4 right-4 max-h-[70vh] md:left-auto md:right-6 md:w-[360px] md:h-[500px] md:max-h-[calc(100vh-8rem)]">
           {/* Header */}
           <div className="gradient-brand px-4 py-3 flex items-center gap-3 shrink-0">
             <RobotIcon className="w-6 h-6 text-primary-foreground" />
@@ -465,8 +438,6 @@ const ChatBot = () => {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Escribe tu pregunta..."
                 className="flex-1 bg-muted text-foreground text-sm rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60"
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
                 disabled={isLoading}
               />
               <button
