@@ -32,13 +32,8 @@ const SimpleMarkdown = ({ text }: { text: string }) => {
   );
 };
 
-const WELCOME: Message = {
-  role: "assistant",
-  content: "Hola, soy Marcos de Independencia Digital. ¿Con quién tengo el gusto, y en qué está trabajando tu empresa hoy?",
-};
-
 export default function Diagnostico() {
-  const [messages, setMessages] = useState<Message[]>([WELCOME]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
