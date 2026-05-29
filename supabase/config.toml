@@ -1,4 +1,0 @@
-project_id = "rixyvhofpietdsomjbwj"
-
-[functions.submit-review]
-verify_jwt = false
