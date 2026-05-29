@@ -274,16 +274,16 @@ const ChatBot = () => {
   };
 
   const handleInputBlur = () => {
-    setTimeout(() => setKbStyle({}), 150);
+    setTimeout(() => setKbStyle({}), 100);
   };
 
-  // Fallback: Instagram WebView no dispara blur cuando se cierra el teclado con el botón back
+  // Cuando el transform está activo, capturamos el botón Back de Android con history
   useEffect(() => {
     if (Object.keys(kbStyle).length === 0) return;
-    const id = setInterval(() => {
-      if (document.activeElement !== inputRef.current) setKbStyle({});
-    }, 250);
-    return () => clearInterval(id);
+    history.pushState({ chatKb: true }, "");
+    const onPop = () => setKbStyle({});
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
   }, [kbStyle]);
 
 
