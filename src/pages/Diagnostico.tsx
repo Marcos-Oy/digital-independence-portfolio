@@ -278,7 +278,10 @@ export default function Diagnostico() {
   }
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-background">
+    <div
+      className="flex flex-col bg-background"
+      style={{ height: viewportH ? `${viewportH}px` : "100dvh" }}
+    >
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-border bg-card shrink-0 shadow-sm">
         <div className="relative">
