@@ -8,7 +8,29 @@
       "Bash(gh api *)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(python3 -c ' *)",
+      "Bash(powershell -Command \"\\(Get-Content src/components/SiteNavbar.tsx -Raw -Encoding UTF8\\) -replace '\\\\[\\\\\\\\xcc\\\\\\\\x80-\\\\\\\\xcd\\\\\\\\xaf\\\\]', '[̀-ͯ]'\")",
+      "Bash(python3 -c \"pass\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('src/components/SiteNavbar.tsx','utf8'\\); const m=c.match\\(/replace\\\\\\([^\\\\n]{0,60}NFD[^\\\\n]{0,60}/\\); console.log\\(m?m[0]:'NOT FOUND'\\); const buf=Buffer.from\\(c\\); const idx=buf.indexOf\\(Buffer.from\\('replace\\(/'\\)\\); console.log\\('hex around replace:', buf.slice\\(idx,idx+30\\).toString\\('hex'\\)\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const bad=Buffer.from\\([0x5B,0xCC,0x80,0x2D,0xCD,0xAF,0x5D]\\); const buf=fs.readFileSync\\('src/components/SiteNavbar.tsx'\\); console.log\\('bad bytes in navbar:', buf.indexOf\\(bad\\)\\);\")",
+      "Bash(gh run *)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('scripts',{}\\)\\)\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.scripts,null,2\\)\\)\")",
+      "Bash(node -e \"const c = require\\('fs'\\).readFileSync\\('src/data/services.ts','utf8'\\); const idx = c.indexOf\\('SEARCH_TAGS'\\); console.log\\('SEARCH_TAGS at index:', idx\\); console.log\\(c.slice\\(idx, idx+50\\)\\);\")",
+      "Bash(node -e \"const c = require\\('fs'\\).readFileSync\\('src/data/services.ts','utf8'\\); const idx = c.indexOf\\('export const SEARCH_TAGS'\\); console.log\\('export found at:', idx\\);\")",
+      "Bash(ls wrangler.toml _headers _redirects public/index.html)",
+      "Bash(cat wrangler.toml)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('react-router-dom:', p.dependencies['react-router-dom']\\); console.log\\('react:', p.dependencies['react']\\);\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\({devDeps: Object.keys\\(p.devDependencies||{}\\), buildCmd: p.scripts.build},null,2\\)\\);\")",
+      "Bash(git reset *)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const bad=Buffer.from\\([0x5B,0xCC,0x80,0x2D,0xCD,0xAF,0x5D]\\);const content=fs.readFileSync\\('D:/Users/IndependenciaDigital/OneDrive - Independencia Digital/Documentos/GitHub/digital-independence-portfolio/src/components/SiteNavbar.tsx'\\);console.log\\(content.indexOf\\(bad\\)\\);\")",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const bad=Buffer.from\\([0x5B,0xCC,0x80,0x2D,0xCD,0xAF,0x5D]\\);const f=fs.readFileSync\\('src/components/ChatBot.tsx'\\);console.log\\('bad bytes:', f.indexOf\\(bad\\)\\);const s=fs.readFileSync\\('src/pages/Servicios.tsx'\\);console.log\\('Servicios bad bytes:', s.indexOf\\(bad\\)\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const bad=Buffer.from\\([0x5B,0xCC,0x80,0x2D,0xCD,0xAF,0x5D]\\);const f=fs.readFileSync\\('src/components/ChatBot.tsx'\\);console.log\\('bad bytes:', f.indexOf\\(bad\\)\\);\")",
+      "Bash(git rm *)"
     ]
   }
 }
