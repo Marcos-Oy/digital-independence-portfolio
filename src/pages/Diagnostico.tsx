@@ -32,12 +32,46 @@ const SimpleMarkdown = ({ text }: { text: string }) => {
   );
 };
 
+const LOADING_STEPS = [
+  "Estableciendo conexión segura…",
+  "Autenticando sesión privada…",
+  "Cargando perfil de Marcos Oyarzo…",
+  "Sincronizando módulo de diagnóstico TI…",
+  "Listo. Iniciando conversación…",
+];
+
 export default function Diagnostico() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [booting, setBooting] = useState(true);
+  const [bootStep, setBootStep] = useState(0);
+  const [bootProgress, setBootProgress] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!booting) return;
+    const stepMs = 650;
+    const stepTimer = setInterval(() => {
+      setBootStep((s) => {
+        if (s >= LOADING_STEPS.length - 1) {
+          clearInterval(stepTimer);
+          return s;
+        }
+        return s + 1;
+      });
+    }, stepMs);
+    const progressTimer = setInterval(() => {
+      setBootProgress((p) => Math.min(100, p + 2));
+    }, 70);
+    const done = setTimeout(() => setBooting(false), stepMs * LOADING_STEPS.length + 200);
+    return () => {
+      clearInterval(stepTimer);
+      clearInterval(progressTimer);
+      clearTimeout(done);
+    };
+  }, [booting]);
 
   useEffect(() => {
     if (scrollRef.current) {
