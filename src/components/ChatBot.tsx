@@ -267,17 +267,24 @@ const ChatBot = () => {
     setTimeout(() => {
       const diff = h0 - window.innerHeight;
       if (diff <= 50) {
-        // Instagram WebView: viewport didn't resize — move chat up manually
         const est = Math.round(h0 * 0.42);
         setKbStyle({ transform: `translateY(-${est}px)`, maxHeight: `${h0 - est - 96}px` });
       }
-      // diff > 50 means interactive-widget=resizes-content already handled it
     }, 350);
   };
 
   const handleInputBlur = () => {
     setTimeout(() => setKbStyle({}), 150);
   };
+
+  // Fallback: Instagram WebView no dispara blur cuando se cierra el teclado con el botón back
+  useEffect(() => {
+    if (Object.keys(kbStyle).length === 0) return;
+    const id = setInterval(() => {
+      if (document.activeElement !== inputRef.current) setKbStyle({});
+    }, 250);
+    return () => clearInterval(id);
+  }, [kbStyle]);
 
 
   useEffect(() => {
