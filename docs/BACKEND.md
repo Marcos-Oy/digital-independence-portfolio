@@ -6,6 +6,53 @@
 
 ---
 
+## ⚡ Regla #1 — Dónde viven las instrucciones de un chatbot
+
+**Las instrucciones de cada chatbot (personalidad, tono, info de la empresa,
+reglas de comportamiento, CTAs) viven SIEMPRE en una sola constante
+`SYSTEM_PROMPT` dentro de su edge function**, nunca en el frontend, nunca
+en la base de datos, nunca en un archivo de config aparte.
+
+Ejemplo del chatbot público actual (Marbot IArzo):
+```
+supabase/functions/chat/index.ts  →  const SYSTEM_PROMPT = `...`
+```
+
+**Cómo cambiar el comportamiento del bot** (por ejemplo: "que no repita el
+WhatsApp en cada respuesta", "que sume un servicio nuevo", "que cambie el
+tono"):
+
+1. Abrir el `index.ts` de la edge function correspondiente.
+2. Editar el texto del `SYSTEM_PROMPT` directamente.
+3. Redesplegar la función.
+
+**Caso real ya documentado**: el usuario pidió que el bot dejara de cerrar
+todas las respuestas con `"Si prefieres una atención directa, escríbenos al
+WhatsApp..."`. La solución NO fue tocar el frontend ni filtrar la respuesta
+— fue agregar reglas explícitas al `SYSTEM_PROMPT`:
+
+```
+# Reglas sobre el CTA de WhatsApp (IMPORTANTE)
+- NO cierres cada respuesta invitando al WhatsApp. No lo repitas en cada mensaje.
+- Menciona el WhatsApp solo cuando aplique de verdad:
+  - El usuario pide hablar con alguien, contactarse, agendar.
+  - El usuario pregunta por precios, plazos o cotizaciones.
+  - El usuario muestra intención clara de avanzar.
+- En preguntas informativas, responde y termina sin CTA.
+- Si ya ofreciste el WhatsApp antes en la conversación, no lo repitas.
+```
+
+Si el usuario reporta que el bot "sigue diciendo X" o "no quiere decir Y",
+**siempre** la solución es editar el `SYSTEM_PROMPT`, no parchear código.
+
+Si después de endurecer las reglas el modelo sigue ignorándolas, recién ahí
+considerar cambiar de modelo (ej. de `google/gemini-3-flash-preview` a
+`openai/gpt-5-mini`, que sigue instrucciones de forma más estricta).
+
+---
+
+
+
 ## 1. ¿Qué backend usa este proyecto?
 
 Este proyecto **NO** está conectado a una cuenta personal de Supabase del
