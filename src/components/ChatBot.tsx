@@ -339,16 +339,93 @@ const ChatBot = () => {
     if (!trimmed || isLoading) return;
 
     setChips([]);
-    setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
+    const userMsg: Message = { role: "user", content: trimmed };
+    const nextHistory = [...messages, userMsg];
+    setMessages(nextHistory);
     setInput("");
     setIsLoading(true);
 
-    await new Promise((r) => setTimeout(r, 400 + Math.random() * 350));
+    const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+    const AUTH = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
-    const { text, chips: newChips } = getBotResponse(trimmed);
-    setMessages((prev) => [...prev, { role: "assistant", content: text }]);
-    setChips(newChips);
-    setIsLoading(false);
+    try {
+      const resp = await fetch(CHAT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${AUTH}`,
+        },
+        body: JSON.stringify({ messages: nextHistory }),
+      });
+
+      if (!resp.ok || !resp.body) {
+        throw new Error(`HTTP ${resp.status}`);
+      }
+
+      // Insert empty assistant message to fill progressively
+      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+
+      const reader = resp.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let assistantText = "";
+      let streamDone = false;
+
+      while (!streamDone) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        let nl: number;
+        while ((nl = buffer.indexOf("\n")) !== -1) {
+          let line = buffer.slice(0, nl);
+          buffer = buffer.slice(nl + 1);
+          if (line.endsWith("\r")) line = line.slice(0, -1);
+          if (!line || line.startsWith(":")) continue;
+          if (!line.startsWith("data: ")) continue;
+          const jsonStr = line.slice(6).trim();
+          if (jsonStr === "[DONE]") { streamDone = true; break; }
+          try {
+            const parsed = JSON.parse(jsonStr);
+            const delta = parsed.choices?.[0]?.delta?.content as string | undefined;
+            if (delta) {
+              assistantText += delta;
+              setMessages((prev) => {
+                const copy = [...prev];
+                const last = copy[copy.length - 1];
+                if (last?.role === "assistant") {
+                  copy[copy.length - 1] = { ...last, content: assistantText };
+                }
+                return copy;
+              });
+            }
+          } catch {
+            buffer = line + "\n" + buffer;
+            break;
+          }
+        }
+      }
+
+      if (!assistantText) throw new Error("Empty response");
+      setChips([]);
+    } catch (err) {
+      console.error("Chat IA falló, usando fallback local:", err);
+      // Fallback a respuestas locales si la IA falla
+      const { text, chips: newChips } = getBotResponse(trimmed);
+      setMessages((prev) => {
+        const copy = [...prev];
+        // Si insertamos un assistant vacío, lo reemplazamos
+        if (copy[copy.length - 1]?.role === "assistant" && !copy[copy.length - 1].content) {
+          copy[copy.length - 1] = { role: "assistant", content: text };
+        } else {
+          copy.push({ role: "assistant", content: text });
+        }
+        return copy;
+      });
+      setChips(newChips);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
