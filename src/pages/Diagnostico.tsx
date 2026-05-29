@@ -64,10 +64,32 @@ export default function Diagnostico() {
   const [bootProgress, setBootProgress] = useState(0);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [closingSession, setClosingSession] = useState(false);
+  const [viewportH, setViewportH] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const greetedRef = useRef(false);
   const exitingRef = useRef(false);
+
+  // Ajustar altura al teclado virtual en móviles (visualViewport).
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const update = () => setViewportH(vv.height);
+    update();
+    vv.addEventListener("resize", update);
+    vv.addEventListener("scroll", update);
+    return () => {
+      vv.removeEventListener("resize", update);
+      vv.removeEventListener("scroll", update);
+    };
+  }, []);
+
+  const scrollInputIntoView = () => {
+    setTimeout(() => {
+      inputRef.current?.scrollIntoView({ block: "end", behavior: "smooth" });
+      if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }, 250);
+  };
 
   // Interceptar el botón "atrás" del navegador para pedir confirmación.
   useEffect(() => {
