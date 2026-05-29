@@ -34,6 +34,13 @@ const Fundador = () => {
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="grid md:grid-cols-[1fr_280px] gap-10 items-start">
+            <div className="block md:hidden mb-2">
+              <img
+                src={marcosImg}
+                alt="Marcos Alberto Oyarzo Alvarez"
+                className="w-40 mx-auto rounded-2xl shadow-card-hover object-cover aspect-[3/4]"
+              />
+            </div>
             <div className="space-y-6 text-foreground/90 leading-relaxed text-base md:text-lg">
               <p>
                 Ingeniero en Informática con especialización en Ciberseguridad, Transformación Digital e
