@@ -43,12 +43,15 @@ const LOADING_STEPS = [
 const GREETING =
   "¡Hola! Soy **Marcos Oyarzo**, fundador de Independencia Digital. Bienvenido a tu sesión de diagnóstico gratuita. Cuéntame, ¿en qué etapa está tu negocio y qué te tiene preocupado o frenado a nivel tecnológico?";
 
-// Pausa "humana" antes de empezar a escribir (ms)
-const thinkingDelay = (text: string) =>
-  Math.min(2800, 700 + Math.min(text.length, 240) * 6 + Math.random() * 600);
-
-// Velocidad de tipeo "humana" por carácter (ms)
-const typeSpeed = () => 18 + Math.random() * 22;
+// Tiempo que "tarda" Marcos en escribir, simulando una persona real en chat.
+// Velocidad ~40 WPM (≈200 caracteres/min ≈ 30ms por carácter) + pausa inicial
+// de lectura/pensamiento. Capado entre 1.2s y 9s para no aburrir.
+const typingDuration = (text: string) => {
+  const base = 900; // leer la pregunta y pensar
+  const perChar = 32; // ~38 WPM
+  const jitter = Math.random() * 500;
+  return Math.min(9000, Math.max(1200, base + text.length * perChar + jitter));
+};
 
 export default function Diagnostico() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -91,31 +94,13 @@ export default function Diagnostico() {
     }
   }, [messages, isTyping]);
 
-  // Simula a una persona escribiendo: muestra "escribiendo…" un rato y luego
-  // tipea el texto carácter por carácter.
+  // Simula a una persona escribiendo: muestra "escribiendo…" un tiempo
+  // proporcional al largo del mensaje y luego lo publica completo de una vez.
   const typeAssistantMessage = useCallback(async (fullText: string) => {
     setIsTyping(true);
-    await new Promise((r) => setTimeout(r, thinkingDelay(fullText)));
+    await new Promise((r) => setTimeout(r, typingDuration(fullText)));
     setIsTyping(false);
-    setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
-
-    for (let i = 1; i <= fullText.length; i++) {
-      await new Promise((r) => setTimeout(r, typeSpeed()));
-      const partial = fullText.slice(0, i);
-      setMessages((prev) => {
-        const copy = [...prev];
-        const last = copy[copy.length - 1];
-        if (last?.role === "assistant") {
-          copy[copy.length - 1] = { ...last, content: partial };
-        }
-        return copy;
-      });
-      // Pausa extra al terminar oración para sentirse más humano
-      const ch = fullText[i - 1];
-      if (ch === "." || ch === "!" || ch === "?" || ch === "\n") {
-        await new Promise((r) => setTimeout(r, 180 + Math.random() * 220));
-      }
-    }
+    setMessages((prev) => [...prev, { role: "assistant", content: fullText }]);
   }, []);
 
   // Saludo inicial del clon de Marcos al terminar el boot
