@@ -4,7 +4,7 @@ import logo from "@/assets/logo.png";
 import chileFlag from "@/assets/chile-flag.png";
 import ThemeToggle from "./ThemeToggle";
 import { ChevronDown, X, Search } from "lucide-react";
-import { SERVICES } from "@/data/services";
+import { SERVICES, SEARCH_TAGS } from "@/data/services";
 import { SEGMENTS } from "@/data/segments";
 
 const normS = (s: string) =>
@@ -50,17 +50,24 @@ const TYPE_LABEL: Record<SearchResult["type"], string> = {
   pagina: "Página",
 };
 
+const getHaystack = (r: SearchResult): string => {
+  const base = normS(r.label + " " + r.sublabel);
+  const slug = r.href.split("/servicios/")[1] ?? "";
+  const tags = slug ? (SEARCH_TAGS[slug] ?? []).map(normS).join(" ") : "";
+  return base + " " + tags;
+};
+
 const searchAll = (q: string): SearchResult[] => {
   const norm = normS(q.trim());
   if (norm.length < 2) return [];
   const words = norm.split(" ").filter((w) => w.length > 1);
   if (words.length === 0) return [];
   return ALL_RESULTS.filter((r) => {
-    const hay = normS(r.label + " " + r.sublabel);
+    const hay = getHaystack(r);
     return words.some((w) => hay.includes(w));
   }).sort((a, b) => {
-    const ha = normS(a.label + " " + a.sublabel);
-    const hb = normS(b.label + " " + b.sublabel);
+    const ha = getHaystack(a);
+    const hb = getHaystack(b);
     const sa = words.reduce((acc, w) => acc + (ha.includes(w) ? 1 : 0), 0);
     const sb = words.reduce((acc, w) => acc + (hb.includes(w) ? 1 : 0), 0);
     return sb - sa;
