@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Send, User } from "lucide-react";
+import { X, Send, User, Stethoscope, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const RobotIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -401,7 +402,12 @@ const ChatBot = () => {
               </div>
             )}
 
-            {messages.map((msg, i) => (
+            {messages.map((msg, i) => {
+              const hasDiagCta = msg.role === "assistant" && /\[\[DIAGNOSTICO\]\]/i.test(msg.content);
+              const cleanContent = hasDiagCta
+                ? msg.content.replace(/\[\[DIAGNOSTICO\]\]/gi, "").trim()
+                : msg.content;
+              return (
               <div key={i}>
                 <div className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.role === "assistant" && (
@@ -416,7 +422,7 @@ const ChatBot = () => {
                         : "bg-muted text-foreground rounded-bl-md"
                     }`}
                   >
-                    {msg.role === "assistant" ? <SimpleMarkdown text={msg.content} /> : msg.content}
+                    {msg.role === "assistant" ? <SimpleMarkdown text={cleanContent} /> : msg.content}
                   </div>
                   {msg.role === "user" && (
                     <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center flex-shrink-0 mt-1">
@@ -424,6 +430,19 @@ const ChatBot = () => {
                     </div>
                   )}
                 </div>
+                {hasDiagCta && (
+                  <div className="mt-2 ml-9 animate-fade-in">
+                    <Link
+                      to="/diagnostico"
+                      onClick={() => setOpen(false)}
+                      className="group inline-flex items-center gap-2 gradient-brand text-primary-foreground text-sm font-semibold rounded-full pl-3 pr-4 py-2 shadow-md hover:shadow-lg hover:scale-[1.03] transition-all"
+                    >
+                      <Stethoscope className="w-4 h-4" />
+                      <span>Iniciar diagnóstico</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                    </Link>
+                  </div>
+                )}
                 {msg.role === "assistant" && i === messages.length - 1 && chips.length > 0 && !isLoading && (
                   <div className="flex flex-wrap gap-1.5 mt-2 ml-9">
                     {chips.map((chip) => (
@@ -438,7 +457,8 @@ const ChatBot = () => {
                   </div>
                 )}
               </div>
-            ))}
+              );
+            })}
 
             {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
               <div className="flex gap-2 items-start">
