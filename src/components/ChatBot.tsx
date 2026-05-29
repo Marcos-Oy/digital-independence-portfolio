@@ -27,6 +27,23 @@ type BotEntry = { keys: string[]; texts: string[]; chips: string[] };
 
 const DB: BotEntry[] = [
   {
+    keys: ["hola", "buenas", "buenos dias", "buenas tardes", "buenas noches", "hey", "hi", "saludos", "buen dia"],
+    texts: [
+      "¡Hola! ¿En qué te puedo ayudar? Puedo orientarte sobre nuestros servicios, contarte quiénes somos o ayudarte a agendar un diagnóstico sin costo.",
+      "¡Hola! Soy el asistente de Independencia Digital. ¿Tienes alguna consulta sobre tecnología para tu empresa o negocio?",
+      "¡Buenas! ¿Qué necesitas saber? Estoy aquí para orientarte sobre lo que hacemos.",
+    ],
+    chips: ["¿Qué servicios ofrecen?", "¿Quién es Marcos?", "Agendar diagnóstico"],
+  },
+  {
+    keys: ["marcos", "marcos oyarzo", "fundador", "dueno", "creador", "ceo", "quien fundó", "detras", "quien esta"],
+    texts: [
+      "Marcos Alberto Oyarzo Alvarez es el fundador y CEO de Independencia Digital. Es Ingeniero en Informática con especialización en Ciberseguridad, Transformación Digital e IA. Trabaja directamente con cada cliente.",
+      "Marcos Oyarzo es el fundador — Ingeniero en Informática, especialista en ciberseguridad y transformación digital. No hay intermediarios: él trabaja personalmente con cada cliente. Puedes ver más en su perfil.",
+    ],
+    chips: ["¿Qué servicios ofrecen?", "Agendar diagnóstico", "¿Cómo los contacto?"],
+  },
+  {
     keys: ["reparar", "arreglar", "pc", "computador", "laptop", "impresora", "pantalla", "teclado", "formatear", "tecnico", "tecnica"],
     texts: [
       "Ese tipo de servicio no está dentro de lo que hacemos — somos una consultora TI para empresas, no servicio técnico de equipos. ¿Tienes un negocio o proyecto donde podamos ayudarte?",
