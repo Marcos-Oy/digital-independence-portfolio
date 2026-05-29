@@ -48,17 +48,27 @@ const AnimatedRoutes = () => {
   );
 };
 
+const AppLayout = () => {
+  const location = useLocation();
+  const isDiagnostico = location.pathname === "/diagnostico" || location.pathname === "/diagnóstico";
+  return (
+    <>
+      <ScrollToTop />
+      <AnimatedRoutes />
+      {!isDiagnostico && <WhatsAppButton />}
+      {!isDiagnostico && <ChatBot />}
+      {!isDiagnostico && <WelcomeModal />}
+    </>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToTop />
-        <AnimatedRoutes />
-        <WhatsAppButton />
-        <ChatBot />
-        <WelcomeModal />
+        <AppLayout />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
