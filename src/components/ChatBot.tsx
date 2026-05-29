@@ -23,125 +23,202 @@ const normalize = (s: string) =>
    .replace(/[uúùü]/g, "u").replace(/[nñ]/g, "n")
    .replace(/[^a-z0-9 ]/g, " ");
 
-type BotEntry = { keys: string[]; text: string; chips: string[] };
+type BotEntry = { keys: string[]; texts: string[]; chips: string[] };
 
 const DB: BotEntry[] = [
   {
-    keys: ["reparar", "arreglar", "pc", "computador", "laptop", "impresora", "celular", "pantalla", "teclado", "formatear", "virus", "tecnico"],
-    text: "Ese tipo de servicio no lo ofrecemos, somos una consultora tecnológica para empresas y emprendedores. ¿Tienes algún negocio o proyecto que necesite apoyo tecnológico?",
+    keys: ["reparar", "arreglar", "pc", "computador", "laptop", "impresora", "pantalla", "teclado", "formatear", "tecnico", "tecnica"],
+    texts: [
+      "Ese tipo de servicio no está dentro de lo que hacemos — somos una consultora TI para empresas, no servicio técnico de equipos. ¿Tienes un negocio o proyecto donde podamos ayudarte?",
+      "No hacemos reparación de equipos, eso escapa de nuestro foco. Trabajamos con empresas y emprendedores en tecnología organizacional. ¿En qué ámbito puedo orientarte?",
+    ],
     chips: ["¿Qué servicios ofrecen?", "¿Para quién trabajan?", "Agendar diagnóstico"],
   },
   {
-    keys: ["presencial", "visita", "oficina", "sucursal", "domicilio", "ciudad", "donde estan", "direccion", "santiago", "serena", "valparaiso", "vina", "coquimbo", "quilpue", "ovalle"],
-    text: "Operamos principalmente online sin sucursal física. En Santiago coordinamos visitas presenciales, y en ciudades como La Serena, Valparaíso o Viña del Mar también es posible agendando una llamada previa.",
+    keys: ["presencial", "visita", "oficina", "sucursal", "domicilio", "donde estan", "direccion", "santiago", "serena", "valparaiso", "vina", "coquimbo", "quilpue", "ovalle"],
+    texts: [
+      "Somos principalmente online, sin oficina física. En Santiago sí podemos coordinar visitas presenciales. En ciudades como La Serena, Valparaíso o Viña del Mar también es posible — solo hay que agendar una llamada previa para coordinar.",
+      "Operamos a distancia en todo Chile y LATAM. Para visitas presenciales, Santiago está disponible directamente; en otras ciudades del país lo coordinamos con una llamada previa. ¿Estás en alguna de esas zonas?",
+    ],
     chips: ["¿Cómo los contacto?", "Agendar diagnóstico", "¿Qué servicios ofrecen?"],
   },
   {
-    keys: ["que es", "quienes son", "independencia digital", "consultora", "presentacion"],
-    text: "Somos una consultora tecnológica chilena que diseña, construye y dirige la infraestructura tecnológica de empresas, emprendedores y organismos públicos.",
+    keys: ["que es", "quienes son", "independencia digital", "consultora", "presentacion", "a que se dedican", "dedican"],
+    texts: [
+      "Somos una consultora tecnológica chilena. Diseñamos, construimos y dirigimos la infraestructura tecnológica de empresas, emprendedores y organismos públicos — desde la estrategia hasta la implementación.",
+      "Independencia Digital es una consultora TI chilena fundada por Marcos Oyarzo. Acompañamos a empresas y emprendedores a ordenar, modernizar y hacer crecer su tecnología. ¿Qué está buscando para su negocio?",
+      "Somos el área de TI externa que muchas empresas no pueden tener internamente. Desde diseñar tu infraestructura hasta dirigir tu estrategia digital, todo bajo un mismo paraguas.",
+    ],
     chips: ["¿Qué servicios ofrecen?", "¿Para quién trabajan?", "Agendar diagnóstico"],
   },
   {
-    keys: ["servicios", "areas", "que hacen", "portafolio", "ofrecen", "trabajan"],
-    text: "Trabajamos en 5 áreas: Estrategia y Dirección TI, Optimización de Costos TI, Desarrollo y Presencia Digital, Ciberseguridad, e Inteligencia Artificial Corporativa, con 11 servicios en total.",
+    keys: ["servicios", "areas", "que hacen", "portafolio", "ofrecen", "trabajan", "ayudan"],
+    texts: [
+      "Trabajamos en 5 áreas con 11 servicios: Estrategia y Dirección TI, Optimización de Costos TI, Desarrollo y Presencia Digital, Ciberseguridad, e Inteligencia Artificial Corporativa. ¿Cuál te interesa más?",
+      "Tenemos 11 servicios agrupados en 5 áreas — desde armar tu infraestructura tecnológica desde cero hasta implementar IA en tus procesos. ¿Por dónde te gustaría empezar?",
+    ],
     chips: ["Presencia Digital", "IA Corporativa", "Ciberseguridad"],
   },
   {
-    keys: ["precio", "costo", "cuanto", "tarifa", "valor", "cobran", "presupuesto", "cotizacion"],
-    text: "Los precios varían según el servicio y las necesidades de cada cliente. Lo mejor es agendar un diagnóstico gratuito para darte un presupuesto personalizado.",
+    keys: ["precio", "costo", "cuanto", "tarifa", "valor", "cobran", "presupuesto", "cotizacion", "cobras", "vale"],
+    texts: [
+      "Los valores dependen del servicio y de lo que necesita cada cliente — no trabajamos con tarifas fijas porque cada caso es distinto. Lo mejor es una conversación de 20 minutos para entender tu situación y darte un número real.",
+      "Honestamente, depende mucho del alcance. Tenemos opciones para distintos tamaños de empresa y presupuesto. Si agendas un diagnóstico sin costo, te damos una propuesta concreta. ¿Te sirve eso?",
+      "No publicamos tarifas porque personalizamos cada propuesta. Lo que sí te puedo decir es que trabajamos con emprendedores, PyMEs y grandes empresas — hay opciones para diferentes presupuestos.",
+    ],
     chips: ["Agendar diagnóstico", "¿Cómo los contacto?", "¿Qué servicios ofrecen?"],
   },
   {
-    keys: ["contacto", "whatsapp", "telefono", "correo", "email", "comunicar", "hablar", "llamar"],
-    text: "Puedes contactarnos por WhatsApp al +56 9 2836 2758 o por correo a contacto@independenciadigital.cl.",
+    keys: ["contacto", "whatsapp", "telefono", "correo", "email", "comunicar", "hablar", "llamar", "escribir", "mensaje"],
+    texts: [
+      "Puedes escribirnos por WhatsApp al +56 9 2836 2758 o al correo contacto@independenciadigital.cl. El WhatsApp suele ser más directo.",
+      "La forma más rápida es el WhatsApp: +56 9 2836 2758. También respondemos correos en contacto@independenciadigital.cl. ¿En qué podemos ayudarte?",
+    ],
     chips: ["Agendar diagnóstico", "¿Qué servicios ofrecen?", "¿Cuánto cuesta?"],
   },
   {
-    keys: ["diagnostico", "consulta", "agendar", "reunion", "gratis", "gratuito", "sin costo", "cita"],
-    text: "Ofrecemos un diagnóstico inicial sin costo para entender tu caso y proponerte una hoja de ruta. Escríbenos al WhatsApp: +56 9 2836 2758.",
+    keys: ["diagnostico", "consulta", "agendar", "reunion", "gratis", "gratuito", "sin costo", "cita", "llamada"],
+    texts: [
+      "El diagnóstico inicial es sin costo — es una conversación para entender tu situación y proponerte un camino claro. Puedes agendarlo escribiendo al WhatsApp: +56 9 2836 2758.",
+      "Sí, hacemos un diagnóstico gratuito donde revisamos tu situación tecnológica actual y te planteamos por dónde partir. Sin compromiso. Escríbenos al +56 9 2836 2758.",
+      "La primera reunión no tiene costo. La usamos para entenderte bien y ver si podemos ayudarte de verdad, antes de hablar de cualquier propuesta. ¿Quieres coordinar una?",
+    ],
     chips: ["¿Cómo los contacto?", "¿Qué servicios ofrecen?", "¿Cuánto cuesta?"],
   },
   {
-    keys: ["arquitectura", "infraestructura", "google workspace", "microsoft 365", "cloudflare", "hostinger", "servidor", "correo corporativo", "dominio"],
-    text: "El servicio de Arquitectura TI incluye el diseño e implementación de toda tu infraestructura: correo corporativo, dominio, seguridad DNS y hosting.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
+    keys: ["arquitectura", "infraestructura", "google workspace", "microsoft 365", "office", "cloudflare", "servidor", "correo corporativo", "dominio", "dns", "hosting", "nube", "cloud"],
+    texts: [
+      "La Arquitectura TI incluye todo lo que es la base tecnológica de tu empresa: correo corporativo, dominio, hosting, redes, DNS y seguridad. Lo diseñamos e implementamos según tu tamaño y necesidades.",
+      "Con Arquitectura TI ordenamos y construimos tu infraestructura digital: Google Workspace o Microsoft 365, dominios, hosting, VPN, Cloudflare. El objetivo es que todo funcione de forma profesional y segura.",
+    ],
+    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "Ver más servicios"],
   },
   {
-    keys: ["transformacion digital", "digitalizar", "digitalizacion", "modernizar", "procesos digitales"],
-    text: "La Transformación Digital incluye diagnóstico, hoja de ruta por etapas, implementación, capacitación y ciberseguridad integrada, adaptada al ritmo de tu empresa.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
+    keys: ["transformacion digital", "digitalizar", "digitalizacion", "modernizar", "procesos digitales", "dejar papel", "sin papel"],
+    texts: [
+      "La Transformación Digital parte con un diagnóstico de cómo trabajas hoy, luego construimos una hoja de ruta por etapas — sin tirarte todo encima de golpe. Incluye implementación, capacitación y ciberseguridad.",
+      "Digitalizarse no es comprar software, es cambiar cómo opera el negocio. Hacemos ese proceso contigo: diagnóstico, plan, implementación y acompañamiento. ¿En qué etapa está tu empresa hoy?",
+    ],
+    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "Ver más servicios"],
   },
   {
-    keys: ["cto", "director de tecnologia", "gerente ti", "jefe ti"],
-    text: "El CTO Externo te da un director de tecnología part-time que define la estrategia, gestiona proveedores y lidera tu equipo TI sin el costo de un cargo de planta.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
+    keys: ["cto", "director de tecnologia", "gerente ti", "jefe ti", "lider tecnologico", "responsable tecnologia"],
+    texts: [
+      "El CTO Externo es como tener un Director de Tecnología en tu empresa, pero a tiempo parcial y sin el costo de un cargo de planta. Define la estrategia, gestiona proveedores y lidera el área TI.",
+      "Si necesitas dirección tecnológica pero no puedes contratar un CTO full-time, eso es exactamente lo que hacemos — rol estratégico, parte del equipo, sin la nómina de un ejecutivo.",
+    ],
+    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "Ver más servicios"],
   },
   {
-    keys: ["reduccion de costos", "reducir costos", "ahorrar", "ahorro", "licencias", "nube", "cloud"],
-    text: "Auditamos tu gasto en tecnología (hardware, licencias y nube) e identificamos dónde puedes ahorrar, llegando a reducir hasta un 50% del gasto actual.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
+    keys: ["reduccion de costos", "reducir costos", "bajar costos", "ahorrar", "ahorro", "estoy pagando mucho", "gasto tecnologia"],
+    texts: [
+      "Hacemos una auditoría de tu gasto en tecnología — hardware, licencias y nube — y detectamos dónde estás pagando de más. En promedio los clientes ahorran hasta un 50% de su gasto TI actual.",
+      "Muchas empresas pagan por herramientas que no usan o tienen contratos mal negociados. Auditamos todo eso y te presentamos un plan concreto de ahorro. ¿Tienes idea de cuánto gastas mensualmente en tecnología?",
+    ],
+    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "Ver más servicios"],
   },
   {
-    keys: ["soporte", "help desk", "asistencia tecnica", "mantenimiento", "ticket", "incidencia"],
-    text: "El Soporte TI Gestionado es un contrato mensual con bolsa de horas y SLA de respuesta definido, con atención remota o presencial según tu ubicación.",
+    keys: ["soporte", "help desk", "asistencia tecnica", "mantenimiento", "ticket", "incidencia", "problema tecnico", "falla"],
+    texts: [
+      "El Soporte TI Gestionado es un contrato mensual con bolsa de horas y tiempos de respuesta definidos. Atendemos de forma remota y presencial según dónde estés. Ideal si necesitas TI confiable sin armar un equipo propio.",
+      "Ofrecemos soporte técnico continuo con SLA claro — sabes en cuánto tiempo te respondemos. Remoto o presencial. Más predecible y barato que contratar alguien interno.",
+    ],
     chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Funciona presencial?"],
   },
   {
-    keys: ["sitio web", "pagina web", "web", "landing", "seo", "google maps", "presencia digital"],
-    text: "El servicio de Presencia Digital incluye diseño y desarrollo de tu sitio web, optimización SEO, perfil en Google Maps y configuración de dominio con seguridad.",
+    keys: ["sitio web", "pagina web", "landing", "seo", "google maps", "presencia digital", "aparecer en google", "posicionamiento"],
+    texts: [
+      "El servicio de Presencia Digital incluye diseño y desarrollo de tu sitio web, posicionamiento SEO para aparecer en Google, perfil de Google Maps y configuración segura de tu dominio.",
+      "Con Presencia Digital construimos tu vitrina online completa: sitio web profesional, SEO para que te encuentren en Google, y Google Maps bien configurado. ¿Tienes sitio web actualmente?",
+    ],
     chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Hacen tiendas online?"],
   },
   {
-    keys: ["desarrollo", "aplicacion", "app", "sistema", "software", "ecommerce", "tienda online", "crm", "base de datos", "pwa"],
-    text: "Desarrollamos software web a medida: e-commerce, CRM, sistemas internos, gestores de eventos y aplicaciones instalables en móvil (PWA).",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
+    keys: ["desarrollo", "aplicacion", "app", "sistema", "software", "ecommerce", "tienda online", "crm", "base de datos", "pwa", "plataforma", "sistema a medida"],
+    texts: [
+      "Desarrollamos software web a medida: e-commerce, CRM, sistemas de gestión interna, aplicaciones instalables en móvil (PWA). Si tienes un proceso que necesita un sistema propio, conversemos.",
+      "Si lo que necesitas no existe o lo que hay en el mercado no se ajusta a tu negocio, lo construimos. E-commerce, CRM, portales, aplicaciones móviles. ¿Qué tipo de sistema tienes en mente?",
+    ],
+    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "Ver más servicios"],
   },
   {
-    keys: ["marketing", "redes sociales", "publicidad", "ads", "google ads", "meta ads", "facebook", "instagram", "tiktok", "linkedin", "sem", "campana"],
-    text: "La Dirección de Marketing Digital abarca SEO/SEM, campañas en Meta, Google, LinkedIn y TikTok, y estrategia de contenidos. Trabajamos con tres niveles según el tamaño de tu empresa.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
+    keys: ["marketing", "redes sociales", "publicidad", "ads", "google ads", "meta ads", "facebook", "instagram", "tiktok", "linkedin", "sem", "campana", "contenido"],
+    texts: [
+      "La Dirección de Marketing Digital abarca SEO/SEM, campañas en Meta, Google, LinkedIn y TikTok, y estrategia de contenidos. Trabajamos con tres niveles de servicio según el tamaño y presupuesto de tu empresa.",
+      "Hacemos marketing digital de verdad — no solo publicar en redes. Estrategia, campañas pagadas (Meta, Google, LinkedIn), SEO y contenido. Tres niveles según tu etapa. ¿Qué estás buscando potenciar?",
+    ],
+    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "Ver más servicios"],
   },
   {
-    keys: ["ciberseguridad", "seguridad", "hackeo", "hacker", "phishing", "iso 27001", "ley 19628", "datos personales"],
-    text: "Nuestro servicio de Ciberseguridad incluye auditoría técnica, formación contra phishing, cumplimiento ISO 27001 y Ley 19.628, con módulos para distintos sectores.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
+    keys: ["ciberseguridad", "seguridad", "hackeo", "hacker", "hackearon", "phishing", "virus", "malware", "iso 27001", "ley 19628", "datos personales", "proteger", "vulnerabilidad"],
+    texts: [
+      "Nuestro servicio de Ciberseguridad incluye auditoría técnica de vulnerabilidades, formación del equipo contra phishing y ataques, y cumplimiento normativo (ISO 27001 y Ley 19.628 de datos personales).",
+      "Si te preocupa la seguridad de tu empresa, partimos con una auditoría técnica para saber dónde estás expuesto. Luego trabajamos en los frentes más críticos: técnico, humano y normativo. ¿Ha tenido algún incidente o es preventivo?",
+    ],
+    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "Ver más servicios"],
   },
   {
-    keys: ["inteligencia artificial", "ia corporativa", "automatizacion", "agente", "n8n", "manychat", "clon digital", "bot"],
-    text: "La IA Corporativa incluye diagnóstico de procesos automatizables, agentes con memoria, biblioteca de prompts y automatización de flujos para que tu equipo trabaje más eficientemente.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
+    keys: ["inteligencia artificial", "ia corporativa", "automatizacion", "automatizar", "agente", "chatbot empresarial", "clon digital", "procesos con ia", "ia en mi empresa"],
+    texts: [
+      "La IA Corporativa parte por identificar qué procesos de tu empresa son automatizables con IA — sin presionar tecnología donde no hace sentido. Luego implementamos agentes, automatizaciones y flujos que realmente ahorran tiempo.",
+      "Implementamos IA donde genera valor real: automatización de procesos, agentes con memoria, análisis de datos. Primero el diagnóstico, después la solución. ¿Tienes algún proceso específico en mente?",
+    ],
+    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "Ver más servicios"],
   },
   {
-    keys: ["municipio", "municipalidad", "gobierno", "publico", "mercado publico", "chilecompra", "licitacion"],
-    text: "Sí trabajamos con el sector público vía Mercado Público (ChileCompra). Estamos en proceso de inscripción para participar en licitaciones.",
+    keys: ["municipio", "municipalidad", "gobierno", "publico", "mercado publico", "chilecompra", "licitacion", "sector publico"],
+    texts: [
+      "Sí trabajamos con el sector público a través de Mercado Público (ChileCompra). Si eres un organismo del Estado buscando modernización tecnológica, podemos conversar.",
+      "Atendemos organismos del sector público vía licitaciones en Mercado Público. Si estás en una entidad pública con necesidades tecnológicas, contáctanos y vemos cómo podemos participar.",
+    ],
     chips: ["¿Cómo los contacto?", "Agendar diagnóstico", "¿Qué servicios ofrecen?"],
   },
   {
-    keys: ["pyme", "pequena empresa", "mediana empresa", "microempresa"],
-    text: "Trabajamos especialmente con PyMEs, con servicios adaptados a distintos presupuestos y tamaños, enfocados en resultados concretos y sin tecnicismos.",
+    keys: ["pyme", "pequena empresa", "mediana empresa", "microempresa", "empresa chica"],
+    texts: [
+      "Las PyMEs son uno de nuestros focos principales. Tenemos servicios y modelos de trabajo adaptados a distintos presupuestos — el objetivo es que accedan a tecnología de nivel enterprise sin pagarlo.",
+      "Trabajamos mucho con PyMEs. Sabemos que los recursos son acotados, por eso priorizamos lo que tiene impacto real antes de agregar complejidad. ¿En qué etapa está tu empresa?",
+    ],
     chips: ["¿Qué servicios ofrecen?", "¿Cuánto cuesta?", "Agendar diagnóstico"],
   },
   {
-    keys: ["emprendedor", "freelance", "independiente", "profesional independiente", "negocio propio", "startup"],
-    text: "Trabajamos con emprendedores. Tenemos servicios de entrada como Presencia Digital y Arquitectura TI pensados para quienes están comenzando o formalizando su negocio.",
+    keys: ["emprendedor", "freelance", "independiente", "profesional independiente", "negocio propio", "startup", "recien parto", "empezando"],
+    texts: [
+      "Con gusto trabajamos con emprendedores. Tenemos servicios de entrada como Presencia Digital y Arquitectura TI, pensados para quienes están partiendo o formalizando su negocio sin gastar de más.",
+      "Los emprendedores también merecen tecnología bien hecha. Tenemos servicios de entrada accesibles para que tu negocio arranque con buen pie digital. ¿Qué necesitas primero?",
+    ],
     chips: ["¿Qué servicios ofrecen?", "¿Cuánto cuesta?", "Agendar diagnóstico"],
+  },
+  {
+    keys: ["plazo", "tiempo", "cuanto demora", "demora", "cuando", "rapido", "urgente"],
+    texts: [
+      "Los plazos dependen del servicio y el alcance, no podría darte un número genérico sin conocer tu caso. En el diagnóstico inicial definimos tiempos reales. Lo que sí puedo decirte es que trabajamos con fechas comprometidas.",
+      "Varía mucho según qué necesites. Hay servicios que se activan en días y proyectos que toman semanas. En la primera conversación aclaramos eso con tiempos concretos.",
+    ],
+    chips: ["Agendar diagnóstico", "¿Cuánto cuesta?", "¿Cómo los contacto?"],
   },
 ];
 
 const FALLBACK: BotEntry = {
   keys: [],
-  text: "No tengo información específica sobre eso. Te recomiendo agendar un diagnóstico gratuito para conversar directamente con nuestro equipo.",
+  texts: [
+    "No tengo información específica sobre eso, pero con gusto te oriento. ¿Tienes algún desafío tecnológico en tu empresa o negocio que quieras resolver?",
+    "Eso escapa un poco de lo que manejo, pero puedo conectarte con alguien del equipo que te responda directamente. ¿Te sirve agendar una llamada rápida?",
+    "No estoy seguro de poder ayudarte con eso desde aquí. Si me cuentas un poco más sobre tu negocio, veo cómo orientarte mejor.",
+  ],
   chips: ["Agendar diagnóstico", "¿Qué servicios ofrecen?", "¿Cómo los contacto?"],
 };
 
-const getBotResponse = (query: string): BotEntry => {
+const getBotResponse = (query: string): { text: string; chips: string[] } => {
   const q = normalize(query);
   let best = { score: 0, idx: -1 };
   DB.forEach((entry, i) => {
     const score = entry.keys.filter((k) => q.includes(normalize(k))).length;
     if (score > best.score) best = { score, idx: i };
   });
-  return best.idx >= 0 ? DB[best.idx] : FALLBACK;
+  const entry = best.idx >= 0 ? DB[best.idx] : FALLBACK;
+  const texts = entry.texts;
+  return { text: texts[Math.floor(Math.random() * texts.length)], chips: entry.chips };
 };
 
 // ── Audio pop ─────────────────────────────────────────────────────────────────
