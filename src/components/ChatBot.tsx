@@ -17,7 +17,11 @@ type Message = { role: "user" | "assistant"; content: string };
 // ── Respuestas del bot ────────────────────────────────────────────────────────
 
 const normalize = (s: string) =>
-  s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9\s]/g, " ");
+  s.toLowerCase()
+   .replace(/[aáàä]/g, "a").replace(/[eéèë]/g, "e")
+   .replace(/[iíìï]/g, "i").replace(/[oóòö]/g, "o")
+   .replace(/[uúùü]/g, "u").replace(/[nñ]/g, "n")
+   .replace(/[^a-z0-9 ]/g, " ");
 
 type BotEntry = { keys: string[]; text: string; chips: string[] };
 
