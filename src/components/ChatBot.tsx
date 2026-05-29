@@ -324,12 +324,11 @@ const ChatBot = () => {
       if (!assistantText) throw new Error("Empty response");
       setChips([]);
     } catch (err) {
-      console.error("Chat IA falló, usando fallback local:", err);
-      // Fallback a respuestas locales si la IA falla
-      const { text, chips: newChips } = getBotResponse(trimmed);
+      console.error("Chat IA falló:", err);
+      const text =
+        "Disculpa, tuve un problema para responder ahora mismo. Por favor escríbenos directo por **WhatsApp: +56 9 2836 2758** y te ayudamos al tiro.";
       setMessages((prev) => {
         const copy = [...prev];
-        // Si insertamos un assistant vacío, lo reemplazamos
         if (copy[copy.length - 1]?.role === "assistant" && !copy[copy.length - 1].content) {
           copy[copy.length - 1] = { role: "assistant", content: text };
         } else {
@@ -337,7 +336,7 @@ const ChatBot = () => {
         }
         return copy;
       });
-      setChips(newChips);
+      setChips([]);
     } finally {
       setIsLoading(false);
     }
