@@ -352,6 +352,70 @@ export default function Diagnostico() {
           </button>
         </form>
       </div>
+
+      {/* Modal de confirmación */}
+      {showExitConfirm && !closingSession && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-6 bg-background/70 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-sm bg-card border border-border rounded-2xl shadow-2xl p-6 animate-scale-in">
+            <div className="flex items-start gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <LogOut className="w-5 h-5 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-heading font-semibold text-base text-foreground leading-tight">
+                  ¿Cerrar la sesión?
+                </h3>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Si sales ahora perderás el avance de este diagnóstico con Marcos.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setShowExitConfirm(false)}
+                className="flex-1 text-sm font-medium rounded-full border border-border px-4 py-2 hover:bg-muted transition-colors"
+              >
+                Seguir aquí
+              </button>
+              <button
+                onClick={confirmExit}
+                className="flex-1 text-sm font-semibold rounded-full gradient-brand text-primary-foreground px-4 py-2 hover:opacity-90 transition-opacity"
+              >
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Efecto de cierre de sesión */}
+      {closingSession && (
+        <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-background overflow-hidden animate-fade-in">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-1/3 left-1/4 w-72 h-72 rounded-full bg-primary/30 blur-3xl animate-pulse" />
+            <div className="absolute bottom-1/3 right-1/4 w-72 h-72 rounded-full bg-accent/30 blur-3xl animate-pulse [animation-delay:400ms]" />
+          </div>
+          <div className="relative z-10 flex flex-col items-center text-center animate-scale-in">
+            <div className="relative mb-5">
+              <span className="absolute inset-0 -m-3 rounded-full border-2 border-primary/40 animate-ping" />
+              <div className="relative w-20 h-20 rounded-full gradient-brand flex items-center justify-center shadow-xl">
+                <ShieldCheck className="w-10 h-10 text-primary-foreground" />
+              </div>
+            </div>
+            <h2 className="font-heading font-bold text-lg text-foreground mb-1">
+              Cerrando sesión segura…
+            </h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              Guardando tu conversación con <strong>Marcos</strong>
+            </p>
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:0ms]" />
+              <span className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:150ms]" />
+              <span className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:300ms]" />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
