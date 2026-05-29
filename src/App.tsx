@@ -10,6 +10,7 @@ import Fundador from "./pages/Fundador";
 import Servicios from "./pages/Servicios";
 import Servicio from "./pages/Servicio";
 import Segmento from "./pages/Segmento";
+import Diagnostico from "./pages/Diagnostico";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ChatBot from "./components/ChatBot";
@@ -39,6 +40,8 @@ const AnimatedRoutes = () => {
         <Route path="/analiticaaplicada" element={<Navigate to="/servicios/ia-corporativa" replace />} />
         <Route path="/inteligenciaartificial" element={<Navigate to="/servicios/ia-corporativa" replace />} />
         <Route path="/landing" element={<LandingPage />} />
+        <Route path="/diagnostico" element={<Diagnostico />} />
+        <Route path="/diagnóstico" element={<Diagnostico />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
