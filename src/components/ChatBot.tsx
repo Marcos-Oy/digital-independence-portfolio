@@ -223,14 +223,18 @@ const ChatBot = () => {
     try {
       const res = await fetch(`${SUPABASE_URL}/functions/v1/chat`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${SUPABASE_KEY}`,
-          "apikey": SUPABASE_KEY,
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: apiMessages }),
       });
 
+      if (res.status === 429) {
+        setMessages((prev) => [...prev, {
+          role: "assistant",
+          content: "Recibí demasiadas consultas seguidas. Espera unos segundos e intenta de nuevo.",
+        }]);
+        setChips(["Intentar de nuevo", "Agendar diagnóstico"]);
+        return;
+      }
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
