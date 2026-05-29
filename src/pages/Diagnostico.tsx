@@ -273,14 +273,15 @@ export default function Diagnostico() {
             {isTyping ? "escribiendo…" : "En línea · CTO Externo — Independencia Digital"}
           </p>
         </div>
-        <Link
-          to="/"
+        <button
+          type="button"
+          onClick={() => setShowExitConfirm(true)}
           className="inline-flex items-center gap-1.5 text-xs text-muted-foreground font-medium border border-border rounded-full px-3 py-1 hover:bg-muted hover:text-foreground transition-colors"
           aria-label="Salir del diagnóstico"
         >
           <LogOut className="w-3.5 h-3.5" />
           Salir
-        </Link>
+        </button>
       </div>
 
       {/* Messages */}
