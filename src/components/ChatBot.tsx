@@ -269,27 +269,48 @@ const ChatBot = () => {
   // Cuando el chat se cierra, siempre limpiamos el estilo
   useEffect(() => { if (!open) setKbStyle({}); }, [open]);
 
-  // Botón Back de Android / popstate como señal de cierre de teclado
+  // Detecta el teclado virtual con visualViewport y reposiciona el chat
   useEffect(() => {
-    if (Object.keys(kbStyle).length === 0) return;
-    history.pushState({ chatKb: true }, "");
-    const onPop = () => setKbStyle({});
-    window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, [kbStyle]);
+    if (!open) return;
+    if (typeof window === "undefined") return;
+    const vv = window.visualViewport;
+    if (!vv) return;
+
+    const update = () => {
+      if (window.innerWidth >= 768) { setKbStyle({}); return; }
+      // Diferencia entre alto de layout y alto visible = alto del teclado
+      const keyboard = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+      if (keyboard > 80) {
+        // Empujamos el chat hacia arriba justo lo que ocupa el teclado
+        setKbStyle({
+          bottom: `${keyboard + 16}px`,
+          maxHeight: `${vv.height - 24}px`,
+        });
+      } else {
+        setKbStyle({});
+      }
+    };
+
+    update();
+    vv.addEventListener("resize", update);
+    vv.addEventListener("scroll", update);
+    return () => {
+      vv.removeEventListener("resize", update);
+      vv.removeEventListener("scroll", update);
+    };
+  }, [open]);
 
   const applyKb = () => {
-    if (window.innerWidth >= 768) return;
-    const h0 = window.innerHeight;
+    // El reposicionamiento lo hace visualViewport; aquí solo aseguramos
+    // que el input quede a la vista tras un breve delay (iOS).
     setTimeout(() => {
-      const est = Math.round(h0 * 0.42);
-      setKbStyle({ transform: `translateY(-${est}px)`, maxHeight: `${h0 - est - 96}px` });
+      inputRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
     }, 350);
   };
 
   const clearKb = () => {
     if (blurTimer.current) clearTimeout(blurTimer.current);
-    blurTimer.current = window.setTimeout(() => setKbStyle({}), 280);
+    blurTimer.current = window.setTimeout(() => setKbStyle({}), 200);
   };
 
   const cancelClearKb = () => {
