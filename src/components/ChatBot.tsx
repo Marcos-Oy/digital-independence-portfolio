@@ -253,8 +253,15 @@ const ChatBot = () => {
     setInput("");
     setIsLoading(true);
 
-    const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
-    const AUTH = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    // Fallbacks hardcodeados: en Cloudflare Pages el .env no existe y las
+    // VITE_* quedan undefined. La anon key es publishable (segura en cliente).
+    const SUPA_URL =
+      import.meta.env.VITE_SUPABASE_URL ||
+      "https://rixyvhofpietdsomjbwj.supabase.co";
+    const AUTH =
+      import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpeHl2aG9mcGlldGRzb21qYndqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNjI3OTEsImV4cCI6MjA5MDgzODc5MX0.4g-ythW7dMO3wlyZPBPwSHvCDmgLqeXpzBbfn1IZJ98";
+    const CHAT_URL = `${SUPA_URL}/functions/v1/chat`;
 
     try {
       const resp = await fetch(CHAT_URL, {
