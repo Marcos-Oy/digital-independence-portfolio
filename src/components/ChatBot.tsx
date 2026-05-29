@@ -14,135 +14,10 @@ const RobotIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
 
 type Message = { role: "user" | "assistant"; content: string };
 
-// ── Respuestas del bot ────────────────────────────────────────────────────────
+// ── Supabase / AI config ──────────────────────────────────────────────────────
 
-const normalize = (s: string) =>
-  s.toLowerCase()
-   .replace(/[aáàä]/g, "a").replace(/[eéèë]/g, "e")
-   .replace(/[iíìï]/g, "i").replace(/[oóòö]/g, "o")
-   .replace(/[uúùü]/g, "u").replace(/[nñ]/g, "n")
-   .replace(/[^a-z0-9 ]/g, " ");
-
-type BotEntry = { keys: string[]; text: string; chips: string[] };
-
-const DB: BotEntry[] = [
-  {
-    keys: ["reparar", "arreglar", "pc", "computador", "laptop", "impresora", "celular", "pantalla", "teclado", "formatear", "virus", "tecnico"],
-    text: "Ese tipo de servicio no lo ofrecemos, somos una consultora tecnológica para empresas y emprendedores. ¿Tienes algún negocio o proyecto que necesite apoyo tecnológico?",
-    chips: ["¿Qué servicios ofrecen?", "¿Para quién trabajan?", "Agendar diagnóstico"],
-  },
-  {
-    keys: ["presencial", "visita", "oficina", "sucursal", "domicilio", "ciudad", "donde estan", "direccion", "santiago", "serena", "valparaiso", "vina", "coquimbo", "quilpue", "ovalle"],
-    text: "Operamos principalmente online sin sucursal física. En Santiago coordinamos visitas presenciales, y en ciudades como La Serena, Valparaíso o Viña del Mar también es posible agendando una llamada previa.",
-    chips: ["¿Cómo los contacto?", "Agendar diagnóstico", "¿Qué servicios ofrecen?"],
-  },
-  {
-    keys: ["que es", "quienes son", "independencia digital", "consultora", "presentacion"],
-    text: "Somos una consultora tecnológica chilena que diseña, construye y dirige la infraestructura tecnológica de empresas, emprendedores y organismos públicos.",
-    chips: ["¿Qué servicios ofrecen?", "¿Para quién trabajan?", "Agendar diagnóstico"],
-  },
-  {
-    keys: ["servicios", "areas", "que hacen", "portafolio", "ofrecen", "trabajan"],
-    text: "Trabajamos en 5 áreas: Estrategia y Dirección TI, Optimización de Costos TI, Desarrollo y Presencia Digital, Ciberseguridad, e Inteligencia Artificial Corporativa, con 11 servicios en total.",
-    chips: ["Presencia Digital", "IA Corporativa", "Ciberseguridad"],
-  },
-  {
-    keys: ["precio", "costo", "cuanto", "tarifa", "valor", "cobran", "presupuesto", "cotizacion"],
-    text: "Los precios varían según el servicio y las necesidades de cada cliente. Lo mejor es agendar un diagnóstico gratuito para darte un presupuesto personalizado.",
-    chips: ["Agendar diagnóstico", "¿Cómo los contacto?", "¿Qué servicios ofrecen?"],
-  },
-  {
-    keys: ["contacto", "whatsapp", "telefono", "correo", "email", "comunicar", "hablar", "llamar"],
-    text: "Puedes contactarnos por WhatsApp al +56 9 2836 2758 o por correo a contacto@independenciadigital.cl.",
-    chips: ["Agendar diagnóstico", "¿Qué servicios ofrecen?", "¿Cuánto cuesta?"],
-  },
-  {
-    keys: ["diagnostico", "consulta", "agendar", "reunion", "gratis", "gratuito", "sin costo", "cita"],
-    text: "Ofrecemos un diagnóstico inicial sin costo para entender tu caso y proponerte una hoja de ruta. Escríbenos al WhatsApp: +56 9 2836 2758.",
-    chips: ["¿Cómo los contacto?", "¿Qué servicios ofrecen?", "¿Cuánto cuesta?"],
-  },
-  {
-    keys: ["arquitectura", "infraestructura", "google workspace", "microsoft 365", "cloudflare", "hostinger", "servidor", "correo corporativo", "dominio"],
-    text: "El servicio de Arquitectura TI incluye el diseño e implementación de toda tu infraestructura: correo corporativo, dominio, seguridad DNS y hosting.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
-  },
-  {
-    keys: ["transformacion digital", "digitalizar", "digitalizacion", "modernizar", "procesos digitales"],
-    text: "La Transformación Digital incluye diagnóstico, hoja de ruta por etapas, implementación, capacitación y ciberseguridad integrada, adaptada al ritmo de tu empresa.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
-  },
-  {
-    keys: ["cto", "director de tecnologia", "gerente ti", "jefe ti"],
-    text: "El CTO Externo te da un director de tecnología part-time que define la estrategia, gestiona proveedores y lidera tu equipo TI sin el costo de un cargo de planta.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
-  },
-  {
-    keys: ["reduccion de costos", "reducir costos", "ahorrar", "ahorro", "licencias", "nube", "cloud"],
-    text: "Auditamos tu gasto en tecnología (hardware, licencias y nube) e identificamos dónde puedes ahorrar, llegando a reducir hasta un 50% del gasto actual.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
-  },
-  {
-    keys: ["soporte", "help desk", "asistencia tecnica", "mantenimiento", "ticket", "incidencia"],
-    text: "El Soporte TI Gestionado es un contrato mensual con bolsa de horas y SLA de respuesta definido, con atención remota o presencial según tu ubicación.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Funciona presencial?"],
-  },
-  {
-    keys: ["sitio web", "pagina web", "web", "landing", "seo", "google maps", "presencia digital"],
-    text: "El servicio de Presencia Digital incluye diseño y desarrollo de tu sitio web, optimización SEO, perfil en Google Maps y configuración de dominio con seguridad.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Hacen tiendas online?"],
-  },
-  {
-    keys: ["desarrollo", "aplicacion", "app", "sistema", "software", "ecommerce", "tienda online", "crm", "base de datos", "pwa"],
-    text: "Desarrollamos software web a medida: e-commerce, CRM, sistemas internos, gestores de eventos y aplicaciones instalables en móvil (PWA).",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
-  },
-  {
-    keys: ["marketing", "redes sociales", "publicidad", "ads", "google ads", "meta ads", "facebook", "instagram", "tiktok", "linkedin", "sem", "campana"],
-    text: "La Dirección de Marketing Digital abarca SEO/SEM, campañas en Meta, Google, LinkedIn y TikTok, y estrategia de contenidos. Trabajamos con tres niveles según el tamaño de tu empresa.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
-  },
-  {
-    keys: ["ciberseguridad", "seguridad", "hackeo", "hacker", "phishing", "iso 27001", "ley 19628", "datos personales"],
-    text: "Nuestro servicio de Ciberseguridad incluye auditoría técnica, formación contra phishing, cumplimiento ISO 27001 y Ley 19.628, con módulos para distintos sectores.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
-  },
-  {
-    keys: ["inteligencia artificial", "ia corporativa", "automatizacion", "agente", "n8n", "manychat", "clon digital", "bot"],
-    text: "La IA Corporativa incluye diagnóstico de procesos automatizables, agentes con memoria, biblioteca de prompts y automatización de flujos para que tu equipo trabaje más eficientemente.",
-    chips: ["¿Cuánto cuesta?", "Agendar diagnóstico", "¿Qué más ofrecen?"],
-  },
-  {
-    keys: ["municipio", "municipalidad", "gobierno", "publico", "mercado publico", "chilecompra", "licitacion"],
-    text: "Sí trabajamos con el sector público vía Mercado Público (ChileCompra). Estamos en proceso de inscripción para participar en licitaciones.",
-    chips: ["¿Cómo los contacto?", "Agendar diagnóstico", "¿Qué servicios ofrecen?"],
-  },
-  {
-    keys: ["pyme", "pequena empresa", "mediana empresa", "microempresa"],
-    text: "Trabajamos especialmente con PyMEs, con servicios adaptados a distintos presupuestos y tamaños, enfocados en resultados concretos y sin tecnicismos.",
-    chips: ["¿Qué servicios ofrecen?", "¿Cuánto cuesta?", "Agendar diagnóstico"],
-  },
-  {
-    keys: ["emprendedor", "freelance", "independiente", "profesional independiente", "negocio propio", "startup"],
-    text: "Trabajamos con emprendedores. Tenemos servicios de entrada como Presencia Digital y Arquitectura TI pensados para quienes están comenzando o formalizando su negocio.",
-    chips: ["¿Qué servicios ofrecen?", "¿Cuánto cuesta?", "Agendar diagnóstico"],
-  },
-];
-
-const FALLBACK: BotEntry = {
-  keys: [],
-  text: "No tengo información específica sobre eso. Te recomiendo agendar un diagnóstico gratuito para conversar directamente con nuestro equipo.",
-  chips: ["Agendar diagnóstico", "¿Qué servicios ofrecen?", "¿Cómo los contacto?"],
-};
-
-const getBotResponse = (query: string): BotEntry => {
-  const q = normalize(query);
-  let best = { score: 0, idx: -1 };
-  DB.forEach((entry, i) => {
-    const score = entry.keys.filter((k) => q.includes(normalize(k))).length;
-    if (score > best.score) best = { score, idx: i };
-  });
-  return best.idx >= 0 ? DB[best.idx] : FALLBACK;
-};
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
 
 // ── Audio pop ─────────────────────────────────────────────────────────────────
 
@@ -339,16 +214,76 @@ const ChatBot = () => {
     if (!trimmed || isLoading) return;
 
     setChips([]);
-    setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
+    const userMsg: Message = { role: "user", content: trimmed };
+    const apiMessages = [...messages, userMsg];
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setIsLoading(true);
 
-    await new Promise((r) => setTimeout(r, 400 + Math.random() * 350));
+    try {
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "apikey": SUPABASE_KEY,
+        },
+        body: JSON.stringify({ messages: apiMessages }),
+      });
 
-    const { text, chips: newChips } = getBotResponse(trimmed);
-    setMessages((prev) => [...prev, { role: "assistant", content: text }]);
-    setChips(newChips);
-    setIsLoading(false);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+
+      const reader = res.body!.getReader();
+      const decoder = new TextDecoder();
+      let buf = "";
+      let fullText = "";
+
+      outer: while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+
+        let idx: number;
+        while ((idx = buf.indexOf("\n")) !== -1) {
+          const line = buf.slice(0, idx).replace(/\r$/, "");
+          buf = buf.slice(idx + 1);
+          if (!line.startsWith("data: ")) continue;
+          const jsonStr = line.slice(6).trim();
+          if (jsonStr === "[DONE]") break outer;
+          try {
+            const event = JSON.parse(jsonStr);
+            const text = event.choices?.[0]?.delta?.content;
+            if (text) {
+              fullText += text;
+              setMessages((prev) => {
+                const updated = [...prev];
+                updated[updated.length - 1] = { role: "assistant", content: fullText };
+                return updated;
+              });
+            }
+          } catch { /* skip unparseable chunk */ }
+        }
+      }
+
+      const sugMatch = fullText.match(/\|\|SUGGESTIONS:(.*?)\|\|/);
+      if (sugMatch) setChips(sugMatch[1].split("|").map((c) => c.trim()).filter(Boolean));
+      const cleanText = fullText.replace(/\n*\|\|SUGGESTIONS:[^\n]*\n*/g, "").trim();
+      setMessages((prev) => {
+        const updated = [...prev];
+        updated[updated.length - 1] = { role: "assistant", content: cleanText || "..." };
+        return updated;
+      });
+    } catch {
+      setMessages((prev) => [...prev, {
+        role: "assistant",
+        content: "Lo siento, hubo un error al conectar. Intenta nuevamente o contáctanos por WhatsApp: +56 9 2836 2758.",
+      }]);
+      setChips(["¿Cómo los contacto?", "Agendar diagnóstico"]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -449,7 +384,7 @@ const ChatBot = () => {
               </div>
             ))}
 
-            {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
+            {isLoading && (messages[messages.length - 1]?.role !== "assistant" || messages[messages.length - 1]?.content === "") && (
               <div className="flex gap-2 items-start">
                 <div className="w-7 h-7 rounded-full gradient-brand flex items-center justify-center flex-shrink-0">
                   <RobotIcon className="w-4 h-4 text-primary-foreground" />
