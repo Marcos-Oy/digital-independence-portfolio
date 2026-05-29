@@ -70,25 +70,38 @@ export default function Diagnostico() {
   const greetedRef = useRef(false);
   const exitingRef = useRef(false);
 
-  // Ajustar altura al teclado virtual en móviles (visualViewport).
+  // Ajustar altura al teclado virtual en móviles. El navegador in-app de
+  // Instagram/Facebook no dispara visualViewport de forma fiable, así que
+  // también escuchamos window.resize y usamos el mínimo.
   useEffect(() => {
-    const vv = window.visualViewport;
-    if (!vv) return;
-    const update = () => setViewportH(vv.height);
+    const update = () => {
+      const vv = window.visualViewport?.height ?? window.innerHeight;
+      const ih = window.innerHeight;
+      setViewportH(Math.min(vv, ih));
+    };
     update();
-    vv.addEventListener("resize", update);
-    vv.addEventListener("scroll", update);
+    window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
+    window.visualViewport?.addEventListener("resize", update);
+    window.visualViewport?.addEventListener("scroll", update);
     return () => {
-      vv.removeEventListener("resize", update);
-      vv.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+      window.visualViewport?.removeEventListener("resize", update);
+      window.visualViewport?.removeEventListener("scroll", update);
     };
   }, []);
 
   const scrollInputIntoView = () => {
+    // Doble intento: el teclado de Instagram tarda en aparecer.
     setTimeout(() => {
       inputRef.current?.scrollIntoView({ block: "end", behavior: "smooth" });
       if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }, 250);
+    }, 300);
+    setTimeout(() => {
+      inputRef.current?.scrollIntoView({ block: "end", behavior: "smooth" });
+      if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }, 700);
   };
 
   // Interceptar el botón "atrás" del navegador para pedir confirmación.
