@@ -54,6 +54,7 @@ const typingDuration = (text: string) => {
 };
 
 export default function Diagnostico() {
+  const navigate = useNavigate();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -61,9 +62,35 @@ export default function Diagnostico() {
   const [booting, setBooting] = useState(true);
   const [bootStep, setBootStep] = useState(0);
   const [bootProgress, setBootProgress] = useState(0);
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
+  const [closingSession, setClosingSession] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const greetedRef = useRef(false);
+  const exitingRef = useRef(false);
+
+  // Interceptar el botón "atrás" del navegador para pedir confirmación.
+  useEffect(() => {
+    if (booting) return;
+    // Empujamos un estado centinela en el historial
+    window.history.pushState({ diag: true }, "");
+    const onPop = () => {
+      if (exitingRef.current) return;
+      // Volver a empujar para mantenernos en /diagnostico mientras decide
+      window.history.pushState({ diag: true }, "");
+      setShowExitConfirm(true);
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [booting]);
+
+  const confirmExit = () => {
+    setShowExitConfirm(false);
+    setClosingSession(true);
+    exitingRef.current = true;
+    setTimeout(() => navigate("/"), 1800);
+  };
+
 
   useEffect(() => {
     if (!booting) return;
