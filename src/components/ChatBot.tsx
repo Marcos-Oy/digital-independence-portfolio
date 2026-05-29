@@ -457,7 +457,8 @@ const ChatBot = () => {
                   </div>
                 )}
               </div>
-            ))}
+              );
+            })}
 
             {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
               <div className="flex gap-2 items-start">
