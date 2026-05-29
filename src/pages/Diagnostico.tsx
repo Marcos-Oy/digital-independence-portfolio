@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Send, LogOut } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Send, LogOut, ShieldCheck } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import marcosImg from "@/assets/marcos.jpg";
 
 const SUPA_URL =
