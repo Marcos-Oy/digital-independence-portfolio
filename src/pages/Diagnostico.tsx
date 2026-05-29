@@ -64,10 +64,32 @@ export default function Diagnostico() {
   const [bootProgress, setBootProgress] = useState(0);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [closingSession, setClosingSession] = useState(false);
+  const [viewportH, setViewportH] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const greetedRef = useRef(false);
   const exitingRef = useRef(false);
+
+  // Ajustar altura al teclado virtual en móviles (visualViewport).
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const update = () => setViewportH(vv.height);
+    update();
+    vv.addEventListener("resize", update);
+    vv.addEventListener("scroll", update);
+    return () => {
+      vv.removeEventListener("resize", update);
+      vv.removeEventListener("scroll", update);
+    };
+  }, []);
+
+  const scrollInputIntoView = () => {
+    setTimeout(() => {
+      inputRef.current?.scrollIntoView({ block: "end", behavior: "smooth" });
+      if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }, 250);
+  };
 
   // Interceptar el botón "atrás" del navegador para pedir confirmación.
   useEffect(() => {
@@ -256,7 +278,10 @@ export default function Diagnostico() {
   }
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-background">
+    <div
+      className="flex flex-col bg-background"
+      style={{ height: viewportH ? `${viewportH}px` : "100dvh" }}
+    >
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-border bg-card shrink-0 shadow-sm">
         <div className="relative">
@@ -339,9 +364,10 @@ export default function Diagnostico() {
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onFocus={scrollInputIntoView}
             placeholder="Escribe tu mensaje..."
             disabled={isLoading || isTyping}
-            className="flex-1 bg-muted text-foreground text-sm rounded-full px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60 disabled:opacity-60"
+            className="flex-1 min-w-0 bg-muted text-foreground text-base sm:text-sm rounded-full px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60 disabled:opacity-60"
           />
           <button
             type="submit"
