@@ -364,9 +364,10 @@ export default function Diagnostico() {
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onFocus={scrollInputIntoView}
             placeholder="Escribe tu mensaje..."
             disabled={isLoading || isTyping}
-            className="flex-1 bg-muted text-foreground text-sm rounded-full px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60 disabled:opacity-60"
+            className="flex-1 min-w-0 bg-muted text-foreground text-base sm:text-sm rounded-full px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground/60 disabled:opacity-60"
           />
           <button
             type="submit"
