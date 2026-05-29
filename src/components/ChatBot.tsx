@@ -322,7 +322,7 @@ const ChatBot = () => {
       }
 
       if (!assistantText) throw new Error("Empty response");
-      setChips([]);
+      setChips(pickRandom(SUGGESTED_QUESTIONS, 3));
     } catch (err) {
       console.error("Chat IA falló:", err);
       const text =
