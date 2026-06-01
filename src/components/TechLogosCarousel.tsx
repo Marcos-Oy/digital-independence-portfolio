@@ -57,6 +57,9 @@ import trelloLogo from "@/assets/logos/trello.png";
 import laravelLogo from "@/assets/logos/laravel.png";
 import phpLogo from "@/assets/logos/php.png";
 import googlelabsLogo from "@/assets/logos/googlelabs.png";
+import awsLogo from "@/assets/logos/aws.png";
+import azureLogo from "@/assets/logos/azure.png";
+import googlecloudLogo from "@/assets/logos/googlecloud.png";
 
 const logos = [
   { src: microsoftLogo, alt: "Microsoft" },
@@ -117,6 +120,9 @@ const logos = [
   { src: laravelLogo, alt: "Laravel" },
   { src: phpLogo, alt: "PHP" },
   { src: googlelabsLogo, alt: "Google Labs" },
+  { src: awsLogo, alt: "AWS" },
+  { src: azureLogo, alt: "Microsoft Azure" },
+  { src: googlecloudLogo, alt: "Google Cloud" },
 ];
 
 const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
