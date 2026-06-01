@@ -60,6 +60,7 @@ import googlelabsLogo from "@/assets/logos/googlelabs.png";
 import awsLogo from "@/assets/logos/aws.png";
 import azureLogo from "@/assets/logos/azure.png";
 import googlecloudLogo from "@/assets/logos/googlecloud.png";
+import obsidianLogo from "@/assets/logos/obsidian.png";
 
 const logos = [
   { src: microsoftLogo, alt: "Microsoft" },
@@ -123,6 +124,20 @@ const logos = [
   { src: awsLogo, alt: "AWS" },
   { src: azureLogo, alt: "Microsoft Azure" },
   { src: googlecloudLogo, alt: "Google Cloud" },
+  { src: obsidianLogo, alt: "Obsidian" },
+];
+
+// Fisher-Yates shuffle for randomized order on each load
+const shuffleArray = <T,>(arr: T[]): T[] => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
+const logos = shuffleArray(baseLogos);
 ];
 
 const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
