@@ -62,7 +62,7 @@ import azureLogo from "@/assets/logos/azure.png";
 import googlecloudLogo from "@/assets/logos/googlecloud.png";
 import obsidianLogo from "@/assets/logos/obsidian.png";
 
-const logos = [
+const baseLogos = [
   { src: microsoftLogo, alt: "Microsoft" },
   { src: googleLogo, alt: "Google" },
   { src: excelLogo, alt: "Excel" },
@@ -138,7 +138,6 @@ const shuffleArray = <T,>(arr: T[]): T[] => {
 };
 
 const logos = shuffleArray(baseLogos);
-];
 
 const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
 const SPEED = 0.5; // px per frame
