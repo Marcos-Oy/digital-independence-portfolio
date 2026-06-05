@@ -263,7 +263,7 @@ export const SERVICES: Service[] = [
       "Hosting con Cloudflare y Hostinger",
     ],
     segments: ["emprendedores", "pymes"],
-    modality: ["consultoria"],
+    modality: ["consultoria", "asesoria", "mentoria"],
   },
   {
     slug: "desarrollo-software",
