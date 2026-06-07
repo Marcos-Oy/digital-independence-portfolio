@@ -120,7 +120,7 @@ export const AREAS: { id: ServiceArea; label: string; desc: string; icon: Lucide
   },
 ];
 
-export const SERVICES: Service[] = [
+const RAW_SERVICES: Omit<Service, "image">[] = [
   {
     slug: "arquitectura-ti",
     title: "Arquitectura TI",
@@ -433,6 +433,13 @@ export const SERVICES: Service[] = [
     modality: ["consultoria"],
   },
 ];
+
+export const SERVICES: Service[] = RAW_SERVICES.map((s) => ({
+  ...s,
+  image: SERVICE_IMAGES[s.slug],
+}));
+
+
 
 
 export const SEARCH_TAGS: Record<string, string[]> = {
