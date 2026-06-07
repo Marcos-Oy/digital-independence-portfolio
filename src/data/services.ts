@@ -17,6 +17,10 @@ import {
   Layers,
   ShieldCheck,
   Sparkles,
+  Plug,
+  Cog,
+  BarChart3,
+  Database,
   type LucideIcon,
 } from "lucide-react";
 import imgArquitectura from "@/assets/services/arquitectura-ti.jpg";
@@ -30,6 +34,10 @@ import imgMarketing from "@/assets/services/marketing-digital.jpg";
 import imgCiberseguridad from "@/assets/services/ciberseguridad.jpg";
 import imgVigilancia from "@/assets/services/vigilancia-innovacion.jpg";
 import imgIA from "@/assets/services/ia-corporativa.jpg";
+import imgIntegracionPlataformas from "@/assets/services/integracion-plataformas.jpg";
+import imgAutomatizacion from "@/assets/services/automatizacion-procesos.jpg";
+import imgDashboards from "@/assets/services/dashboards-kpi.jpg";
+import imgIntegracionBD from "@/assets/services/integracion-bd.jpg";
 
 export type ServiceArea =
   | "estrategia-direccion-ti"
