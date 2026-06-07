@@ -93,6 +93,10 @@ const SERVICE_IMAGES: Record<string, string> = {
   "ciberseguridad": imgCiberseguridad,
   "vigilancia-innovacion": imgVigilancia,
   "ia-corporativa": imgIA,
+  "integracion-plataformas": imgIntegracionPlataformas,
+  "automatizacion-procesos": imgAutomatizacion,
+  "dashboards-kpi": imgDashboards,
+  "integracion-bd": imgIntegracionBD,
 };
 
 export const AREAS: { id: ServiceArea; label: string; desc: string; icon: LucideIcon }[] = [
