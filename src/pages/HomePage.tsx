@@ -157,7 +157,7 @@ const HomePage = () => {
 
             <ScrollReveal variant="scale" delay={100} className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
               {[
-                { n: "11", label: "Servicios especializados" },
+                { n: "15", label: "Servicios especializados" },
                 { n: "5", label: "Áreas de consultoría" },
                 { n: "4", label: "Segmentos atendidos" },
               ].map(({ n, label }) => (
