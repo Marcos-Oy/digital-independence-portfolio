@@ -143,12 +143,12 @@ const SegmentPageLayout = ({ segment }: Props) => {
                 Te respondemos personalmente para entender tu caso y proponerte una hoja de ruta.
               </p>
               <a
-                href={`https://wa.me/${WHATSAPP}?text=${waMsg}`}
+                href="https://independencia-digital.systeme.io/registro"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
               >
-                Agendar diagnóstico por WhatsApp
+                Agendar diagnóstico
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
               </a>
             </div>

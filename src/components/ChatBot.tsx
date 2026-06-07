@@ -327,7 +327,7 @@ const ChatBot = () => {
     } catch (err) {
       console.error("Chat IA falló:", err);
       const text =
-        "Disculpa, tuve un problema para responder ahora mismo. Por favor escríbenos directo por **WhatsApp: +56 9 2836 2758** y te ayudamos al tiro.";
+        "Disculpa, tuve un problema para responder ahora mismo. Por favor escríbenos a **contacto@independenciadigital.cl** o usa el botón de contacto del sitio.";
       setMessages((prev) => {
         const copy = [...prev];
         if (copy[copy.length - 1]?.role === "assistant" && !copy[copy.length - 1].content) {
@@ -432,15 +432,17 @@ const ChatBot = () => {
                 </div>
                 {hasDiagCta && (
                   <div className="mt-2 ml-9 animate-fade-in">
-                    <Link
-                      to="/diagnostico"
+                    <a
+                      href="https://independencia-digital.systeme.io/registro"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => setOpen(false)}
                       className="group inline-flex items-center gap-2 gradient-brand text-primary-foreground text-sm font-semibold rounded-full pl-3 pr-4 py-2 shadow-md hover:shadow-lg hover:scale-[1.03] transition-all"
                     >
                       <Stethoscope className="w-4 h-4" />
                       <span>Iniciar diagnóstico</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
+                    </a>
                   </div>
                 )}
                 {msg.role === "assistant" && i === messages.length - 1 && chips.length > 0 && !isLoading && (
