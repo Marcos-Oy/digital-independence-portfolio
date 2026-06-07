@@ -444,6 +444,122 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     segments: ["pymes", "empresas", "publico"],
     modality: ["consultoria"],
   },
+  {
+    slug: "integracion-plataformas",
+    title: "Integración de Plataformas",
+    shortTitle: "Integración de Plataformas",
+    navLabel: "Conecta tus sistemas",
+    area: "desarrollo-presencia",
+    areaLabel: "Desarrollo y Presencia Digital",
+    icon: Plug,
+    tagline: "Que tus herramientas conversen entre sí, sin reescribirlas.",
+    summary:
+      "Conectamos tus sistemas existentes (CRM, ERP, e-commerce, planillas, plataformas SaaS) mediante APIs, webhooks y conectores personalizados.",
+    description:
+      "Diseñamos e implementamos integraciones entre las plataformas que ya usas para que dejen de operar en silos. Trabajamos con APIs REST, webhooks, middleware de integración (N8N, Zapier, Make) y conectores personalizados cuando se requiere. Resultado: tus datos fluyen entre sistemas sin doble digitación ni archivos manuales.",
+    rightClient:
+      "PyME o empresa que ya invirtió en varias plataformas (CRM, e-commerce, contabilidad, ERP) y necesita que se comuniquen entre sí.",
+    timeFactor: "Primeros 60 días",
+    valuePromise:
+      "Tus plataformas conectadas operando como un solo ecosistema, con datos sincronizados y sin trabajo manual de copiado.",
+    includes: [
+      "Mapeo de plataformas y flujos de datos",
+      "Integraciones vía API REST y webhooks",
+      "Middleware de integración (N8N, Zapier, Make)",
+      "Conectores personalizados cuando se requiere",
+      "Documentación técnica y monitoreo",
+    ],
+    tools: ["N8N", "Zapier", "Make", "REST APIs", "Webhooks"],
+    segments: ["pymes", "empresas", "publico"],
+    modality: ["consultoria"],
+  },
+  {
+    slug: "automatizacion-procesos",
+    title: "Automatización de Procesos",
+    shortTitle: "Automatización de Procesos",
+    navLabel: "Automatiza tu operación",
+    area: "ia-corporativa",
+    areaLabel: "Inteligencia Artificial Corporativa",
+    icon: Cog,
+    tagline: "Mapeamos, rediseñamos y automatizamos tus flujos de trabajo.",
+    summary:
+      "Diagnosticamos procesos manuales, los rediseñamos y automatizamos flujos completos para reducir tiempos y eliminar errores humanos.",
+    description:
+      "Levantamos los procesos críticos de tu operación, identificamos cuellos de botella y tareas repetitivas, rediseñamos el flujo y lo automatizamos con N8N, ManyChat, Power Automate o scripts a medida. Aplica a ventas, post-venta, facturación, onboarding, reportería y back-office.",
+    rightClient:
+      "Empresa con procesos definidos pero ejecutados manualmente, con doble digitación, planillas y tareas repetitivas que consumen horas del equipo.",
+    timeFactor: "Primeros 90 días",
+    valuePromise:
+      "Procesos clave automatizados con reducción medible de tiempos y errores, y trazabilidad completa de cada ejecución.",
+    includes: [
+      "Levantamiento y mapeo de procesos",
+      "Rediseño de flujos para automatización",
+      "Implementación con N8N, Power Automate o a medida",
+      "Notificaciones, reportes y alertas automáticas",
+      "Documentación y capacitación del equipo",
+    ],
+    tools: ["N8N", "Power Automate", "Zapier", "ManyChat"],
+    segments: ["pymes", "empresas", "publico"],
+    modality: ["consultoria", "asesoria"],
+  },
+  {
+    slug: "dashboards-kpi",
+    title: "Dashboards y KPI",
+    shortTitle: "Dashboards y KPI",
+    navLabel: "Visibilidad de tu negocio",
+    area: "estrategia-direccion-ti",
+    areaLabel: "Estrategia y Dirección TI",
+    icon: BarChart3,
+    tagline: "Indicadores en tiempo real para decidir con datos, no con intuición.",
+    summary:
+      "Diseñamos e implementamos dashboards interactivos con KPIs en tiempo real conectados a tus fuentes de datos: ventas, operaciones, finanzas y marketing.",
+    description:
+      "Definimos los indicadores que realmente importan para tu negocio, conectamos las fuentes de datos (bases de datos, planillas, APIs, plataformas SaaS) y construimos dashboards interactivos en Power BI, Looker Studio o Metabase. Entregamos el tablero operativo y la capacitación para que tu equipo lo use a diario.",
+    rightClient:
+      "Gerente o dueño que toma decisiones a ciegas, con reportes manuales tardíos y sin visibilidad real de su operación.",
+    timeFactor: "Primer mes",
+    valuePromise:
+      "Tablero ejecutivo en tiempo real con los KPIs clave de tu negocio, accesible desde cualquier dispositivo.",
+    includes: [
+      "Definición de KPIs por área",
+      "Conexión a fuentes de datos (BD, APIs, planillas)",
+      "Dashboards interactivos en Power BI o Looker Studio",
+      "Alertas y reportes automáticos",
+      "Capacitación al equipo ejecutivo",
+    ],
+    tools: ["Power BI", "Looker Studio", "Metabase", "Excel"],
+    segments: ["pymes", "empresas", "publico"],
+    modality: ["consultoria", "asesoria"],
+  },
+  {
+    slug: "integracion-bd",
+    title: "Integración de Bases de Datos",
+    shortTitle: "Integración de Bases de Datos",
+    navLabel: "Una sola fuente de verdad",
+    area: "estrategia-direccion-ti",
+    areaLabel: "Estrategia y Dirección TI",
+    icon: Database,
+    tagline: "De datos dispersos a una única fuente confiable.",
+    summary:
+      "Consolidamos información dispersa entre planillas, sistemas y plataformas en una base de datos única, estructurada y consultable.",
+    description:
+      "Auditamos tus fuentes de datos (Excel, sistemas legacy, plataformas SaaS, bases de datos), diseñamos el modelo unificado, implementamos procesos ETL y entregamos una base consolidada lista para reportería, analítica y operación diaria. Trabajamos con SQL Server, PostgreSQL, MySQL y bases cloud.",
+    rightClient:
+      "Empresa con datos críticos en planillas dispersas, sistemas que no se hablan y reportes que nadie confía porque cada área tiene su versión.",
+    timeFactor: "Primer trimestre",
+    valuePromise:
+      "Base de datos única, limpia y consultable con procesos automáticos de carga desde tus fuentes operativas.",
+    includes: [
+      "Auditoría de fuentes de datos",
+      "Diseño de modelo de datos unificado",
+      "Procesos ETL y carga automatizada",
+      "Migración desde planillas y sistemas legacy",
+      "Documentación y gobierno de datos",
+    ],
+    tools: ["SQL Server", "PostgreSQL", "MySQL", "Oracle"],
+    segments: ["pymes", "empresas", "publico"],
+    modality: ["consultoria"],
+  },
 ];
 
 export const SERVICES: Service[] = RAW_SERVICES.map((s) => ({
