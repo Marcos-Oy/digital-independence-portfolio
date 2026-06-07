@@ -224,38 +224,53 @@ const Servicios = () => {
                       <ScrollReveal key={s.slug} delay={j * 60} variant="scale">
                         <Link
                           to={`/servicios/${s.slug}`}
-                          className="group bg-card border border-border rounded-xl p-6 hover:border-primary/25 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col h-full"
+                          className="group bg-card border border-border rounded-xl overflow-hidden hover:border-primary/25 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col h-full"
                         >
-                          <div className="flex items-start justify-between gap-2 mb-4">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
-                              <Icon className="w-5 h-5 text-primary" />
+                          <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                            <img
+                              src={s.image}
+                              alt={s.title}
+                              loading="lazy"
+                              width={1024}
+                              height={768}
+                              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                            <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-background/85 backdrop-blur-sm border border-border rounded-full px-2.5 py-1">
+                              <Icon className="w-3.5 h-3.5 text-primary" />
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">
+                                {s.areaLabel.split(" ")[0]}
+                              </span>
                             </div>
-                            <div className="flex flex-wrap gap-1 justify-end">
+                            <div className="absolute bottom-3 right-3 flex flex-wrap gap-1 justify-end">
                               {s.modality.map((m) => (
                                 <span
                                   key={m}
-                                  className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${MODALITY_COLORS[m]}`}
+                                  className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border backdrop-blur-sm ${MODALITY_COLORS[m]}`}
                                 >
                                   {MODALITY_LABELS[m]}
                                 </span>
                               ))}
                             </div>
                           </div>
-                          <h3 className="font-heading font-bold text-base text-foreground mb-2">
-                            {s.title}
-                          </h3>
-                          <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
-                            {s.summary}
-                          </p>
-                          <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold">
-                            Ver servicio
-                            <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
-                          </span>
+                          <div className="p-6 flex flex-col flex-1">
+                            <h3 className="font-heading font-bold text-base text-foreground mb-2 leading-snug">
+                              {s.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                              {s.summary}
+                            </p>
+                            <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold">
+                              Ver servicio
+                              <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
+                            </span>
+                          </div>
                         </Link>
                       </ScrollReveal>
                     );
                   })}
                 </div>
+
               </div>
             </section>
           );
