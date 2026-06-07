@@ -19,6 +19,17 @@ import {
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
+import imgArquitectura from "@/assets/services/arquitectura-ti.jpg";
+import imgTransformacion from "@/assets/services/transformacion-digital.jpg";
+import imgDireccion from "@/assets/services/direccion-ti.jpg";
+import imgOptimizacion from "@/assets/services/optimizacion-costos-ti.jpg";
+import imgSoporte from "@/assets/services/soporte-ti-gestionado.jpg";
+import imgPresencia from "@/assets/services/presencia-digital.jpg";
+import imgDesarrollo from "@/assets/services/desarrollo-software.jpg";
+import imgMarketing from "@/assets/services/marketing-digital.jpg";
+import imgCiberseguridad from "@/assets/services/ciberseguridad.jpg";
+import imgVigilancia from "@/assets/services/vigilancia-innovacion.jpg";
+import imgIA from "@/assets/services/ia-corporativa.jpg";
 
 export type ServiceArea =
   | "estrategia-direccion-ti"
@@ -49,6 +60,7 @@ export interface Service {
   area: ServiceArea;
   areaLabel: string;
   icon: LucideIcon;
+  image: string;
   tagline: string;
   summary: string;
   description: string;
@@ -60,6 +72,20 @@ export interface Service {
   segments: ("emprendedores" | "pymes" | "empresas" | "publico")[];
   modality: ServiceModality[];
 }
+
+const SERVICE_IMAGES: Record<string, string> = {
+  "arquitectura-ti": imgArquitectura,
+  "transformacion-digital": imgTransformacion,
+  "direccion-ti": imgDireccion,
+  "optimizacion-costos-ti": imgOptimizacion,
+  "soporte-ti-gestionado": imgSoporte,
+  "presencia-digital": imgPresencia,
+  "desarrollo-software": imgDesarrollo,
+  "marketing-digital": imgMarketing,
+  "ciberseguridad": imgCiberseguridad,
+  "vigilancia-innovacion": imgVigilancia,
+  "ia-corporativa": imgIA,
+};
 
 export const AREAS: { id: ServiceArea; label: string; desc: string; icon: LucideIcon }[] = [
   {
