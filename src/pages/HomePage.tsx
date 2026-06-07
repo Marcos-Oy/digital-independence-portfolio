@@ -218,7 +218,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Servicios — 11 service cards con imagen */}
+      {/* Servicios — 15 service cards con imagen */}
       <section id="servicios" className="relative py-20 md:py-28 bg-background overflow-hidden">
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-96 pointer-events-none">
           <img src={bannerPlan360} alt="" className="w-full h-full object-cover opacity-40 dark:opacity-30" />
@@ -235,7 +235,7 @@ const HomePage = () => {
                 Tecnología que resuelve problemas reales
               </h2>
               <p className="text-muted-foreground">
-                11 soluciones especializadas en 5 áreas. Cada una pensada en tu operación diaria, no en la tecnología por sí sola.
+                15 soluciones especializadas en 5 áreas. Cada una pensada en tu operación diaria, no en la tecnología por sí sola.
               </p>
             </ScrollReveal>
 

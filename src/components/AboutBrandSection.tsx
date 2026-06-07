@@ -16,7 +16,7 @@ const pillars = [
   {
     n: "03",
     title: "Enfoque",
-    desc: "Cinco áreas de servicio con 11 soluciones contratables por separado. Diagnóstico inicial sin costo, hoja de ruta priorizada y dirección tecnológica activa.",
+    desc: "Cinco áreas de servicio con 15 soluciones contratables por separado. Diagnóstico inicial sin costo, hoja de ruta priorizada y dirección tecnológica activa.",
   },
   {
     n: "04",
