@@ -246,7 +246,7 @@ const SiteNavbar = () => {
               </button>
               <ThemeToggle />
               <a
-                href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
+                href="https://independencia-digital.systeme.io/registro"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden lg:inline-flex items-center gap-2.5 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
@@ -424,7 +424,7 @@ const SiteNavbar = () => {
               </li>
               <li className="pt-2 border-t border-border mt-1">
                 <a
-                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
+                  href="https://independencia-digital.systeme.io/registro"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}

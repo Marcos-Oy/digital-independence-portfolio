@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: "¿Cómo es el primer contacto?",
-    a: "Agendas un diagnóstico inicial por WhatsApp o correo. Te entendemos, revisamos tu situación actual y te proponemos los servicios que tienen sentido para tu caso, sin compromiso.",
+    a: "Agendas un diagnóstico inicial por correo. Te entendemos, revisamos tu situación actual y te proponemos los servicios que tienen sentido para tu caso, sin compromiso.",
   },
 ];
 
@@ -116,7 +116,7 @@ const HomePage = () => {
             style={{ animationDelay: "0.3s" }}
           >
             <a
-              href={`https://wa.me/${WHATSAPP}?text=${waText("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
+              href="https://independencia-digital.systeme.io/registro"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
@@ -380,12 +380,12 @@ const HomePage = () => {
                   </div>
 
                   <a
-                    href={`https://wa.me/${WHATSAPP}?text=${waText("Hola, quiero agendar un diagnóstico con Independencia Digital.")}`}
+                    href="https://independencia-digital.systeme.io/registro"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
                   >
-                    Agendar diagnóstico por WhatsApp
+                    Agendar diagnóstico
                     <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
                   </a>
                 </div>
