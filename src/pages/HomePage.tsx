@@ -218,7 +218,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Servicios — 5 área cards */}
+      {/* Servicios — 11 service cards con imagen */}
       <section id="servicios" className="relative py-20 md:py-28 bg-background overflow-hidden">
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-96 pointer-events-none">
           <img src={bannerPlan360} alt="" className="w-full h-full object-cover opacity-40 dark:opacity-30" />
@@ -226,55 +226,67 @@ const HomePage = () => {
         </div>
 
         <div className="relative container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <ScrollReveal className="mb-14">
+          <div className="max-w-7xl mx-auto">
+            <ScrollReveal className="mb-10 text-center max-w-3xl mx-auto">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                Portafolio
+                Nuestros servicios
               </p>
-              <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-3">
-                Cinco áreas de servicio
+              <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-4">
+                Tecnología que resuelve problemas reales
               </h2>
-              <p className="text-muted-foreground max-w-xl">
-                11 soluciones contratables por separado. Elige el área que necesitas.
+              <p className="text-muted-foreground">
+                11 soluciones especializadas en 5 áreas. Cada una pensada en tu operación diaria, no en la tecnología por sí sola.
               </p>
             </ScrollReveal>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {AREAS.map((area, i) => {
-                const AreaIcon = area.icon;
-                const count = SERVICES.filter((s) => s.area === area.id).length;
+            {/* Área pill filters */}
+            <ScrollReveal delay={80} className="flex flex-wrap justify-center gap-2 mb-10">
+              {AREAS.map((area) => (
+                <Link
+                  key={area.id}
+                  to={`/servicios?area=${area.id}`}
+                  className="text-xs font-semibold px-3.5 py-1.5 rounded-full border border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-primary transition-all duration-150"
+                >
+                  {area.label}
+                </Link>
+              ))}
+            </ScrollReveal>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {SERVICES.map((s, i) => {
+                const Icon = s.icon;
                 return (
-                  <ScrollReveal key={area.id} delay={i * 70} variant="scale">
+                  <ScrollReveal key={s.slug} delay={(i % 3) * 80} variant="scale">
                     <Link
-                      to={`/servicios?area=${area.id}`}
-                      className="group relative bg-card border border-border rounded-2xl p-7 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col h-full overflow-hidden"
+                      to={`/servicios/${s.slug}`}
+                      className="group bg-card border border-border rounded-xl overflow-hidden hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col h-full"
                     >
-                      {/* Large muted number background */}
-                      <span
-                        aria-hidden="true"
-                        className="absolute top-4 right-5 font-heading font-extrabold text-6xl text-border/40 leading-none select-none pointer-events-none"
-                      >
-                        0{i + 1}
-                      </span>
-
-                      <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 mb-5 group-hover:bg-primary/15 transition-colors duration-200">
-                        <AreaIcon className="w-5 h-5 text-primary" />
+                      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                        <img
+                          src={s.image}
+                          alt={s.title}
+                          loading="lazy"
+                          width={1024}
+                          height={768}
+                          className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+                        <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-background/85 backdrop-blur-sm border border-border rounded-full px-2.5 py-1">
+                          <Icon className="w-3.5 h-3.5 text-primary" />
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">
+                            {s.areaLabel.split(" ")[0]}
+                          </span>
+                        </div>
                       </div>
-
-                      <h3 className="font-heading font-bold text-base text-foreground leading-tight mb-3">
-                        {area.label}
-                      </h3>
-
-                      <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-5">
-                        {area.desc}
-                      </p>
-
-                      <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-semibold text-muted-foreground bg-muted px-2.5 py-1 rounded-full">
-                          {count} servicio{count !== 1 ? "s" : ""}
-                        </span>
+                      <div className="p-6 flex flex-col flex-1">
+                        <h3 className="font-heading font-bold text-base text-foreground mb-2 leading-snug">
+                          {s.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                          {s.summary}
+                        </p>
                         <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold">
-                          Ver área
+                          Ver servicio
                           <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
                         </span>
                       </div>
@@ -296,6 +308,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
 
       {/* Tecnologías */}
       <SafeTechLogosCarousel />
