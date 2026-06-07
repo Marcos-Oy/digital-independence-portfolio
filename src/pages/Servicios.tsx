@@ -102,7 +102,7 @@ const Servicios = () => {
             Portafolio de <span className="text-primary">servicios</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mb-10">
-            11 soluciones especializadas agrupadas en 5 áreas. Contratables por separado.
+            15 soluciones especializadas agrupadas en 5 áreas. Contratables por separado.
           </p>
 
           {/* Search bar */}
