@@ -171,6 +171,9 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Tecnologías */}
+      <SafeTechLogosCarousel />
+
       {/* Segmentos */}
       <section id="segmentos" className="py-20 md:py-28 bg-muted/50">
         <div className="container mx-auto px-4">
@@ -309,9 +312,6 @@ const HomePage = () => {
         </div>
       </section>
 
-
-      {/* Tecnologías */}
-      <SafeTechLogosCarousel />
 
       {/* Sobre la marca */}
       <AboutBrandSection />
