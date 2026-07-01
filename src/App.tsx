@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import HomeView from "@/views/HomeView";
 import LandingHubView from "@/views/landing/LandingHubView";
 import GeneralLandingView from "@/views/landing/GeneralLandingView";
+import AreaLandingView from "@/views/landing/AreaLandingView";
 import FundadorView from "@/views/FundadorView";
 import ServiciosView from "@/views/ServiciosView";
 import ServicioRouteView from "@/views/ServicioRouteView";
@@ -42,6 +43,11 @@ const AnimatedRoutes = () => {
         <Route path="/inteligenciaartificial" element={<Navigate to="/servicios/ia-corporativa" replace />} />
         <Route path="/landing" element={<LandingHubView />} />
         <Route path="/landing/general" element={<GeneralLandingView />} />
+        <Route path="/landing/estrategia-direccion-ti" element={<AreaLandingView area="estrategia-direccion-ti" />} />
+        <Route path="/landing/optimizacion-costos" element={<AreaLandingView area="optimizacion-costos" />} />
+        <Route path="/landing/desarrollo-presencia" element={<AreaLandingView area="desarrollo-presencia" />} />
+        <Route path="/landing/seguridad-inteligencia" element={<AreaLandingView area="seguridad-inteligencia" />} />
+        <Route path="/landing/ia-corporativa" element={<AreaLandingView area="ia-corporativa" />} />
         <Route path="/diagnostico" element={<DiagnosticoView />} />
         <Route path="/diagnóstico" element={<DiagnosticoView />} />
         <Route path="*" element={<NotFoundView />} />
@@ -54,14 +60,16 @@ const AppLayout = () => {
   const location = useLocation();
   const isDiagnostico = location.pathname === "/diagnostico" || location.pathname === "/diagnóstico";
   const isLandingFunnel = /^\/landing\/.+/.test(location.pathname);
+  const isLandingHub = location.pathname === "/landing";
   const hideChrome = isDiagnostico || isLandingFunnel;
+  const hideWelcomeModal = hideChrome || isLandingHub;
   return (
     <>
       <ScrollToTop />
       <AnimatedRoutes />
       {!hideChrome && <WhatsAppButtonView />}
       {!hideChrome && <ChatBotView />}
-      {!hideChrome && <WelcomeModalView />}
+      {!hideWelcomeModal && <WelcomeModalView />}
     </>
   );
 };

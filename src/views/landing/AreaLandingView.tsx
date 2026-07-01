@@ -1,4 +1,3 @@
-import { XCircle } from "lucide-react";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import WistiaEmbed from "@/views/shared/WistiaEmbed";
 import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
@@ -8,12 +7,22 @@ import LandingCtaButton from "@/views/landing/LandingCtaButton";
 import FounderAuthoritySection from "@/views/landing/FounderAuthoritySection";
 import ServiceAccordionList from "@/views/landing/ServiceAccordionList";
 import LeadFormDialogView from "@/views/landing/LeadFormDialogView";
-import { AREAS, SERVICES } from "@/models/services";
-import { PAIN_POINTS, PAIN_REFRAME, METHOD_STEPS, BENEFITS } from "@/models/generalLandingContent";
+import { XCircle } from "lucide-react";
+import { AREAS, SERVICES, type ServiceArea } from "@/models/services";
+import { AREA_LANDING_CONTENT } from "@/models/areaLandingContent";
+import { METHOD_STEPS } from "@/models/generalLandingContent";
 import { useLandingController } from "@/controllers/landing/useLandingController";
 
-const GeneralLandingView = () => {
-  const { leadOpen, setLeadOpen } = useLandingController("Independencia Digital | Diagnóstico gratuito");
+interface AreaLandingViewProps {
+  area: ServiceArea;
+}
+
+const AreaLandingView = ({ area }: AreaLandingViewProps) => {
+  const areaInfo = AREAS.find((a) => a.id === area)!;
+  const content = AREA_LANDING_CONTENT[area];
+  const areaServices = SERVICES.filter((s) => s.area === area);
+
+  const { leadOpen, setLeadOpen } = useLandingController(`${areaInfo.label} | Independencia Digital`);
   const openLead = () => setLeadOpen(true);
 
   return (
@@ -24,20 +33,19 @@ const GeneralLandingView = () => {
       <section className="gradient-hero pt-16 pb-14 md:pt-20 md:pb-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            Plan 360, Independencia Digital
+            {content.eyebrow}
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
-            Ordena tu tecnología, protege tu negocio y hazlo crecer
+            {content.headline}
           </h1>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Diagnóstico, arquitectura TI, ciberseguridad, automatización e IA para PyMEs, empresas y
-            organismos públicos en Chile.
+            {content.subtext}
           </p>
           <LandingCtaButton onClick={openLead} className="btn-shimmer" />
         </div>
 
         <ScrollReveal className="container mx-auto px-4 max-w-3xl mt-12" variant="scale">
-          <WistiaEmbed mediaId="68c4rkopry" />
+          <WistiaEmbed mediaId={content.wistiaMediaId} />
         </ScrollReveal>
       </section>
 
@@ -57,16 +65,16 @@ const GeneralLandingView = () => {
           </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-x-10 gap-y-4">
-            {PAIN_POINTS.map((item) => (
-              <div key={item} className="flex items-start gap-3">
+            {areaServices.map((s) => (
+              <div key={s.slug} className="flex items-start gap-3">
                 <XCircle className="w-4 h-4 text-destructive/70 mt-0.5 shrink-0" />
-                <p className="text-sm text-foreground/90 leading-relaxed">{item}</p>
+                <p className="text-sm text-foreground/90 leading-relaxed">{s.painPoints[0]}</p>
               </div>
             ))}
           </div>
 
           <ScrollReveal className="max-w-2xl mx-auto text-center mt-12">
-            <p className="text-foreground/90 leading-relaxed mb-8">{PAIN_REFRAME}</p>
+            <p className="text-foreground/90 leading-relaxed mb-8">{content.painReframe}</p>
             <LandingCtaButton onClick={openLead} />
           </ScrollReveal>
         </div>
@@ -83,24 +91,6 @@ const GeneralLandingView = () => {
 
           <FounderAuthoritySection />
 
-          {/* 5 áreas de servicio */}
-          <ScrollReveal className="mt-14" variant="up">
-            <p className="text-center text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-6">
-              Todo lo que podemos ordenar contigo
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-              {AREAS.map((area) => (
-                <div key={area.id} className="bg-card border border-border rounded-xl p-5 h-full">
-                  <area.icon className="w-5 h-5 text-primary mb-3" />
-                  <p className="font-heading font-bold text-sm text-foreground mb-1.5 leading-snug">
-                    {area.label}
-                  </p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{area.desc}</p>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-
           <div className="text-center mt-12">
             <LandingCtaButton onClick={openLead} />
           </div>
@@ -112,27 +102,14 @@ const GeneralLandingView = () => {
         <div className="container mx-auto px-4 max-w-4xl">
           <ScrollReveal className="max-w-2xl mx-auto text-center mb-12">
             <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
-              Qué hacemos exactamente en cada servicio
+              Qué hacemos exactamente en {areaInfo.label.toLowerCase()}
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              15 soluciones agrupadas en 5 áreas. Abre la que te interesa: el problema que resuelve, qué
-              hacemos y qué obtienes.
-            </p>
+            <p className="text-muted-foreground leading-relaxed">{areaInfo.desc}</p>
           </ScrollReveal>
 
-          <div className="space-y-10">
-            {AREAS.map((area) => (
-              <ScrollReveal key={area.id} variant="up">
-                <div className="flex items-center gap-2.5 mb-3">
-                  <area.icon className="w-4 h-4 text-primary shrink-0" />
-                  <h3 className="font-heading font-bold text-sm text-foreground uppercase tracking-wide">
-                    {area.label}
-                  </h3>
-                </div>
-                <ServiceAccordionList services={SERVICES.filter((s) => s.area === area.id)} />
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal variant="up">
+            <ServiceAccordionList services={areaServices} />
+          </ScrollReveal>
 
           <div className="text-center mt-12">
             <LandingCtaButton onClick={openLead} />
@@ -186,18 +163,18 @@ const GeneralLandingView = () => {
           </ScrollReveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {BENEFITS.map((b, i) => {
-              const Icon = b.icon;
+            {areaServices.map((s, i) => {
+              const Icon = s.icon;
               return (
-                <ScrollReveal key={b.title} delay={i * 60} variant="scale">
+                <ScrollReveal key={s.slug} delay={i * 60} variant="scale">
                   <div className="bg-card border border-border rounded-xl p-6 h-full">
                     <span className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
                       <Icon className="w-5 h-5 text-secondary" />
                     </span>
                     <h3 className="font-heading font-bold text-base text-foreground mb-2 leading-snug">
-                      {b.title}
+                      {s.shortTitle}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.valuePromise}</p>
                   </div>
                 </ScrollReveal>
               );
@@ -225,9 +202,9 @@ const GeneralLandingView = () => {
 
       <LandingFooter />
 
-      <LeadFormDialogView open={leadOpen} onOpenChange={setLeadOpen} source="landing-general" />
+      <LeadFormDialogView open={leadOpen} onOpenChange={setLeadOpen} source={`landing-${area}`} />
     </div>
   );
 };
 
-export default GeneralLandingView;
+export default AreaLandingView;

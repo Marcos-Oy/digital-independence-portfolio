@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-export const useGeneralLandingController = () => {
+export const useLandingController = (pageTitle: string) => {
   const [leadOpen, setLeadOpen] = useState(false);
 
   useEffect(() => {
-    document.title = "Independencia Digital | Diagnóstico gratuito";
-  }, []);
+    document.title = pageTitle;
+  }, [pageTitle]);
 
   return { leadOpen, setLeadOpen };
 };
