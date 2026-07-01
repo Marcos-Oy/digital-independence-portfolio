@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { CheckCircle2, Loader2 } from "lucide-react";
+import logo from "@/assets/logo.png";
 import {
   Dialog,
   DialogContent,
@@ -19,11 +20,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const leadSchema = z.object({
   nombre: z.string().trim().min(2, "Ingresa tu nombre completo"),
   email: z.string().trim().email("Ingresa un correo válido"),
-  whatsapp: z.string().trim().min(8, "Ingresa un número de contacto válido"),
+  telefono: z.string().trim().min(8, "Ingresa un número de contacto válido"),
+  mensaje: z.string().trim().min(10, "Cuéntanos un poco más de tu caso"),
 });
 
 type LeadFormValues = z.infer<typeof leadSchema>;
@@ -39,7 +42,7 @@ const LeadFormDialog = ({ open, onOpenChange, source }: LeadFormDialogProps) => 
 
   const form = useForm<LeadFormValues>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { nombre: "", email: "", whatsapp: "" },
+    defaultValues: { nombre: "", email: "", telefono: "", mensaje: "" },
   });
 
   const onSubmit = (values: LeadFormValues) => {
@@ -61,7 +64,7 @@ const LeadFormDialog = ({ open, onOpenChange, source }: LeadFormDialogProps) => 
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-md rounded-2xl">
+      <DialogContent className="sm:max-w-md rounded-2xl max-h-[90vh] overflow-y-auto">
         {status === "success" ? (
           <div className="flex flex-col items-center text-center py-6">
             <div className="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
@@ -71,13 +74,14 @@ const LeadFormDialog = ({ open, onOpenChange, source }: LeadFormDialogProps) => 
               Listo, {form.getValues("nombre").split(" ")[0]}
             </h3>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Recibimos tus datos. Te contactaremos a la brevedad por WhatsApp o correo para agendar tu
+              Recibimos tus datos. Te contactaremos a la brevedad por teléfono o correo para agendar tu
               diagnóstico.
             </p>
           </div>
         ) : (
           <>
-            <DialogHeader>
+            <DialogHeader className="items-center text-center sm:text-center">
+              <img src={logo} alt="Independencia Digital" className="h-12 w-12 mb-1" />
               <DialogTitle className="font-heading text-xl">Quiero mi diagnóstico</DialogTitle>
               <DialogDescription>
                 Déjanos tus datos y te contactamos para agendar tu diagnóstico gratuito.
@@ -114,12 +118,29 @@ const LeadFormDialog = ({ open, onOpenChange, source }: LeadFormDialogProps) => 
                 />
                 <FormField
                   control={form.control}
-                  name="whatsapp"
+                  name="telefono"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>WhatsApp</FormLabel>
+                      <FormLabel>Teléfono</FormLabel>
                       <FormControl>
                         <Input type="tel" placeholder="+56 9 1234 5678" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="mensaje"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Cuéntanos tu caso</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Cuéntanos un poco de tu negocio y qué es lo que necesitas resolver"
+                          className="min-h-[100px]"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
