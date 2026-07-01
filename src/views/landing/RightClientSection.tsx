@@ -23,7 +23,7 @@ const RightClientSection = ({ text }: RightClientSectionProps) => (
           <img
             src={robotImg}
             alt="Autonomía Digital, la mascota de Independencia Digital"
-            className="w-32 md:w-44 h-auto mx-auto shrink-0 order-1 sm:order-2"
+            className="w-48 md:w-64 h-auto rounded-2xl mx-auto shrink-0 order-1 sm:order-2"
           />
         </div>
       </ScrollReveal>
