@@ -11,7 +11,7 @@ const STATUS_LABEL: Record<string, string> = {
 };
 
 const LandingHubView = () => {
-  const { query, setQuery, filtered, copiedSlug, copyLink } = useLandingHubController();
+  const { query, setQuery, filtered, copiedPath, copyLink } = useLandingHubController();
 
   return (
     <div className="min-h-screen bg-background">
@@ -63,17 +63,17 @@ const LandingHubView = () => {
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {filtered.map((l, i) => (
-                <ScrollReveal key={l.slug} delay={i * 60} variant="scale">
+                <ScrollReveal key={l.path} delay={i * 60} variant="scale">
                   <div className="group bg-card border border-border rounded-xl p-6 hover:border-primary/25 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col h-full">
                     <div className="flex items-start justify-between gap-2 mb-4">
                       <span className="self-start text-[10px] font-bold uppercase tracking-wider text-secondary bg-secondary/10 rounded-full px-2.5 py-1">
                         {STATUS_LABEL[l.status]}
                       </span>
                       <button
-                        onClick={() => copyLink(l.slug)}
+                        onClick={() => copyLink(l.path)}
                         className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-muted-foreground hover:text-primary border border-border hover:border-primary/40 rounded-full px-2.5 py-1 transition-colors shrink-0"
                       >
-                        {copiedSlug === l.slug ? (
+                        {copiedPath === l.path ? (
                           <>
                             <Check className="w-3 h-3" /> Copiado
                           </>
@@ -84,7 +84,7 @@ const LandingHubView = () => {
                         )}
                       </button>
                     </div>
-                    <Link to={`/landing/${l.slug}`} className="flex flex-col flex-1">
+                    <Link to={l.path} target="_blank" rel="noopener noreferrer" className="flex flex-col flex-1">
                       <h3 className="font-heading font-bold text-base text-foreground mb-2 leading-snug">
                         {l.title}
                       </h3>

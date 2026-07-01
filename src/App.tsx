@@ -8,6 +8,7 @@ import HomeView from "@/views/HomeView";
 import LandingHubView from "@/views/landing/LandingHubView";
 import GeneralLandingView from "@/views/landing/GeneralLandingView";
 import AreaLandingView from "@/views/landing/AreaLandingView";
+import ServiceLandingRouteView from "@/views/landing/ServiceLandingRouteView";
 import FundadorView from "@/views/FundadorView";
 import ServiciosView from "@/views/ServiciosView";
 import ServicioRouteView from "@/views/ServicioRouteView";
@@ -48,6 +49,7 @@ const AnimatedRoutes = () => {
         <Route path="/landing/desarrollo-presencia" element={<AreaLandingView area="desarrollo-presencia" />} />
         <Route path="/landing/seguridad-inteligencia" element={<AreaLandingView area="seguridad-inteligencia" />} />
         <Route path="/landing/ia-corporativa" element={<AreaLandingView area="ia-corporativa" />} />
+        <Route path="/landing/servicio/:slug" element={<ServiceLandingRouteView />} />
         <Route path="/diagnostico" element={<DiagnosticoView />} />
         <Route path="/diagnóstico" element={<DiagnosticoView />} />
         <Route path="*" element={<NotFoundView />} />

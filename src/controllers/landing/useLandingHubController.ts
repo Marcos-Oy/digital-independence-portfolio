@@ -9,7 +9,7 @@ const normalize = (s: string) =>
 
 export const useLandingHubController = () => {
   const [query, setQuery] = useState("");
-  const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
+  const [copiedPath, setCopiedPath] = useState<string | null>(null);
 
   useEffect(() => {
     document.title = "Landing Pages | Independencia Digital";
@@ -20,16 +20,16 @@ export const useLandingHubController = () => {
     ? LANDINGS.filter((l) => normalize(`${l.title} ${l.summary}`).includes(q))
     : LANDINGS;
 
-  const copyLink = async (slug: string) => {
-    const url = `${window.location.origin}/landing/${slug}`;
+  const copyLink = async (path: string) => {
+    const url = `${window.location.origin}${path}`;
     try {
       await navigator.clipboard.writeText(url);
-      setCopiedSlug(slug);
-      window.setTimeout(() => setCopiedSlug((prev) => (prev === slug ? null : prev)), 2000);
+      setCopiedPath(path);
+      window.setTimeout(() => setCopiedPath((prev) => (prev === path ? null : prev)), 2000);
     } catch {
       /* clipboard no disponible en este navegador/contexto */
     }
   };
 
-  return { query, setQuery, filtered, copiedSlug, copyLink };
+  return { query, setQuery, filtered, copiedPath, copyLink };
 };
