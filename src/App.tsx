@@ -4,18 +4,18 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import HomePage from "./pages/HomePage";
-import LandingPage from "./pages/LandingPage";
-import LandingGeneral from "./pages/landings/General";
-import Fundador from "./pages/Fundador";
-import Servicios from "./pages/Servicios";
-import Servicio from "./pages/Servicio";
-import Segmento from "./pages/Segmento";
-import Diagnostico from "./pages/Diagnostico";
-import NotFound from "./pages/NotFound";
-import WhatsAppButton from "./components/WhatsAppButton";
-import ChatBot from "./components/ChatBot";
-import WelcomeModal from "./components/WelcomeModal";
+import HomeView from "@/views/HomeView";
+import LandingHubView from "@/views/landing/LandingHubView";
+import GeneralLandingView from "@/views/landing/GeneralLandingView";
+import FundadorView from "@/views/FundadorView";
+import ServiciosView from "@/views/ServiciosView";
+import ServicioRouteView from "@/views/ServicioRouteView";
+import SegmentoRouteView from "@/views/SegmentoRouteView";
+import DiagnosticoView from "@/views/DiagnosticoView";
+import NotFoundView from "@/views/NotFoundView";
+import WhatsAppButtonView from "@/views/WhatsAppButtonView";
+import ChatBotView from "@/views/ChatBotView";
+import WelcomeModalView from "@/views/WelcomeModalView";
 
 const queryClient = new QueryClient();
 
@@ -30,21 +30,21 @@ const AnimatedRoutes = () => {
   return (
     <div key={location.key} className="animate-page-in">
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/fundador" element={<Fundador />} />
-        <Route path="/servicios" element={<Servicios />} />
-        <Route path="/servicios/:slug" element={<Servicio />} />
-        <Route path="/segmentos/:slug" element={<Segmento />} />
+        <Route path="/" element={<HomeView />} />
+        <Route path="/fundador" element={<FundadorView />} />
+        <Route path="/servicios" element={<ServiciosView />} />
+        <Route path="/servicios/:slug" element={<ServicioRouteView />} />
+        <Route path="/segmentos/:slug" element={<SegmentoRouteView />} />
         <Route path="/arquitecturati" element={<Navigate to="/servicios/arquitectura-ti" replace />} />
         <Route path="/presenciadigital" element={<Navigate to="/servicios/presencia-digital" replace />} />
         <Route path="/ciberseguridad" element={<Navigate to="/servicios/ciberseguridad" replace />} />
         <Route path="/analiticaaplicada" element={<Navigate to="/servicios/ia-corporativa" replace />} />
         <Route path="/inteligenciaartificial" element={<Navigate to="/servicios/ia-corporativa" replace />} />
-        <Route path="/landing" element={<LandingPage />} />
-        <Route path="/landing/general" element={<LandingGeneral />} />
-        <Route path="/diagnostico" element={<Diagnostico />} />
-        <Route path="/diagnóstico" element={<Diagnostico />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/landing" element={<LandingHubView />} />
+        <Route path="/landing/general" element={<GeneralLandingView />} />
+        <Route path="/diagnostico" element={<DiagnosticoView />} />
+        <Route path="/diagnóstico" element={<DiagnosticoView />} />
+        <Route path="*" element={<NotFoundView />} />
       </Routes>
     </div>
   );
@@ -59,9 +59,9 @@ const AppLayout = () => {
     <>
       <ScrollToTop />
       <AnimatedRoutes />
-      {!hideChrome && <WhatsAppButton />}
-      {!hideChrome && <ChatBot />}
-      {!hideChrome && <WelcomeModal />}
+      {!hideChrome && <WhatsAppButtonView />}
+      {!hideChrome && <ChatBotView />}
+      {!hideChrome && <WelcomeModalView />}
     </>
   );
 };

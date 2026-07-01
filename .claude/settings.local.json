@@ -40,7 +40,18 @@
       "Bash(npm install *)",
       "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(Object.keys\\(p.dependencies||{}\\).join\\('\\\\n'\\)\\)\")",
       "Bash(npx tsc *)",
-      "Bash(taskkill //F //IM node.exe)"
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(npm ls *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('dep:', p.dependencies['@tailwindcss/typography']\\); console.log\\('devDep:', \\(p.devDependencies||{}\\)['@tailwindcss/typography']\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/dompurify/package.json'\\).version\\)\")",
+      "Bash(mkdir -p src/models src/controllers src/views src/views/shared src/views/landing src/controllers/landing)",
+      "Bash(git mv *)",
+      "Bash(rmdir src/data)",
+      "Bash(git stash *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/landing)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/landing/general)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/fundador)"
     ]
   }
 }

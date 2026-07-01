@@ -3,7 +3,13 @@
 declare namespace JSX {
   interface IntrinsicElements {
     "wistia-player": React.DetailedHTMLProps<
-      React.HTMLAttributes<HTMLElement> & { "media-id"?: string; aspect?: string | number },
+      React.HTMLAttributes<HTMLElement> & {
+        "media-id"?: string;
+        aspect?: string | number;
+        autoplay?: boolean;
+        muted?: boolean;
+        playsinline?: boolean;
+      },
       HTMLElement
     >;
   }
