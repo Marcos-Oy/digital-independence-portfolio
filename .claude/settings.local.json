@@ -30,7 +30,14 @@
       "Bash(git checkout *)",
       "Bash(node -e \"const fs=require\\('fs'\\);const bad=Buffer.from\\([0x5B,0xCC,0x80,0x2D,0xCD,0xAF,0x5D]\\);const f=fs.readFileSync\\('src/components/ChatBot.tsx'\\);console.log\\('bad bytes:', f.indexOf\\(bad\\)\\);const s=fs.readFileSync\\('src/pages/Servicios.tsx'\\);console.log\\('Servicios bad bytes:', s.indexOf\\(bad\\)\\);\")",
       "Bash(node -e \"const fs=require\\('fs'\\);const bad=Buffer.from\\([0x5B,0xCC,0x80,0x2D,0xCD,0xAF,0x5D]\\);const f=fs.readFileSync\\('src/components/ChatBot.tsx'\\);console.log\\('bad bytes:', f.indexOf\\(bad\\)\\);\")",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(cp \"D:\\\\Users\\\\IndependenciaDigital\\\\OneDrive - Independencia Digital\\\\Imágenes\\\\Colaboradores\\\\Marcos Oyarzo\\\\Marcos Oyarzo Terno Negro.jpeg\" \"D:\\\\Users\\\\IndependenciaDigital\\\\OneDrive - Independencia Digital\\\\Documentos\\\\GitHub\\\\digital-independence-portfolio\\\\src\\\\assets\\\\marcos-terno-negro.jpeg\")",
+      "Bash(cp \"D:\\\\Users\\\\IndependenciaDigital\\\\OneDrive - Independencia Digital\\\\Imágenes\\\\Colaboradores\\\\Marcos Oyarzo\\\\Marcos Oyarzo Terno Azul.jpg\" \"D:\\\\Users\\\\IndependenciaDigital\\\\OneDrive - Independencia Digital\\\\Documentos\\\\GitHub\\\\digital-independence-portfolio\\\\src\\\\assets\\\\marcos-terno-azul.jpg\")",
+      "Bash(curl -s http://localhost:5173/ -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:8080/ -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(disown)",
+      "Read(//tmp/**)",
+      "Bash(npm install *)"
     ]
   }
 }

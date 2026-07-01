@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
 import { ArrowLeft, Linkedin, Globe } from "lucide-react";
-import marcosImg from "@/assets/marcos.jpg";
+import marcosAzul from "@/assets/marcos-terno-azul.jpg";
+import marcosNegro from "@/assets/marcos-terno-negro.jpeg";
 
 const WHATSAPP = "56928362758";
 
@@ -36,12 +37,17 @@ const Fundador = () => {
           <div className="grid md:grid-cols-[1fr_280px] gap-10 items-start">
             <div className="block md:hidden mb-2">
               <img
-                src={marcosImg}
+                src={marcosAzul}
                 alt="Marcos Alberto Oyarzo Alvarez"
-                className="w-40 mx-auto rounded-2xl shadow-card-hover object-cover aspect-[3/4]"
+                className="w-40 mx-auto rounded-2xl shadow-card-hover object-cover aspect-[3/4] block dark:hidden"
+              />
+              <img
+                src={marcosNegro}
+                alt="Marcos Alberto Oyarzo Alvarez"
+                className="w-40 mx-auto rounded-2xl shadow-card-hover object-cover aspect-[3/4] hidden dark:block"
               />
             </div>
-            <div className="space-y-6 text-foreground/90 leading-relaxed text-base md:text-lg">
+            <div className="space-y-6 text-foreground/90 leading-relaxed text-base md:text-lg text-justify">
               <p>
                 Ingeniero en Informática con especialización en Ciberseguridad, Transformación Digital e
                 Inteligencia Artificial Generativa. Fundador de <strong>Independencia Digital</strong>, una
@@ -67,7 +73,7 @@ const Fundador = () => {
                   <Globe className="w-4 h-4" /> moyarzo.cl
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/marcosoyarzoalvarez"
+                  href="https://www.linkedin.com/in/marcos-alberto-o-766456170/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-card border border-border text-sm font-medium px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition-colors"
@@ -78,9 +84,14 @@ const Fundador = () => {
             </div>
             <div className="hidden md:block">
               <img
-                src={marcosImg}
+                src={marcosAzul}
                 alt="Marcos Alberto Oyarzo Alvarez"
-                className="w-full rounded-2xl shadow-card-hover object-cover aspect-[3/4]"
+                className="w-full rounded-2xl shadow-card-hover object-cover aspect-[3/4] block dark:hidden"
+              />
+              <img
+                src={marcosNegro}
+                alt="Marcos Alberto Oyarzo Alvarez"
+                className="w-full rounded-2xl shadow-card-hover object-cover aspect-[3/4] hidden dark:block"
               />
             </div>
           </div>
