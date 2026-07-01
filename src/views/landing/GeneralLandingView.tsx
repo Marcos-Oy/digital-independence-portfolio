@@ -58,6 +58,9 @@ const GeneralLandingView = () => {
         </ScrollReveal>
       </section>
 
+      {/* Tecnologías */}
+      <SafeTechLogosCarousel />
+
       {/* Qué resolvemos */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 max-w-5xl">
@@ -104,9 +107,6 @@ const GeneralLandingView = () => {
           </div>
         </div>
       </section>
-
-      {/* Tecnologías */}
-      <SafeTechLogosCarousel />
 
       {/* Quién está detrás */}
       <section className="py-16 md:py-24 bg-muted/50">
