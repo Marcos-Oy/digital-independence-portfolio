@@ -192,42 +192,44 @@ const TechLogosCarousel = () => {
   };
 
   return (
-    <section className="py-12 overflow-hidden bg-tech-carousel">
+    <section className="py-12 overflow-hidden">
       <div className="container mx-auto px-4 mb-6">
-        <p className="text-center text-sm font-semibold tracking-widest uppercase text-tech-carousel-foreground">
+        <p className="text-center text-sm font-semibold tracking-widest uppercase text-muted-foreground">
           Tecnologías que implementamos
         </p>
       </div>
-      <div
-        className="relative touch-pan-y select-none cursor-grab active:cursor-grabbing"
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerUp}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none bg-gradient-to-r from-tech-carousel to-transparent" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none bg-gradient-to-l from-tech-carousel to-transparent" />
-
+      <div className="bg-tech-carousel py-6">
         <div
-          ref={trackRef}
-          className="flex will-change-transform"
-          style={{ width: "max-content" }}
+          className="relative touch-pan-y select-none cursor-grab active:cursor-grabbing"
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {[...logos, ...logos, ...logos].map((logo, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 mx-4 flex items-center justify-center h-16 w-32 opacity-80 hover:opacity-100 transition-opacity duration-300"
-            >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="max-h-full max-w-full object-contain pointer-events-none"
-                draggable={false}
-              />
-            </div>
-          ))}
+          <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none bg-gradient-to-r from-tech-carousel to-transparent" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none bg-gradient-to-l from-tech-carousel to-transparent" />
+
+          <div
+            ref={trackRef}
+            className="flex will-change-transform"
+            style={{ width: "max-content" }}
+          >
+            {[...logos, ...logos, ...logos].map((logo, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 mx-4 flex items-center justify-center h-16 w-32 opacity-80 hover:opacity-100 transition-opacity duration-300"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="max-h-full max-w-full object-contain pointer-events-none"
+                  draggable={false}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
