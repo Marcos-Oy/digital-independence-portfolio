@@ -3,7 +3,7 @@ import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import RightClientSection from "@/views/landing/RightClientSection";
-import { CheckCircle2, XCircle, Clock, ArrowLeft } from "lucide-react";
+import { CheckCircle2, XCircle, Clock, Sparkles, ArrowLeft } from "lucide-react";
 import { type Service, MODALITY_LABELS, MODALITY_COLORS } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
 import { SERVICE_PAIN_REFRAME } from "@/models/serviceLandingContent";
@@ -29,8 +29,14 @@ const ServicioView = ({ service }: Props) => {
       <SiteNavbarView />
 
       {/* Hero */}
-      <section className="relative gradient-hero pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
+      <section className="relative pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+          <img
+            src={service.image}
+            alt=""
+            className="w-full h-full object-cover opacity-25 dark:opacity-15"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/85 to-background" />
           <div className="hero-orb w-80 h-80 bg-primary/6 top-1/4 -left-24 animate-float" style={{ animationDelay: "0s" }} />
           <div className="hero-orb w-60 h-60 bg-secondary/6 top-1/3 right-0 animate-float" style={{ animationDelay: "2.5s" }} />
           <div className="hero-orb w-44 h-44 bg-primary/4 bottom-0 left-1/2 animate-float-slow" style={{ animationDelay: "1s" }} />
@@ -114,14 +120,41 @@ const ServicioView = ({ service }: Props) => {
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-6">
             ¿En qué consiste?
           </h2>
-          <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-            {service.description}
-          </p>
+          <div className="space-y-5 text-foreground/90 leading-relaxed text-base md:text-lg">
+            <p>{service.description}</p>
+            <p>{service.approach}</p>
+          </div>
         </ScrollReveal>
       </section>
 
-      {/* Qué incluye */}
+      {/* Valor agregado */}
       <section className="py-16 md:py-20 bg-muted">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <ScrollReveal className="mb-10">
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-3">
+              Valor agregado
+            </h2>
+            <p className="text-muted-foreground max-w-2xl">
+              Esto es lo que nos diferencia de contratar cualquier proveedor técnico suelto.
+            </p>
+          </ScrollReveal>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {service.addedValue.map((v, i) => (
+              <ScrollReveal key={v} delay={i * 60} variant="scale">
+                <div className="bg-card border border-border rounded-xl p-6 h-full">
+                  <span className="inline-flex w-10 h-10 rounded-lg bg-secondary/10 items-center justify-center mb-4">
+                    <Sparkles className="w-5 h-5 text-secondary" />
+                  </span>
+                  <p className="text-sm text-foreground/90 leading-relaxed">{v}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Qué incluye */}
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4 max-w-5xl">
           <ScrollReveal>
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-8">
@@ -154,7 +187,7 @@ const ServicioView = ({ service }: Props) => {
 
       {/* Herramientas */}
       {service.tools && service.tools.length > 0 && (
-        <section className="py-16 md:py-20 bg-background">
+        <section className="py-16 md:py-20 bg-muted">
           <ScrollReveal className="container mx-auto px-4 max-w-3xl">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-8">
               Herramientas que utilizamos

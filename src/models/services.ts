@@ -72,6 +72,10 @@ export interface Service {
   tagline: string;
   summary: string;
   description: string;
+  // Segundo párrafo de "¿En qué consiste?": cómo se ejecuta en la práctica.
+  approach: string;
+  // 3 diferenciadores concretos, no genéricos ("valor agregado").
+  addedValue: string[];
   rightClient: string;
   timeFactor: string;
   valuePromise: string;
@@ -150,6 +154,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Diseño e implementación de tu infraestructura tecnológica completa: ecosistema empresarial, nube, dominio, hosting y herramientas seleccionadas por negocio.",
     description:
       "Diseñamos e implementamos la infraestructura tecnológica completa de tu negocio. Configuramos Google Workspace o Microsoft 365 (usuarios, permisos, seguridad), infraestructura en nube cuando corresponde, Cloudflare (DNS, CDN, protección DDoS, SSL, firewall), hosting con Hostinger, bases de datos y selección de herramientas según tu operación real.",
+    approach:
+      "Partimos por auditar tu ecosistema actual: qué cuentas, dominios, correos y accesos existen, quién los controla y qué falta documentar. Con ese diagnóstico configuramos Google Workspace o Microsoft 365, dejamos Cloudflare protegiendo tu DNS y tu tráfico, y montamos el hosting adecuado según el tamaño real de tu operación, no según lo que te vendieron antes.",
+    addedValue: [
+      "Documentación completa: nunca más dependes de que una sola persona sepa cómo funciona tu tecnología.",
+      "Elegimos herramientas según tu negocio real, no paquetes genéricos que después te quedan grandes o chicos.",
+      "Quedas con acceso y control directo de todo, sin depender de terceros para hacer cambios básicos.",
+    ],
     rightClient:
       "Dueño de PyME o gerente con tecnología desordenada, accesos perdidos y sin documentación.",
     timeFactor: "Primeros 90 días",
@@ -185,6 +196,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Diagnóstico del estado tecnológico, hoja de ruta de modernización por etapas y conversión de procesos manuales en flujos digitales seguros.",
     description:
       "Hacemos un diagnóstico del estado tecnológico actual, diseñamos la hoja de ruta de modernización por etapas, implementamos nuevas herramientas, capacitamos al equipo e integramos ciberseguridad al proceso desde el primer día.",
+    approach:
+      "Empezamos evaluando qué procesos hoy dependen de papel, planillas sueltas o coordinación manual, y diseñamos una hoja de ruta por etapas realista para tu equipo, no un cambio radical de un día para otro. Implementamos las herramientas, capacitamos a las personas que las van a usar y dejamos la ciberseguridad incorporada desde el primer paso, no como un parche posterior.",
+    addedValue: [
+      "La transición se hace por etapas: tu equipo no queda expuesto a un cambio total de golpe.",
+      "Incluye capacitación real, no solo la instalación de un software que nadie sabe usar.",
+      "La ciberseguridad se integra desde el diseño, no se agrega después como remedio.",
+    ],
     rightClient:
       "Gerente de empresa que opera con procesos manuales y siente que la competencia le gana con tecnología.",
     timeFactor: "Primer trimestre",
@@ -218,6 +236,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Diseño completo del área TI desde cero: roles, procesos, stack estandarizado y dirección estratégica activa.",
     description:
       "Diseñamos tu área TI desde cero: definimos roles y responsabilidades, procesos internos, stack tecnológico estandarizado y asumimos la dirección estratégica activa. Además identificamos perfiles TI requeridos, definimos habilidades por cargo, criterios técnicos de evaluación y conducimos el onboarding tecnológico del nuevo colaborador.",
+    approach:
+      "Actuamos como tu Director de Tecnología externo: definimos los roles y procesos que debería tener un área TI real, seleccionamos un stack tecnológico estandarizado y tomamos decisiones estratégicas contigo de forma continua. Si necesitas contratar talento TI, te ayudamos a definir el perfil, evaluar candidatos técnicamente y guiar el onboarding tecnológico del nuevo colaborador.",
+    addedValue: [
+      "Tienes dirección tecnológica estratégica sin pagar el sueldo de un CTO a tiempo completo.",
+      "Te acompañamos también en la contratación de tu futuro equipo TI, con criterios técnicos reales.",
+      "Las decisiones tecnológicas dejan de tomarse de forma reactiva o por 'quien sabe más de computadores'.",
+    ],
     rightClient:
       "Empresa o institución que necesita un director de tecnología pero no puede absorber el costo de un CTO full-time.",
     timeFactor: "Primer trimestre",
@@ -252,6 +277,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Auditoría de hardware, licencias e infraestructura cloud para identificar dónde estás gastando de más.",
     description:
       "Auditoría de hardware con cotización y ensamblado de PCs a medida (ahorro del 30% al 50% vs equipo de fábrica). Auditoría de licencias y software (detectar lo que pagas y no usas). Evaluación de infraestructura en nube según tamaño y uso real.",
+    approach:
+      "Auditamos tu hardware, tus licencias y tu infraestructura en la nube para identificar exactamente dónde estás gastando de más. Si necesitas equipos nuevos, cotizamos y ensamblamos PCs a medida con un ahorro real de 30% a 50% frente a equipos de fábrica equivalentes, sin sacrificar el rendimiento que tu operación necesita.",
+    addedValue: [
+      "El ahorro es medible: entregamos el plan con los números concretos de lo que dejas de gastar.",
+      "Revisamos licencias que pagas y no usas, no solo el hardware.",
+      "El equipo ensamblado a medida rinde igual o mejor que uno de fábrica, a menor costo.",
+    ],
     rightClient:
       "Dueño o gerente que siente que gasta demasiado en tecnología o está a punto de hacer una inversión grande.",
     timeFactor: "Desde el primer diagnóstico",
@@ -285,6 +317,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Contrato mensual con límite de horas y SLA de tiempo de respuesta, soporte remoto y presencial según acuerdo.",
     description:
       "Contrato mensual con límite de horas definido y SLA de tiempo de respuesta. Soporte remoto y presencial según acuerdo. Activación progresiva según capacidad operativa disponible.",
+    approach:
+      "Definimos contigo una bolsa de horas mensual y un SLA de tiempo de respuesta claro, para que el soporte deje de depender de la disponibilidad de una sola persona. Cada incidente queda registrado y trazado, y te entregamos un reporte mensual para que sepas exactamente en qué se usaron las horas contratadas.",
+    addedValue: [
+      "SLA de respuesta definido por escrito, no una promesa verbal de 'te ayudo cuando pueda'.",
+      "Reporte mensual de incidentes, para que el soporte deje de ser una caja negra.",
+      "Escala según tu operación: partimos con las horas que necesitas hoy, no con un contrato sobredimensionado.",
+    ],
     rightClient:
       "PyME o empresa que necesita soporte continuo predecible y con SLA, sin pagar un equipo TI interno.",
     timeFactor: "Desde el primer mes",
@@ -317,6 +356,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Sitios corporativos, landing pages de alta conversión y portafolios profesionales con SEO técnico y Google Maps.",
     description:
       "Sitios web corporativos, landing pages de alta conversión y portafolios profesionales. SEO técnico: Google Search Console, velocidad, estructura, metaetiquetas. Perfil de Negocio Google y Maps. Dominio y servidor configurados con Cloudflare y Hostinger.",
+    approach:
+      "Construimos tu sitio web, landing page o portafolio bajo tu propio dominio, con SEO técnico desde el primer día: Google Search Console, velocidad de carga, estructura y metaetiquetas correctas. Configuramos tu Perfil de Negocio en Google y Maps para que te encuentren cerca, y dejamos el hosting funcionando sobre Cloudflare y Hostinger.",
+    addedValue: [
+      "SEO técnico incluido desde el inicio, no como un servicio aparte que se cobra después.",
+      "Quedas con dominio y correo corporativo propio, reforzando la seriedad de tu marca.",
+      "El sitio se diseña para convertir visitas en contactos reales, no solo para 'existir' en internet.",
+    ],
     rightClient:
       "Profesional independiente o dueño de PyME sin presencia digital profesional o con una que no genera confianza.",
     timeFactor: "Primeras semanas",
@@ -350,6 +396,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "E-commerce, CRM a medida, gestores de eventos y sistemas internos con base de datos, panel de administración y versión móvil.",
     description:
       "Desarrollamos e-commerce, CRMs a medida, gestores de eventos y sistemas internos. Cada proyecto se entrega con base de datos, panel de administración y versión móvil instalable, listo para producción.",
+    approach:
+      "Levantamos contigo el proceso real que hoy manejas en Excel o a mano, diseñamos la base de datos y el panel de administración, y desarrollamos el sistema de punta a punta: e-commerce, CRM, gestor de eventos o el sistema interno que tu operación necesite. Todo se entrega instalable también en versión móvil y listo para producción, no como un prototipo.",
+    addedValue: [
+      "El sistema queda en producción, no como una demo que nunca se termina de usar.",
+      "Incluye panel de administración pensado para que tu equipo lo use sin depender de un programador.",
+      "Se construye a la medida de tu proceso real, no adaptando tu negocio a un software genérico.",
+    ],
     rightClient:
       "Dueño de PyME que gestiona clientes o procesos con Excel y sabe que eso no puede escalar.",
     timeFactor: "Antes de cerrar el primer trimestre",
@@ -383,6 +436,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "SEO/SEM, Meta Ads, LinkedIn Ads, TikTok Ads, Google Ads y estrategia de contenidos con IA. Tres niveles: mentoría, asesoría y consultoría.",
     description:
       "Trabajamos SEO/SEM, Meta Ads, LinkedIn Ads, TikTok Ads y Google Ads con foco en políticas y cumplimiento publicitario por plataforma (evitar suspensiones y rechazos). Estrategia de contenidos con IA (ChatGPT, Claude, Canva AI). Operamos en tres niveles: mentoría para emprendedores, asesoría para PyMEs y consultoría para empresas.",
+    approach:
+      "Trabajamos SEO/SEM, Meta Ads, LinkedIn Ads, TikTok Ads y Google Ads con foco explícito en cumplir las políticas publicitarias de cada plataforma, para que tu cuenta no termine suspendida o tus campañas rechazadas. Sumamos estrategia de contenidos apoyada en IA (ChatGPT, Claude, Canva AI) y operamos en tres niveles distintos según el tamaño de tu negocio: mentoría, asesoría o consultoría.",
+    addedValue: [
+      "Cuidamos el cumplimiento publicitario de cada plataforma para evitar suspensiones y rechazos.",
+      "Medimos con métricas reales de costo de adquisición de cliente, no solo alcance o likes.",
+      "Tienes tres niveles de trabajo: desde aprender a pautar tú mismo hasta que gestionemos todo por ti.",
+    ],
     rightClient:
       "Desde emprendedores que no saben cómo pautar hasta gerentes que necesitan auditar a su agencia.",
     timeFactor: "Primeros 90 días",
@@ -416,6 +476,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Auditoría técnica, controles, formación contra ingeniería social, cumplimiento ISO 27001 / Ley 19.628 y ciberseguridad diferencial.",
     description:
       "Auditoría técnica y controles de seguridad. Formación a funcionarios y colaboradores contra ingeniería social y phishing. Cumplimiento ISO 27001 y Ley 19.628. Ciberseguridad industrial OT/ICS para entornos productivos. Ciberseguridad diferencial con módulo para niños (grooming, acoso, controles parentales) y módulo para mujeres (doxing, acoso digital, seguridad física integrada).",
+    approach:
+      "Partimos con una auditoría técnica de tus controles actuales y formamos a tu equipo contra phishing e ingeniería social, porque la mayoría de los ataques entran por las personas, no por la tecnología. Si tu negocio lo requiere, trabajamos también cumplimiento ISO 27001 y Ley 19.628, ciberseguridad industrial OT/ICS, y módulos diferenciales de seguridad para la protección de niños y de mujeres frente al acoso digital.",
+    addedValue: [
+      "Formamos a las personas, no solo instalamos software: la mayoría de los ataques entran por ahí.",
+      "Cubrimos cumplimiento normativo real (ISO 27001, Ley 19.628), no solo una checklist genérica.",
+      "Incluye módulos diferenciales poco comunes en el mercado: seguridad infantil y de género.",
+    ],
     rightClient:
       "Desde el dueño de PyME sin controles básicos hasta la gran empresa con ISO pero sin seguridad real en las personas.",
     timeFactor: "Primeros 90 días",
@@ -449,6 +516,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Monitoreo de tendencias del sector, movimientos digitales de la competencia, herramientas emergentes y alertas regulatorias. Retainer con entrega mensual.",
     description:
       "Monitoreo continuo de tendencias del sector, movimientos digitales de la competencia, nuevas herramientas relevantes al negocio y alertas de seguridad y cambios regulatorios. Identificación de tecnologías emergentes aplicables a tu operación con criterio estratégico y de costo. Servicio de retainer con entrega mensual.",
+    approach:
+      "Monitoreamos de forma continua las tendencias de tu sector, los movimientos digitales de tu competencia, nuevas herramientas relevantes para tu operación y alertas de seguridad o cambios regulatorios que te puedan afectar. Es un servicio de retainer con entrega mensual: recibes un informe estructurado, no una opinión suelta.",
+    addedValue: [
+      "Recibes información estructurada mes a mes, no una alerta aislada cuando ya es tarde.",
+      "Identificamos tecnologías emergentes aplicables a tu negocio con criterio de costo real.",
+      "Te enteras de riesgos regulatorios y de seguridad antes de que se conviertan en un problema.",
+    ],
     rightClient:
       "Gerente que toma decisiones tecnológicas y necesita información estructurada, no opinión.",
     timeFactor: "Entrega mensual desde el primer mes",
@@ -482,6 +556,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Diagnóstico de procesos automatizables, agentes con memoria, ingeniería de prompts, automatización no-code y clones digitales.",
     description:
       "Diagnóstico de procesos automatizables. Implementación de agentes de IA con memoria y acceso a documentos del negocio. Ingeniería de prompts corporativa y biblioteca de prompts productivos. Automatización no-code con N8N (flujos de trabajo) y ManyChat (atención automatizada). Clones digitales con HeyGen y ElevenLabs para ventas, soporte y contenido.",
+    approach:
+      "Diagnosticamos qué procesos de tu negocio son realmente automatizables con IA y por dónde conviene empezar. Implementamos agentes con memoria y acceso a los documentos de tu empresa, construimos una biblioteca de prompts corporativa, y automatizamos flujos con N8N y ManyChat. Cuando aplica, sumamos clones digitales con HeyGen y ElevenLabs para ventas, soporte o contenido.",
+    addedValue: [
+      "Los agentes de IA quedan conectados a tus documentos reales, no son un chatbot genérico.",
+      "Recibes una biblioteca de prompts corporativa reutilizable por todo tu equipo.",
+      "Priorizamos qué automatizar primero según impacto real, no según lo que esté de moda.",
+    ],
     rightClient:
       "PyMEs y empresas que ya tienen procesos definidos y quieren liberarlos del trabajo manual repetitivo.",
     timeFactor: "Primeros 90 días",
@@ -516,6 +597,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Conectamos tus sistemas existentes (CRM, ERP, e-commerce, planillas, plataformas SaaS) mediante APIs, webhooks y conectores personalizados.",
     description:
       "Diseñamos e implementamos integraciones entre las plataformas que ya usas para que dejen de operar en silos. Trabajamos con APIs REST, webhooks, middleware de integración (N8N, Zapier, Make) y conectores personalizados cuando se requiere. Resultado: tus datos fluyen entre sistemas sin doble digitación ni archivos manuales.",
+    approach:
+      "Mapeamos las plataformas que ya usas (CRM, ERP, e-commerce, planillas, SaaS) y sus flujos de datos, y diseñamos las integraciones necesarias vía APIs REST, webhooks o middleware como N8N, Zapier y Make. El resultado es que tus sistemas dejan de operar como islas separadas y tus datos fluyen entre ellos sin doble digitación.",
+    addedValue: [
+      "No reescribimos tus sistemas actuales: los conectamos, protegiendo tu inversión previa.",
+      "Eliminamos la doble digitación manual entre plataformas, con la integración documentada.",
+      "Quedas con monitoreo de las integraciones, no una conexión frágil que nadie sabe mantener.",
+    ],
     rightClient:
       "PyME o empresa que ya invirtió en varias plataformas (CRM, e-commerce, contabilidad, ERP) y necesita que se comuniquen entre sí.",
     timeFactor: "Primeros 60 días",
@@ -550,6 +638,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Diagnosticamos procesos manuales, los rediseñamos y automatizamos flujos completos para reducir tiempos y eliminar errores humanos.",
     description:
       "Levantamos los procesos críticos de tu operación, identificamos cuellos de botella y tareas repetitivas, rediseñamos el flujo y lo automatizamos con N8N, ManyChat, Power Automate o scripts a medida. Aplica a ventas, post-venta, facturación, onboarding, reportería y back-office.",
+    approach:
+      "Levantamos tus procesos críticos (ventas, post-venta, facturación, onboarding, reportería) para identificar cuellos de botella y tareas repetitivas, rediseñamos el flujo y lo automatizamos con N8N, ManyChat, Power Automate o scripts a medida. Cada automatización queda con notificaciones, reportes y trazabilidad de cada ejecución.",
+    addedValue: [
+      "Medimos la reducción real de tiempos y errores, no solo 'automatizamos y listo'.",
+      "Cada flujo automatizado queda documentado, para que tu equipo entienda cómo funciona.",
+      "Capacitamos a tu equipo para operar y ajustar las automatizaciones, no dependes solo de nosotros.",
+    ],
     rightClient:
       "Empresa con procesos definidos pero ejecutados manualmente, con doble digitación, planillas y tareas repetitivas que consumen horas del equipo.",
     timeFactor: "Primeros 90 días",
@@ -584,6 +679,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Diseñamos e implementamos dashboards interactivos con KPIs en tiempo real conectados a tus fuentes de datos: ventas, operaciones, finanzas y marketing.",
     description:
       "Definimos los indicadores que realmente importan para tu negocio, conectamos las fuentes de datos (bases de datos, planillas, APIs, plataformas SaaS) y construimos dashboards interactivos en Power BI, Looker Studio o Metabase. Entregamos el tablero operativo y la capacitación para que tu equipo lo use a diario.",
+    approach:
+      "Definimos junto a ti los indicadores que realmente importan para tu negocio, conectamos tus fuentes de datos reales (bases de datos, planillas, APIs, plataformas SaaS) y construimos dashboards interactivos en Power BI, Looker Studio o Metabase. Entregamos el tablero funcionando y capacitamos a tu equipo ejecutivo para que lo use a diario, no solo una vez al mes.",
+    addedValue: [
+      "Los KPIs se eligen contigo según tu negocio, no una plantilla genérica de indicadores.",
+      "Incluye capacitación al equipo ejecutivo, para que el tablero se use de verdad, no solo se mire una vez.",
+      "Se conecta a tus fuentes reales de datos, con actualización automática, no reportes copiados a mano.",
+    ],
     rightClient:
       "Gerente o dueño que toma decisiones a ciegas, con reportes manuales tardíos y sin visibilidad real de su operación.",
     timeFactor: "Primer mes",
@@ -618,6 +720,13 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Consolidamos información dispersa entre planillas, sistemas y plataformas en una base de datos única, estructurada y consultable.",
     description:
       "Auditamos tus fuentes de datos (Excel, sistemas legacy, plataformas SaaS, bases de datos), diseñamos el modelo unificado, implementamos procesos ETL y entregamos una base consolidada lista para reportería, analítica y operación diaria. Trabajamos con SQL Server, PostgreSQL, MySQL y bases cloud.",
+    approach:
+      "Auditamos tus fuentes de datos actuales (Excel, sistemas legacy, plataformas SaaS, bases de datos existentes), diseñamos un modelo de datos unificado e implementamos procesos ETL para consolidar todo en una sola base confiable. Trabajamos con SQL Server, PostgreSQL, MySQL y bases en la nube según lo que tu operación necesite.",
+    addedValue: [
+      "Terminas con una sola fuente de verdad, no versiones distintas de los mismos datos por área.",
+      "Los procesos de carga quedan automatizados, no dependen de que alguien copie y pegue cada semana.",
+      "Incluye documentación y gobierno de datos, para que la base se mantenga confiable en el tiempo.",
+    ],
     rightClient:
       "Empresa con datos críticos en planillas dispersas, sistemas que no se hablan y reportes que nadie confía porque cada área tiene su versión.",
     timeFactor: "Primer trimestre",
