@@ -23,6 +23,7 @@ interface Props {
 const ServicioView = ({ service }: Props) => {
   const { openLeadForm } = useLeadForm();
   const Icon = service.icon;
+  const hasTools = !!service.tools && service.tools.length > 0;
 
   return (
     <div className="min-h-screen bg-background">
@@ -181,48 +182,49 @@ const ServicioView = ({ service }: Props) => {
         </div>
       </section>
 
-      {/* Herramientas */}
-      {service.tools && service.tools.length > 0 && (
-        <section className="py-16 md:py-20 bg-muted">
-          <ScrollReveal className="container mx-auto px-4 max-w-3xl">
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-8">
-              Herramientas que utilizamos
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              {service.tools.map((t) => (
-                <span
-                  key={t}
-                  className="bg-card text-foreground text-sm font-medium px-4 py-2 rounded-lg border border-border"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </ScrollReveal>
-        </section>
-      )}
+      {/* Herramientas + Segmentos */}
+      <section className="py-12 md:py-16 bg-muted">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className={`grid gap-10 ${hasTools ? "md:grid-cols-2" : ""}`}>
+            {hasTools && (
+              <ScrollReveal>
+                <h2 className="font-heading font-bold text-lg md:text-xl text-foreground mb-4">
+                  Herramientas que utilizamos
+                </h2>
+                <div className="flex flex-wrap gap-2.5">
+                  {service.tools!.map((t) => (
+                    <span
+                      key={t}
+                      className="bg-card text-foreground text-sm font-medium px-4 py-2 rounded-lg border border-border"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </ScrollReveal>
+            )}
 
-      {/* Segmentos */}
-      <section className="py-16 md:py-20 bg-muted">
-        <ScrollReveal className="container mx-auto px-4 max-w-3xl">
-          <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-6">
-            ¿Para quién es?
-          </h2>
-          <div className="flex flex-wrap gap-3 mb-8">
-            {service.segments.map((s) => {
-              const seg = SEGMENTS.find((x) => x.id === s);
-              return (
-                <Link
-                  key={s}
-                  to={seg ? `/segmentos/${seg.slug}` : "/"}
-                  className="bg-card border border-border text-sm font-medium px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition-colors"
-                >
-                  {segmentLabel[s]}
-                </Link>
-              );
-            })}
+            <ScrollReveal delay={hasTools ? 80 : 0}>
+              <h2 className="font-heading font-bold text-lg md:text-xl text-foreground mb-4">
+                ¿Para quién es?
+              </h2>
+              <div className="flex flex-wrap gap-2.5">
+                {service.segments.map((s) => {
+                  const seg = SEGMENTS.find((x) => x.id === s);
+                  return (
+                    <Link
+                      key={s}
+                      to={seg ? `/segmentos/${seg.slug}` : "/"}
+                      className="bg-card border border-border text-sm font-medium px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition-colors"
+                    >
+                      {segmentLabel[s]}
+                    </Link>
+                  );
+                })}
+              </div>
+            </ScrollReveal>
           </div>
-        </ScrollReveal>
+        </div>
       </section>
 
       {/* Satisfacción / El resultado */}
