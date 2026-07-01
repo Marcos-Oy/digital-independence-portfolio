@@ -203,3 +203,11 @@ html {
   animation-delay: 1.2s;
 }
 
+/* ── Wistia player placeholder (evita salto de layout mientras carga) ─── */
+wistia-player[media-id='68c4rkopry']:not(:defined) {
+  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/68c4rkopry/swatch');
+  display: block;
+  filter: blur(5px);
+  padding-top: 56.25%;
+}
+

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import { useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
+import LandingGeneral from "./pages/landings/General";
 import Fundador from "./pages/Fundador";
 import Servicios from "./pages/Servicios";
 import Servicio from "./pages/Servicio";
@@ -40,6 +41,7 @@ const AnimatedRoutes = () => {
         <Route path="/analiticaaplicada" element={<Navigate to="/servicios/ia-corporativa" replace />} />
         <Route path="/inteligenciaartificial" element={<Navigate to="/servicios/ia-corporativa" replace />} />
         <Route path="/landing" element={<LandingPage />} />
+        <Route path="/landing/general" element={<LandingGeneral />} />
         <Route path="/diagnostico" element={<Diagnostico />} />
         <Route path="/diagnóstico" element={<Diagnostico />} />
         <Route path="*" element={<NotFound />} />
@@ -51,13 +53,15 @@ const AnimatedRoutes = () => {
 const AppLayout = () => {
   const location = useLocation();
   const isDiagnostico = location.pathname === "/diagnostico" || location.pathname === "/diagnóstico";
+  const isLandingFunnel = /^\/landing\/.+/.test(location.pathname);
+  const hideChrome = isDiagnostico || isLandingFunnel;
   return (
     <>
       <ScrollToTop />
       <AnimatedRoutes />
-      {!isDiagnostico && <WhatsAppButton />}
-      {!isDiagnostico && <ChatBot />}
-      {!isDiagnostico && <WelcomeModal />}
+      {!hideChrome && <WhatsAppButton />}
+      {!hideChrome && <ChatBot />}
+      {!hideChrome && <WelcomeModal />}
     </>
   );
 };
