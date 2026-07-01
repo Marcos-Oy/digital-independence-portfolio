@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
+import RightClientSection from "@/views/landing/RightClientSection";
+import { CheckCircle2, XCircle, Clock, ArrowLeft } from "lucide-react";
 import { type Service, MODALITY_LABELS, MODALITY_COLORS } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
+import { SERVICE_PAIN_REFRAME } from "@/models/serviceLandingContent";
 import { useLeadForm } from "@/controllers/useLeadForm";
 
 const segmentLabel: Record<string, string> = {
@@ -77,6 +79,35 @@ const ServicioView = ({ service }: Props) => {
         </div>
       </section>
 
+      {/* Dolor / Problema */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <ScrollReveal className="mb-8">
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-3">
+              ¿Alguna de estas señales te resulta familiar?
+            </h2>
+            <p className="text-muted-foreground">
+              Antes de seguir leyendo, revisa si tu negocio hoy vive alguna de estas situaciones.
+            </p>
+          </ScrollReveal>
+
+          <div className="space-y-4 mb-10">
+            {service.painPoints.map((p) => (
+              <div key={p} className="flex items-start gap-3">
+                <XCircle className="w-4 h-4 text-destructive/70 mt-0.5 shrink-0" />
+                <p className="text-sm md:text-base text-foreground/90 leading-relaxed">{p}</p>
+              </div>
+            ))}
+          </div>
+
+          <ScrollReveal>
+            <p className="text-foreground/90 leading-relaxed">{SERVICE_PAIN_REFRAME}</p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <RightClientSection text={service.rightClient} />
+
       {/* Descripción */}
       <section className="py-16 md:py-20 bg-background">
         <ScrollReveal className="container mx-auto px-4 max-w-3xl">
@@ -89,42 +120,41 @@ const ServicioView = ({ service }: Props) => {
         </ScrollReveal>
       </section>
 
-      {/* Promesa y cliente correcto */}
-      <section className="py-16 md:py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <ScrollReveal variant="scale" className="grid md:grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden max-w-5xl mx-auto">
-            <div className="bg-card p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">Cliente correcto</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{service.rightClient}</p>
-            </div>
-            <div className="bg-card p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">Promesa de valor</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{service.valuePromise}</p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* Qué incluye */}
-      <section className="py-16 md:py-20 bg-background">
-        <ScrollReveal className="container mx-auto px-4 max-w-3xl">
-          <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-8">
-            ¿Qué incluye?
-          </h2>
-          <ul className="space-y-4">
-            {service.includes.map((b) => (
-              <li key={b} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                <span className="text-foreground text-base">{b}</span>
-              </li>
-            ))}
-          </ul>
-        </ScrollReveal>
+      <section className="py-16 md:py-20 bg-muted">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <ScrollReveal>
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-8">
+              ¿Qué incluye?
+            </h2>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
+            <ScrollReveal>
+              <ul className="space-y-4">
+                {service.includes.map((b) => (
+                  <li key={b} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+                    <span className="text-foreground text-base">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
+            <ScrollReveal variant="scale" className="bg-card border border-border rounded-xl p-6 md:w-72">
+              <span className="inline-flex w-10 h-10 rounded-lg bg-primary/10 items-center justify-center mb-4">
+                <Clock className="w-5 h-5 text-primary" />
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-wide text-secondary mb-2">
+                ¿En cuánto tiempo?
+              </p>
+              <p className="text-sm text-foreground/90 leading-relaxed">{service.timeFactor}</p>
+            </ScrollReveal>
+          </div>
+        </div>
       </section>
 
       {/* Herramientas */}
       {service.tools && service.tools.length > 0 && (
-        <section className="py-16 md:py-20 bg-muted">
+        <section className="py-16 md:py-20 bg-background">
           <ScrollReveal className="container mx-auto px-4 max-w-3xl">
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-8">
               Herramientas que utilizamos
@@ -144,7 +174,7 @@ const ServicioView = ({ service }: Props) => {
       )}
 
       {/* Segmentos */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-16 md:py-20 bg-muted">
         <ScrollReveal className="container mx-auto px-4 max-w-3xl">
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-6">
             ¿Para quién es?
@@ -164,6 +194,27 @@ const ServicioView = ({ service }: Props) => {
             })}
           </div>
         </ScrollReveal>
+      </section>
+
+      {/* Satisfacción / El resultado */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <ScrollReveal variant="scale">
+            <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/30 via-border to-secondary/20">
+              <div className="bg-card rounded-[calc(1rem-1.5px)] px-8 py-12 md:px-14 md:py-16 text-center">
+                <span className="inline-flex w-12 h-12 rounded-full bg-secondary/10 items-center justify-center mb-5">
+                  <Icon className="w-5 h-5 text-secondary" />
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
+                  Así se ve tu negocio después
+                </p>
+                <p className="font-heading font-bold text-xl md:text-2xl text-foreground leading-snug">
+                  {service.valuePromise}
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
       </section>
 
       {/* CTA */}
