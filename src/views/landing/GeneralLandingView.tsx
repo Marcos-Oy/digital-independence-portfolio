@@ -198,10 +198,25 @@ const GeneralLandingView = () => {
                   {SERVICES.filter((s) => s.area === area.id).map((s) => (
                     <AccordionItem key={s.slug} value={s.slug} className="border-border">
                       <AccordionTrigger className="text-left text-sm font-semibold text-foreground hover:no-underline">
-                        {s.title}
+                        <span className="flex items-center gap-3">
+                          <img
+                            src={s.image}
+                            alt=""
+                            loading="lazy"
+                            className="w-12 h-12 rounded-lg object-cover shrink-0"
+                          />
+                          {s.title}
+                        </span>
                       </AccordionTrigger>
                       <AccordionContent>
                         <div className="space-y-5 pt-1">
+                          <img
+                            src={s.image}
+                            alt={s.title}
+                            loading="lazy"
+                            className="w-full aspect-[16/7] object-cover rounded-lg"
+                          />
+
                           <div>
                             <p className="text-xs font-semibold uppercase tracking-wide text-destructive/80 mb-2">
                               El problema
