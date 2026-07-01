@@ -40,16 +40,16 @@ const ServicioView = ({ service }: Props) => {
         <div className="relative container mx-auto px-4">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-8"
+            className="inline-flex items-center gap-2 text-sm text-foreground bg-card/90 backdrop-blur-sm border border-border rounded-full px-3.5 py-1.5 hover:text-primary transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" /> Volver al inicio
           </Link>
           <div className="flex flex-col md:flex-row items-start gap-8">
-            <ScrollReveal variant="scale" className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <ScrollReveal variant="scale" className="w-14 h-14 rounded-xl bg-card/90 backdrop-blur-sm border border-border flex items-center justify-center shrink-0">
               <Icon className="w-7 h-7 text-primary" />
             </ScrollReveal>
             <ScrollReveal delay={80} className="flex-1">
-              <div className="flex flex-wrap items-center gap-2 mb-3">
+              <div className="inline-flex flex-wrap items-center gap-2 mb-3 bg-card/90 backdrop-blur-sm border border-border rounded-full px-4 py-2">
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary">
                   {service.areaLabel}
                 </p>
