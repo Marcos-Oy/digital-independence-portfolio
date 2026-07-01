@@ -1,5 +1,5 @@
 export const FOUNDER_BIO = {
-  name: "Marcos Alberto Oyarzo Alvarez",
+  name: "Marcos Oyarzo",
   role: "CEO y Fundador de Independencia Digital",
   paragraphs: [
     "Ingeniero en Informática con especialización en Ciberseguridad, Transformación Digital e Inteligencia Artificial Generativa. Diseño, construyo y dirijo la infraestructura tecnológica de mis clientes desde la arquitectura TI y el desarrollo de software hasta la ciberseguridad y la IA corporativa.",

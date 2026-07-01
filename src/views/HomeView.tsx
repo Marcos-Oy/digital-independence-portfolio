@@ -13,6 +13,7 @@ import { ChevronRight, ChevronDown, Instagram, Facebook, Mail } from "lucide-rea
 import { AREAS, SERVICES } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
 import { FAQS } from "@/models/faq";
+import { useLeadForm } from "@/controllers/useLeadForm";
 
 const FaqItem = ({ q, a }: { q: string; a: string }) => {
   const [open, setOpen] = useState(false);
@@ -39,6 +40,8 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => {
 };
 
 const HomeView = () => {
+  const { openLeadForm } = useLeadForm();
+
   return (
     <div className="min-h-screen bg-background">
       <SiteNavbarView />
@@ -86,15 +89,13 @@ const HomeView = () => {
             className="flex flex-col sm:flex-row gap-3 animate-fade-in-up"
             style={{ animationDelay: "0.3s" }}
           >
-            <a
-              href="https://independencia-digital.systeme.io/registro"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => openLeadForm("home-hero")}
               className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
             >
               Agendar diagnóstico gratis
               <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-            </a>
+            </button>
             <Link
               to="/servicios"
               className="inline-flex items-center gap-2 border border-border bg-card text-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full hover:bg-muted active:scale-[0.97] transition-all duration-200"
@@ -363,15 +364,13 @@ const HomeView = () => {
                     </a>
                   </div>
 
-                  <a
-                    href="https://independencia-digital.systeme.io/registro"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => openLeadForm("home-contacto")}
                     className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
                   >
                     Agendar diagnóstico
                     <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

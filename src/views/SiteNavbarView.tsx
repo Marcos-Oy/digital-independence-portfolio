@@ -7,6 +7,7 @@ import { SERVICES } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
 import { TYPE_LABEL } from "@/models/search";
 import { useSiteNavbarController } from "@/controllers/useSiteNavbarController";
+import { useLeadForm } from "@/controllers/useLeadForm";
 
 const SiteNavbarView = () => {
   const {
@@ -25,6 +26,7 @@ const SiteNavbarView = () => {
     results,
     hasQuery,
   } = useSiteNavbarController();
+  const { openLeadForm } = useLeadForm();
 
   return (
     <>
@@ -141,14 +143,12 @@ const SiteNavbarView = () => {
                 <Search className="w-4 h-4" />
               </button>
               <ThemeToggleView />
-              <a
-                href="https://independencia-digital.systeme.io/registro"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openLeadForm("navbar")}
                 className="hidden lg:inline-flex items-center gap-2.5 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
               >
                 Agendar diagnóstico
-              </a>
+              </button>
               {/* Hamburger / X toggle */}
               <button
                 onClick={() => setOpen(!open)}
@@ -319,15 +319,12 @@ const SiteNavbarView = () => {
                 </button>
               </li>
               <li className="pt-2 border-t border-border mt-1">
-                <a
-                  href="https://independencia-digital.systeme.io/registro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-center gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-3 rounded-full shadow-brand active:scale-[0.97] transition-all duration-200"
+                <button
+                  onClick={() => { setOpen(false); openLeadForm("navbar"); }}
+                  className="flex items-center justify-center w-full gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-3 rounded-full shadow-brand active:scale-[0.97] transition-all duration-200"
                 >
                   Agendar diagnóstico
-                </a>
+                </button>
               </li>
             </ul>
           </div>

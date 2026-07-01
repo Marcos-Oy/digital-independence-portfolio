@@ -4,8 +4,11 @@ import SiteFooterView from "@/views/SiteFooterView";
 import { ArrowLeft, Linkedin, Globe } from "lucide-react";
 import marcosAzul from "@/assets/marcos-terno-azul.jpg";
 import marcosNegro from "@/assets/marcos-terno-negro.jpeg";
+import { useLeadForm } from "@/controllers/useLeadForm";
 
 const FundadorView = () => {
+  const { openLeadForm } = useLeadForm();
+
   return (
     <div className="min-h-screen bg-background">
       <SiteNavbarView />
@@ -22,7 +25,7 @@ const FundadorView = () => {
             Fundador y CEO
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground mb-4 leading-tight tracking-tight">
-            Marcos Alberto <span className="text-primary">Oyarzo Alvarez</span>
+            Marcos <span className="text-primary">Oyarzo</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             Director de Tecnología externo para PyMEs, grandes empresas y organismos del sector público.
@@ -36,12 +39,12 @@ const FundadorView = () => {
             <div className="block md:hidden mb-2">
               <img
                 src={marcosAzul}
-                alt="Marcos Alberto Oyarzo Alvarez"
+                alt="Marcos Oyarzo"
                 className="w-40 mx-auto rounded-2xl shadow-card-hover object-cover aspect-[3/4] block dark:hidden"
               />
               <img
                 src={marcosNegro}
-                alt="Marcos Alberto Oyarzo Alvarez"
+                alt="Marcos Oyarzo"
                 className="w-40 mx-auto rounded-2xl shadow-card-hover object-cover aspect-[3/4] hidden dark:block"
               />
             </div>
@@ -83,12 +86,12 @@ const FundadorView = () => {
             <div className="hidden md:block">
               <img
                 src={marcosAzul}
-                alt="Marcos Alberto Oyarzo Alvarez"
+                alt="Marcos Oyarzo"
                 className="w-full rounded-2xl shadow-card-hover object-cover aspect-[3/4] block dark:hidden"
               />
               <img
                 src={marcosNegro}
-                alt="Marcos Alberto Oyarzo Alvarez"
+                alt="Marcos Oyarzo"
                 className="w-full rounded-2xl shadow-card-hover object-cover aspect-[3/4] hidden dark:block"
               />
             </div>
@@ -106,15 +109,13 @@ const FundadorView = () => {
               <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
                 Agenda un diagnóstico sin costo y encuentra el punto de partida ideal para tu caso.
               </p>
-              <a
-                href="https://independencia-digital.systeme.io/registro"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openLeadForm("fundador")}
                 className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
               >
                 Agendar diagnóstico
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>

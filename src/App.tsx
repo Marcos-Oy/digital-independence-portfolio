@@ -18,6 +18,7 @@ import NotFoundView from "@/views/NotFoundView";
 import WhatsAppButtonView from "@/views/WhatsAppButtonView";
 import ChatBotView from "@/views/ChatBotView";
 import WelcomeModalView from "@/views/WelcomeModalView";
+import LeadFormProvider from "@/views/LeadFormProvider";
 
 const queryClient = new QueryClient();
 
@@ -82,7 +83,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AppLayout />
+        <LeadFormProvider>
+          <AppLayout />
+        </LeadFormProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

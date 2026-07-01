@@ -5,6 +5,7 @@ import ScrollReveal from "@/views/shared/ScrollReveal";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { type Service, MODALITY_LABELS, MODALITY_COLORS } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
+import { useLeadForm } from "@/controllers/useLeadForm";
 
 const segmentLabel: Record<string, string> = {
   emprendedores: "Emprendedores",
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const ServicioView = ({ service }: Props) => {
+  const { openLeadForm } = useLeadForm();
   const Icon = service.icon;
 
   return (
@@ -63,15 +65,13 @@ const ServicioView = ({ service }: Props) => {
               <p className="text-base md:text-lg text-muted-foreground max-w-3xl mb-8 leading-relaxed">
                 {service.tagline}
               </p>
-              <a
-                href="https://independencia-digital.systeme.io/registro"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openLeadForm(`servicio-${service.slug}`)}
                 className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
               >
                 Agendar diagnóstico
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-              </a>
+              </button>
             </ScrollReveal>
           </div>
         </div>
@@ -177,15 +177,13 @@ const ServicioView = ({ service }: Props) => {
               <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
                 Agenda un diagnóstico sin costo y evalúa cómo aplicar {service.shortTitle} a tu negocio.
               </p>
-              <a
-                href="https://independencia-digital.systeme.io/registro"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openLeadForm(`servicio-${service.slug}`)}
                 className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
               >
                 Agendar diagnóstico
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-              </a>
+              </button>
             </div>
           </ScrollReveal>
         </div>

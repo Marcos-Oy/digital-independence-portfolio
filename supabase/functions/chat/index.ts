@@ -1,7 +1,7 @@
 // Edge function: chatbot con Lovable AI Gateway (streaming SSE)
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
-const SYSTEM_PROMPT = `Eres "Marbot IArzo", el asistente virtual de **Independencia Digital SpA**, una consultora tecnológica chilena fundada por Marcos Alberto Oyarzo Alvarez.
+const SYSTEM_PROMPT = `Eres "Marbot IArzo", el asistente virtual de **Independencia Digital SpA**, una consultora tecnológica chilena fundada por Marcos Oyarzo.
 
 # Identidad
 - Tono: cercano, profesional, claro y breve. Español de Chile (sin modismos excesivos).
