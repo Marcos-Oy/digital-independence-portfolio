@@ -75,6 +75,10 @@ export interface Service {
   rightClient: string;
   timeFactor: string;
   valuePromise: string;
+  // Dolores específicos que resuelve este servicio (usados en landings de
+  // conversión). "description" hace de nutrir, "includes" de método y
+  // "valuePromise" de beneficio: no se duplica contenido para landings futuras.
+  painPoints: string[];
   includes: string[];
   tools?: string[];
   segments: ("emprendedores" | "pymes" | "empresas" | "publico")[];
@@ -151,6 +155,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primeros 90 días",
     valuePromise:
       "Infraestructura tecnológica completamente ordenada, documentada y bajo tu control directo con ecosistema empresarial configurado.",
+    painPoints: [
+      "No tienes un mapa de qué cuentas, dominios y accesos existen en tu negocio, ni quién los controla.",
+      "Si se va un colaborador clave, nadie sabe qué contraseñas o sistemas manejaba.",
+      "Tu correo, tu nube y tu hosting quedaron configurados por distintas personas, en distintos momentos, sin criterio único.",
+    ],
     includes: [
       "Google Workspace o Microsoft 365 (usuarios, permisos, seguridad)",
       "Cloudflare: DNS, CDN, protección DDoS, SSL y firewall",
@@ -181,6 +190,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primer trimestre",
     valuePromise:
       "Hoja de ruta de transformación digital implementada con procesos manuales convertidos en flujos digitales.",
+    painPoints: [
+      "Sigues operando con procesos manuales mientras la competencia ya digitalizó los suyos.",
+      "Cada intento de modernizar tu negocio queda a medias porque nadie lidera el cambio completo.",
+      "Tu equipo se resiste a nuevas herramientas porque nunca hubo un plan claro de transición.",
+    ],
     includes: [
       "Diagnóstico del estado tecnológico actual",
       "Hoja de ruta por etapas",
@@ -209,6 +223,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primer trimestre",
     valuePromise:
       "Área TI estructurada, procesos documentados y dirección estratégica activa con tu negocio.",
+    painPoints: [
+      "No tienes a nadie que tome decisiones tecnológicas con criterio estratégico, solo a quien 'sabe de computadores'.",
+      "Cada área tecnológica avanza por su cuenta, sin una dirección que las conecte.",
+      "Contratar un CTO a tiempo completo no es viable para tu presupuesto actual.",
+    ],
     includes: [
       "Roles y responsabilidades del área TI",
       "Procesos internos y políticas",
@@ -238,6 +257,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Desde el primer diagnóstico",
     valuePromise:
       "Plan concreto para reducir costos TI entre un 30% y un 50% sin sacrificar rendimiento ni seguridad.",
+    painPoints: [
+      "Pagas licencias de software que ni siquiera recuerdas para qué sirven.",
+      "Compraste o estás por comprar equipos sin comparar si hay una opción igual de buena y más barata.",
+      "Nadie ha auditado tu infraestructura en la nube para saber si estás pagando de más.",
+    ],
     includes: [
       "Auditoría de hardware y cotizaciones",
       "Ensamblado de PCs a medida",
@@ -266,6 +290,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Desde el primer mes",
     valuePromise:
       "Soporte TI con SLA, horas definidas y trazabilidad mensual de incidentes y resoluciones.",
+    painPoints: [
+      "Cuando algo falla, dependes de la disponibilidad de una persona, no de un servicio con tiempos garantizados.",
+      "No tienes trazabilidad de cuántas horas de soporte usas ni en qué se van.",
+      "Pagar un equipo TI interno no compensa frente al volumen real de incidentes que tienes.",
+    ],
     includes: [
       "Bolsa mensual de horas",
       "SLA de tiempo de respuesta",
@@ -293,6 +322,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primeras semanas",
     valuePromise:
       "Presencia digital completamente operativa: sitio web bajo tu dominio, correo corporativo, Google Maps y canales listos.",
+    painPoints: [
+      "No apareces en Google cuando alguien busca lo que ofreces.",
+      "Tu sitio web, si existe, no transmite la seriedad de tu negocio real.",
+      "No tienes correo con tu propio dominio, y eso resta credibilidad frente a clientes o licitaciones.",
+    ],
     includes: [
       "Sitio web corporativo, landing o portafolio",
       "SEO técnico (Search Console, velocidad, metaetiquetas)",
@@ -321,6 +355,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Antes de cerrar el primer trimestre",
     valuePromise:
       "Sistema web funcionando en producción con base de datos, panel de administración y versión móvil instalable.",
+    painPoints: [
+      "Gestionas clientes, ventas o inventario en planillas de Excel que se rompen cuando el negocio crece.",
+      "Cada proceso nuevo significa otra planilla más, y ya nadie las entiende todas.",
+      "No tienes un sistema propio: dependes de herramientas genéricas que no calzan con tu operación real.",
+    ],
     includes: [
       "Análisis y diseño funcional",
       "Desarrollo full-stack",
@@ -349,6 +388,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primeros 90 días",
     valuePromise:
       "Inversión publicitaria alineada a resultados con métricas claras de costo de adquisición de cliente.",
+    painPoints: [
+      "Inviertes en publicidad sin saber si realmente te está generando clientes o solo alcance.",
+      "Te han suspendido o rechazado campañas por no cumplir las políticas de cada plataforma.",
+      "No sabes si tu agencia actual está optimizando tu inversión o solo cobrando por gestionarla.",
+    ],
     includes: [
       "SEO técnico y SEM",
       "Meta Ads, LinkedIn Ads, TikTok Ads, Google Ads",
@@ -377,6 +421,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primeros 90 días",
     valuePromise:
       "Postura de seguridad real: controles técnicos activos, equipo formado para detectar ataques de ingeniería social y plan documentado.",
+    painPoints: [
+      "Cualquiera de tu equipo podría caer en un correo de phishing bien armado, y hoy nadie está entrenado para detectarlo.",
+      "No cumples, o no sabes si cumples, con la Ley 19.628 o estándares como ISO 27001.",
+      "Tienes controles técnicos, pero cero formación humana contra ingeniería social.",
+    ],
     includes: [
       "Auditoría técnica y controles",
       "Formación contra phishing e ingeniería social",
@@ -405,6 +454,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Entrega mensual desde el primer mes",
     valuePromise:
       "Inteligencia tecnológica continua para que cada decisión se tome con criterio.",
+    painPoints: [
+      "Te enteras de que existía una herramienta o tendencia relevante cuando ya perdiste la ventaja de ser el primero.",
+      "Decides sobre tecnología con la opinión de alguien del equipo, no con inteligencia estructurada.",
+      "No tienes un radar que te avise de cambios regulatorios o riesgos emergentes en tu sector.",
+    ],
     includes: [
       "Informe mensual de tendencias",
       "Monitoreo de competencia digital",
@@ -433,6 +487,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primeros 90 días",
     valuePromise:
       "Procesos clave automatizados con agentes de IA conectados a tu negocio, con biblioteca de prompts y clones digitales operativos.",
+    painPoints: [
+      "Tu equipo responde manualmente preguntas repetitivas que un agente de IA podría resolver solo.",
+      "Sabes que la IA podría ahorrarte horas de trabajo, pero no sabes por dónde empezar ni con qué herramienta.",
+      "Has probado ChatGPT genérico, pero no tienes un sistema de IA conectado realmente a tu negocio.",
+    ],
     includes: [
       "Diagnóstico de procesos automatizables",
       "Agentes de IA con memoria y RAG",
@@ -462,6 +521,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primeros 60 días",
     valuePromise:
       "Tus plataformas conectadas operando como un solo ecosistema, con datos sincronizados y sin trabajo manual de copiado.",
+    painPoints: [
+      "Cargas los mismos datos a mano en dos o tres sistemas distintos porque no se comunican entre sí.",
+      "Ya invertiste en varias plataformas, pero cada una funciona como una isla separada.",
+      "Los errores de doble digitación te están costando tiempo y, a veces, plata.",
+    ],
     includes: [
       "Mapeo de plataformas y flujos de datos",
       "Integraciones vía API REST y webhooks",
@@ -491,6 +555,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primeros 90 días",
     valuePromise:
       "Procesos clave automatizados con reducción medible de tiempos y errores, y trazabilidad completa de cada ejecución.",
+    painPoints: [
+      "Tu equipo repite manualmente la misma tarea decenas de veces por semana.",
+      "Los errores humanos en procesos repetitivos (facturación, reportería, seguimiento) ya te han costado dinero o reclamos.",
+      "Nadie tiene tiempo de rediseñar el proceso, así que sigue funcionando 'como siempre'.",
+    ],
     includes: [
       "Levantamiento y mapeo de procesos",
       "Rediseño de flujos para automatización",
@@ -520,6 +589,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primer mes",
     valuePromise:
       "Tablero ejecutivo en tiempo real con los KPIs clave de tu negocio, accesible desde cualquier dispositivo.",
+    painPoints: [
+      "Tomas decisiones importantes con el reporte de la semana pasada, no con datos de hoy.",
+      "Cada área te entrega sus números en un formato distinto, y armar el panorama completo te toma horas.",
+      "No tienes forma de ver, en un solo lugar, cómo va realmente tu negocio.",
+    ],
     includes: [
       "Definición de KPIs por área",
       "Conexión a fuentes de datos (BD, APIs, planillas)",
@@ -549,6 +623,11 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     timeFactor: "Primer trimestre",
     valuePromise:
       "Base de datos única, limpia y consultable con procesos automáticos de carga desde tus fuentes operativas.",
+    painPoints: [
+      "Cada área tiene 'su' versión de los datos, y nadie confía del todo en los reportes.",
+      "Tu información crítica vive dispersa entre Excel, sistemas legacy y plataformas que no se conectan.",
+      "Migrar o consolidar tus datos suena riesgoso, así que sigues postergándolo.",
+    ],
     includes: [
       "Auditoría de fuentes de datos",
       "Diseño de modelo de datos unificado",

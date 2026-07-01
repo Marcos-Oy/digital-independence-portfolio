@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { Check, XCircle, Linkedin, Globe } from "lucide-react";
+import { XCircle, Check, Linkedin, Globe, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png";
-import robotImg from "@/assets/autonomia-digital-robot.png";
 import marcosAzul from "@/assets/marcos-terno-azul.jpg";
 import marcosNegro from "@/assets/marcos-terno-negro.jpeg";
 import ThemeToggleView from "@/views/ThemeToggleView";
@@ -9,7 +8,14 @@ import ScrollReveal from "@/views/shared/ScrollReveal";
 import WistiaEmbed from "@/views/shared/WistiaEmbed";
 import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
 import LeadFormDialogView from "@/views/landing/LeadFormDialogView";
-import { LO_MEJOR, SENALES_A, SENALES_B } from "@/models/generalLandingContent";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
+import { AREAS, SERVICES } from "@/models/services";
+import { PAIN_POINTS, PAIN_REFRAME, METHOD_STEPS, BENEFITS } from "@/models/generalLandingContent";
 import { useGeneralLandingController } from "@/controllers/landing/useGeneralLandingController";
 
 const GeneralLandingView = () => {
@@ -61,54 +67,34 @@ const GeneralLandingView = () => {
       {/* Tecnologías */}
       <SafeTechLogosCarousel />
 
-      {/* Qué resolvemos */}
+      {/* Dolor / Problema */}
       <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <ScrollReveal className="max-w-2xl mx-auto text-center mb-12">
-            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
-              ¿Qué hace Independencia Digital?
+        <div className="container mx-auto px-4 max-w-4xl">
+          <ScrollReveal className="text-center mb-10">
+            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-3 leading-tight">
+              ¿Alguna de estas señales te resulta familiar?
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Ayudamos a profesionales, emprendedores y PyMEs a resolver problemas tecnológicos concretos.
-              Ordenamos tu base digital, protegemos tus activos, medimos tus indicadores y construimos
-              soluciones para que tu negocio funcione con más control, seguridad y capacidad de crecimiento.
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Antes de agendar, revisa si tu negocio hoy vive alguna de estas situaciones.
             </p>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <ScrollReveal variant="left" className="space-y-4">
-              {LO_MEJOR.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5 text-secondary" />
-                  </span>
-                  <p className="text-sm text-foreground/90 leading-relaxed">{item}</p>
-                </div>
-              ))}
-            </ScrollReveal>
-            <ScrollReveal variant="scale">
-              <img
-                src={robotImg}
-                alt="Autonomía Digital"
-                loading="lazy"
-                className="w-full max-w-xs md:max-w-sm mx-auto rounded-2xl shadow-brand"
-              />
-            </ScrollReveal>
+          <div className="grid md:grid-cols-2 gap-x-10 gap-y-4">
+            {PAIN_POINTS.map((item) => (
+              <div key={item} className="flex items-start gap-3">
+                <XCircle className="w-4 h-4 text-destructive/70 mt-0.5 shrink-0" />
+                <p className="text-sm text-foreground/90 leading-relaxed">{item}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="text-center mt-12">
-            <button
-              onClick={() => setLeadOpen(true)}
-              className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
-            >
-              Quiero mi diagnóstico
-              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-            </button>
-          </div>
+          <ScrollReveal className="max-w-2xl mx-auto text-center mt-12">
+            <p className="text-foreground/90 leading-relaxed">{PAIN_REFRAME}</p>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Quién está detrás */}
+      {/* Nutrir: quién está detrás */}
       <section className="py-16 md:py-24 bg-muted/50">
         <div className="container mx-auto px-4 max-w-4xl">
           <ScrollReveal className="text-center mb-12">
@@ -165,37 +151,186 @@ const GeneralLandingView = () => {
               </div>
             </ScrollReveal>
           </div>
+
+          {/* 5 áreas de servicio */}
+          <ScrollReveal className="mt-14" variant="up">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-6">
+              Todo lo que podemos ordenar contigo
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {AREAS.map((area) => (
+                <div key={area.id} className="bg-card border border-border rounded-xl p-5 h-full">
+                  <area.icon className="w-5 h-5 text-primary mb-3" />
+                  <p className="font-heading font-bold text-sm text-foreground mb-1.5 leading-snug">
+                    {area.label}
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{area.desc}</p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Señales */}
+      {/* Detalle por servicio */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
-          <ScrollReveal className="text-center mb-10">
-            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-3 leading-tight">
-              ¿Alguna de estas señales te resulta familiar?
+          <ScrollReveal className="max-w-2xl mx-auto text-center mb-12">
+            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
+              Qué hacemos exactamente en cada servicio
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Antes de agendar, revisa si tu negocio hoy vive alguna de estas situaciones.
+            <p className="text-muted-foreground leading-relaxed">
+              15 soluciones agrupadas en 5 áreas. Abre la que te interesa: el problema que resuelve, qué
+              hacemos y qué obtienes.
             </p>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-x-10 gap-y-4">
-            {[...SENALES_A, ...SENALES_B].map((item) => (
-              <div key={item} className="flex items-start gap-3">
-                <XCircle className="w-4 h-4 text-destructive/70 mt-0.5 shrink-0" />
-                <p className="text-sm text-foreground/90 leading-relaxed">{item}</p>
-              </div>
+          <div className="space-y-10">
+            {AREAS.map((area) => (
+              <ScrollReveal key={area.id} variant="up">
+                <div className="flex items-center gap-2.5 mb-3">
+                  <area.icon className="w-4 h-4 text-primary shrink-0" />
+                  <h3 className="font-heading font-bold text-sm text-foreground uppercase tracking-wide">
+                    {area.label}
+                  </h3>
+                </div>
+                <Accordion type="multiple" className="bg-card border border-border rounded-xl px-5">
+                  {SERVICES.filter((s) => s.area === area.id).map((s) => (
+                    <AccordionItem key={s.slug} value={s.slug} className="border-border">
+                      <AccordionTrigger className="text-left text-sm font-semibold text-foreground hover:no-underline">
+                        {s.title}
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-5 pt-1">
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-wide text-destructive/80 mb-2">
+                              El problema
+                            </p>
+                            <ul className="space-y-1.5">
+                              {s.painPoints.map((p) => (
+                                <li key={p} className="flex items-start gap-2">
+                                  <XCircle className="w-3.5 h-3.5 text-destructive/70 mt-0.5 shrink-0" />
+                                  <span className="text-sm text-foreground/90 leading-relaxed">{p}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-wide text-secondary mb-2">
+                              Qué hacemos
+                            </p>
+                            <p className="text-sm text-foreground/90 leading-relaxed">{s.description}</p>
+                          </div>
+
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-wide text-secondary mb-2">
+                              Qué incluye
+                            </p>
+                            <ul className="space-y-1.5">
+                              {s.includes.map((inc) => (
+                                <li key={inc} className="flex items-start gap-2">
+                                  <Check className="w-3.5 h-3.5 text-secondary mt-0.5 shrink-0" />
+                                  <span className="text-sm text-foreground/90 leading-relaxed">{inc}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div className="bg-muted/60 rounded-lg p-4">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-primary mb-1.5">
+                              El resultado
+                            </p>
+                            <p className="text-sm text-foreground/90 leading-relaxed">{s.valuePromise}</p>
+                          </div>
+
+                          <Link
+                            to={`/servicios/${s.slug}`}
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                          >
+                            Ver servicio completo
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* El Método */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <ScrollReveal className="max-w-2xl mx-auto text-center mb-12">
+            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
+              El método: Plan 360
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Cuatro pasos, sin letra chica. No necesitas contratarlo todo de una vez: empezamos por lo
+              que resuelve tu situación más urgente.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid sm:grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden">
+            {METHOD_STEPS.map((step) => (
+              <ScrollReveal key={step.n} variant="scale" className="h-full">
+                <div className="bg-card p-7 h-full">
+                  <span className="font-heading font-extrabold text-3xl text-border leading-none block mb-4 select-none">
+                    {step.n}
+                  </span>
+                  <h3 className="font-heading font-bold text-base text-foreground mb-2">{step.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
 
-          <ScrollReveal className="max-w-2xl mx-auto text-center mt-12">
-            <p className="text-foreground/90 leading-relaxed">
-              Si algo de esto te resulta familiar, no es porque no sepas de tecnología. Es porque tu
-              ecosistema digital nunca fue diseñado como un sistema, y cuando la tecnología se construye en
-              partes sueltas, termina siendo un problema en lugar de una solución.
+          <div className="text-center mt-12">
+            <button
+              onClick={() => setLeadOpen(true)}
+              className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+            >
+              Quiero mi diagnóstico
+              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Satisfacción / Beneficios */}
+      <section className="py-16 md:py-24 bg-muted/50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <ScrollReveal className="max-w-2xl mx-auto text-center mb-12">
+            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
+              Así se ve tu negocio después
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              El mismo negocio, con la tecnología resuelta.
             </p>
           </ScrollReveal>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {BENEFITS.map((b, i) => {
+              const Icon = b.icon;
+              return (
+                <ScrollReveal key={b.title} delay={i * 60} variant="scale">
+                  <div className="bg-card border border-border rounded-xl p-6 h-full">
+                    <span className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
+                      <Icon className="w-5 h-5 text-secondary" />
+                    </span>
+                    <h3 className="font-heading font-bold text-base text-foreground mb-2 leading-snug">
+                      {b.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
