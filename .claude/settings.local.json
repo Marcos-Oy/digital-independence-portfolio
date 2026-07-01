@@ -51,7 +51,11 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/landing)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/landing/general)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/fundador)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/fundador)",
+      "Bash(bun --version)",
+      "PowerShell(Get-Command *)",
+      "Bash(grep -E \"^\\(package-lock.json|bun.lock|bun.lockb\\)$\")",
+      "Bash(bun install *)"
     ]
   }
 }
