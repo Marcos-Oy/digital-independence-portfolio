@@ -7,6 +7,7 @@ import marcosNegro from "@/assets/marcos-terno-negro.jpeg";
 import ThemeToggleView from "@/views/ThemeToggleView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import WistiaEmbed from "@/views/shared/WistiaEmbed";
+import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
 import LeadFormDialogView from "@/views/landing/LeadFormDialogView";
 import { LO_MEJOR, SENALES_A, SENALES_B } from "@/models/generalLandingContent";
 import { useGeneralLandingController } from "@/controllers/landing/useGeneralLandingController";
@@ -53,7 +54,7 @@ const GeneralLandingView = () => {
         </div>
 
         <ScrollReveal className="container mx-auto px-4 max-w-3xl mt-12" variant="scale">
-          <WistiaEmbed mediaId="68c4rkopry" autoPlay />
+          <WistiaEmbed mediaId="68c4rkopry" />
         </ScrollReveal>
       </section>
 
@@ -103,6 +104,9 @@ const GeneralLandingView = () => {
           </div>
         </div>
       </section>
+
+      {/* Tecnologías */}
+      <SafeTechLogosCarousel />
 
       {/* Quién está detrás */}
       <section className="py-16 md:py-24 bg-muted/50">
