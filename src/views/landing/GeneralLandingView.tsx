@@ -1,4 +1,5 @@
 import { XCircle } from "lucide-react";
+import robotImg from "@/assets/autonomia-digital-robot.png";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import WistiaEmbed from "@/views/shared/WistiaEmbed";
 import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
@@ -23,6 +24,11 @@ const GeneralLandingView = () => {
       {/* Hero */}
       <section className="gradient-hero pt-16 pb-14 md:pt-20 md:pb-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
+          <img
+            src={robotImg}
+            alt="Autonomía Digital, la mascota de Independencia Digital"
+            className="w-16 md:w-20 h-auto mx-auto mb-5"
+          />
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
             Plan 360, Independencia Digital
           </p>
