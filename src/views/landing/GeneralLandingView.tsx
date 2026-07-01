@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { XCircle, Check, Linkedin, Globe, ArrowRight } from "lucide-react";
+import { XCircle, Check, Linkedin, Globe } from "lucide-react";
 import logo from "@/assets/logo.png";
 import marcosAzul from "@/assets/marcos-terno-azul.jpg";
 import marcosNegro from "@/assets/marcos-terno-negro.jpeg";
@@ -23,17 +23,25 @@ const GeneralLandingView = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header minimalista de funnel: solo logo y toggle, sin navegación del sitio */}
+      {/* Header minimalista de funnel: solo logo, CTA y toggle, sin navegación del sitio */}
       <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between max-w-5xl">
-          <Link to="/" className="flex items-center gap-2.5">
-            <img src={logo} alt="Independencia Digital" className="h-8 w-8" />
-            <span className="font-heading font-bold text-sm leading-none">
-              <span className="text-[#2E6FB5]">Independencia</span>{" "}
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between max-w-5xl gap-2">
+          <Link to="/" className="flex items-center gap-2 shrink-0">
+            <img src={logo} alt="Independencia Digital" className="h-8 w-8 shrink-0" />
+            <span className="font-heading font-bold text-xs leading-[1.15] flex flex-col">
+              <span className="text-[#2E6FB5]">Independencia</span>
               <span className="text-[#3CB878]">Digital</span>
             </span>
           </Link>
-          <ThemeToggleView />
+          <div className="flex items-center gap-2 shrink-0">
+            <ThemeToggleView />
+            <button
+              onClick={() => setLeadOpen(true)}
+              className="whitespace-nowrap inline-flex items-center gap-2 gradient-brand text-primary-foreground font-heading font-bold text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+            >
+              Quiero mi diagnóstico
+            </button>
+          </div>
         </div>
       </header>
 
@@ -89,7 +97,14 @@ const GeneralLandingView = () => {
           </div>
 
           <ScrollReveal className="max-w-2xl mx-auto text-center mt-12">
-            <p className="text-foreground/90 leading-relaxed">{PAIN_REFRAME}</p>
+            <p className="text-foreground/90 leading-relaxed mb-8">{PAIN_REFRAME}</p>
+            <button
+              onClick={() => setLeadOpen(true)}
+              className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+            >
+              Quiero mi diagnóstico
+              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
+            </button>
           </ScrollReveal>
         </div>
       </section>
@@ -169,6 +184,16 @@ const GeneralLandingView = () => {
               ))}
             </div>
           </ScrollReveal>
+
+          <div className="text-center mt-12">
+            <button
+              onClick={() => setLeadOpen(true)}
+              className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+            >
+              Quiero mi diagnóstico
+              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -258,14 +283,6 @@ const GeneralLandingView = () => {
                             </p>
                             <p className="text-sm text-foreground/90 leading-relaxed">{s.valuePromise}</p>
                           </div>
-
-                          <Link
-                            to={`/servicios/${s.slug}`}
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-                          >
-                            Ver servicio completo
-                            <ArrowRight className="w-3.5 h-3.5" />
-                          </Link>
                         </div>
                       </AccordionContent>
                     </AccordionItem>
@@ -273,6 +290,16 @@ const GeneralLandingView = () => {
                 </Accordion>
               </ScrollReveal>
             ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <button
+              onClick={() => setLeadOpen(true)}
+              className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+            >
+              Quiero mi diagnóstico
+              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
+            </button>
           </div>
         </div>
       </section>
