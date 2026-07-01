@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, XCircle, Linkedin } from "lucide-react";
+import { Check, XCircle, Linkedin, Globe } from "lucide-react";
 import logo from "@/assets/logo.png";
 import robotImg from "@/assets/autonomia-digital-robot.png";
 import marcosAzul from "@/assets/marcos-terno-azul.jpg";
@@ -108,12 +108,12 @@ const General = () => {
                 </div>
               ))}
             </ScrollReveal>
-            <ScrollReveal variant="scale" className="hidden md:block">
+            <ScrollReveal variant="scale">
               <img
                 src={robotImg}
                 alt="Autonomía Digital"
                 loading="lazy"
-                className="w-full max-w-sm mx-auto rounded-2xl shadow-brand"
+                className="w-full max-w-xs md:max-w-sm mx-auto rounded-2xl shadow-brand"
               />
             </ScrollReveal>
           </div>
@@ -121,9 +121,10 @@ const General = () => {
           <div className="text-center mt-12">
             <button
               onClick={() => setLeadOpen(true)}
-              className="inline-flex items-center gap-2 bg-card border border-border text-sm font-semibold px-6 py-3 rounded-full hover:border-primary hover:text-primary transition-colors"
+              className="inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
             >
               Quiero mi diagnóstico
+              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
             </button>
           </div>
         </div>
@@ -166,14 +167,24 @@ const General = () => {
                 Mi promesa es clara: en poco tiempo de trabajo conjunto, tu tecnología deja de ser un
                 problema y se convierte en el motor real del crecimiento de tu negocio.
               </p>
-              <a
-                href="https://www.linkedin.com/in/marcos-alberto-o-766456170/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-card border border-border text-sm font-medium px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition-colors"
-              >
-                <Linkedin className="w-4 h-4" /> LinkedIn
-              </a>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://www.moyarzo.cl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-card border border-border text-sm font-medium px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition-colors"
+                >
+                  <Globe className="w-4 h-4" /> moyarzo.cl
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/marcos-alberto-o-766456170/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-card border border-border text-sm font-medium px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition-colors"
+                >
+                  <Linkedin className="w-4 h-4" /> LinkedIn
+                </a>
+              </div>
             </ScrollReveal>
           </div>
         </div>
