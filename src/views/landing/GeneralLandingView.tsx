@@ -1,5 +1,4 @@
 import { XCircle } from "lucide-react";
-import robotImg from "@/assets/autonomia-digital-robot.png";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import WistiaEmbed from "@/views/shared/WistiaEmbed";
 import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
@@ -7,10 +6,17 @@ import LandingHeader from "@/views/landing/LandingHeader";
 import LandingFooter from "@/views/landing/LandingFooter";
 import LandingCtaButton from "@/views/landing/LandingCtaButton";
 import FounderAuthoritySection from "@/views/landing/FounderAuthoritySection";
+import RightClientSection from "@/views/landing/RightClientSection";
 import ServiceAccordionList from "@/views/landing/ServiceAccordionList";
 import LeadFormDialogView from "@/views/landing/LeadFormDialogView";
 import { AREAS, SERVICES } from "@/models/services";
-import { PAIN_POINTS, PAIN_REFRAME, METHOD_STEPS, BENEFITS } from "@/models/generalLandingContent";
+import {
+  PAIN_POINTS,
+  PAIN_REFRAME,
+  GENERAL_RIGHT_CLIENT,
+  METHOD_STEPS,
+  BENEFITS,
+} from "@/models/generalLandingContent";
 import { useLandingController } from "@/controllers/landing/useLandingController";
 
 const GeneralLandingView = () => {
@@ -24,11 +30,6 @@ const GeneralLandingView = () => {
       {/* Hero */}
       <section className="gradient-hero pt-16 pb-14 md:pt-20 md:pb-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <img
-            src={robotImg}
-            alt="Autonomía Digital, la mascota de Independencia Digital"
-            className="w-16 md:w-20 h-auto mx-auto mb-5"
-          />
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
             Plan 360, Independencia Digital
           </p>
@@ -77,6 +78,8 @@ const GeneralLandingView = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <RightClientSection text={GENERAL_RIGHT_CLIENT} />
 
       {/* Nutrir: quién está detrás */}
       <section className="py-16 md:py-24 bg-muted/50">

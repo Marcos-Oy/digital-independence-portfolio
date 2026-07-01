@@ -22,6 +22,9 @@ export const PAIN_POINTS = [
 export const PAIN_REFRAME =
   "Si algo de esto te resulta familiar, no es porque no sepas de tecnología. Es porque tu ecosistema digital nunca fue diseñado como un sistema, y cuando la tecnología se construye en partes sueltas, termina siendo un problema en lugar de una solución.";
 
+export const GENERAL_RIGHT_CLIENT =
+  "Emprendedores, profesionales independientes, PyMEs, grandes empresas y organismos del sector público que necesitan ordenar, proteger o hacer crecer su tecnología, sin importar en qué etapa estén hoy.";
+
 // El Método: reduce el riesgo percibido mostrando el mecanismo paso a paso
 // antes de pedir el compromiso. Coincide con cómo opera realmente el negocio.
 export const METHOD_STEPS = [
