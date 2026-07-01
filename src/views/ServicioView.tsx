@@ -29,14 +29,8 @@ const ServicioView = ({ service }: Props) => {
       <SiteNavbarView />
 
       {/* Hero */}
-      <section className="relative pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
+      <section className="relative gradient-hero pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-          <img
-            src={service.image}
-            alt=""
-            className="w-full h-full object-cover opacity-25 dark:opacity-15"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/85 to-background" />
           <div className="hero-orb w-80 h-80 bg-primary/6 top-1/4 -left-24 animate-float" style={{ animationDelay: "0s" }} />
           <div className="hero-orb w-60 h-60 bg-secondary/6 top-1/3 right-0 animate-float" style={{ animationDelay: "2.5s" }} />
           <div className="hero-orb w-44 h-44 bg-primary/4 bottom-0 left-1/2 animate-float-slow" style={{ animationDelay: "1s" }} />
@@ -48,7 +42,7 @@ const ServicioView = ({ service }: Props) => {
           >
             <ArrowLeft className="w-4 h-4" /> Volver al inicio
           </Link>
-          <div className="flex flex-col md:flex-row items-start gap-8">
+          <div className="flex flex-col md:flex-row items-start gap-8 mb-10">
             <ScrollReveal variant="scale" className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
               <Icon className="w-7 h-7 text-primary" />
             </ScrollReveal>
@@ -82,6 +76,14 @@ const ServicioView = ({ service }: Props) => {
               </button>
             </ScrollReveal>
           </div>
+
+          <ScrollReveal variant="scale">
+            <img
+              src={service.image}
+              alt={service.title}
+              className="w-full aspect-[21/9] object-cover rounded-2xl shadow-card-hover"
+            />
+          </ScrollReveal>
         </div>
       </section>
 
