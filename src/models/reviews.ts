@@ -15,7 +15,6 @@ export const REVIEW_SERVICE_OPTIONS = [
   "Transformación Digital",
   "Dirección de TI (CTO Externo)",
   "Reducción de Costos TI",
-  "Soporte TI Gestionado",
   "Presencia Digital",
   "Desarrollo de Software Web",
   "Dirección de Marketing Digital",

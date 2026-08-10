@@ -58,7 +58,6 @@ export const SEGMENTS: Segment[] = [
       "arquitectura-ti",
       "desarrollo-software",
       "ciberseguridad",
-      "soporte-ti-gestionado",
       "ia-corporativa",
     ],
   },

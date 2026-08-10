@@ -4,7 +4,6 @@ import {
   Building2,
   Users,
   Wallet,
-  Headphones,
   Globe,
   Code2,
   Megaphone,
@@ -27,7 +26,6 @@ import imgArquitectura from "@/assets/services/arquitectura-ti.jpg";
 import imgTransformacion from "@/assets/services/transformacion-digital.jpg";
 import imgDireccion from "@/assets/services/direccion-ti.jpg";
 import imgOptimizacion from "@/assets/services/optimizacion-costos-ti.jpg";
-import imgSoporte from "@/assets/services/soporte-ti-gestionado.jpg";
 import imgPresencia from "@/assets/services/presencia-digital.jpg";
 import imgDesarrollo from "@/assets/services/desarrollo-software.jpg";
 import imgMarketing from "@/assets/services/marketing-digital.jpg";
@@ -94,7 +92,6 @@ const SERVICE_IMAGES: Record<string, string> = {
   "transformacion-digital": imgTransformacion,
   "direccion-ti": imgDireccion,
   "optimizacion-costos-ti": imgOptimizacion,
-  "soporte-ti-gestionado": imgSoporte,
   "presencia-digital": imgPresencia,
   "desarrollo-software": imgDesarrollo,
   "marketing-digital": imgMarketing,
@@ -302,45 +299,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
       "Plan de reducción de costos priorizado",
     ],
     segments: ["emprendedores", "pymes", "empresas", "publico"],
-    modality: ["consultoria"],
-  },
-  {
-    slug: "soporte-ti-gestionado",
-    title: "Soporte TI Gestionado",
-    shortTitle: "Soporte TI Gestionado",
-    navLabel: "Soporte técnico mensual",
-    area: "optimizacion-costos",
-    areaLabel: "Optimización y Costos TI",
-    icon: Headphones,
-    tagline: "Soporte mensual con SLA claro y horas definidas.",
-    summary:
-      "Contrato mensual con límite de horas y SLA de tiempo de respuesta, soporte remoto y presencial según acuerdo.",
-    description:
-      "Contrato mensual con límite de horas definido y SLA de tiempo de respuesta. Soporte remoto y presencial según acuerdo. Activación progresiva según capacidad operativa disponible.",
-    approach:
-      "Definimos contigo una bolsa de horas mensual y un SLA de tiempo de respuesta claro, para que el soporte deje de depender de la disponibilidad de una sola persona. Cada incidente queda registrado y trazado, y te entregamos un reporte mensual para que sepas exactamente en qué se usaron las horas contratadas.",
-    addedValue: [
-      "SLA de respuesta definido por escrito, no una promesa verbal de 'te ayudo cuando pueda'.",
-      "Reporte mensual de incidentes, para que el soporte deje de ser una caja negra.",
-      "Escala según tu operación: partimos con las horas que necesitas hoy, no con un contrato sobredimensionado.",
-    ],
-    rightClient:
-      "PyME o empresa que necesita soporte continuo predecible y con SLA, sin pagar un equipo TI interno.",
-    timeFactor: "Desde el primer mes",
-    valuePromise:
-      "Soporte TI con SLA, horas definidas y trazabilidad mensual de incidentes y resoluciones.",
-    painPoints: [
-      "Cuando algo falla, dependes de la disponibilidad de una persona, no de un servicio con tiempos garantizados.",
-      "No tienes trazabilidad de cuántas horas de soporte usas ni en qué se van.",
-      "Pagar un equipo TI interno no compensa frente al volumen real de incidentes que tienes.",
-    ],
-    includes: [
-      "Bolsa mensual de horas",
-      "SLA de tiempo de respuesta",
-      "Soporte remoto y presencial",
-      "Reporte mensual de incidentes",
-    ],
-    segments: ["pymes", "empresas"],
     modality: ["consultoria"],
   },
   {
@@ -785,13 +743,6 @@ export const SEARCH_TAGS: Record<string, string[]> = {
     'estoy pagando mucho', 'licencias caras', 'muy caro', 'optimizar gastos',
     'recortar presupuesto ti', 'pago demasiado', 'factura alta tecnologia',
     'cuanto gasto en tecnologia', 'reducir gastos digitales', 'optimizar costos',
-  ],
-  'soporte-ti-gestionado': [
-    'soporte', 'soporte tecnico', 'ayuda tecnica', 'asistencia tecnica',
-    'problema computador', 'no funciona', 'ayuda computador', 'help desk',
-    'mantenimiento', 'configurar', 'instalar programa', 'correo no funciona',
-    'internet lento', 'red wifi', 'no puedo entrar', 'problema tecnico',
-    'computador lento', 'virus computador', 'necesito soporte mensual',
   ],
   'presencia-digital': [
     'pagina web', 'paginas web', 'sitio web', 'sitios web', 'web', 'pagina internet',
