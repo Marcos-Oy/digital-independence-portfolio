@@ -19,6 +19,7 @@ import WhatsAppButtonView from "@/views/WhatsAppButtonView";
 import ChatBotView from "@/views/ChatBotView";
 import WelcomeModalView from "@/views/WelcomeModalView";
 import LeadFormProvider from "@/views/LeadFormProvider";
+import SystemeIoFloatingForm from "@/views/landing/SystemeIoFloatingForm";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +74,7 @@ const AppLayout = () => {
       {!hideChrome && <WhatsAppButtonView />}
       {!hideChrome && <ChatBotView />}
       {!hideWelcomeModal && <WelcomeModalView />}
+      {isLandingFunnel && <SystemeIoFloatingForm />}
     </>
   );
 };
