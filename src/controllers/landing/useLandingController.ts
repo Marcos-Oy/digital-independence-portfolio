@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export const useLandingController = (pageTitle: string) => {
-  const [leadOpen, setLeadOpen] = useState(false);
-
   useEffect(() => {
     document.title = pageTitle;
   }, [pageTitle]);
-
-  return { leadOpen, setLeadOpen };
 };

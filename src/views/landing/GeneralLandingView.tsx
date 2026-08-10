@@ -8,7 +8,6 @@ import LandingCtaButton from "@/views/landing/LandingCtaButton";
 import FounderAuthoritySection from "@/views/landing/FounderAuthoritySection";
 import RightClientSection from "@/views/landing/RightClientSection";
 import ServiceAccordionList from "@/views/landing/ServiceAccordionList";
-import LeadFormDialogView from "@/views/landing/LeadFormDialogView";
 import { AREAS, SERVICES } from "@/models/services";
 import {
   PAIN_POINTS,
@@ -20,12 +19,11 @@ import {
 import { useLandingController } from "@/controllers/landing/useLandingController";
 
 const GeneralLandingView = () => {
-  const { leadOpen, setLeadOpen } = useLandingController("Independencia Digital | Diagnóstico gratuito");
-  const openLead = () => setLeadOpen(true);
+  useLandingController("Independencia Digital | Diagnóstico gratuito");
 
   return (
     <div className="min-h-screen bg-background">
-      <LandingHeader onCtaClick={openLead} />
+      <LandingHeader />
 
       {/* Hero */}
       <section className="gradient-hero pt-16 pb-14 md:pt-20 md:pb-20">
@@ -40,7 +38,7 @@ const GeneralLandingView = () => {
             Diagnóstico, arquitectura TI, ciberseguridad, automatización e IA para PyMEs, empresas y
             organismos públicos en Chile.
           </p>
-          <LandingCtaButton onClick={openLead} className="btn-shimmer" />
+          <LandingCtaButton className="btn-shimmer" />
         </div>
 
         <ScrollReveal className="container mx-auto px-4 max-w-3xl mt-12" variant="scale">
@@ -74,7 +72,7 @@ const GeneralLandingView = () => {
 
           <ScrollReveal className="max-w-2xl mx-auto text-center mt-12">
             <p className="text-foreground/90 leading-relaxed mb-8">{PAIN_REFRAME}</p>
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </ScrollReveal>
         </div>
       </section>
@@ -111,7 +109,7 @@ const GeneralLandingView = () => {
           </ScrollReveal>
 
           <div className="text-center mt-12">
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </div>
         </div>
       </section>
@@ -144,7 +142,7 @@ const GeneralLandingView = () => {
           </div>
 
           <div className="text-center mt-12">
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </div>
         </div>
       </section>
@@ -177,7 +175,7 @@ const GeneralLandingView = () => {
           </div>
 
           <div className="text-center mt-12">
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </div>
         </div>
       </section>
@@ -226,15 +224,13 @@ const GeneralLandingView = () => {
               <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
                 Agenda un diagnóstico sin costo y encuentra el punto de partida ideal para tu caso.
               </p>
-              <LandingCtaButton onClick={openLead} />
+              <LandingCtaButton />
             </div>
           </div>
         </div>
       </section>
 
       <LandingFooter />
-
-      <LeadFormDialogView open={leadOpen} onOpenChange={setLeadOpen} source="landing-general" />
     </div>
   );
 };

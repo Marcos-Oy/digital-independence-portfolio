@@ -1,5 +1,5 @@
 interface LandingCtaButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   size?: "default" | "compact";
 }

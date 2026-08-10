@@ -7,7 +7,6 @@ import LandingCtaButton from "@/views/landing/LandingCtaButton";
 import FounderAuthoritySection from "@/views/landing/FounderAuthoritySection";
 import RightClientSection from "@/views/landing/RightClientSection";
 import ServiceAccordionList from "@/views/landing/ServiceAccordionList";
-import LeadFormDialogView from "@/views/landing/LeadFormDialogView";
 import { XCircle } from "lucide-react";
 import { AREAS, SERVICES, type ServiceArea } from "@/models/services";
 import { AREA_LANDING_CONTENT } from "@/models/areaLandingContent";
@@ -23,12 +22,11 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
   const content = AREA_LANDING_CONTENT[area];
   const areaServices = SERVICES.filter((s) => s.area === area);
 
-  const { leadOpen, setLeadOpen } = useLandingController(`${areaInfo.label} | Independencia Digital`);
-  const openLead = () => setLeadOpen(true);
+  useLandingController(`${areaInfo.label} | Independencia Digital`);
 
   return (
     <div className="min-h-screen bg-background">
-      <LandingHeader onCtaClick={openLead} />
+      <LandingHeader />
 
       {/* Hero */}
       <section className="gradient-hero pt-16 pb-14 md:pt-20 md:pb-20">
@@ -42,7 +40,7 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             {content.subtext}
           </p>
-          <LandingCtaButton onClick={openLead} className="btn-shimmer" />
+          <LandingCtaButton className="btn-shimmer" />
         </div>
 
         <ScrollReveal className="container mx-auto px-4 max-w-3xl mt-12" variant="scale">
@@ -76,7 +74,7 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
 
           <ScrollReveal className="max-w-2xl mx-auto text-center mt-12">
             <p className="text-foreground/90 leading-relaxed mb-8">{content.painReframe}</p>
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </ScrollReveal>
         </div>
       </section>
@@ -95,7 +93,7 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
           <FounderAuthoritySection />
 
           <div className="text-center mt-12">
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </div>
         </div>
       </section>
@@ -115,7 +113,7 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
           </ScrollReveal>
 
           <div className="text-center mt-12">
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </div>
         </div>
       </section>
@@ -148,7 +146,7 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
           </div>
 
           <div className="text-center mt-12">
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </div>
         </div>
       </section>
@@ -197,15 +195,13 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
               <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
                 Agenda un diagnóstico sin costo y encuentra el punto de partida ideal para tu caso.
               </p>
-              <LandingCtaButton onClick={openLead} />
+              <LandingCtaButton />
             </div>
           </div>
         </div>
       </section>
 
       <LandingFooter />
-
-      <LeadFormDialogView open={leadOpen} onOpenChange={setLeadOpen} source={`landing-${area}`} />
     </div>
   );
 };

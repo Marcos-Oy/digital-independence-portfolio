@@ -8,7 +8,6 @@ import LandingFooter from "@/views/landing/LandingFooter";
 import LandingCtaButton from "@/views/landing/LandingCtaButton";
 import FounderAuthoritySection from "@/views/landing/FounderAuthoritySection";
 import RightClientSection from "@/views/landing/RightClientSection";
-import LeadFormDialogView from "@/views/landing/LeadFormDialogView";
 import { getServiceBySlug } from "@/models/services";
 import { METHOD_STEPS } from "@/models/generalLandingContent";
 import { SERVICE_LANDING_WISTIA_ID, SERVICE_PAIN_REFRAME } from "@/models/serviceLandingContent";
@@ -23,18 +22,17 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
 
   // Hooks deben llamarse siempre: si no existe el servicio, igual inicializamos
   // el controller antes de decidir el redirect.
-  const { leadOpen, setLeadOpen } = useLandingController(
+  useLandingController(
     service ? `${service.title} | Independencia Digital` : "Independencia Digital"
   );
 
   if (!service) return <Navigate to="/landing" replace />;
 
-  const openLead = () => setLeadOpen(true);
   const Icon = service.icon;
 
   return (
     <div className="min-h-screen bg-background">
-      <LandingHeader onCtaClick={openLead} />
+      <LandingHeader />
 
       {/* Hero */}
       <section className="gradient-hero pt-16 pb-14 md:pt-20 md:pb-20">
@@ -48,7 +46,7 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             {service.summary}
           </p>
-          <LandingCtaButton onClick={openLead} className="btn-shimmer" />
+          <LandingCtaButton className="btn-shimmer" />
         </div>
 
         <ScrollReveal className="container mx-auto px-4 max-w-3xl mt-12" variant="scale">
@@ -82,7 +80,7 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
 
           <ScrollReveal className="max-w-2xl mx-auto text-center mt-12">
             <p className="text-foreground/90 leading-relaxed mb-8">{SERVICE_PAIN_REFRAME}</p>
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </ScrollReveal>
         </div>
       </section>
@@ -108,7 +106,7 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
           </ScrollReveal>
 
           <div className="text-center mt-12">
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </div>
         </div>
       </section>
@@ -166,7 +164,7 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
           </div>
 
           <div className="text-center mt-12">
-            <LandingCtaButton onClick={openLead} />
+            <LandingCtaButton />
           </div>
         </div>
       </section>
@@ -203,15 +201,13 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
               <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
                 Agenda un diagnóstico sin costo y encuentra el punto de partida ideal para tu caso.
               </p>
-              <LandingCtaButton onClick={openLead} />
+              <LandingCtaButton />
             </div>
           </div>
         </div>
       </section>
 
       <LandingFooter />
-
-      <LeadFormDialogView open={leadOpen} onOpenChange={setLeadOpen} source={`landing-servicio-${slug}`} />
     </div>
   );
 };
