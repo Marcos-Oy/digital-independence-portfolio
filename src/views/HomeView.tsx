@@ -109,8 +109,8 @@ const HomeView = () => {
             className={`font-heading font-extrabold text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight max-w-5xl mb-6 text-foreground ${explored ? "animate-fade-in-up" : "opacity-0"}`}
             style={{ animationDelay: "0.1s" }}
           >
-            Diseñamos, construimos y dirigimos tu{" "}
-            <span className="text-primary">infraestructura tecnológica</span>
+            Diseñamos y construimos con servicios integrales tu{" "}
+            <span className="text-primary">infraestructura digital</span>
           </h1>
 
           <p
