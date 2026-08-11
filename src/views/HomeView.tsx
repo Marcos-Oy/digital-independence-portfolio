@@ -207,7 +207,7 @@ const HomeView = () => {
                 Tecnología que resuelve problemas reales
               </h2>
               <p className="text-muted-foreground">
-                15 soluciones especializadas en 5 áreas. Cada una pensada en tu operación diaria, no en la tecnología por sí sola.
+                14 soluciones especializadas en 5 áreas. Cada una pensada en tu operación diaria, no en la tecnología por sí sola.
               </p>
             </ScrollReveal>
 

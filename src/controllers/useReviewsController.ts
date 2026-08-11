@@ -39,7 +39,7 @@ export const useReviewsController = () => {
     setSubmitting(true);
     try {
       const result = await submitReview({ name, city, service, rating, comment });
-      if (result.ok) {
+      if (result.ok === true) {
         toast({ title: "¡Gracias por tu reseña!", description: "Ya está publicada en el sitio." });
         setName(""); setCity(""); setService(REVIEW_SERVICE_OPTIONS[0]); setRating(5); setComment("");
         refreshReviews();
