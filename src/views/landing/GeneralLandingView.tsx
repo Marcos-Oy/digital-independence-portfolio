@@ -5,7 +5,6 @@ import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
 import LandingHeader from "@/views/landing/LandingHeader";
 import LandingFooter from "@/views/landing/LandingFooter";
 import LandingCtaButton from "@/views/landing/LandingCtaButton";
-import FounderAuthoritySection from "@/views/landing/FounderAuthoritySection";
 import RightClientSection from "@/views/landing/RightClientSection";
 import ServiceAccordionList from "@/views/landing/ServiceAccordionList";
 import { AREAS, SERVICES } from "@/models/services";
@@ -79,22 +78,16 @@ const GeneralLandingView = () => {
 
       <RightClientSection text={GENERAL_RIGHT_CLIENT} />
 
-      {/* Nutrir: quién está detrás */}
+      {/* Todo lo que podemos ordenar contigo */}
       <section className="py-16 md:py-24 bg-muted/50">
         <div className="container mx-auto px-4 max-w-4xl">
-          <ScrollReveal className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12" variant="up">
             <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground leading-tight">
-              ¿Quién está detrás de Independencia Digital?
+              Todo lo que podemos ordenar contigo
             </h2>
           </ScrollReveal>
 
-          <FounderAuthoritySection />
-
-          {/* 5 áreas de servicio */}
-          <ScrollReveal className="mt-14" variant="up">
-            <p className="text-center text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-6">
-              Todo lo que podemos ordenar contigo
-            </p>
+          <ScrollReveal variant="up">
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {AREAS.map((area) => (
                 <div key={area.id} className="bg-card border border-border rounded-xl p-5 h-full">

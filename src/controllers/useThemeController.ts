@@ -1,16 +1,32 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const OVERRIDE_KEY = "theme-manual-override";
 
 const isNightHour = () => {
   const h = new Date().getHours();
   return h >= 19 || h < 6;
 };
 
+const readManualOverride = (): boolean | null => {
+  try {
+    const raw = sessionStorage.getItem(OVERRIDE_KEY);
+    return raw === null ? null : raw === "dark";
+  } catch {
+    return null;
+  }
+};
+
 export const useThemeController = () => {
+  // Un override manual durante la pestaña actual gana sobre la hora; se
+  // guarda en sessionStorage para que sobreviva a la navegación entre
+  // páginas/landings pero se olvide al cerrar la pestaña.
+  const manualOverrideRef = useRef<boolean | null>(null);
+
   const [dark, setDark] = useState(() => {
     if (typeof window !== "undefined") {
-      // Clear any previously persisted preference so the theme follows the clock by default
-      try { localStorage.removeItem("theme"); } catch {}
-      return isNightHour();
+      const override = readManualOverride();
+      manualOverrideRef.current = override;
+      return override !== null ? override : isNightHour();
     }
     return false;
   });
@@ -23,10 +39,11 @@ export const useThemeController = () => {
     }
   }, [dark]);
 
-  // Re-evaluate every minute so the theme flips automatically at 19:00 / 06:00
-  // unless the user has manually toggled during this session.
+  // Re-evalúa cada minuto para que el tema cambie solo con la hora (19:00 /
+  // 06:00) mientras no haya un override manual activo en esta sesión.
   useEffect(() => {
     const id = window.setInterval(() => {
+      if (manualOverrideRef.current !== null) return;
       setDark((prev) => {
         const auto = isNightHour();
         return auto !== prev ? auto : prev;
@@ -35,5 +52,14 @@ export const useThemeController = () => {
     return () => window.clearInterval(id);
   }, []);
 
-  return { dark, toggle: () => setDark((d) => !d) };
+  const toggle = () => {
+    setDark((d) => {
+      const next = !d;
+      manualOverrideRef.current = next;
+      try { sessionStorage.setItem(OVERRIDE_KEY, next ? "dark" : "light"); } catch {}
+      return next;
+    });
+  };
+
+  return { dark, toggle };
 };

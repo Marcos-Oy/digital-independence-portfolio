@@ -6,7 +6,6 @@ import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
 import LandingHeader from "@/views/landing/LandingHeader";
 import LandingFooter from "@/views/landing/LandingFooter";
 import LandingCtaButton from "@/views/landing/LandingCtaButton";
-import FounderAuthoritySection from "@/views/landing/FounderAuthoritySection";
 import RightClientSection from "@/views/landing/RightClientSection";
 import { getServiceBySlug } from "@/models/services";
 import { METHOD_STEPS } from "@/models/generalLandingContent";
@@ -87,18 +86,10 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
 
       <RightClientSection text={service.rightClient} />
 
-      {/* Nutrir: quién está detrás */}
+      {/* Cómo lo hacemos */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
-          <ScrollReveal className="text-center mb-12">
-            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground leading-tight">
-              ¿Quién está detrás de Independencia Digital?
-            </h2>
-          </ScrollReveal>
-
-          <FounderAuthoritySection />
-
-          <ScrollReveal className="mt-14 max-w-2xl mx-auto text-center" variant="up">
+          <ScrollReveal className="max-w-2xl mx-auto text-center" variant="up">
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
               Cómo lo hacemos
             </p>
