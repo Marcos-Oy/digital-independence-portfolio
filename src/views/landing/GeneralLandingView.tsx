@@ -122,7 +122,7 @@ const GeneralLandingView = () => {
               Qué hacemos exactamente en cada servicio
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              15 soluciones agrupadas en 5 áreas. Abre la que te interesa: el problema que resuelve, qué
+              14 soluciones agrupadas en 5 áreas. Abre la que te interesa: el problema que resuelve, qué
               hacemos y qué obtienes.
             </p>
           </ScrollReveal>

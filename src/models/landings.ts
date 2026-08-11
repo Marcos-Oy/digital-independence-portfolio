@@ -49,7 +49,7 @@ const CORE_LANDINGS: LandingMeta[] = [
   },
 ];
 
-// Una landing por cada uno de los 15 servicios, bajo /landing/servicio/ para no
+// Una landing por cada uno de los 14 servicios, bajo /landing/servicio/ para no
 // chocar con los slugs de las áreas (p. ej. el servicio "ia-corporativa"
 // comparte slug con su área).
 const SERVICE_LANDINGS: LandingMeta[] = SERVICES.map((s) => ({
