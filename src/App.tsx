@@ -44,7 +44,7 @@ const AnimatedRoutes = () => {
         <Route path="/arquitecturati" element={<Navigate to="/servicios/arquitectura-ti" replace />} />
         <Route path="/presenciadigital" element={<Navigate to="/servicios/presencia-digital" replace />} />
         <Route path="/ciberseguridad" element={<Navigate to="/servicios/ciberseguridad" replace />} />
-        <Route path="/analiticaaplicada" element={<Navigate to="/servicios/ia-corporativa" replace />} />
+        <Route path="/analiticaaplicada" element={<Navigate to="/servicios/dashboards-kpi" replace />} />
         <Route path="/inteligenciaartificial" element={<Navigate to="/servicios/ia-corporativa" replace />} />
         <Route path="/landing" element={<LandingHubView />} />
         <Route path="/landing/general" element={<GeneralLandingView />} />
@@ -55,7 +55,6 @@ const AnimatedRoutes = () => {
         <Route path="/landing/ia-corporativa" element={<AreaLandingView area="ia-corporativa" />} />
         <Route path="/landing/servicio/:slug" element={<ServiceLandingRouteView />} />
         <Route path="/diagnostico" element={<DiagnosticoView />} />
-        <Route path="/diagnóstico" element={<DiagnosticoView />} />
         <Route path="*" element={<NotFoundView />} />
       </Routes>
     </div>
@@ -64,7 +63,7 @@ const AnimatedRoutes = () => {
 
 const AppLayout = () => {
   const location = useLocation();
-  const isDiagnostico = location.pathname === "/diagnostico" || location.pathname === "/diagnóstico";
+  const isDiagnostico = location.pathname === "/diagnostico";
   const isLandingFunnel = /^\/landing\/.+/.test(location.pathname);
   const isLandingHub = location.pathname === "/landing";
   const hideChrome = isDiagnostico || isLandingFunnel;
