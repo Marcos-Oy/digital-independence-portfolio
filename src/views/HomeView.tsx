@@ -267,16 +267,6 @@ const HomeView = () => {
                 );
               })}
             </div>
-
-            <ScrollReveal delay={100} className="text-center mt-12">
-              <Link
-                to="/servicios"
-                className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
-              >
-                Ver portafolio completo
-                <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-              </Link>
-            </ScrollReveal>
           </div>
         </div>
       </section>

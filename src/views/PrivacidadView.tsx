@@ -67,17 +67,25 @@ const PrivacidadView = () => {
               <li>Un mensaje opcional describiendo tu consulta o necesidad</li>
             </ul>
             <p>
+              Si avanzas y te conviertes en <strong>cliente</strong>, recopilamos además los datos
+              necesarios para prestar y administrar el servicio contratado: datos de identificación
+              (personales o de la persona jurídica que representas, como razón social y RUT), datos de
+              contacto, y los antecedentes propios del proyecto en el que trabajamos contigo. Más detalle en
+              la sección 4.
+            </p>
+            <p>
               No recopilamos datos sensibles (salud, origen étnico, afiliación política o sindical, etc.) ni
               solicitamos esa información en ningún formulario de este sitio.
             </p>
           </Section>
 
           <Section title="3. Para qué usamos tus datos">
-            <p>Usamos los datos que nos entregas exclusivamente para:</p>
+            <p>Usamos los datos que nos entregas para:</p>
             <ul className="list-disc pl-5 space-y-1.5">
               <li>Contactarte y coordinar tu diagnóstico o consulta gratuita.</li>
               <li>Responder tus preguntas sobre nuestros servicios.</li>
               <li>Elaborar y enviarte propuestas comerciales cuando corresponda.</li>
+              <li>Si eres cliente, administrar y dar seguimiento a tu proyecto a través de nuestro sistema interno de gestión (ERP).</li>
             </ul>
             <p>
               No vendemos, arrendamos ni compartimos tus datos personales con terceros para fines
@@ -109,7 +117,19 @@ const PrivacidadView = () => {
             </p>
           </Section>
 
-          <Section title="5. Uso de cookies">
+          <Section title="5. Clientes: datos gestionados en nuestro sistema propio (ERP)">
+            <p>
+              Si contratas alguno de nuestros servicios, tus datos —personales o de la empresa u
+              organización que representas— pasan a administrarse en nuestro <strong>ERP propio</strong>,
+              un sistema interno de gestión que usamos exclusivamente para planificar, ejecutar y dar
+              seguimiento a tu proyecto (por ejemplo: datos de contacto, información de facturación,
+              hitos y comunicaciones del proyecto). A diferencia del formulario de contacto inicial, esta
+              información no se procesa en Systeme.io: queda en un sistema propio, con acceso restringido a
+              las personas de Independencia Digital que trabajan directamente en tu proyecto.
+            </p>
+          </Section>
+
+          <Section title="6. Uso de cookies">
             <p>
               Este sitio <strong>no utiliza cookies propias de seguimiento o publicidad</strong>. Para
               recordar tus preferencias mientras navegas (por ejemplo, el tema claro u oscuro, o si ya viste
@@ -125,7 +145,7 @@ const PrivacidadView = () => {
             </p>
           </Section>
 
-          <Section title="6. Cuánto tiempo conservamos tus datos">
+          <Section title="7. Cuánto tiempo conservamos tus datos">
             <p>
               Conservamos tus datos de contacto solo mientras exista una relación comercial activa o
               potencial contigo, o hasta que solicites su eliminación. Si no hay interacción durante un
@@ -133,7 +153,7 @@ const PrivacidadView = () => {
             </p>
           </Section>
 
-          <Section title="7. Tus derechos (ARCO+)">
+          <Section title="8. Tus derechos (ARCO+)">
             <p>
               Actualmente estos derechos están reconocidos por la Ley N° 19.628 sobre Protección de la Vida
               Privada, y desde el <strong>1 de diciembre de 2026</strong> pasan a estar regulados de forma
@@ -143,23 +163,24 @@ const PrivacidadView = () => {
             </p>
             <p>Sobre tus datos personales, en cualquier momento puedes solicitarnos:</p>
             <ul className="list-disc pl-5 space-y-1.5">
-              <li><strong>Acceso:</strong> saber qué datos tuyos tenemos.</li>
+              <li><strong>Acceso:</strong> puedes solicitarnos por correo todos los datos que tenemos sobre ti (o tu empresa) y te los enviaremos en un plazo razonable.</li>
               <li><strong>Rectificación:</strong> corregir datos inexactos o desactualizados.</li>
-              <li><strong>Cancelación:</strong> eliminar tus datos de nuestros registros.</li>
+              <li><strong>Cancelación:</strong> eliminar todos tus datos de nuestros registros, tanto del CRM (Systeme.io) como de nuestro ERP interno.</li>
               <li><strong>Oposición:</strong> oponerte a que usemos tus datos para un fin determinado.</li>
-              <li><strong>Portabilidad:</strong> solicitar una copia de tus datos en un formato manejable.</li>
+              <li><strong>Portabilidad:</strong> solicitar una copia de tus datos en un formato manejable para trasladarlos a otro proveedor.</li>
             </ul>
             <p>
-              Para ejercer cualquiera de estos derechos, escríbenos a{" "}
+              Para ejercer cualquiera de estos derechos —incluida la solicitud de una copia completa de tus
+              datos— escríbenos a{" "}
               <a href="mailto:contacto@independenciadigital.cl" className="text-primary hover:underline">
                 contacto@independenciadigital.cl
               </a>{" "}
-              indicando tu nombre y el derecho que deseas ejercer. Responderemos dentro de un plazo
-              razonable.
+              indicando tu nombre (o razón social) y el derecho que deseas ejercer. Responderemos dentro de
+              un plazo razonable.
             </p>
           </Section>
 
-          <Section title="8. Seguridad de la información">
+          <Section title="9. Seguridad de la información">
             <p>
               Aplicamos medidas técnicas y organizativas razonables para proteger tus datos personales
               contra accesos no autorizados, pérdida o uso indebido. Sin embargo, ningún sistema de
@@ -168,7 +189,7 @@ const PrivacidadView = () => {
             </p>
           </Section>
 
-          <Section title="9. Cambios a esta política">
+          <Section title="10. Cambios a esta política">
             <p>
               Podemos actualizar esta política para reflejar cambios normativos (como la entrada en vigencia
               de la Ley 21.719) o cambios en cómo operamos. Publicaremos cualquier actualización en esta
@@ -176,7 +197,7 @@ const PrivacidadView = () => {
             </p>
           </Section>
 
-          <Section title="10. Contacto">
+          <Section title="11. Contacto">
             <p>
               Si tienes preguntas sobre esta política o el tratamiento de tus datos personales, escríbenos a{" "}
               <a href="mailto:contacto@independenciadigital.cl" className="text-primary hover:underline">

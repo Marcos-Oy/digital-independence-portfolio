@@ -7,7 +7,7 @@ const CookieNoticeView = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-[90] p-4 animate-fade-in-up">
+    <div className="fixed bottom-0 inset-x-0 z-[110] p-4 animate-fade-in-up">
       <div className="mx-auto max-w-2xl bg-card border border-border rounded-2xl shadow-card-hover px-5 py-4 flex flex-col sm:flex-row items-center gap-3">
         <p className="text-xs text-muted-foreground leading-relaxed flex-1 text-center sm:text-left">
           Este sitio no usa cookies propias de seguimiento. Solo guardamos tus preferencias (como el tema
