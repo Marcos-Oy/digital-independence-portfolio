@@ -418,7 +418,7 @@ const HomeView = () => {
                   );
                 })}
                 {filteredServices.length % 3 === 2 && (
-                  <ScrollReveal delay={(filteredServices.length % 3) * 80} variant="scale" className="hidden lg:block">
+                  <ScrollReveal delay={(filteredServices.length % 3) * 80} variant="scale">
                     <TechNetworkBlob className="relative w-full h-full min-h-[280px]" />
                   </ScrollReveal>
                 )}

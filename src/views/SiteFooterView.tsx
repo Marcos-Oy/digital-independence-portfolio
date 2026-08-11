@@ -123,6 +123,13 @@ const SiteFooterView = () => {
           <Link to="/privacidad" className="text-xs text-muted-foreground hover:text-primary transition-colors">
             Política de Privacidad
           </Link>
+          <span className="hidden sm:inline text-border">·</span>
+          <Link
+            to="/landing"
+            className="text-[10px] text-muted-foreground/40 hover:text-muted-foreground transition-colors lowercase tracking-wide"
+          >
+            hub landing
+          </Link>
         </div>
       </div>
     </footer>
