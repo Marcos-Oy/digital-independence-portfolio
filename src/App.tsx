@@ -10,6 +10,7 @@ import GeneralLandingView from "@/views/landing/GeneralLandingView";
 import AreaLandingView from "@/views/landing/AreaLandingView";
 import ServiceLandingRouteView from "@/views/landing/ServiceLandingRouteView";
 import FundadorView from "@/views/FundadorView";
+import PrivacidadView from "@/views/PrivacidadView";
 import ServiciosView from "@/views/ServiciosView";
 import ServicioRouteView from "@/views/ServicioRouteView";
 import SegmentoRouteView from "@/views/SegmentoRouteView";
@@ -18,6 +19,7 @@ import NotFoundView from "@/views/NotFoundView";
 import WhatsAppButtonView from "@/views/WhatsAppButtonView";
 import ChatBotView from "@/views/ChatBotView";
 import WelcomeModalView from "@/views/WelcomeModalView";
+import CookieNoticeView from "@/views/CookieNoticeView";
 import SystemeIoFloatingForm from "@/views/landing/SystemeIoFloatingForm";
 
 const queryClient = new QueryClient();
@@ -35,6 +37,7 @@ const AnimatedRoutes = () => {
       <Routes>
         <Route path="/" element={<HomeView />} />
         <Route path="/fundador" element={<FundadorView />} />
+        <Route path="/privacidad" element={<PrivacidadView />} />
         <Route path="/servicios" element={<ServiciosView />} />
         <Route path="/servicios/:slug" element={<ServicioRouteView />} />
         <Route path="/segmentos/:slug" element={<SegmentoRouteView />} />
@@ -73,6 +76,7 @@ const AppLayout = () => {
       {!hideChrome && <WhatsAppButtonView />}
       {!hideChrome && <ChatBotView />}
       {!hideWelcomeModal && <WelcomeModalView />}
+      <CookieNoticeView />
       <SystemeIoFloatingForm />
     </>
   );

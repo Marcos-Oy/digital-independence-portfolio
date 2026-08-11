@@ -13,9 +13,15 @@ const LandingFooter = () => (
       <p className="text-xs text-muted-foreground mb-2">
         © {new Date().getFullYear()} Independencia Digital
       </p>
-      <Link to="/" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-        Volver al sitio principal
-      </Link>
+      <div className="flex items-center justify-center gap-2">
+        <Link to="/" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+          Volver al sitio principal
+        </Link>
+        <span className="text-border">·</span>
+        <Link to="/privacidad" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+          Política de Privacidad
+        </Link>
+      </div>
     </div>
   </footer>
 );

@@ -105,10 +105,14 @@ const SiteFooterView = () => {
           </div>
         </div>
 
-        <div className="border-t border-border pt-6 text-center">
+        <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Independencia Digital
           </p>
+          <span className="hidden sm:inline text-border">·</span>
+          <Link to="/privacidad" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+            Política de Privacidad
+          </Link>
         </div>
       </div>
     </footer>
