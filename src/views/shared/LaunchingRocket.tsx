@@ -87,12 +87,7 @@ const LaunchingRocket = ({ className = "" }: LaunchingRocketProps) => {
             filter: "drop-shadow(0 0 14px hsl(var(--secondary) / 0.85)) drop-shadow(0 0 28px hsl(var(--primary) / 0.5))",
           }}
         >
-          <Rocket
-            className="w-16 h-16 md:w-24 md:h-24 text-white"
-            fill="currentColor"
-            fillOpacity={0.18}
-            strokeWidth={1.5}
-          />
+          <Rocket className="w-16 h-16 md:w-24 md:h-24 text-white" strokeWidth={1.5} />
         </motion.div>
       </motion.div>
     </div>
