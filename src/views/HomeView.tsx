@@ -264,7 +264,7 @@ const HomeView = () => {
             </div>
           </div>
         </div>
-        <WaveDivider fillClassName="text-background" className="absolute bottom-0 left-0 h-16 md:h-24" />
+        <WaveDivider gradient className="absolute bottom-0 left-0 h-16 md:h-24" />
       </section>
 
       {/* Servicios — 15 service cards con imagen */}
@@ -451,7 +451,7 @@ const HomeView = () => {
             </ScrollReveal>
           </div>
         </div>
-        <WaveDivider fillClassName="text-background" className="absolute bottom-0 left-0 h-16 md:h-24" />
+        <WaveDivider gradient className="absolute bottom-0 left-0 h-16 md:h-24" />
       </section>
 
       {/* Contacto */}

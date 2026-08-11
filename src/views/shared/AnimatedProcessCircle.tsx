@@ -95,12 +95,12 @@ const AnimatedProcessCircle = ({ steps, className = "", enabled = true }: Animat
             onClick={() => setActiveStep(i)}
             onMouseEnter={() => setActiveStep(i)}
             aria-label={step.title}
-            className={`absolute w-11 h-11 md:w-14 md:h-14 -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center gradient-brand text-primary-foreground transition-all duration-300 ${
-              isActive ? "shadow-brand ring-4 ring-primary/20" : "opacity-75 hover:opacity-100"
+            className={`absolute w-11 h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center gradient-brand text-primary-foreground transition-colors duration-300 ${
+              isActive ? "shadow-brand ring-4 ring-primary/20" : "hover:opacity-100"
             }`}
             style={{ left: `${x}%`, top: `${y}%` }}
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={enabled ? { scale: 1, opacity: isActive ? 1 : 0.75 } : undefined}
+            initial={{ x: "-50%", y: "-50%", scale: 0, opacity: 0 }}
+            whileInView={enabled ? { x: "-50%", y: "-50%", scale: 1, opacity: isActive ? 1 : 0.75 } : undefined}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ delay: 0.3 + i * 0.15, type: "spring", stiffness: 260, damping: 18 }}
           >
