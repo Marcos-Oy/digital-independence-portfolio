@@ -2,17 +2,24 @@ import { useEffect } from "react";
 import { playClickSound } from "@/lib/clickSound";
 
 /**
- * Reproduce un "tag" suave cada vez que se hace clic en cualquier botón
- * del sitio, sin tener que instrumentar cada componente: escucha clics en
- * fase de captura sobre todo el documento y filtra por <button> o
- * [role="button"]. Montado una sola vez, cubre botones actuales y futuros.
+ * Reproduce un "tag" suave en cualquier interacción o navegación del
+ * sitio (botones y enlaces), sin tener que instrumentar cada componente:
+ * escucha clics en fase de captura sobre todo el documento. Montado una
+ * sola vez, cubre elementos actuales y futuros. Los elementos marcados
+ * con data-skip-click-sound (p.ej. el botón del chat, que ya tiene su
+ * propio sonido) quedan excluidos.
  */
 const GlobalClickSound = () => {
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
-      const btn = target?.closest<HTMLButtonElement>("button, [role='button']");
-      if (!btn || btn.disabled) return;
+      if (!target) return;
+      if (target.closest("[data-skip-click-sound]")) return;
+
+      const interactive = target.closest<HTMLElement>("button, [role='button'], a[href]");
+      if (!interactive) return;
+      if (interactive instanceof HTMLButtonElement && interactive.disabled) return;
+
       playClickSound();
     };
 

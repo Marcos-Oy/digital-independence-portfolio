@@ -38,6 +38,7 @@ const ChatBotView = () => {
       {/* Floating button */}
       <button
         onClick={handleToggle}
+        data-skip-click-sound
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform gradient-brand"
         aria-label="Abrir chat"
       >
@@ -56,6 +57,7 @@ const ChatBotView = () => {
             </div>
             <button
               onClick={handleToggle}
+              data-skip-click-sound
               className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-primary-foreground transition-colors duration-150"
               aria-label="Cerrar chat"
             >
