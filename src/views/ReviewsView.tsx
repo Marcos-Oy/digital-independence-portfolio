@@ -10,6 +10,7 @@ import {
 import { type Review, REVIEW_SERVICE_OPTIONS } from "@/models/reviews";
 import { useReviewsController } from "@/controllers/useReviewsController";
 import TypewriterText from "@/views/shared/TypewriterText";
+import { SoftBlob, AccentBlob, GlowOrb, SparkleDots, CircuitLines } from "@/views/shared/BackgroundBlobs";
 
 const StarRow = ({
   value,
@@ -77,8 +78,14 @@ const ReviewsView = () => {
   } = useReviewsController();
 
   return (
-    <section id="resenas" className="py-20 bg-muted/40">
-      <div className="container mx-auto px-4">
+    <section id="resenas" className="relative py-20 bg-muted/40 overflow-hidden">
+      <SoftBlob shape={6} color="secondary" className="w-72 h-[420px] -top-16 -left-24" />
+      <SoftBlob shape={1} color="primary" className="w-80 h-64 -bottom-20 -right-16" />
+      <AccentBlob shape={5} className="w-9 h-12 top-1/3 left-[6%] opacity-70" />
+      <GlowOrb color="primary" className="absolute w-10 h-10 md:w-12 md:h-12 bottom-[14%] right-[10%]" />
+      <SparkleDots color="secondary" className="absolute w-56 h-56 top-[8%] left-[4%] text-secondary" />
+      <CircuitLines className="absolute top-10 right-0 w-64 h-48 text-primary/[0.14]" />
+      <div className="relative container mx-auto px-4">
         <div className="text-center mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
             <TypewriterText text="Testimonios" />
