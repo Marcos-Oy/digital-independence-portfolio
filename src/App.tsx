@@ -20,6 +20,7 @@ import ChatBotView from "@/views/ChatBotView";
 import WelcomeModalView from "@/views/WelcomeModalView";
 import CookieNoticeView from "@/views/CookieNoticeView";
 import SystemeIoFloatingForm from "@/views/landing/SystemeIoFloatingForm";
+import GlobalClickSound from "@/views/shared/GlobalClickSound";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +83,7 @@ const AppLayout = () => {
       {!hideWelcomeModal && <WelcomeModalView />}
       <CookieNoticeView waitForWelcomeModal={!hideWelcomeModal} />
       <SystemeIoFloatingForm />
+      <GlobalClickSound />
     </>
   );
 };
