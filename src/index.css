@@ -188,6 +188,64 @@ html {
   filter: blur(72px);
 }
 
+/* ── Blobs / manchas de fondo ──────────────────────────── */
+/* Formas orgánicas vía border-radius asimétrico (sin SVG). Tres variantes
+   para que no se repita siempre el mismo contorno. */
+.blob-shape-1 { border-radius: 62% 38% 33% 67% / 58% 32% 68% 42%; }
+.blob-shape-2 { border-radius: 40% 60% 68% 32% / 48% 62% 38% 52%; }
+.blob-shape-3 { border-radius: 68% 32% 58% 42% / 38% 68% 32% 62%; }
+
+.blob-soft {
+  position: absolute;
+  pointer-events: none;
+  filter: blur(18px);
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.16),
+    hsl(var(--secondary) / 0.13) 100%
+  );
+}
+
+.dark .blob-soft {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.28),
+    hsl(var(--secondary) / 0.2) 100%
+  );
+}
+
+.blob-accent {
+  position: absolute;
+  pointer-events: none;
+  background: var(--gradient-brand);
+}
+
+/* ── Rayas decorativas ──────────────────────────────────── */
+.stripe-accent {
+  background-image: repeating-linear-gradient(
+    45deg,
+    hsl(var(--secondary) / 0.55) 0px,
+    hsl(var(--secondary) / 0.55) 6px,
+    transparent 6px,
+    transparent 14px
+  );
+}
+
+/* ── Cursor de máquina de escribir ──────────────────────── */
+.typewriter-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: currentColor;
+  animation: typewriter-blink 0.9s step-end infinite;
+}
+@keyframes typewriter-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* ── Shimmer CTA ──────────────────────────────────────── */
 .btn-shimmer {
   position: relative;

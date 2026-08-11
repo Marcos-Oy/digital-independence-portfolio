@@ -80,7 +80,7 @@ const AppLayout = () => {
       {!hideChrome && <WhatsAppButtonView />}
       {!hideChrome && <ChatBotView />}
       {!hideWelcomeModal && <WelcomeModalView />}
-      <CookieNoticeView />
+      <CookieNoticeView waitForWelcomeModal={!hideWelcomeModal} />
       <SystemeIoFloatingForm />
     </>
   );

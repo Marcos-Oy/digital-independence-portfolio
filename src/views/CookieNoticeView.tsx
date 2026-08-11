@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { useCookieNoticeController } from "@/controllers/useCookieNoticeController";
 
-const CookieNoticeView = () => {
-  const { visible, dismiss } = useCookieNoticeController();
+interface CookieNoticeViewProps {
+  waitForWelcomeModal?: boolean;
+}
+
+const CookieNoticeView = ({ waitForWelcomeModal = true }: CookieNoticeViewProps) => {
+  const { visible, dismiss } = useCookieNoticeController(waitForWelcomeModal);
 
   if (!visible) return null;
 

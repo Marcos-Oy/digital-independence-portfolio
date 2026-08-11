@@ -1,24 +1,37 @@
 import { useEffect, useState } from "react";
 
-const STORAGE_KEY = "cookie_notice_dismissed";
+const REVEAL_DELAY_MS = 2000;
 
-export const useCookieNoticeController = () => {
+/**
+ * Se muestra siempre, en cada carga de página, sin persistir el cierre:
+ * 2 segundos después de que el usuario cierra el modal de bienvenida
+ * (evento "welcome-modal-closed"), o tras un breve retraso fijo en
+ * páginas donde ese modal no existe (landing, hub).
+ */
+export const useCookieNoticeController = (waitForWelcomeModal: boolean) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    try {
-      if (localStorage.getItem(STORAGE_KEY)) return;
-    } catch {
-      /* localStorage no disponible */
-    }
-    const t = window.setTimeout(() => setVisible(true), 600);
-    return () => window.clearTimeout(t);
-  }, []);
+    let revealTimer: number | undefined;
 
-  const dismiss = () => {
-    setVisible(false);
-    try { localStorage.setItem(STORAGE_KEY, "1"); } catch {}
-  };
+    const showAfterDelay = () => {
+      window.clearTimeout(revealTimer);
+      revealTimer = window.setTimeout(() => setVisible(true), REVEAL_DELAY_MS);
+    };
+
+    if (waitForWelcomeModal) {
+      window.addEventListener("welcome-modal-closed", showAfterDelay);
+      return () => {
+        window.removeEventListener("welcome-modal-closed", showAfterDelay);
+        window.clearTimeout(revealTimer);
+      };
+    }
+
+    const t = window.setTimeout(() => setVisible(true), 1500);
+    return () => window.clearTimeout(t);
+  }, [waitForWelcomeModal]);
+
+  const dismiss = () => setVisible(false);
 
   return { visible, dismiss };
 };

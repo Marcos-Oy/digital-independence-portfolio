@@ -5,6 +5,7 @@ import { ArrowLeft, Linkedin, Globe } from "lucide-react";
 import marcosAzul from "@/assets/marcos-terno-azul.jpg";
 import marcosNegro from "@/assets/marcos-terno-negro.jpeg";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { BlobImage, RingLoop, StripeAccent, AccentBlob } from "@/views/shared/BackgroundBlobs";
 
 const FundadorView = () => {
   return (
@@ -34,17 +35,21 @@ const FundadorView = () => {
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="grid md:grid-cols-[1fr_280px] gap-10 items-start">
-            <div className="block md:hidden mb-2">
-              <img
+            <div className="relative block md:hidden mb-2 w-44 mx-auto">
+              <StripeAccent className="absolute -top-5 -right-4 w-16 h-10 rounded-lg -z-10 opacity-90" />
+              <BlobImage
                 src={marcosAzul}
                 alt="Marcos Oyarzo"
-                className="w-40 mx-auto rounded-2xl shadow-card-hover object-cover aspect-[3/4] block dark:hidden"
+                shape={2}
+                className="w-44 h-52 shadow-card-hover block dark:hidden"
               />
-              <img
+              <BlobImage
                 src={marcosNegro}
                 alt="Marcos Oyarzo"
-                className="w-40 mx-auto rounded-2xl shadow-card-hover object-cover aspect-[3/4] hidden dark:block"
+                shape={2}
+                className="w-44 h-52 shadow-card-hover hidden dark:block"
               />
+              <RingLoop color="secondary" className="absolute -bottom-4 -left-4 w-16 h-16" />
             </div>
             <div className="space-y-6 text-foreground/90 leading-relaxed text-base md:text-lg text-justify">
               <p>
@@ -81,17 +86,22 @@ const FundadorView = () => {
                 </a>
               </div>
             </div>
-            <div className="hidden md:block">
-              <img
+            <div className="relative hidden md:block pt-4 pr-4">
+              <StripeAccent className="absolute -top-6 -right-2 w-24 h-14 rounded-xl -z-10 opacity-90" />
+              <BlobImage
                 src={marcosAzul}
                 alt="Marcos Oyarzo"
-                className="w-full rounded-2xl shadow-card-hover object-cover aspect-[3/4] block dark:hidden"
+                shape={1}
+                className="w-full aspect-[3/4] shadow-card-hover block dark:hidden"
               />
-              <img
+              <BlobImage
                 src={marcosNegro}
                 alt="Marcos Oyarzo"
-                className="w-full rounded-2xl shadow-card-hover object-cover aspect-[3/4] hidden dark:block"
+                shape={1}
+                className="w-full aspect-[3/4] shadow-card-hover hidden dark:block"
               />
+              <RingLoop color="secondary" className="absolute -bottom-6 -left-6 w-24 h-24" />
+              <AccentBlob shape={3} className="absolute -bottom-2 right-2 w-6 h-6 opacity-80" />
             </div>
           </div>
         </div>

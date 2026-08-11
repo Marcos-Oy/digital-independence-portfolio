@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Building2 } from "lucide-react";
 import robotImg from "@/assets/autonomia-digital-robot.png";
 import { ABOUT_PILLARS } from "@/models/aboutPillars";
+import { SoftBlob, AccentBlob, CircuitLines, WaveDivider } from "@/views/shared/BackgroundBlobs";
+import ScrollContextIcon from "@/views/shared/ScrollContextIcon";
 
 const AboutBrandSectionView = () => {
   return (
-    <section id="sobrenosotros" className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="sobrenosotros" className="relative py-20 md:py-28 bg-background overflow-hidden">
+      <SoftBlob shape={3} className="w-[380px] h-[380px] -top-24 -left-40" />
+      <AccentBlob shape={2} className="w-10 h-10 top-10 right-[8%] opacity-70" />
+      <CircuitLines className="absolute bottom-0 right-0 w-72 h-56 text-secondary/[0.16]" />
+      <ScrollContextIcon
+        icon={Building2}
+        mode="pulse"
+        className="absolute -bottom-10 -right-10 w-64 h-64 text-primary/[0.14]"
+      />
+      <div className="relative container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="grid md:grid-cols-[1fr_auto] gap-8 items-end mb-16">
@@ -59,6 +69,7 @@ const AboutBrandSectionView = () => {
           </div>
         </div>
       </div>
+      <WaveDivider gradient className="absolute bottom-0 left-0 h-16 md:h-24" />
     </section>
   );
 };

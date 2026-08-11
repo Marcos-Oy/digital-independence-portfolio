@@ -8,6 +8,8 @@ import { type Service, MODALITY_LABELS, MODALITY_COLORS } from "@/models/service
 import { SEGMENTS } from "@/models/segments";
 import { SERVICE_PAIN_REFRAME } from "@/models/serviceLandingContent";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { AREA_VISUALS } from "@/models/areaVisuals";
+import ScrollContextIcon from "@/views/shared/ScrollContextIcon";
 
 const segmentLabel: Record<string, string> = {
   emprendedores: "Emprendedores",
@@ -23,6 +25,7 @@ interface Props {
 const ServicioView = ({ service }: Props) => {
   const Icon = service.icon;
   const hasTools = !!service.tools && service.tools.length > 0;
+  const areaVisual = AREA_VISUALS[service.area];
 
   return (
     <div className="min-h-screen bg-background">
@@ -110,8 +113,13 @@ const ServicioView = ({ service }: Props) => {
       <RightClientSection text={service.rightClient} />
 
       {/* Descripción */}
-      <section className="py-16 md:py-20 bg-background">
-        <ScrollReveal className="container mx-auto px-4 max-w-3xl">
+      <section className="relative py-16 md:py-20 bg-background overflow-hidden">
+        <ScrollContextIcon
+          icon={areaVisual.icon}
+          mode={areaVisual.mode}
+          className="absolute -right-10 top-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 text-primary/[0.16]"
+        />
+        <ScrollReveal className="relative container mx-auto px-4 max-w-3xl">
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-6">
             ¿En qué consiste?
           </h2>

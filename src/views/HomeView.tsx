@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/views/shared/ScrollReveal";
+import { SoftBlob, AccentBlob, WaveDivider } from "@/views/shared/BackgroundBlobs";
+import TypewriterText from "@/views/shared/TypewriterText";
+import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import AnimatedProcessCircle from "@/views/shared/AnimatedProcessCircle";
+import DrawIcon from "@/views/shared/DrawIcon";
+import { useSiteExplored } from "@/controllers/useSiteExplored";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
@@ -14,6 +20,7 @@ import { AREAS, MODALITY_LABELS, MODALITY_COLORS, type ServiceArea, type Service
 import { ALL_MODALITIES, filterAndSortServices } from "@/models/serviceSearch";
 import { SEGMENTS } from "@/models/segments";
 import { FAQS } from "@/models/faq";
+import { METHOD_STEPS } from "@/models/method";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 
 const FaqItem = ({ q, a }: { q: string; a: string }) => {
@@ -41,6 +48,7 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => {
 };
 
 const HomeView = () => {
+  const explored = useSiteExplored();
   const [query, setQuery] = useState("");
   const [activeModality, setActiveModality] = useState<ServiceModality | null>(null);
   const [activeArea, setActiveArea] = useState<ServiceArea | null>(null);
@@ -63,29 +71,39 @@ const HomeView = () => {
 
       {/* Hero */}
       <section className="relative min-h-[100dvh] flex items-center pt-24 pb-20 md:pt-28 md:pb-28 overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${explored ? "opacity-100" : "opacity-0"}`}
+        >
           <img src={bannerHero} alt="" className="w-full h-full object-cover opacity-60 dark:opacity-45" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/80" />
           {/* Ambient orbs */}
           <div className="hero-orb w-96 h-96 bg-primary/8 top-1/4 -left-20 animate-float" style={{ animationDelay: "0s" }} />
           <div className="hero-orb w-72 h-72 bg-secondary/8 top-1/3 right-0 animate-float" style={{ animationDelay: "2s" }} />
           <div className="hero-orb w-56 h-56 bg-primary/5 bottom-1/4 left-1/3 animate-float-slow" style={{ animationDelay: "1s" }} />
+          <AccentBlob shape={3} className="w-14 h-14 top-[18%] right-[18%] opacity-80 animate-float-slow" />
+          <AccentBlob shape={1} className="w-9 h-9 bottom-[22%] left-[12%] opacity-70 animate-float" />
+          <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={70} active={explored} />
         </div>
 
         <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
           <img
             src={logoFull}
             alt="Independencia Digital"
-            className="h-16 md:h-24 mb-8 animate-fade-in"
+            className={`h-16 md:h-24 mb-8 ${explored ? "animate-fade-in" : "opacity-0"}`}
           />
 
           {/* Eyebrow tag */}
-          <span className="inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 text-[11px] font-semibold uppercase tracking-[0.15em] px-4 py-1.5 rounded-full mb-6 animate-fade-in">
-            Consultora Tecnológica · Chile
+          <span className={`inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 text-[11px] font-semibold uppercase tracking-[0.15em] px-4 py-1.5 rounded-full mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}>
+            {explored ? (
+              <TypewriterText text="Consultora Tecnológica · Chile" speed={38} />
+            ) : (
+              <span className="invisible font-mono">Consultora Tecnológica · Chile</span>
+            )}
           </span>
 
           <h1
-            className="font-heading font-extrabold text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight max-w-5xl mb-6 animate-fade-in-up text-foreground"
+            className={`font-heading font-extrabold text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight max-w-5xl mb-6 text-foreground ${explored ? "animate-fade-in-up" : "opacity-0"}`}
             style={{ animationDelay: "0.1s" }}
           >
             Diseñamos, construimos y dirigimos tu{" "}
@@ -93,7 +111,7 @@ const HomeView = () => {
           </h1>
 
           <p
-            className="text-base md:text-lg text-muted-foreground max-w-2xl mb-10 animate-fade-in-up leading-relaxed"
+            className={`text-base md:text-lg text-muted-foreground max-w-2xl mb-10 leading-relaxed ${explored ? "animate-fade-in-up" : "opacity-0"}`}
             style={{ animationDelay: "0.2s" }}
           >
             Desde arquitectura TI y desarrollo de software hasta ciberseguridad e inteligencia artificial.
@@ -101,7 +119,7 @@ const HomeView = () => {
           </p>
 
           <div
-            className="flex flex-col sm:flex-row gap-3 animate-fade-in-up"
+            className={`flex flex-col sm:flex-row gap-3 ${explored ? "animate-fade-in-up" : "opacity-0"}`}
             style={{ animationDelay: "0.3s" }}
           >
             <button
@@ -121,8 +139,10 @@ const HomeView = () => {
       </section>
 
       {/* Quiénes somos — editorial metrics */}
-      <section id="quienes-somos" className="py-20 md:py-28 bg-background">
-        <div className="container mx-auto px-4">
+      <section id="quienes-somos" className="relative py-20 md:py-28 bg-background overflow-hidden">
+        <SoftBlob shape={1} className="w-[420px] h-[420px] -top-32 -right-40" />
+        <SoftBlob shape={2} className="w-72 h-72 bottom-0 -left-24" />
+        <div className="relative container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal className="grid md:grid-cols-[1fr_auto] gap-12 items-end mb-16">
               <div>
@@ -155,14 +175,53 @@ const HomeView = () => {
             </ScrollReveal>
           </div>
         </div>
+        <WaveDivider gradient className="absolute bottom-0 left-0 h-16 md:h-24" />
+      </section>
+
+      {/* Nuestro método — diagrama circular animado */}
+      <section id="metodo" className="relative py-20 md:py-28 bg-muted/50 overflow-hidden">
+        <SoftBlob shape={2} className="w-80 h-80 -bottom-24 -right-24" />
+        <div className="relative container mx-auto px-4">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-[1fr_auto] gap-14 items-center">
+            <ScrollReveal>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+                Cómo trabajamos
+              </p>
+              <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-5">
+                Un mismo método,<br className="hidden md:block" /> ciclo tras ciclo.
+              </h2>
+              <p className="text-muted-foreground leading-relaxed max-w-md mb-6">
+                No entregamos un proyecto y desaparecemos. Diagnosticamos, priorizamos,
+                implementamos y te acompañamos de forma continua — pasa el cursor por cada
+                paso del círculo.
+              </p>
+              <ul className="space-y-2">
+                {METHOD_STEPS.map((step, i) => (
+                  <li key={step.title} className="flex items-center gap-3 text-sm">
+                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[11px] font-bold flex items-center justify-center shrink-0">
+                      {i + 1}
+                    </span>
+                    <span className="font-semibold text-foreground">{step.title}</span>
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
+
+            <ScrollReveal variant="scale" delay={100}>
+              <AnimatedProcessCircle steps={METHOD_STEPS} className="w-72 h-72 md:w-96 md:h-96 mx-auto" enabled={explored} />
+            </ScrollReveal>
+          </div>
+        </div>
       </section>
 
       {/* Tecnologías */}
       <SafeTechLogosCarousel />
 
       {/* Segmentos */}
-      <section id="segmentos" className="py-20 md:py-28 bg-muted/50">
-        <div className="container mx-auto px-4">
+      <section id="segmentos" className="relative py-20 md:py-28 bg-muted/50 overflow-hidden">
+        <SoftBlob shape={3} className="w-96 h-96 top-0 -right-32" />
+        <AccentBlob shape={2} className="hidden md:block w-16 h-16 top-24 left-8 opacity-90" />
+        <div className="relative container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <ScrollReveal className="mb-12">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
@@ -183,7 +242,7 @@ const HomeView = () => {
                       className="group bg-card border border-border rounded-2xl p-7 hover:border-primary/30 hover:shadow-card-hover transition-all duration-300 flex gap-5 items-start"
                     >
                       <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
-                        <Icon className="w-5 h-5 text-primary" />
+                        <DrawIcon icon={Icon} className="w-5 h-5 text-primary" active={explored} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2 mb-1.5">
@@ -205,6 +264,7 @@ const HomeView = () => {
             </div>
           </div>
         </div>
+        <WaveDivider fillClassName="text-background" className="absolute bottom-0 left-0 h-16 md:h-24" />
       </section>
 
       {/* Servicios — 15 service cards con imagen */}
@@ -368,8 +428,9 @@ const HomeView = () => {
       <ReviewsView />
 
       {/* FAQ */}
-      <section id="faq" className="py-20 md:py-28 bg-muted/50">
-        <div className="container mx-auto px-4">
+      <section id="faq" className="relative py-20 md:py-28 bg-muted/50 overflow-hidden">
+        <SoftBlob shape={2} className="w-80 h-80 -bottom-24 -left-24" />
+        <div className="relative container mx-auto px-4">
           <div className="max-w-5xl mx-auto grid md:grid-cols-[280px_1fr] gap-12">
             <ScrollReveal variant="left" className="md:sticky md:top-28 h-fit">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
@@ -390,11 +451,13 @@ const HomeView = () => {
             </ScrollReveal>
           </div>
         </div>
+        <WaveDivider fillClassName="text-background" className="absolute bottom-0 left-0 h-16 md:h-24" />
       </section>
 
       {/* Contacto */}
-      <section id="contacto" className="py-20 md:py-28 bg-background">
-        <div className="container mx-auto px-4">
+      <section id="contacto" className="relative py-20 md:py-28 bg-background overflow-hidden">
+        <SoftBlob shape={1} className="w-96 h-96 -top-20 left-1/2 -translate-x-1/2" />
+        <div className="relative container mx-auto px-4">
           <ScrollReveal variant="scale" className="max-w-3xl mx-auto">
             <div className="rounded-2xl overflow-hidden">
               {/* Inner double-bezel */}
@@ -451,6 +514,7 @@ const HomeView = () => {
             </div>
           </ScrollReveal>
         </div>
+        <WaveDivider gradient className="absolute bottom-0 left-0 h-16 md:h-24" />
       </section>
 
       <SiteFooterView />
