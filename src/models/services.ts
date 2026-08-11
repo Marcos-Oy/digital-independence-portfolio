@@ -127,7 +127,7 @@ export const AREAS: { id: ServiceArea; label: string; desc: string; icon: Lucide
   {
     id: "ciberseguridad",
     label: "Ciberseguridad",
-    desc: "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva a través de nuestra alianza con Cut Security.",
+    desc: "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva.",
     icon: ShieldCheck,
   },
   {

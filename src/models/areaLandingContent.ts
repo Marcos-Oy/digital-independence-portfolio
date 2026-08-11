@@ -50,7 +50,7 @@ export const AREA_LANDING_CONTENT: Record<ServiceArea, AreaLandingContent> = {
     eyebrow: "Ciberseguridad, Independencia Digital",
     headline: "Protege tu negocio antes de que el problema te encuentre a ti",
     subtext:
-      "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva a través de nuestra alianza con Cut Security.",
+      "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva.",
     painReframe:
       "Si algo de esto te resulta familiar, no es porque hayas sido negligente. Es porque la ciberseguridad real, técnica y humana, casi nunca se hace a tiempo, solo después del primer susto.",
     rightClient:
