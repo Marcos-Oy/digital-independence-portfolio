@@ -4,12 +4,13 @@ import robotImg from "@/assets/autonomia-digital-robot.png";
 import { ABOUT_PILLARS } from "@/models/aboutPillars";
 import { SoftBlob, AccentBlob, CircuitLines, WaveDivider } from "@/views/shared/BackgroundBlobs";
 import ScrollContextIcon from "@/views/shared/ScrollContextIcon";
+import TypewriterText from "@/views/shared/TypewriterText";
 
 const AboutBrandSectionView = () => {
   return (
     <section id="sobrenosotros" className="relative py-20 md:py-28 bg-background overflow-hidden">
-      <SoftBlob shape={3} className="w-[380px] h-[380px] -top-24 -left-40" />
-      <AccentBlob shape={2} className="w-10 h-10 top-10 right-[8%] opacity-70" />
+      <SoftBlob shape={2} color="primary" className="w-96 h-[440px] -top-24 -left-40" />
+      <AccentBlob shape={3} className="w-11 h-8 top-10 right-[8%] opacity-70" />
       <CircuitLines className="absolute bottom-0 right-0 w-72 h-56 text-secondary/[0.16]" />
       <ScrollContextIcon
         icon={Building2}
@@ -22,7 +23,7 @@ const AboutBrandSectionView = () => {
           <div className="grid md:grid-cols-[1fr_auto] gap-8 items-end mb-16">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                Sobre nosotros
+                <TypewriterText text="Sobre nosotros" />
               </p>
               <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-5">
                 ¿Qué es Independencia Digital?

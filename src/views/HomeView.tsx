@@ -81,8 +81,8 @@ const HomeView = () => {
           <div className="hero-orb w-96 h-96 bg-primary/8 top-1/4 -left-20 animate-float" style={{ animationDelay: "0s" }} />
           <div className="hero-orb w-72 h-72 bg-secondary/8 top-1/3 right-0 animate-float" style={{ animationDelay: "2s" }} />
           <div className="hero-orb w-56 h-56 bg-primary/5 bottom-1/4 left-1/3 animate-float-slow" style={{ animationDelay: "1s" }} />
-          <AccentBlob shape={3} className="w-14 h-14 top-[18%] right-[18%] opacity-80 animate-float-slow" />
-          <AccentBlob shape={1} className="w-9 h-9 bottom-[22%] left-[12%] opacity-70 animate-float" />
+          <AccentBlob shape={1} color="secondary" className="w-16 h-12 top-[18%] right-[18%] opacity-80 animate-float-slow" />
+          <AccentBlob shape={2} className="w-8 h-11 bottom-[22%] left-[12%] opacity-70 animate-float" />
           <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={70} active={explored} />
         </div>
 
@@ -140,14 +140,14 @@ const HomeView = () => {
 
       {/* Quiénes somos — editorial metrics */}
       <section id="quienes-somos" className="relative py-20 md:py-28 bg-background overflow-hidden">
-        <SoftBlob shape={1} className="w-[420px] h-[420px] -top-32 -right-40" />
-        <SoftBlob shape={2} className="w-72 h-72 bottom-0 -left-24" />
+        <SoftBlob shape={3} className="w-[460px] h-[360px] -top-32 -right-40" />
+        <SoftBlob shape={4} color="secondary" className="w-64 h-80 bottom-0 -left-24" />
         <div className="relative container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal className="grid md:grid-cols-[1fr_auto] gap-12 items-end mb-16">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                  Quiénes somos
+                  <TypewriterText text="Quiénes somos" />
                 </p>
                 <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
                   Tu Director de Tecnología externo,<br className="hidden md:block" />
@@ -180,12 +180,12 @@ const HomeView = () => {
 
       {/* Nuestro método — diagrama circular animado */}
       <section id="metodo" className="relative py-20 md:py-28 bg-muted/50 overflow-hidden">
-        <SoftBlob shape={2} className="w-80 h-80 -bottom-24 -right-24" />
+        <SoftBlob shape={5} color="primary" className="w-72 h-96 -bottom-24 -right-24" />
         <div className="relative container mx-auto px-4">
           <div className="max-w-5xl mx-auto grid md:grid-cols-[1fr_auto] gap-14 items-center">
             <ScrollReveal>
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                Cómo trabajamos
+                <TypewriterText text="Cómo trabajamos" />
               </p>
               <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-5">
                 Un mismo método,<br className="hidden md:block" /> ciclo tras ciclo.
@@ -219,13 +219,13 @@ const HomeView = () => {
 
       {/* Segmentos */}
       <section id="segmentos" className="relative py-20 md:py-28 bg-muted/50 overflow-hidden">
-        <SoftBlob shape={3} className="w-96 h-96 top-0 -right-32" />
-        <AccentBlob shape={2} className="hidden md:block w-16 h-16 top-24 left-8 opacity-90" />
+        <SoftBlob shape={6} className="w-[340px] h-[420px] top-0 -right-32" />
+        <AccentBlob shape={1} color="secondary" className="hidden md:block w-12 h-16 top-24 left-8 opacity-90" />
         <div className="relative container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <ScrollReveal className="mb-12">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                A quién servimos
+                <TypewriterText text="A quién servimos" />
               </p>
               <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight">
                 Cuatro segmentos,<br className="hidden md:block" /> un mismo método.
@@ -278,7 +278,7 @@ const HomeView = () => {
           <div className="max-w-7xl mx-auto">
             <ScrollReveal className="mb-10 text-center max-w-3xl mx-auto">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                Nuestros servicios
+                <TypewriterText text="Nuestros servicios" />
               </p>
               <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-4">
                 Tecnología que resuelve problemas reales
@@ -429,7 +429,7 @@ const HomeView = () => {
 
       {/* FAQ */}
       <section id="faq" className="relative py-20 md:py-28 bg-muted/50 overflow-hidden">
-        <SoftBlob shape={2} className="w-80 h-80 -bottom-24 -left-24" />
+        <SoftBlob shape={4} color="secondary" className="w-[340px] h-72 -bottom-24 -left-24" />
         <div className="relative container mx-auto px-4">
           <div className="max-w-5xl mx-auto grid md:grid-cols-[280px_1fr] gap-12">
             <ScrollReveal variant="left" className="md:sticky md:top-28 h-fit">
@@ -456,7 +456,7 @@ const HomeView = () => {
 
       {/* Contacto */}
       <section id="contacto" className="relative py-20 md:py-28 bg-background overflow-hidden">
-        <SoftBlob shape={1} className="w-96 h-96 -top-20 left-1/2 -translate-x-1/2" />
+        <SoftBlob shape={5} className="w-[380px] h-64 -top-20 left-1/2 -translate-x-1/2" />
         <div className="relative container mx-auto px-4">
           <ScrollReveal variant="scale" className="max-w-3xl mx-auto">
             <div className="rounded-2xl overflow-hidden">
@@ -464,7 +464,7 @@ const HomeView = () => {
               <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/30 via-border to-secondary/20">
                 <div className="bg-card rounded-[calc(1rem-1.5px)] px-8 py-12 md:px-14 md:py-16 text-center">
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-5">
-                    Contacto
+                    <TypewriterText text="Contacto" />
                   </p>
                   <h2 className="font-heading font-extrabold text-2xl md:text-4xl text-foreground mb-4 leading-tight">
                     ¿Hablamos de tu tecnología?

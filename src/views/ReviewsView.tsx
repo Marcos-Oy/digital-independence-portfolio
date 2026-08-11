@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { type Review, REVIEW_SERVICE_OPTIONS } from "@/models/reviews";
 import { useReviewsController } from "@/controllers/useReviewsController";
+import TypewriterText from "@/views/shared/TypewriterText";
 
 const StarRow = ({
   value,
@@ -80,7 +81,7 @@ const ReviewsView = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            Testimonios
+            <TypewriterText text="Testimonios" />
           </p>
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground mb-3 leading-tight">
             Lo que dicen nuestros clientes

@@ -1,18 +1,31 @@
 import { useId } from "react";
 
+type BlobShape = 1 | 2 | 3 | 4 | 5 | 6;
+type BlobColor = "mixed" | "primary" | "secondary";
+
 interface BlobProps {
   className?: string;
-  shape?: 1 | 2 | 3;
+  shape?: BlobShape;
+  /** "mixed" combina azul y verdoso (default); "primary"/"secondary" cargan
+   * el peso hacia un solo color de marca, para que no todas las manchas se
+   * vean iguales. */
+  color?: BlobColor;
 }
 
 /** Mancha grande y difusa, en tonos de marca muy suaves. Solo decorativa. */
-export const SoftBlob = ({ className = "", shape = 1 }: BlobProps) => (
-  <div className={`blob-soft blob-shape-${shape} ${className}`} aria-hidden="true" />
+export const SoftBlob = ({ className = "", shape = 1, color = "mixed" }: BlobProps) => (
+  <div
+    className={`blob-soft ${color !== "mixed" ? `blob-soft-${color}` : ""} blob-shape-${shape} ${className}`}
+    aria-hidden="true"
+  />
 );
 
 /** Gota pequeña con el degradado sólido de marca, como acento puntual. */
-export const AccentBlob = ({ className = "", shape = 1 }: BlobProps) => (
-  <div className={`blob-accent blob-shape-${shape} ${className}`} aria-hidden="true" />
+export const AccentBlob = ({ className = "", shape = 1, color = "mixed" }: BlobProps) => (
+  <div
+    className={`blob-accent ${color !== "mixed" ? `blob-accent-${color}` : ""} blob-shape-${shape} ${className}`}
+    aria-hidden="true"
+  />
 );
 
 interface BlobImageProps {

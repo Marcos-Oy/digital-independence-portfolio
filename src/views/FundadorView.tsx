@@ -101,7 +101,7 @@ const FundadorView = () => {
                 className="w-full aspect-[3/4] shadow-card-hover hidden dark:block"
               />
               <RingLoop color="secondary" className="absolute -bottom-6 -left-6 w-24 h-24" />
-              <AccentBlob shape={3} className="absolute -bottom-2 right-2 w-6 h-6 opacity-80" />
+              <AccentBlob shape={6} color="secondary" className="absolute -bottom-2 right-2 w-7 h-5 opacity-80" />
             </div>
           </div>
         </div>

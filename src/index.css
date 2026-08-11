@@ -189,11 +189,14 @@ html {
 }
 
 /* ── Blobs / manchas de fondo ──────────────────────────── */
-/* Formas orgánicas vía border-radius asimétrico (sin SVG). Tres variantes
+/* Formas orgánicas vía border-radius asimétrico (sin SVG). Seis variantes
    para que no se repita siempre el mismo contorno. */
 .blob-shape-1 { border-radius: 62% 38% 33% 67% / 58% 32% 68% 42%; }
 .blob-shape-2 { border-radius: 40% 60% 68% 32% / 48% 62% 38% 52%; }
 .blob-shape-3 { border-radius: 68% 32% 58% 42% / 38% 68% 32% 62%; }
+.blob-shape-4 { border-radius: 48% 52% 74% 26% / 66% 44% 56% 34%; }
+.blob-shape-5 { border-radius: 30% 70% 45% 55% / 55% 45% 70% 30%; }
+.blob-shape-6 { border-radius: 72% 28% 40% 60% / 34% 62% 38% 66%; }
 
 .blob-soft {
   position: absolute;
@@ -206,6 +209,22 @@ html {
   );
 }
 
+.blob-soft-primary {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.24),
+    hsl(var(--primary) / 0.08) 100%
+  );
+}
+
+.blob-soft-secondary {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--secondary) / 0.22),
+    hsl(var(--secondary) / 0.08) 100%
+  );
+}
+
 .dark .blob-soft {
   background: linear-gradient(
     135deg,
@@ -214,10 +233,34 @@ html {
   );
 }
 
+.dark .blob-soft-primary {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.38),
+    hsl(var(--primary) / 0.14) 100%
+  );
+}
+
+.dark .blob-soft-secondary {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--secondary) / 0.34),
+    hsl(var(--secondary) / 0.14) 100%
+  );
+}
+
 .blob-accent {
   position: absolute;
   pointer-events: none;
   background: var(--gradient-brand);
+}
+
+.blob-accent-primary {
+  background: hsl(var(--primary));
+}
+
+.blob-accent-secondary {
+  background: hsl(var(--secondary));
 }
 
 /* ── Rayas decorativas ──────────────────────────────────── */
