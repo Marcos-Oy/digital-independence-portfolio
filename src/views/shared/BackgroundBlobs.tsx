@@ -182,3 +182,47 @@ export const WaveDivider = ({ className = "", fillClassName = "text-background",
     </svg>
   );
 };
+
+/* Tres combinaciones de curvas/orden para que los distintos separadores en
+   capas del sitio no se vean todos idénticos entre sí. */
+const LAYERED_WAVE_SEEDS = {
+  1: { back: 4, mid: 2, light: 1, front: 3 },
+  2: { back: 1, mid: 3, light: 4, front: 2 },
+  3: { back: 2, mid: 4, light: 3, front: 1 },
+} as const;
+
+interface LayeredWaveDividerProps {
+  className?: string;
+  seed?: 1 | 2 | 3;
+}
+
+/** Divisor de sección con varias olas superpuestas de distinto tamaño y
+ * color (azulada, verdosa, blanquecina y una degradada al frente), para
+ * que la transición entre secciones tenga profundidad en vez de una sola
+ * curva plana. */
+export const LayeredWaveDivider = ({ className = "", seed = 1 }: LayeredWaveDividerProps) => {
+  const gradId = useId();
+  const { back, mid, light, front } = LAYERED_WAVE_SEEDS[seed];
+  return (
+    <div className={`pointer-events-none ${className}`} aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-full opacity-30">
+        <path fill="hsl(var(--primary))" d={WAVE_PATHS[back]} />
+      </svg>
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-[76%] opacity-45">
+        <path fill="hsl(var(--secondary))" d={WAVE_PATHS[mid]} />
+      </svg>
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-[52%] opacity-70">
+        <path fill="hsl(var(--background))" d={WAVE_PATHS[light]} />
+      </svg>
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-[30%]">
+        <defs>
+          <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="hsl(var(--primary))" />
+            <stop offset="100%" stopColor="hsl(var(--secondary))" />
+          </linearGradient>
+        </defs>
+        <path fill={`url(#${gradId})`} d={WAVE_PATHS[front]} />
+      </svg>
+    </div>
+  );
+};

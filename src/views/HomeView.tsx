@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/views/shared/ScrollReveal";
-import { SoftBlob, AccentBlob, WaveDivider, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
+import { SoftBlob, AccentBlob, LayeredWaveDivider, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
 import TypewriterText from "@/views/shared/TypewriterText";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
 import AnimatedProcessCircle from "@/views/shared/AnimatedProcessCircle";
 import DrawIcon from "@/views/shared/DrawIcon";
+import AnimatedDashboardCard from "@/views/shared/AnimatedDashboardCard";
 import { useSiteExplored } from "@/controllers/useSiteExplored";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
@@ -177,7 +178,7 @@ const HomeView = () => {
             </ScrollReveal>
           </div>
         </div>
-        <WaveDivider gradient variant={2} className="absolute bottom-0 left-0 h-20 md:h-28" />
+        <LayeredWaveDivider seed={1} className="absolute bottom-0 left-0 w-full h-28 md:h-40" />
       </section>
 
       {/* Nuestro método — diagrama circular animado */}
@@ -266,7 +267,7 @@ const HomeView = () => {
             </div>
           </div>
         </div>
-        <WaveDivider gradient variant={3} className="absolute bottom-0 left-0 h-14 md:h-20" />
+        <LayeredWaveDivider seed={2} className="absolute bottom-0 left-0 w-full h-20 md:h-28" />
       </section>
 
       {/* Servicios — 15 service cards con imagen */}
@@ -416,6 +417,11 @@ const HomeView = () => {
                     </ScrollReveal>
                   );
                 })}
+                {filteredServices.length % 3 === 2 && (
+                  <ScrollReveal delay={(filteredServices.length % 3) * 80} variant="scale">
+                    <AnimatedDashboardCard />
+                  </ScrollReveal>
+                )}
               </div>
             )}
           </div>
@@ -453,7 +459,7 @@ const HomeView = () => {
             </ScrollReveal>
           </div>
         </div>
-        <WaveDivider gradient variant={1} className="absolute bottom-0 left-0 h-20 md:h-28" />
+        <LayeredWaveDivider seed={3} className="absolute bottom-0 left-0 w-full h-28 md:h-40" />
       </section>
 
       {/* Contacto */}
@@ -517,7 +523,7 @@ const HomeView = () => {
             </div>
           </ScrollReveal>
         </div>
-        <WaveDivider gradient variant={4} className="absolute bottom-0 left-0 h-16 md:h-24" />
+        <LayeredWaveDivider seed={1} className="absolute bottom-0 left-0 w-full h-24 md:h-32" />
       </section>
 
       <SiteFooterView />

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Building2 } from "lucide-react";
 import robotImg from "@/assets/autonomia-digital-robot.png";
 import { ABOUT_PILLARS } from "@/models/aboutPillars";
-import { AccentBlob, CircuitLines, WaveDivider } from "@/views/shared/BackgroundBlobs";
+import { AccentBlob, CircuitLines, LayeredWaveDivider } from "@/views/shared/BackgroundBlobs";
 import ScrollContextIcon from "@/views/shared/ScrollContextIcon";
 import TypewriterText from "@/views/shared/TypewriterText";
 import LaunchingRocket from "@/views/shared/LaunchingRocket";
@@ -71,7 +71,7 @@ const AboutBrandSectionView = () => {
           </div>
         </div>
       </div>
-      <WaveDivider gradient variant={4} className="absolute bottom-0 left-0 h-24 md:h-32" />
+      <LayeredWaveDivider seed={2} className="absolute bottom-0 left-0 w-full h-32 md:h-44" />
     </section>
   );
 };
