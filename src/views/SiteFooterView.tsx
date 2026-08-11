@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import chileFlag from "@/assets/chile-flag.png";
-import { Instagram, Facebook, Mail } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Mail } from "lucide-react";
 import { SERVICES } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
 
@@ -91,6 +91,16 @@ const SiteFooterView = () => {
                   className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Facebook className="w-4 h-4" /> IndependenciaDigital.cl
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/independencia-digital-chile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Linkedin className="w-4 h-4" /> Independencia Digital
                 </a>
               </li>
               <li>

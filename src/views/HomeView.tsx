@@ -16,7 +16,7 @@ import ReviewsView from "@/views/ReviewsView";
 import logoFull from "@/assets/logo-full.png";
 import bannerHero from "@/assets/banner-hero.png";
 import bannerPlan360 from "@/assets/banner-plan360.png";
-import { ChevronRight, ChevronDown, Instagram, Facebook, Mail, Search, X } from "lucide-react";
+import { ChevronRight, ChevronDown, Instagram, Facebook, Linkedin, Mail, Search, X } from "lucide-react";
 import { AREAS, MODALITY_LABELS, MODALITY_COLORS, type ServiceArea, type ServiceModality } from "@/models/services";
 import { ALL_MODALITIES, filterAndSortServices } from "@/models/serviceSearch";
 import { SEGMENTS } from "@/models/segments";
@@ -501,6 +501,16 @@ const HomeView = () => {
                     >
                       <Facebook className="w-4 h-4" />
                       <span>IndependenciaDigital.cl</span>
+                    </a>
+                    <span className="hidden sm:block text-border">·</span>
+                    <a
+                      href="https://www.linkedin.com/company/independencia-digital-chile"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                      <span>Independencia Digital</span>
                     </a>
                     <span className="hidden sm:block text-border">·</span>
                     <a
