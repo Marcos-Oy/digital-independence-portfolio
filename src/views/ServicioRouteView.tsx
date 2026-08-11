@@ -6,7 +6,7 @@ const ServicioRouteView = () => {
   const { slug } = useParams<{ slug: string }>();
   const { service } = useServicioController(slug);
 
-  if (!service) return <Navigate to="/servicios" replace />;
+  if (!service) return <Navigate to="/#servicios" replace />;
   return <ServicioView service={service} />;
 };
 

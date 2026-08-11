@@ -40,7 +40,7 @@ const SiteFooterView = () => {
                 </li>
               ))}
               <li>
-                <Link to="/servicios" className="text-xs text-primary font-semibold hover:underline">
+                <Link to="/#servicios" className="text-xs text-primary font-semibold hover:underline">
                   Ver todos →
                 </Link>
               </li>

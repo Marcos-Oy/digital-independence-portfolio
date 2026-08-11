@@ -11,7 +11,6 @@ import AreaLandingView from "@/views/landing/AreaLandingView";
 import ServiceLandingRouteView from "@/views/landing/ServiceLandingRouteView";
 import FundadorView from "@/views/FundadorView";
 import PrivacidadView from "@/views/PrivacidadView";
-import ServiciosView from "@/views/ServiciosView";
 import ServicioRouteView from "@/views/ServicioRouteView";
 import SegmentoRouteView from "@/views/SegmentoRouteView";
 import DiagnosticoView from "@/views/DiagnosticoView";
@@ -25,8 +24,14 @@ import SystemeIoFloatingForm from "@/views/landing/SystemeIoFloatingForm";
 const queryClient = new QueryClient();
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
   return null;
 };
 
@@ -38,7 +43,6 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<HomeView />} />
         <Route path="/fundador" element={<FundadorView />} />
         <Route path="/privacidad" element={<PrivacidadView />} />
-        <Route path="/servicios" element={<ServiciosView />} />
         <Route path="/servicios/:slug" element={<ServicioRouteView />} />
         <Route path="/segmentos/:slug" element={<SegmentoRouteView />} />
         <Route path="/arquitecturati" element={<Navigate to="/servicios/arquitectura-ti" replace />} />

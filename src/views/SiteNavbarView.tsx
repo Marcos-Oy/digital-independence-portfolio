@@ -82,12 +82,12 @@ const SiteNavbarView = () => {
                         })}
                       </div>
                       <div className="border-t border-border pt-2">
-                        <Link
-                          to="/servicios"
-                          className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-primary hover:bg-muted rounded-lg transition-colors duration-150"
+                        <button
+                          onClick={() => { setOpenMenu(null); goSection("servicios"); }}
+                          className="w-full text-left flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-primary hover:bg-muted rounded-lg transition-colors duration-150"
                         >
                           Ver todos los servicios →
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -259,13 +259,12 @@ const SiteNavbarView = () => {
                     <ChevronDown className="w-4 h-4 text-muted-foreground group-open:rotate-180 transition-transform duration-200" />
                   </summary>
                   <div className="pl-4 pt-1 pb-2 flex flex-col gap-0.5">
-                    <Link
-                      to="/servicios"
-                      onClick={() => setOpen(false)}
-                      className="px-3 py-2 text-sm text-primary font-semibold hover:bg-muted rounded-lg transition-colors"
+                    <button
+                      onClick={() => goSection("servicios")}
+                      className="text-left px-3 py-2 text-sm text-primary font-semibold hover:bg-muted rounded-lg transition-colors"
                     >
                       Ver todos →
-                    </Link>
+                    </button>
                     {SERVICES.map((s) => (
                       <Link
                         key={s.slug}

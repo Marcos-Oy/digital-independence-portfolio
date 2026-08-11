@@ -16,7 +16,7 @@ export const TYPE_LABEL: Record<SearchResult["type"], string> = {
 
 const STATIC_PAGES: SearchResult[] = [
   { label: "Inicio", sublabel: "Página principal", href: "/", type: "pagina" },
-  { label: "Portafolio de servicios", sublabel: "Todos los servicios", href: "/servicios", type: "pagina" },
+  { label: "Servicios", sublabel: "Todos los servicios", href: "/#servicios", type: "pagina" },
   { label: "Fundador", sublabel: "Marcos Oyarzo — Director", href: "/fundador", type: "pagina" },
   { label: "Contacto", sublabel: "Escríbenos o agenda un diagnóstico", href: "/#contacto", type: "pagina" },
 ];

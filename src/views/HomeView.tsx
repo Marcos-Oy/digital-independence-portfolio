@@ -9,8 +9,9 @@ import ReviewsView from "@/views/ReviewsView";
 import logoFull from "@/assets/logo-full.png";
 import bannerHero from "@/assets/banner-hero.png";
 import bannerPlan360 from "@/assets/banner-plan360.png";
-import { ChevronRight, ChevronDown, Instagram, Facebook, Mail } from "lucide-react";
-import { AREAS, SERVICES } from "@/models/services";
+import { ChevronRight, ChevronDown, Instagram, Facebook, Mail, Search, X } from "lucide-react";
+import { AREAS, MODALITY_LABELS, MODALITY_COLORS, type ServiceArea, type ServiceModality } from "@/models/services";
+import { ALL_MODALITIES, filterAndSortServices } from "@/models/serviceSearch";
 import { SEGMENTS } from "@/models/segments";
 import { FAQS } from "@/models/faq";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
@@ -40,6 +41,22 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => {
 };
 
 const HomeView = () => {
+  const [query, setQuery] = useState("");
+  const [activeModality, setActiveModality] = useState<ServiceModality | null>(null);
+  const [activeArea, setActiveArea] = useState<ServiceArea | null>(null);
+
+  const { filtered: filteredServices, isSearching } = filterAndSortServices({
+    query,
+    modality: activeModality,
+    area: activeArea,
+  });
+  const isFiltering = isSearching || activeModality !== null || activeArea !== null;
+  const clearServiceFilters = () => {
+    setQuery("");
+    setActiveModality(null);
+    setActiveArea(null);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SiteNavbarView />
@@ -93,12 +110,12 @@ const HomeView = () => {
               Agendar diagnóstico gratis
               <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
             </button>
-            <Link
-              to="/servicios"
+            <a
+              href="#servicios"
               className="inline-flex items-center gap-2 border border-border bg-card text-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full hover:bg-muted active:scale-[0.97] transition-all duration-200"
             >
               Ver servicios
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -211,62 +228,134 @@ const HomeView = () => {
               </p>
             </ScrollReveal>
 
-            {/* Área pill filters */}
-            <ScrollReveal delay={80} className="flex flex-wrap justify-center gap-2 mb-10">
-              {AREAS.map((area) => (
-                <Link
-                  key={area.id}
-                  to={`/servicios?area=${area.id}`}
-                  className="text-xs font-semibold px-3.5 py-1.5 rounded-full border border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-primary transition-all duration-150"
+            {/* Buscador */}
+            <ScrollReveal delay={60} className="max-w-2xl mx-auto mb-6">
+              <div className="relative flex items-center">
+                <Search className="absolute left-4 w-4 h-4 text-muted-foreground pointer-events-none" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Buscar servicio… ej: página web, ciberseguridad, IA"
+                  className="w-full bg-card border border-border rounded-xl pl-10 pr-10 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all duration-200 shadow-card"
+                />
+                {query && (
+                  <button
+                    onClick={() => setQuery("")}
+                    className="absolute right-3 p-1 rounded-md text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Limpiar búsqueda"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            </ScrollReveal>
+
+            {/* Filtro por modalidad */}
+            <ScrollReveal delay={70} className="flex flex-wrap justify-center gap-2 mb-4">
+              <button
+                onClick={() => setActiveModality(null)}
+                className={`text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all duration-150 ${
+                  activeModality === null
+                    ? "bg-foreground text-background border-foreground"
+                    : "bg-card text-muted-foreground border-border hover:border-foreground/30 hover:text-foreground"
+                }`}
+              >
+                Todos
+              </button>
+              {ALL_MODALITIES.map((m) => (
+                <button
+                  key={m}
+                  onClick={() => setActiveModality(activeModality === m ? null : m)}
+                  className={`text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all duration-150 ${
+                    activeModality === m
+                      ? MODALITY_COLORS[m] + " border-current"
+                      : "bg-card text-muted-foreground border-border hover:border-foreground/30 hover:text-foreground"
+                  }`}
                 >
-                  {area.label}
-                </Link>
+                  {MODALITY_LABELS[m]}
+                </button>
               ))}
             </ScrollReveal>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {SERVICES.map((s, i) => {
-                const Icon = s.icon;
-                return (
-                  <ScrollReveal key={s.slug} delay={(i % 3) * 80} variant="scale">
-                    <Link
-                      to={`/servicios/${s.slug}`}
-                      className="group bg-card border border-border rounded-xl overflow-hidden hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col h-full"
-                    >
-                      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                        <img
-                          src={s.image}
-                          alt={s.title}
-                          loading="lazy"
-                          width={1024}
-                          height={768}
-                          className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-                        <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-background/85 backdrop-blur-sm border border-border rounded-full px-2.5 py-1">
-                          <Icon className="w-3.5 h-3.5 text-primary" />
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">
-                            {s.areaLabel.split(" ")[0]}
+            {/* Filtro por área */}
+            <ScrollReveal delay={80} className="flex flex-wrap justify-center gap-2 mb-10">
+              {AREAS.map((area) => (
+                <button
+                  key={area.id}
+                  onClick={() => setActiveArea(activeArea === area.id ? null : area.id)}
+                  className={`text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all duration-150 ${
+                    activeArea === area.id
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-card text-muted-foreground border-border hover:border-primary/40 hover:text-primary"
+                  }`}
+                >
+                  {area.label}
+                </button>
+              ))}
+            </ScrollReveal>
+
+            {isFiltering && (
+              <p className="text-center text-xs text-muted-foreground mb-8">
+                {filteredServices.length} servicio{filteredServices.length !== 1 ? "s" : ""} encontrado{filteredServices.length !== 1 ? "s" : ""}.{" "}
+                <button onClick={clearServiceFilters} className="text-primary font-semibold hover:underline">
+                  Limpiar filtros
+                </button>
+              </p>
+            )}
+
+            {filteredServices.length === 0 ? (
+              <p className="text-center text-sm text-muted-foreground py-12">
+                No se encontraron servicios con esos filtros.{" "}
+                <button onClick={clearServiceFilters} className="text-primary font-semibold hover:underline">
+                  Limpiar filtros
+                </button>
+              </p>
+            ) : (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredServices.map((s, i) => {
+                  const Icon = s.icon;
+                  return (
+                    <ScrollReveal key={s.slug} delay={(i % 3) * 80} variant="scale">
+                      <Link
+                        to={`/servicios/${s.slug}`}
+                        className="group bg-card border border-border rounded-xl overflow-hidden hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col h-full"
+                      >
+                        <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                          <img
+                            src={s.image}
+                            alt={s.title}
+                            loading="lazy"
+                            width={1024}
+                            height={768}
+                            className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+                          <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-background/85 backdrop-blur-sm border border-border rounded-full px-2.5 py-1">
+                            <Icon className="w-3.5 h-3.5 text-primary" />
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-foreground">
+                              {s.areaLabel.split(" ")[0]}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="p-6 flex flex-col flex-1">
+                          <h3 className="font-heading font-bold text-base text-foreground mb-2 leading-snug">
+                            {s.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                            {s.summary}
+                          </p>
+                          <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold">
+                            Ver servicio
+                            <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
                           </span>
                         </div>
-                      </div>
-                      <div className="p-6 flex flex-col flex-1">
-                        <h3 className="font-heading font-bold text-base text-foreground mb-2 leading-snug">
-                          {s.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
-                          {s.summary}
-                        </p>
-                        <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold">
-                          Ver servicio
-                          <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
-                        </span>
-                      </div>
-                    </Link>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
+                      </Link>
+                    </ScrollReveal>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </section>
