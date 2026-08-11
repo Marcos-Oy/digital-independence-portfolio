@@ -114,7 +114,7 @@ export const AREAS: { id: ServiceArea; label: string; desc: string; icon: Lucide
   {
     id: "optimizacion-costos",
     label: "Optimización y Costos TI",
-    desc: "Reducimos tu gasto en tecnología entre un 30% y un 50% sin sacrificar rendimiento ni seguridad, con soporte mensual predecible.",
+    desc: "Reducimos tu gasto en tecnología entre un 30% y un 50% sin sacrificar rendimiento ni seguridad, con foco en ahorro medible y sostenible.",
     icon: TrendingDown,
   },
   {

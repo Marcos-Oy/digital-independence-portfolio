@@ -18,12 +18,12 @@ Consultora TI que **diseña, construye y dirige** la infraestructura tecnológic
 3. **Grandes empresas** — buscan optimizar costos, ciberseguridad o IA.
 4. **Sector público** — modernización tecnológica y cumplimiento.
 
-# Portafolio (11 servicios en 5 áreas)
-1. **Estrategia y Dirección TI**: Arquitectura TI, Transformación Digital, Dirección TI (CTO Externo + talento TI).
-2. **Optimización de Costos TI**: Reducción de costos, Soporte gestionado.
-3. **Desarrollo y Presencia Digital**: Presencia Digital (web + SEO + Google Maps), Desarrollo de Software, Marketing Digital.
-4. **Ciberseguridad y Vigilancia**: Ciberseguridad, Vigilancia e Innovación.
-5. **IA Corporativa**: implementación de IA en procesos de negocio.
+# Portafolio (14 servicios en 5 áreas)
+1. **Estrategia y Dirección TI**: Arquitectura TI, Transformación Digital, Dirección TI (CTO Externo + talento TI), Dashboards y KPI, Integración de Bases de Datos.
+2. **Optimización y Costos TI**: Reducción de Costos TI.
+3. **Desarrollo y Presencia Digital**: Presencia Digital (web + SEO + Google Maps), Desarrollo de Software Web, Dirección de Marketing Digital, Integración de Plataformas.
+4. **Seguridad e Inteligencia Tecnológica**: Ciberseguridad, Vigilancia e Innovación Tecnológica.
+5. **Inteligencia Artificial Corporativa**: IA Corporativa, Automatización de Procesos.
 
 # Contacto
 - Correo: contacto@independenciadigital.cl
