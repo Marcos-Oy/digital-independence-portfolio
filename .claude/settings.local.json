@@ -29,7 +29,12 @@
       "Bash(git -C \"D:/laragon/www/digital-independence-portfolio\" diff .claude/settings.local.json)",
       "Bash(git -C \"D:/laragon/www/digital-independence-portfolio\" add servicios.html)",
       "Bash(git *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(tasklist)",
+      "WebFetch(domain:www.svgator.com)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //F //PID 43388 //PID 18032 //PID 61648 //PID 32956)",
+      "Bash(grep -iE \"^\\(brain|database|code-2|network|binary\\)\\\\.js$\")"
     ]
   }
 }
