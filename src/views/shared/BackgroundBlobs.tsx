@@ -28,6 +28,41 @@ export const AccentBlob = ({ className = "", shape = 1, color = "mixed" }: BlobP
   />
 );
 
+interface GlowOrbProps {
+  className?: string;
+  color?: "primary" | "secondary";
+}
+
+/** Esfera con brillo neón (radial-gradient + box-shadow difuminado), tipo
+ * "planeta" de acento. Anima un pulso suave y continuo. */
+export const GlowOrb = ({ className = "", color = "secondary" }: GlowOrbProps) => (
+  <div
+    className={`rounded-full pointer-events-none animate-glow-pulse ${className}`}
+    style={{
+      background: `radial-gradient(circle at 32% 28%, hsl(var(--${color}) / 0.95), hsl(var(--${color}) / 0.6) 55%, hsl(var(--${color}) / 0.2) 100%)`,
+      boxShadow: `0 0 40px 8px hsl(var(--${color}) / 0.45), 0 0 80px 26px hsl(var(--${color}) / 0.2)`,
+    }}
+    aria-hidden="true"
+  />
+);
+
+interface SparkleDotsProps {
+  className?: string;
+  color?: "primary" | "secondary";
+}
+
+/** Puntitos/estrellas dispersas, como acento suelto cerca de otras manchas. */
+export const SparkleDots = ({ className = "", color = "secondary" }: SparkleDotsProps) => (
+  <svg viewBox="0 0 200 200" className={className} aria-hidden="true">
+    <circle cx="20" cy="34" r="4" fill={`hsl(var(--${color}))`} opacity="0.85" />
+    <circle cx="168" cy="52" r="3" fill={`hsl(var(--${color}))`} opacity="0.6" />
+    <circle cx="92" cy="150" r="5" fill={`hsl(var(--${color}))`} opacity="0.7" />
+    <circle cx="150" cy="176" r="2.5" fill={`hsl(var(--${color}))`} opacity="0.9" />
+    <circle cx="42" cy="118" r="3" fill={`hsl(var(--${color}))`} opacity="0.5" />
+    <circle cx="120" cy="24" r="2" fill={`hsl(var(--${color}))`} opacity="0.8" />
+  </svg>
+);
+
 interface BlobImageProps {
   src: string;
   alt: string;
@@ -101,6 +136,15 @@ export const CircuitLines = ({ className = "" }: CircuitLinesProps) => (
   </svg>
 );
 
+/* Cuatro siluetas de ola distintas para que las separaciones no se vean
+   todas cortadas con el mismo molde. */
+const WAVE_PATHS = {
+  1: "M0,64 C240,120 480,8 720,24 C960,40 1200,96 1440,56 L1440,120 L0,120 Z",
+  2: "M0,100 C360,10 720,4 1080,66 C1260,98 1350,112 1440,92 L1440,120 L0,120 Z",
+  3: "M0,36 C180,92 360,0 540,48 C720,98 900,6 1080,58 C1260,110 1350,66 1440,36 L1440,120 L0,120 Z",
+  4: "M0,16 C300,102 500,112 720,58 C940,6 1140,92 1440,26 L1440,120 L0,120 Z",
+} as const;
+
 interface WaveDividerProps {
   className?: string;
   /** Clase de color Tailwind para el relleno de la ola, ej. "text-muted". */
@@ -109,12 +153,15 @@ interface WaveDividerProps {
   /** En vez del color de fondo, rellena la ola con el degradado azul→verdoso
    * de marca, para que las separaciones no sean siempre blancas/neutras. */
   gradient?: boolean;
+  /** Silueta de la ola (1 a 4), para que las distintas separaciones del
+   * sitio no repitan siempre la misma curva. */
+  variant?: 1 | 2 | 3 | 4;
 }
 
 /** Divisor de sección en forma de ola. Se ubica al final de una sección con
  * position: relative, y se rellena con el color de fondo de la sección
  * siguiente (o con el degradado de marca) para simular la transición. */
-export const WaveDivider = ({ className = "", fillClassName = "text-background", flip = false, gradient = false }: WaveDividerProps) => {
+export const WaveDivider = ({ className = "", fillClassName = "text-background", flip = false, gradient = false, variant = 1 }: WaveDividerProps) => {
   const gradId = useId();
   return (
     <svg
@@ -131,10 +178,7 @@ export const WaveDivider = ({ className = "", fillClassName = "text-background",
           </linearGradient>
         </defs>
       )}
-      <path
-        fill={gradient ? `url(#${gradId})` : "currentColor"}
-        d="M0,64 C240,120 480,8 720,24 C960,40 1200,96 1440,56 L1440,120 L0,120 Z"
-      />
+      <path fill={gradient ? `url(#${gradId})` : "currentColor"} d={WAVE_PATHS[variant]} />
     </svg>
   );
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/views/shared/ScrollReveal";
-import { SoftBlob, AccentBlob, WaveDivider } from "@/views/shared/BackgroundBlobs";
+import { SoftBlob, AccentBlob, WaveDivider, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
 import TypewriterText from "@/views/shared/TypewriterText";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
 import AnimatedProcessCircle from "@/views/shared/AnimatedProcessCircle";
@@ -83,6 +83,8 @@ const HomeView = () => {
           <div className="hero-orb w-56 h-56 bg-primary/5 bottom-1/4 left-1/3 animate-float-slow" style={{ animationDelay: "1s" }} />
           <AccentBlob shape={1} color="secondary" className="w-16 h-12 top-[18%] right-[18%] opacity-80 animate-float-slow" />
           <AccentBlob shape={2} className="w-8 h-11 bottom-[22%] left-[12%] opacity-70 animate-float" />
+          <GlowOrb color="secondary" className="absolute w-12 h-12 md:w-16 md:h-16 top-[12%] left-[8%]" />
+          <SparkleDots color="secondary" className="absolute w-64 h-64 bottom-[8%] right-[6%] text-white" />
           <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={70} active={explored} />
         </div>
 
@@ -175,7 +177,7 @@ const HomeView = () => {
             </ScrollReveal>
           </div>
         </div>
-        <WaveDivider gradient className="absolute bottom-0 left-0 h-16 md:h-24" />
+        <WaveDivider gradient variant={2} className="absolute bottom-0 left-0 h-20 md:h-28" />
       </section>
 
       {/* Nuestro método — diagrama circular animado */}
@@ -264,7 +266,7 @@ const HomeView = () => {
             </div>
           </div>
         </div>
-        <WaveDivider gradient className="absolute bottom-0 left-0 h-16 md:h-24" />
+        <WaveDivider gradient variant={3} className="absolute bottom-0 left-0 h-14 md:h-20" />
       </section>
 
       {/* Servicios — 15 service cards con imagen */}
@@ -451,12 +453,13 @@ const HomeView = () => {
             </ScrollReveal>
           </div>
         </div>
-        <WaveDivider gradient className="absolute bottom-0 left-0 h-16 md:h-24" />
+        <WaveDivider gradient variant={1} className="absolute bottom-0 left-0 h-20 md:h-28" />
       </section>
 
       {/* Contacto */}
       <section id="contacto" className="relative py-20 md:py-28 bg-background overflow-hidden">
         <SoftBlob shape={5} className="w-[380px] h-64 -top-20 left-1/2 -translate-x-1/2" />
+        <GlowOrb color="primary" className="absolute w-14 h-14 md:w-20 md:h-20 top-10 right-[10%]" />
         <div className="relative container mx-auto px-4">
           <ScrollReveal variant="scale" className="max-w-3xl mx-auto">
             <div className="rounded-2xl overflow-hidden">
@@ -514,7 +517,7 @@ const HomeView = () => {
             </div>
           </ScrollReveal>
         </div>
-        <WaveDivider gradient className="absolute bottom-0 left-0 h-16 md:h-24" />
+        <WaveDivider gradient variant={4} className="absolute bottom-0 left-0 h-16 md:h-24" />
       </section>
 
       <SiteFooterView />

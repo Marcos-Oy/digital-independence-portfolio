@@ -117,6 +117,10 @@ export default {
           from: { opacity: "0", transform: "scale(0.96)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "0.85", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.06)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s cubic-bezier(0.25, 1, 0.5, 1)",
@@ -130,6 +134,7 @@ export default {
         "shimmer-slide": "shimmer-slide 2.2s cubic-bezier(0.4,0,0.6,1) infinite",
         "page-in": "page-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "scale-in": "scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "glow-pulse": "glow-pulse 3.5s ease-in-out infinite",
       },
     },
   },
