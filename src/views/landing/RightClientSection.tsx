@@ -1,14 +1,17 @@
 import { Target } from "lucide-react";
 import robotImg from "@/assets/autonomia-digital-robot.png";
 import ScrollReveal from "@/views/shared/ScrollReveal";
+import { SoftBlob, AccentBlob } from "@/views/shared/BackgroundBlobs";
 
 interface RightClientSectionProps {
   text: string;
 }
 
 const RightClientSection = ({ text }: RightClientSectionProps) => (
-  <section className="py-16 md:py-20 bg-muted">
-    <div className="container mx-auto px-4 max-w-4xl">
+  <section className="relative py-16 md:py-20 bg-muted overflow-hidden">
+    <SoftBlob shape={3} color="secondary" className="w-64 h-64 -top-16 -left-16" />
+    <AccentBlob shape={5} className="hidden md:block w-9 h-12 bottom-8 right-[8%] opacity-70" />
+    <div className="relative container mx-auto px-4 max-w-4xl">
       <ScrollReveal variant="scale">
         <div className="grid sm:grid-cols-[1fr_auto] gap-6 sm:gap-8 items-center">
           <div className="bg-card border border-border rounded-2xl p-8 md:p-10 text-center sm:text-left order-2 sm:order-1">

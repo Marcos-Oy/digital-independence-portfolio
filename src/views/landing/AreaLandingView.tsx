@@ -10,7 +10,12 @@ import { XCircle } from "lucide-react";
 import { AREAS, SERVICES, type ServiceArea } from "@/models/services";
 import { AREA_LANDING_CONTENT } from "@/models/areaLandingContent";
 import { METHOD_STEPS } from "@/models/generalLandingContent";
+import { AREA_VISUALS } from "@/models/areaVisuals";
 import { useLandingController } from "@/controllers/landing/useLandingController";
+import { SoftBlob, AccentBlob, LayeredWaveDivider, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
+import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import ScrollContextIcon from "@/views/shared/ScrollContextIcon";
+import TypewriterText from "@/views/shared/TypewriterText";
 
 interface AreaLandingViewProps {
   area: ServiceArea;
@@ -20,6 +25,7 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
   const areaInfo = AREAS.find((a) => a.id === area)!;
   const content = AREA_LANDING_CONTENT[area];
   const areaServices = SERVICES.filter((s) => s.area === area);
+  const areaVisual = AREA_VISUALS[area];
 
   useLandingController(`${areaInfo.label} | Independencia Digital`);
 
@@ -28,10 +34,17 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
       <LandingHeader />
 
       {/* Hero */}
-      <section className="gradient-hero pt-16 pb-14 md:pt-20 md:pb-20">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
+      <section className="relative gradient-hero pt-16 pb-14 md:pt-20 md:pb-20 overflow-hidden">
+        <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={50} />
+        <ScrollContextIcon
+          icon={areaVisual.icon}
+          mode={areaVisual.mode}
+          className="absolute -right-8 top-1/2 -translate-y-1/2 w-56 h-56 md:w-80 md:h-80 text-primary/[0.14]"
+        />
+        <AccentBlob shape={3} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
+        <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            {content.eyebrow}
+            <TypewriterText text={content.eyebrow} speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             {content.headline}
@@ -51,8 +64,9 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
       <SafeTechLogosCarousel />
 
       {/* Dolor / Problema */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <section className="relative py-16 md:py-24 bg-background overflow-hidden">
+        <SoftBlob shape={4} color="primary" className="w-72 h-96 -top-16 -right-24" />
+        <div className="relative container mx-auto px-4 max-w-4xl">
           <ScrollReveal className="text-center mb-10">
             <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-3 leading-tight">
               ¿Alguna de estas señales te resulta familiar?
@@ -81,8 +95,9 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
       <RightClientSection text={content.rightClient} />
 
       {/* Detalle por servicio */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <section className="relative py-16 md:py-24 bg-background overflow-hidden">
+        <SoftBlob shape={5} className="w-80 h-64 -bottom-12 -left-24" />
+        <div className="relative container mx-auto px-4 max-w-4xl">
           <ScrollReveal className="max-w-2xl mx-auto text-center mb-12">
             <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
               Qué hacemos exactamente en {areaInfo.label.toLowerCase()}
@@ -101,8 +116,9 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
       </section>
 
       {/* El Método */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-5xl">
+      <section className="relative py-16 md:py-24 bg-background overflow-hidden">
+        <SoftBlob shape={6} color="secondary" className="w-72 h-80 -top-16 -right-24" />
+        <div className="relative container mx-auto px-4 max-w-5xl">
           <ScrollReveal className="max-w-2xl mx-auto text-center mb-12">
             <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
               El método: Plan 360
@@ -131,11 +147,14 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
             <LandingCtaButton />
           </div>
         </div>
+        <LayeredWaveDivider seed={2} className="absolute bottom-0 left-0 w-full h-20 md:h-28" />
       </section>
 
       {/* Satisfacción / Beneficios */}
-      <section className="py-16 md:py-24 bg-muted/50">
-        <div className="container mx-auto px-4 max-w-5xl">
+      <section className="relative py-16 md:py-24 bg-muted/50 overflow-hidden">
+        <SparkleDots color="secondary" className="absolute w-48 h-48 top-[6%] left-[6%] text-secondary" />
+        <GlowOrb color="secondary" className="absolute w-9 h-9 md:w-11 md:h-11 bottom-[10%] right-[8%]" />
+        <div className="relative container mx-auto px-4 max-w-5xl">
           <ScrollReveal className="max-w-2xl mx-auto text-center mb-12">
             <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
               Así se ve tu negocio después
@@ -164,11 +183,14 @@ const AreaLandingView = ({ area }: AreaLandingViewProps) => {
             })}
           </div>
         </div>
+        <LayeredWaveDivider seed={3} className="absolute bottom-0 left-0 w-full h-20 md:h-28" />
       </section>
 
       {/* CTA final */}
-      <section className="py-16 md:py-24 bg-muted">
-        <div className="container mx-auto px-4">
+      <section className="relative py-16 md:py-24 bg-muted overflow-hidden">
+        <SoftBlob shape={3} color="secondary" className="w-72 h-56 -top-16 -left-16" />
+        <SoftBlob shape={2} color="primary" className="w-64 h-72 -bottom-20 -right-20" />
+        <div className="relative container mx-auto px-4">
           <div className="max-w-3xl mx-auto p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/30 via-border to-secondary/20">
             <div className="bg-card rounded-[calc(1rem-1.5px)] px-8 py-12 md:px-14 md:py-16 text-center">
               <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">

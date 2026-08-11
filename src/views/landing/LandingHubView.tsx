@@ -4,6 +4,8 @@ import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import { useLandingHubController } from "@/controllers/landing/useLandingHubController";
+import { SoftBlob, AccentBlob, LayeredWaveDivider } from "@/views/shared/BackgroundBlobs";
+import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
 
 const STATUS_LABEL: Record<string, string> = {
   activa: "Activa",
@@ -17,8 +19,10 @@ const LandingHubView = () => {
     <div className="min-h-screen bg-background">
       <SiteNavbarView />
 
-      <section className="gradient-hero pt-28 pb-12 md:pt-36 md:pb-20">
-        <div className="container mx-auto px-4">
+      <section className="relative gradient-hero pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
+        <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={45} />
+        <AccentBlob shape={2} color="secondary" className="absolute w-11 h-8 top-[18%] right-[10%] opacity-80 animate-float-slow" />
+        <div className="relative container mx-auto px-4">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-8"
@@ -52,10 +56,12 @@ const LandingHubView = () => {
             )}
           </div>
         </div>
+        <LayeredWaveDivider seed={1} className="absolute bottom-0 left-0 w-full h-16 md:h-24" />
       </section>
 
-      <section className="py-16 md:py-20 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="relative py-16 md:py-20 bg-background overflow-hidden">
+        <SoftBlob shape={4} className="w-72 h-72 -bottom-20 -right-24" />
+        <div className="relative container mx-auto px-4">
           {filtered.length === 0 ? (
             <p className="text-center text-sm text-muted-foreground">
               No hay landing pages que coincidan con "{query}".
