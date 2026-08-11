@@ -12,8 +12,8 @@ interface RightClientSectionProps {
 const RightClientSection = ({ text }: RightClientSectionProps) => (
   <section className="relative py-16 md:py-20 bg-muted overflow-hidden">
     <SoftBlob shape={3} color="secondary" className="w-64 h-64 -top-16 -left-16" />
-    <LaunchingRocket className="absolute w-32 h-32 md:w-44 md:h-44 -top-8 -left-10 md:left-0" />
-    <TechNetworkBlob className="absolute w-32 h-32 md:w-44 md:h-44 -bottom-8 -right-10 md:right-0" />
+    <LaunchingRocket className="absolute w-32 h-32 md:w-44 md:h-44 top-2 -left-10 md:left-0" />
+    <TechNetworkBlob className="absolute w-32 h-32 md:w-44 md:h-44 bottom-2 -right-10 md:right-0" />
     <div className="relative container mx-auto px-4 max-w-4xl">
       <ScrollReveal variant="scale">
         <div className="grid sm:grid-cols-[1fr_auto] gap-6 sm:gap-8 items-center">
