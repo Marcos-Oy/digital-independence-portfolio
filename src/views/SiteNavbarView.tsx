@@ -7,7 +7,7 @@ import { SERVICES } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
 import { TYPE_LABEL } from "@/models/search";
 import { useSiteNavbarController } from "@/controllers/useSiteNavbarController";
-import { useLeadForm } from "@/controllers/useLeadForm";
+import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 
 const SiteNavbarView = () => {
   const {
@@ -26,7 +26,6 @@ const SiteNavbarView = () => {
     results,
     hasQuery,
   } = useSiteNavbarController();
-  const { openLeadForm } = useLeadForm();
 
   return (
     <>
@@ -144,8 +143,7 @@ const SiteNavbarView = () => {
               </button>
               <ThemeToggleView />
               <button
-                onClick={() => openLeadForm("navbar")}
-                className="hidden lg:inline-flex items-center gap-2.5 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+                className={`${SYSTEME_TRIGGER_CLASS} hidden lg:inline-flex items-center gap-2.5 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
               >
                 Agendar diagnóstico
               </button>
@@ -320,8 +318,8 @@ const SiteNavbarView = () => {
               </li>
               <li className="pt-2 border-t border-border mt-1">
                 <button
-                  onClick={() => { setOpen(false); openLeadForm("navbar"); }}
-                  className="flex items-center justify-center w-full gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-3 rounded-full shadow-brand active:scale-[0.97] transition-all duration-200"
+                  onClick={() => setOpen(false)}
+                  className={`${SYSTEME_TRIGGER_CLASS} flex items-center justify-center w-full gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-3 rounded-full shadow-brand active:scale-[0.97] transition-all duration-200`}
                 >
                   Agendar diagnóstico
                 </button>

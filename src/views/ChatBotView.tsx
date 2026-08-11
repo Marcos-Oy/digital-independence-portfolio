@@ -1,7 +1,7 @@
 import { X, Send, User, Stethoscope, ArrowRight } from "lucide-react";
 import { useChatBotController } from "@/controllers/useChatBotController";
 import SimpleMarkdown from "@/views/shared/SimpleMarkdown";
-import { useLeadForm } from "@/controllers/useLeadForm";
+import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 
 const RobotIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -32,7 +32,6 @@ const ChatBotView = () => {
     clearKb,
     cancelClearKb,
   } = useChatBotController();
-  const { openLeadForm } = useLeadForm();
 
   return (
     <>
@@ -124,8 +123,8 @@ const ChatBotView = () => {
                 {hasDiagCta && (
                   <div className="mt-2 ml-9 animate-fade-in">
                     <button
-                      onClick={() => { handleToggle(); openLeadForm("chatbot"); }}
-                      className="group inline-flex items-center gap-2 gradient-brand text-primary-foreground text-sm font-semibold rounded-full pl-3 pr-4 py-2 shadow-md hover:shadow-lg hover:scale-[1.03] transition-all"
+                      onClick={handleToggle}
+                      className={`${SYSTEME_TRIGGER_CLASS} group inline-flex items-center gap-2 gradient-brand text-primary-foreground text-sm font-semibold rounded-full pl-3 pr-4 py-2 shadow-md hover:shadow-lg hover:scale-[1.03] transition-all`}
                     >
                       <Stethoscope className="w-4 h-4" />
                       <span>Iniciar diagnóstico</span>

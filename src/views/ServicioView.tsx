@@ -7,7 +7,7 @@ import { CheckCircle2, XCircle, Clock, Sparkles, ArrowLeft } from "lucide-react"
 import { type Service, MODALITY_LABELS, MODALITY_COLORS } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
 import { SERVICE_PAIN_REFRAME } from "@/models/serviceLandingContent";
-import { useLeadForm } from "@/controllers/useLeadForm";
+import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 
 const segmentLabel: Record<string, string> = {
   emprendedores: "Emprendedores",
@@ -21,7 +21,6 @@ interface Props {
 }
 
 const ServicioView = ({ service }: Props) => {
-  const { openLeadForm } = useLeadForm();
   const Icon = service.icon;
   const hasTools = !!service.tools && service.tools.length > 0;
 
@@ -71,8 +70,7 @@ const ServicioView = ({ service }: Props) => {
                 {service.tagline}
               </p>
               <button
-                onClick={() => openLeadForm(`servicio-${service.slug}`)}
-                className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+                className={`${SYSTEME_TRIGGER_CLASS} btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
               >
                 Agendar diagnóstico
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
@@ -260,8 +258,7 @@ const ServicioView = ({ service }: Props) => {
                 Agenda un diagnóstico sin costo y evalúa cómo aplicar {service.shortTitle} a tu negocio.
               </p>
               <button
-                onClick={() => openLeadForm(`servicio-${service.slug}`)}
-                className="btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200"
+                className={`${SYSTEME_TRIGGER_CLASS} btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
               >
                 Agendar diagnóstico
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
