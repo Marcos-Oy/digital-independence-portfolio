@@ -5,6 +5,9 @@ import { GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
 
 interface LaunchingRocketProps {
   className?: string;
+  /** Espeja todo el conjunto horizontalmente, para variar la composición
+   * cuando se reutiliza en otra parte del sitio. */
+  mirror?: boolean;
 }
 
 /**
@@ -15,7 +18,7 @@ interface LaunchingRocketProps {
  * lanzamiento. Pensado para rellenar zonas vacías con un efecto más
  * vistoso que un blob estático.
  */
-const LaunchingRocket = ({ className = "" }: LaunchingRocketProps) => {
+const LaunchingRocket = ({ className = "", mirror = false }: LaunchingRocketProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [launched, setLaunched] = useState(false);
 
@@ -35,7 +38,7 @@ const LaunchingRocket = ({ className = "" }: LaunchingRocketProps) => {
   }, []);
 
   return (
-    <div ref={ref} className={`pointer-events-none ${className}`} aria-hidden="true">
+    <div ref={ref} className={`pointer-events-none ${mirror ? "scale-x-[-1]" : ""} ${className}`} aria-hidden="true">
       {/* Mancha diagonal, plataforma de lanzamiento */}
       <div
         className="absolute inset-0 opacity-90 dark:opacity-80"

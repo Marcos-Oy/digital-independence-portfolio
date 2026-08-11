@@ -6,7 +6,7 @@ import TypewriterText from "@/views/shared/TypewriterText";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
 import AnimatedProcessCircle from "@/views/shared/AnimatedProcessCircle";
 import DrawIcon from "@/views/shared/DrawIcon";
-import AnimatedDashboardCard from "@/views/shared/AnimatedDashboardCard";
+import LaunchingRocket from "@/views/shared/LaunchingRocket";
 import { useSiteExplored } from "@/controllers/useSiteExplored";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
@@ -418,8 +418,8 @@ const HomeView = () => {
                   );
                 })}
                 {filteredServices.length % 3 === 2 && (
-                  <ScrollReveal delay={(filteredServices.length % 3) * 80} variant="scale">
-                    <AnimatedDashboardCard />
+                  <ScrollReveal delay={(filteredServices.length % 3) * 80} variant="scale" className="hidden lg:block">
+                    <LaunchingRocket mirror className="relative w-full h-full min-h-[280px]" />
                   </ScrollReveal>
                 )}
               </div>

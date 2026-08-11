@@ -6,11 +6,20 @@ import { AccentBlob, CircuitLines, LayeredWaveDivider } from "@/views/shared/Bac
 import ScrollContextIcon from "@/views/shared/ScrollContextIcon";
 import TypewriterText from "@/views/shared/TypewriterText";
 import LaunchingRocket from "@/views/shared/LaunchingRocket";
+import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import { useSiteExplored } from "@/controllers/useSiteExplored";
 
 const AboutBrandSectionView = () => {
+  const explored = useSiteExplored();
+
   return (
     <section id="sobrenosotros" className="relative py-20 md:py-28 bg-background overflow-hidden">
-      <LaunchingRocket className="absolute w-44 h-44 md:w-56 md:h-56 -top-10 -left-14 md:-left-8" />
+      <ParticleNetworkBackground
+        className="absolute inset-x-0 top-0 h-72 md:h-80 w-full opacity-70"
+        density={36}
+        active={explored}
+      />
+      <LaunchingRocket className="absolute w-44 h-44 md:w-56 md:h-56 top-6 md:top-8 -left-14 md:-left-8" />
       <AccentBlob shape={3} className="w-11 h-8 top-10 right-[8%] opacity-70" />
       <CircuitLines className="absolute bottom-0 right-0 w-72 h-56 text-secondary/[0.16]" />
       <ScrollContextIcon
