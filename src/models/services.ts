@@ -41,7 +41,8 @@ export type ServiceArea =
   | "estrategia-direccion-ti"
   | "optimizacion-costos"
   | "desarrollo-presencia"
-  | "seguridad-inteligencia"
+  | "ciberseguridad"
+  | "vigilancia-innovacion"
   | "ia-corporativa";
 
 export type ServiceModality = "consultoria" | "asesoria" | "mentoria";
@@ -124,10 +125,16 @@ export const AREAS: { id: ServiceArea; label: string; desc: string; icon: Lucide
     icon: Layers,
   },
   {
-    id: "seguridad-inteligencia",
-    label: "Seguridad e Inteligencia Tecnológica",
-    desc: "Ciberseguridad técnica y humana, cumplimiento normativo y vigilancia tecnológica continua para que cada decisión sea informada.",
+    id: "ciberseguridad",
+    label: "Ciberseguridad",
+    desc: "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva a través de nuestra alianza con Cut Security.",
     icon: ShieldCheck,
+  },
+  {
+    id: "vigilancia-innovacion",
+    label: "Vigilancia e Innovación Tecnológica",
+    desc: "Monitoreo continuo de tendencias, competencia digital y cambios regulatorios para que cada decisión tecnológica sea informada.",
+    icon: Radar,
   },
   {
     id: "ia-corporativa",
@@ -426,8 +433,8 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     title: "Ciberseguridad: Gestión y Estrategia",
     shortTitle: "Ciberseguridad",
     navLabel: "Seguridad informática",
-    area: "seguridad-inteligencia",
-    areaLabel: "Seguridad e Inteligencia Tecnológica",
+    area: "ciberseguridad",
+    areaLabel: "Ciberseguridad",
     icon: Shield,
     tagline: "Postura de seguridad real, técnica y humana.",
     summary:
@@ -466,8 +473,8 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     title: "Vigilancia e Innovación Tecnológica",
     shortTitle: "Vigilancia e Innovación",
     navLabel: "Tendencias y oportunidades TI",
-    area: "seguridad-inteligencia",
-    areaLabel: "Seguridad e Inteligencia Tecnológica",
+    area: "vigilancia-innovacion",
+    areaLabel: "Vigilancia e Innovación Tecnológica",
     icon: Radar,
     tagline: "Inteligencia tecnológica continua para decidir mejor.",
     summary:

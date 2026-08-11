@@ -55,7 +55,8 @@ const AnimatedRoutes = () => {
         <Route path="/landing/estrategia-direccion-ti" element={<AreaLandingView area="estrategia-direccion-ti" />} />
         <Route path="/landing/optimizacion-costos" element={<AreaLandingView area="optimizacion-costos" />} />
         <Route path="/landing/desarrollo-presencia" element={<AreaLandingView area="desarrollo-presencia" />} />
-        <Route path="/landing/seguridad-inteligencia" element={<AreaLandingView area="seguridad-inteligencia" />} />
+        <Route path="/landing/ciberseguridad" element={<AreaLandingView area="ciberseguridad" />} />
+        <Route path="/landing/vigilancia-innovacion" element={<AreaLandingView area="vigilancia-innovacion" />} />
         <Route path="/landing/ia-corporativa" element={<AreaLandingView area="ia-corporativa" />} />
         <Route path="/landing/servicio/:slug" element={<ServiceLandingRouteView />} />
         <Route path="/diagnostico" element={<DiagnosticoView />} />

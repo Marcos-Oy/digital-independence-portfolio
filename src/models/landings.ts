@@ -36,9 +36,15 @@ const CORE_LANDINGS: LandingMeta[] = [
     status: "activa",
   },
   {
-    path: "/landing/seguridad-inteligencia",
-    title: "Seguridad e Inteligencia Tecnológica",
-    summary: "Ciberseguridad técnica y humana, cumplimiento normativo y vigilancia tecnológica.",
+    path: "/landing/ciberseguridad",
+    title: "Ciberseguridad",
+    summary: "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva.",
+    status: "activa",
+  },
+  {
+    path: "/landing/vigilancia-innovacion",
+    title: "Vigilancia e Innovación Tecnológica",
+    summary: "Monitoreo continuo de tendencias, competencia digital y cambios regulatorios.",
     status: "activa",
   },
   {

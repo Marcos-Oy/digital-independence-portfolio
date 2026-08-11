@@ -46,15 +46,26 @@ export const AREA_LANDING_CONTENT: Record<ServiceArea, AreaLandingContent> = {
       "Emprendedores y PyMEs sin presencia digital profesional, con procesos en Excel que no escalan, o que invierten en publicidad sin saber si realmente funciona.",
     wistiaMediaId: SHARED_VSL,
   },
-  "seguridad-inteligencia": {
-    eyebrow: "Seguridad e Inteligencia Tecnológica, Independencia Digital",
+  "ciberseguridad": {
+    eyebrow: "Ciberseguridad, Independencia Digital",
     headline: "Protege tu negocio antes de que el problema te encuentre a ti",
     subtext:
-      "Ciberseguridad técnica y humana, cumplimiento normativo y vigilancia tecnológica continua.",
+      "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva a través de nuestra alianza con Cut Security.",
     painReframe:
-      "Si algo de esto te resulta familiar, no es porque hayas sido negligente. Es porque la ciberseguridad real, técnica y humana, y la vigilancia tecnológica casi nunca se hacen a tiempo, solo después del primer susto.",
+      "Si algo de esto te resulta familiar, no es porque hayas sido negligente. Es porque la ciberseguridad real, técnica y humana, casi nunca se hace a tiempo, solo después del primer susto.",
     rightClient:
-      "Desde el dueño de PyME sin controles básicos de seguridad hasta el gerente que necesita información tecnológica estructurada, no solo opinión, para decidir.",
+      "Desde el dueño de PyME sin controles básicos de seguridad hasta la gran empresa que necesita cumplir ISO 27001, NIST CSF 2.0 o la nueva Ley 21.719.",
+    wistiaMediaId: SHARED_VSL,
+  },
+  "vigilancia-innovacion": {
+    eyebrow: "Vigilancia e Innovación Tecnológica, Independencia Digital",
+    headline: "Decide con inteligencia tecnológica, no con opinión",
+    subtext:
+      "Monitoreo continuo de tendencias del sector, competencia digital y cambios regulatorios, con entrega mensual.",
+    painReframe:
+      "Si algo de esto te resulta familiar, no es porque no te informes. Es porque nadie te entrega esa información de forma estructurada y a tiempo para decidir con criterio.",
+    rightClient:
+      "Gerentes y dueños que toman decisiones tecnológicas y necesitan información estructurada, no solo la opinión de alguien del equipo.",
     wistiaMediaId: SHARED_VSL,
   },
   "ia-corporativa": {
