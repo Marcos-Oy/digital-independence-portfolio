@@ -157,7 +157,7 @@ const HomeView = () => {
                   <TypewriterText text="Quiénes somos" />
                 </p>
                 <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
-                  Tu Asesor en Tecnología de la información,<br className="hidden md:block" />
+                  Tu Asesor en Tecnologías de la Información,<br className="hidden md:block" />
                   sin el costo de uno a tiempo completo.
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-10">
