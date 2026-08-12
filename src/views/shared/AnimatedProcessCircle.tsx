@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { MethodStep } from "@/models/method";
 
@@ -18,11 +18,26 @@ interface AnimatedProcessCircleProps {
  */
 const AnimatedProcessCircle = ({ steps, className = "", enabled = true }: AnimatedProcessCircleProps) => {
   const [activeStep, setActiveStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const n = steps.length;
   const R = 42;
 
+  // Avanza automáticamente por cada paso; se pausa mientras el cursor está
+  // sobre el círculo para no pelear con la selección manual por hover/click.
+  useEffect(() => {
+    if (!enabled || isPaused) return;
+    const interval = window.setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % n);
+    }, 3000);
+    return () => window.clearInterval(interval);
+  }, [enabled, isPaused, n]);
+
   return (
-    <div className={`relative aspect-square ${className}`}>
+    <div
+      className={`relative aspect-square ${className}`}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full -rotate-90">
         <motion.circle
           cx="50"

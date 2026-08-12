@@ -195,8 +195,7 @@ const HomeView = () => {
               </h2>
               <p className="text-muted-foreground leading-relaxed max-w-md mb-6">
                 No entregamos un proyecto y desaparecemos. Diagnosticamos, priorizamos,
-                implementamos y te acompañamos de forma continua — pasa el cursor por cada
-                paso del círculo.
+                implementamos y te acompañamos de forma continua.
               </p>
               <ul className="space-y-2">
                 {METHOD_STEPS.map((step, i) => (
