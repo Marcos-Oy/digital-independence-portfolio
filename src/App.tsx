@@ -73,13 +73,14 @@ const AppLayout = () => {
   const isLandingFunnel = /^\/landing\/.+/.test(location.pathname);
   const isLandingHub = location.pathname === "/landing";
   const hideChrome = isDiagnostico || isLandingFunnel;
+  const hideChat = isDiagnostico;
   const hideWelcomeModal = hideChrome || isLandingHub;
   return (
     <>
       <ScrollToTop />
       <AnimatedRoutes />
       {!hideChrome && <WhatsAppButtonView />}
-      {!hideChrome && <ChatBotView />}
+      {!hideChat && <ChatBotView />}
       {!hideWelcomeModal && <WelcomeModalView />}
       <CookieNoticeView waitForWelcomeModal={!hideWelcomeModal} />
       <SystemeIoFloatingForm />

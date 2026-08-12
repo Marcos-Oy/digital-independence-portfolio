@@ -59,12 +59,15 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             {service.summary}
           </p>
-          <LandingCtaButton className="btn-shimmer" />
         </div>
 
         <ScrollReveal className="container mx-auto px-4 max-w-3xl mt-12" variant="scale">
           <WistiaEmbed mediaId={SERVICE_LANDING_WISTIA_ID} />
         </ScrollReveal>
+
+        <div className="relative container mx-auto px-4 text-center mt-8">
+          <LandingCtaButton className="btn-shimmer" />
+        </div>
       </section>
 
       {/* Tecnologías */}
