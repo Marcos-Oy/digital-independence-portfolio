@@ -110,7 +110,7 @@ const HomeView = () => {
             style={{ animationDelay: "0.1s" }}
           >
             Diseñamos y construimos con servicios integrales tu{" "}
-            <span className="text-primary">infraestructura digital</span>
+            <span className="text-primary">infraestructura <span className="text-secondary">digital</span></span>
           </h1>
 
           <p
@@ -157,7 +157,7 @@ const HomeView = () => {
                   <TypewriterText text="Quiénes somos" />
                 </p>
                 <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
-                  Tu Director de Tecnología externo,<br className="hidden md:block" />
+                  Tu Asesor en Tecnología de la información,<br className="hidden md:block" />
                   sin el costo de uno a tiempo completo.
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-10">
