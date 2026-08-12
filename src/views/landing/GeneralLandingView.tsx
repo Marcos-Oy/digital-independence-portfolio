@@ -43,12 +43,15 @@ const GeneralLandingView = () => {
             Diagnóstico, arquitectura TI, ciberseguridad, automatización e IA para PyMEs, empresas y
             organismos públicos en Chile.
           </p>
-          <LandingCtaButton className="btn-shimmer" />
         </div>
 
         <ScrollReveal className="container mx-auto px-4 max-w-3xl mt-12" variant="scale">
           <WistiaEmbed mediaId="68c4rkopry" />
         </ScrollReveal>
+
+        <div className="relative container mx-auto px-4 text-center mt-8">
+          <LandingCtaButton className="btn-shimmer" />
+        </div>
       </section>
 
       {/* Tecnologías */}
