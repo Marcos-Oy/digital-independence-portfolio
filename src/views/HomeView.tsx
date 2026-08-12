@@ -141,79 +141,76 @@ const HomeView = () => {
         </div>
       </section>
 
-      {/* Quiénes somos — editorial metrics */}
+      {/* Quiénes somos + Cómo trabajamos — mismo bloque para reducir el scroll */}
       <section id="quienes-somos" className="relative py-20 md:py-28 bg-background overflow-hidden">
         <SoftBlob shape={3} className="w-[460px] h-[360px] -top-32 -right-40" />
         <SoftBlob shape={4} color="secondary" className="w-64 h-80 bottom-0 -left-24" />
+        <SoftBlob shape={5} color="primary" className="w-72 h-96 -bottom-24 -right-24" />
         <div className="relative container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <ScrollReveal className="grid md:grid-cols-[1fr_auto] gap-12 items-end mb-16">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                  <TypewriterText text="Quiénes somos" />
-                </p>
-                <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
-                  Tu Director de Tecnología externo,<br className="hidden md:block" />
-                  sin el costo de uno a tiempo completo.
-                </h2>
-                <p className="text-muted-foreground leading-relaxed max-w-xl">
-                  Independencia Digital es una consultora tecnológica chilena que atiende personas
-                  naturales y jurídicas, incluyendo el sector público mediante licitaciones en
-                  Mercado Público.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal variant="scale" delay={100} className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
-              {[
-                { n: "15", label: "Servicios especializados" },
-                { n: "5", label: "Áreas de consultoría" },
-                { n: "4", label: "Segmentos atendidos" },
-              ].map(({ n, label }) => (
-                <div key={label} className="bg-card px-6 py-8 text-center">
-                  <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground mb-1.5">{n}</p>
-                  <p className="text-xs text-muted-foreground leading-snug">{label}</p>
+          <div className="max-w-5xl mx-auto space-y-14 md:space-y-16">
+            <div>
+              <ScrollReveal className="grid md:grid-cols-[1fr_auto] gap-12 items-end mb-10 md:mb-12">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+                    <TypewriterText text="Quiénes somos" />
+                  </p>
+                  <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
+                    Tu Director de Tecnología externo,<br className="hidden md:block" />
+                    sin el costo de uno a tiempo completo.
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed max-w-xl">
+                    Independencia Digital es una consultora tecnológica chilena que atiende personas
+                    naturales y jurídicas, incluyendo el sector público mediante licitaciones en
+                    Mercado Público.
+                  </p>
                 </div>
-              ))}
-            </ScrollReveal>
+              </ScrollReveal>
+
+              <ScrollReveal variant="scale" delay={100} className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
+                {[
+                  { n: "15", label: "Servicios especializados" },
+                  { n: "5", label: "Áreas de consultoría" },
+                  { n: "4", label: "Segmentos atendidos" },
+                ].map(({ n, label }) => (
+                  <div key={label} className="bg-card px-6 py-8 text-center">
+                    <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground mb-1.5">{n}</p>
+                    <p className="text-xs text-muted-foreground leading-snug">{label}</p>
+                  </div>
+                ))}
+              </ScrollReveal>
+            </div>
+
+            <div id="metodo" className="grid md:grid-cols-[1fr_auto] gap-14 items-center pt-14 md:pt-16 border-t border-border">
+              <ScrollReveal>
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+                  <TypewriterText text="Cómo trabajamos" />
+                </p>
+                <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-5">
+                  Un mismo método,<br className="hidden md:block" /> ciclo tras ciclo.
+                </h2>
+                <p className="text-muted-foreground leading-relaxed max-w-md mb-6">
+                  No entregamos un proyecto y desaparecemos. Diagnosticamos, priorizamos,
+                  implementamos y te acompañamos de forma continua.
+                </p>
+                <ul className="space-y-2">
+                  {METHOD_STEPS.map((step, i) => (
+                    <li key={step.title} className="flex items-center gap-3 text-sm">
+                      <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[11px] font-bold flex items-center justify-center shrink-0">
+                        {i + 1}
+                      </span>
+                      <span className="font-semibold text-foreground">{step.title}</span>
+                    </li>
+                  ))}
+                </ul>
+              </ScrollReveal>
+
+              <ScrollReveal variant="scale" delay={100}>
+                <AnimatedProcessCircle steps={METHOD_STEPS} className="w-72 h-72 md:w-96 md:h-96 mx-auto" enabled={explored} />
+              </ScrollReveal>
+            </div>
           </div>
         </div>
         <LayeredWaveDivider seed={1} className="absolute bottom-0 left-0 w-full h-28 md:h-40" />
-      </section>
-
-      {/* Nuestro método — diagrama circular animado */}
-      <section id="metodo" className="relative py-20 md:py-28 bg-muted/50 overflow-hidden">
-        <SoftBlob shape={5} color="primary" className="w-72 h-96 -bottom-24 -right-24" />
-        <div className="relative container mx-auto px-4">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-[1fr_auto] gap-14 items-center">
-            <ScrollReveal>
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                <TypewriterText text="Cómo trabajamos" />
-              </p>
-              <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-5">
-                Un mismo método,<br className="hidden md:block" /> ciclo tras ciclo.
-              </h2>
-              <p className="text-muted-foreground leading-relaxed max-w-md mb-6">
-                No entregamos un proyecto y desaparecemos. Diagnosticamos, priorizamos,
-                implementamos y te acompañamos de forma continua.
-              </p>
-              <ul className="space-y-2">
-                {METHOD_STEPS.map((step, i) => (
-                  <li key={step.title} className="flex items-center gap-3 text-sm">
-                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[11px] font-bold flex items-center justify-center shrink-0">
-                      {i + 1}
-                    </span>
-                    <span className="font-semibold text-foreground">{step.title}</span>
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
-
-            <ScrollReveal variant="scale" delay={100}>
-              <AnimatedProcessCircle steps={METHOD_STEPS} className="w-72 h-72 md:w-96 md:h-96 mx-auto" enabled={explored} />
-            </ScrollReveal>
-          </div>
-        </div>
       </section>
 
       {/* Tecnologías */}
