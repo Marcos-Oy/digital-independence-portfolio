@@ -22,7 +22,6 @@ export const useChatBotController = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const autoOpenedRef = useRef(false);
-  const blurTimer = useRef<number | null>(null);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -31,81 +30,36 @@ export const useChatBotController = () => {
   // Cuando el chat se cierra, siempre limpiamos el estilo
   useEffect(() => { if (!open) setKbStyle({}); }, [open]);
 
-  // Detecta el teclado virtual con visualViewport y reposiciona el chat
+  // Reposiciona el chat cuando aparece el teclado virtual, por polling en vez
+  // de eventos (resize/blur/focus): en navegadores embebidos (Instagram,
+  // TikTok, etc.) esos eventos no siempre disparan, así que en vez de
+  // reaccionar a ellos medimos el estado real cada 200ms. Así el ajuste
+  // siempre refleja la realidad (enfocado + teclado abierto sí, si no no) y
+  // nunca se puede quedar pegado en un estado viejo.
   useEffect(() => {
     if (!open) return;
     if (typeof window === "undefined") return;
-    const vv = window.visualViewport;
-    if (!vv) return;
 
     const update = () => {
-      if (window.innerWidth >= 768) { setKbStyle({}); return; }
-      const keyboard = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
-      if (keyboard > 80) {
-        setKbStyle({
-          bottom: `${keyboard + 16}px`,
-          maxHeight: `${vv.height - 24}px`,
-        });
+      if (window.innerWidth >= 768) { setKbStyle((prev) => (Object.keys(prev).length ? {} : prev)); return; }
+
+      const vv = window.visualViewport;
+      const focused = document.activeElement === inputRef.current;
+      const keyboard = vv ? Math.max(0, window.innerHeight - vv.height - vv.offsetTop) : 0;
+
+      if (focused && vv && keyboard > 80) {
+        const bottom = `${keyboard + 16}px`;
+        const maxHeight = `${vv.height - 24}px`;
+        setKbStyle((prev) => (prev.bottom === bottom && prev.maxHeight === maxHeight ? prev : { bottom, maxHeight }));
       } else {
-        setKbStyle({});
+        setKbStyle((prev) => (Object.keys(prev).length ? {} : prev));
       }
     };
 
     update();
-    vv.addEventListener("resize", update);
-    vv.addEventListener("scroll", update);
-    return () => {
-      vv.removeEventListener("resize", update);
-      vv.removeEventListener("scroll", update);
-    };
-  }, [open]);
-
-  // Red de seguridad para navegadores embebidos (Instagram, TikTok, etc.),
-  // donde blur/resize a veces no disparan: si el input ya no está enfocado
-  // pero el ajuste de teclado sigue activo, lo limpiamos. Evita que el chat
-  // quede "pegado" arriba y achicado después de que el teclado se cierra.
-  useEffect(() => {
-    if (!open) return;
-    const interval = window.setInterval(() => {
-      if (document.activeElement !== inputRef.current) {
-        setKbStyle((prev) => (Object.keys(prev).length ? {} : prev));
-      }
-    }, 400);
+    const interval = window.setInterval(update, 200);
     return () => window.clearInterval(interval);
   }, [open]);
-
-  const applyKb = () => {
-    if (window.innerWidth >= 768) return;
-
-    const ua = navigator.userAgent || "";
-    const isInApp = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|Messenger|Line|MicroMessenger|TikTok|LinkedInApp/i.test(ua);
-
-    // Fallback: si visualViewport no reacciona en 500ms, asumimos teclado abierto
-    // y empujamos el chat con un estimado (~42% del alto). Necesario para
-    // Instagram in-app browser, donde visualViewport no dispara resize.
-    setTimeout(() => {
-      const vv = window.visualViewport;
-      const kbDetected = vv && (window.innerHeight - vv.height - vv.offsetTop) > 80;
-      if (!kbDetected) {
-        const h0 = window.innerHeight;
-        const est = Math.round(h0 * (isInApp ? 0.45 : 0.4));
-        setKbStyle({
-          bottom: `${est + 16}px`,
-          maxHeight: `${h0 - est - 32}px`,
-        });
-      }
-      inputRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-    }, 500);
-  };
-
-  const clearKb = () => {
-    if (blurTimer.current) clearTimeout(blurTimer.current);
-    blurTimer.current = window.setTimeout(() => setKbStyle({}), 200);
-  };
-
-  const cancelClearKb = () => {
-    if (blurTimer.current) { clearTimeout(blurTimer.current); blurTimer.current = null; }
-  };
 
   useEffect(() => {
     if (autoOpenedRef.current) return;
@@ -209,8 +163,5 @@ export const useChatBotController = () => {
     inputRef,
     handleToggle,
     sendMessage,
-    applyKb,
-    clearKb,
-    cancelClearKb,
   };
 };
