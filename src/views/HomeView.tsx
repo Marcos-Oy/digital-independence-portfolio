@@ -179,31 +179,36 @@ const HomeView = () => {
             </div>
 
             <div id="metodo" className="md:pl-16 md:border-l border-border">
-              <ScrollReveal>
-                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                  <TypewriterText text="Cómo trabajamos" />
-                </p>
-                <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-5">
-                  Un mismo método,<br className="hidden md:block" /> ciclo tras ciclo.
-                </h2>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  No entregamos un proyecto y desaparecemos. Diagnosticamos, priorizamos,
-                  implementamos y te acompañamos de forma continua.
-                </p>
-                <ul className="space-y-2 mb-10">
-                  {METHOD_STEPS.map((step, i) => (
-                    <li key={step.title} className="flex items-center gap-3 text-sm">
-                      <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[11px] font-bold flex items-center justify-center shrink-0">
-                        {i + 1}
-                      </span>
-                      <span className="font-semibold text-foreground">{step.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </ScrollReveal>
+              <div className="grid sm:grid-cols-[1fr_auto] gap-x-10 gap-y-6 mb-10">
+                <ScrollReveal>
+                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+                    <TypewriterText text="Cómo trabajamos" />
+                  </p>
+                  <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-5">
+                    Un mismo método,<br className="hidden md:block" /> ciclo tras ciclo.
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed">
+                    No entregamos un proyecto y desaparecemos. Diagnosticamos, priorizamos,
+                    implementamos y te acompañamos de forma continua.
+                  </p>
+                </ScrollReveal>
+
+                <ScrollReveal delay={50}>
+                  <ul className="space-y-2 sm:pt-9">
+                    {METHOD_STEPS.map((step, i) => (
+                      <li key={step.title} className="flex items-center gap-3 text-sm">
+                        <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[11px] font-bold flex items-center justify-center shrink-0">
+                          {i + 1}
+                        </span>
+                        <span className="font-semibold text-foreground whitespace-nowrap">{step.title}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </ScrollReveal>
+              </div>
 
               <ScrollReveal variant="scale" delay={100}>
-                <AnimatedProcessCircle steps={METHOD_STEPS} className="w-64 h-64 md:w-72 md:h-72 mx-auto" enabled={explored} />
+                <AnimatedProcessCircle steps={METHOD_STEPS} className="w-72 h-72 sm:w-80 sm:h-80 md:w-[26rem] md:h-[26rem] mx-auto" enabled={explored} />
               </ScrollReveal>
             </div>
           </div>
