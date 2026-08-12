@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   type ChatMessage,
   SUGGESTED_QUESTIONS,
@@ -9,6 +10,8 @@ import {
 } from "@/models/chatbot";
 
 export const useChatBotController = () => {
+  const { pathname } = useLocation();
+  const isLandingFunnel = /^\/landing\/.+/.test(pathname);
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
@@ -109,7 +112,13 @@ export const useChatBotController = () => {
     window.addEventListener("keydown", gestureUnlock, { once: true });
     window.addEventListener("touchstart", gestureUnlock, { once: true, passive: true });
 
-    try { if (sessionStorage.getItem("welcome_modal_seen")) startTimer(); } catch { }
+    // Las landing pages no muestran el modal de bienvenida, así que ahí no
+    // hay nada que esperar: el timer arranca directo al llegar.
+    if (isLandingFunnel) {
+      startTimer();
+    } else {
+      try { if (sessionStorage.getItem("welcome_modal_seen")) startTimer(); } catch { }
+    }
 
     const onClosed = () => { unlockChatAudio(); startTimer(); };
     window.addEventListener("welcome-modal-closed", onClosed);
