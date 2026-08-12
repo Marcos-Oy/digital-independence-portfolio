@@ -141,6 +141,9 @@ const HomeView = () => {
         </div>
       </section>
 
+      {/* Tecnologías */}
+      <SafeTechLogosCarousel />
+
       {/* Quiénes somos + Cómo trabajamos — mismo bloque para reducir el scroll */}
       <section id="quienes-somos" className="relative py-20 md:py-28 bg-background overflow-hidden">
         <SoftBlob shape={3} className="w-[460px] h-[360px] -top-32 -right-40" />
@@ -215,9 +218,6 @@ const HomeView = () => {
         </div>
         <LayeredWaveDivider seed={1} className="absolute bottom-0 left-0 w-full h-28 md:h-40" />
       </section>
-
-      {/* Tecnologías */}
-      <SafeTechLogosCarousel />
 
       {/* Segmentos */}
       <section id="segmentos" className="relative py-20 md:py-28 bg-muted/50 overflow-hidden">
