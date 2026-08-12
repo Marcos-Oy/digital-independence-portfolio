@@ -20,8 +20,8 @@ const SiteFooterView = () => {
               </span>
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Consultora tecnológica chilena. Diseñamos, construimos y dirigimos la infraestructura
-              tecnológica de emprendedores, PyMEs, grandes empresas y sector público.
+              Consultora tecnológica chilena. Diseñamos y construimos con servicios integrales la
+              infraestructura tecnológica de emprendedores, PyMEs, grandes empresas y sector público.
             </p>
           </div>
 

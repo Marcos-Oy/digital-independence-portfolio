@@ -109,7 +109,7 @@ export const AREAS: { id: ServiceArea; label: string; desc: string; icon: Lucide
   {
     id: "estrategia-direccion-ti",
     label: "Estrategia y Dirección TI",
-    desc: "Diseñamos, construimos y dirigimos la infraestructura tecnológica de tu negocio: arquitectura, transformación digital y dirección estratégica activa.",
+    desc: "Diseñamos y construimos con servicios integrales la infraestructura tecnológica de tu negocio: arquitectura, transformación digital y dirección estratégica activa.",
     icon: LayoutGrid,
   },
   {
