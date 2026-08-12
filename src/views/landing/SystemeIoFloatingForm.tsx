@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 
@@ -11,6 +11,18 @@ const rebindTriggers = () => {
   }
 };
 
+const loadScript = (onReady?: () => void) => {
+  const script = document.createElement("script");
+  script.src = SCRIPT_SRC;
+  script.async = true;
+  script.onload = () => {
+    rebindTriggers();
+    onReady?.();
+  };
+  document.body.appendChild(script);
+  return script;
+};
+
 // Widget de formulario flotante de Systeme.io. El script original espera
 // ejecutarse en una página estática y se engancha a window.onload para
 // mostrar el popup y para enlazar los botones con la clase
@@ -21,47 +33,83 @@ const rebindTriggers = () => {
 // botones de la página nueva.
 const SystemeIoFloatingForm = () => {
   const { pathname } = useLocation();
+  const scriptRef = useRef<HTMLScriptElement | null>(null);
+  const popupClosedRef = useRef(false);
+  const reloadingRef = useRef(false);
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = SCRIPT_SRC;
-    script.async = true;
-    script.onload = rebindTriggers;
-    document.body.appendChild(script);
+    popupClosedRef.current = false;
+    scriptRef.current = loadScript();
 
     return () => {
-      script.remove();
+      scriptRef.current?.remove();
     };
   }, [pathname]);
 
-  // El script solo escanea el DOM una vez (al cargar o reinyectarse), así
-  // que un botón con esa clase que aparezca después (menú móvil, un mensaje
-  // del chat, un modal) nunca queda enlazado y el clic no hace nada. Se
-  // observa el documento y, si aparece un nuevo botón con la clase, se
-  // vuelve a llamar al enganche para que también quede enlazado.
   useEffect(() => {
-    let timeoutId: number | undefined;
+    let bindTimeoutId: number | undefined;
 
     const observer = new MutationObserver((mutations) => {
-      const hasNewTrigger = mutations.some((mutation) =>
-        Array.from(mutation.addedNodes).some((node) => {
-          if (!(node instanceof HTMLElement)) return false;
-          return (
-            node.classList.contains(SYSTEME_TRIGGER_CLASS) ||
-            !!node.querySelector(`.${SYSTEME_TRIGGER_CLASS}`)
-          );
-        })
-      );
-      if (!hasNewTrigger) return;
-      window.clearTimeout(timeoutId);
-      timeoutId = window.setTimeout(rebindTriggers, 50);
+      let hasNewTrigger = false;
+      let popupClosed = false;
+
+      for (const mutation of mutations) {
+        for (const node of Array.from(mutation.addedNodes)) {
+          if (!(node instanceof HTMLElement)) continue;
+          if (node.classList.contains(SYSTEME_TRIGGER_CLASS) || node.querySelector(`.${SYSTEME_TRIGGER_CLASS}`)) {
+            hasNewTrigger = true;
+          }
+        }
+        // El popup de Systeme.io queda inutilizable para siempre en cuanto se
+        // cierra una vez: su script marca internamente "ya se cerró" y esa
+        // bandera nunca se resetea, así que ningún click posterior vuelve a
+        // mostrarlo (bug del script de Systeme.io, no nuestro). Detectamos
+        // el cierre (se elimina el iframe del popup del DOM) para saber que
+        // el próximo click necesita una instancia nueva del script.
+        for (const node of Array.from(mutation.removedNodes)) {
+          if (!(node instanceof HTMLElement)) continue;
+          if (node.id?.startsWith("systemeio-iframe-") || node.querySelector('[id^="systemeio-iframe-"]')) {
+            popupClosed = true;
+          }
+        }
+      }
+
+      if (popupClosed) popupClosedRef.current = true;
+
+      if (hasNewTrigger) {
+        window.clearTimeout(bindTimeoutId);
+        bindTimeoutId = window.setTimeout(rebindTriggers, 50);
+      }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
 
+    // Si el popup ya se cerró una vez, la única forma de que vuelva a abrir
+    // es una instancia completamente nueva del script (ver comentario
+    // arriba). Interceptamos el click en fase de captura, reinyectamos el
+    // script y, una vez cargado, volvemos a disparar el click para que su
+    // nuevo listener (ya funcional) lo abra.
+    const onClickCapture = (event: MouseEvent) => {
+      if (!popupClosedRef.current || reloadingRef.current) return;
+      const target = event.target as HTMLElement | null;
+      const trigger = target?.closest<HTMLElement>(`.${SYSTEME_TRIGGER_CLASS}`);
+      if (!trigger) return;
+
+      reloadingRef.current = true;
+      popupClosedRef.current = false;
+      scriptRef.current?.remove();
+      scriptRef.current = loadScript(() => {
+        reloadingRef.current = false;
+        trigger.click();
+      });
+    };
+
+    document.addEventListener("click", onClickCapture, true);
+
     return () => {
       observer.disconnect();
-      window.clearTimeout(timeoutId);
+      window.clearTimeout(bindTimeoutId);
+      document.removeEventListener("click", onClickCapture, true);
     };
   }, []);
 
