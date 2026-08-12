@@ -170,7 +170,7 @@ const HomeView = () => {
               <ScrollReveal variant="scale" delay={100} className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
                 {[
                   { n: "15", label: "Servicios especializados" },
-                  { n: "5", label: "Áreas de consultoría" },
+                  { n: "6", label: "Áreas de consultoría" },
                   { n: "4", label: "Segmentos atendidos" },
                 ].map(({ n, label }) => (
                   <div key={label} className="bg-card px-4 py-8 text-center">
@@ -286,7 +286,7 @@ const HomeView = () => {
                 Tecnología que resuelve problemas reales
               </h2>
               <p className="text-muted-foreground">
-                14 soluciones especializadas en 5 áreas. Cada una pensada en tu operación diaria, no en la tecnología por sí sola.
+                14 soluciones especializadas en 6 áreas. Cada una pensada en tu operación diaria, no en la tecnología por sí sola.
               </p>
             </ScrollReveal>
 
