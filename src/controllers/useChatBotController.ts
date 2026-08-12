@@ -60,6 +60,20 @@ export const useChatBotController = () => {
     };
   }, [open]);
 
+  // Red de seguridad para navegadores embebidos (Instagram, TikTok, etc.),
+  // donde blur/resize a veces no disparan: si el input ya no está enfocado
+  // pero el ajuste de teclado sigue activo, lo limpiamos. Evita que el chat
+  // quede "pegado" arriba y achicado después de que el teclado se cierra.
+  useEffect(() => {
+    if (!open) return;
+    const interval = window.setInterval(() => {
+      if (document.activeElement !== inputRef.current) {
+        setKbStyle((prev) => (Object.keys(prev).length ? {} : prev));
+      }
+    }, 400);
+    return () => window.clearInterval(interval);
+  }, [open]);
+
   const applyKb = () => {
     if (window.innerWidth >= 768) return;
 
