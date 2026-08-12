@@ -61,6 +61,15 @@ import awsLogo from "@/assets/logos/aws.png";
 import azureLogo from "@/assets/logos/azure.png";
 import googlecloudLogo from "@/assets/logos/googlecloud.png";
 import obsidianLogo from "@/assets/logos/obsidian.png";
+import aspnetmvcLogo from "@/assets/logos/aspnetmvc.png";
+import pythonLogo from "@/assets/logos/python.png";
+import csharpLogo from "@/assets/logos/csharp.png";
+import postgresqlLogo from "@/assets/logos/postgresql.png";
+import dbeaverLogo from "@/assets/logos/dbeaver.png";
+import hadoopLogo from "@/assets/logos/hadoop.png";
+import sparkLogo from "@/assets/logos/spark.png";
+import javascriptLogo from "@/assets/logos/javascript.png";
+import html5Logo from "@/assets/logos/html5.png";
 
 const baseLogos = [
   { src: microsoftLogo, alt: "Microsoft" },
@@ -125,6 +134,15 @@ const baseLogos = [
   { src: azureLogo, alt: "Microsoft Azure" },
   { src: googlecloudLogo, alt: "Google Cloud" },
   { src: obsidianLogo, alt: "Obsidian" },
+  { src: aspnetmvcLogo, alt: "ASP.NET MVC" },
+  { src: pythonLogo, alt: "Python" },
+  { src: csharpLogo, alt: "C#" },
+  { src: postgresqlLogo, alt: "PostgreSQL" },
+  { src: dbeaverLogo, alt: "DBeaver" },
+  { src: hadoopLogo, alt: "Apache Hadoop" },
+  { src: sparkLogo, alt: "Apache Spark" },
+  { src: javascriptLogo, alt: "JavaScript" },
+  { src: html5Logo, alt: "HTML5" },
 ];
 
 // Fisher-Yates shuffle for randomized order on each load
