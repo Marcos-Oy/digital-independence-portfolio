@@ -70,6 +70,19 @@ import hadoopLogo from "@/assets/logos/hadoop.png";
 import sparkLogo from "@/assets/logos/spark.png";
 import javascriptLogo from "@/assets/logos/javascript.png";
 import html5Logo from "@/assets/logos/html5.png";
+import reactLogo from "@/assets/logos/react.png";
+import css3Logo from "@/assets/logos/css3.png";
+import vueLogo from "@/assets/logos/vue.png";
+import dockerLogo from "@/assets/logos/docker.png";
+import kubernetesLogo from "@/assets/logos/kubernetes.png";
+import cursorLogo from "@/assets/logos/cursor.png";
+import bootstrapLogo from "@/assets/logos/bootstrap.png";
+import nodejsLogo from "@/assets/logos/nodejs.png";
+import javaLogo from "@/assets/logos/java.png";
+import angularLogo from "@/assets/logos/angular.png";
+import odooLogo from "@/assets/logos/odoo.png";
+import ubuntuLogo from "@/assets/logos/ubuntu.png";
+import winserverLogo from "@/assets/logos/winserver.png";
 
 const baseLogos = [
   { src: microsoftLogo, alt: "Microsoft" },
@@ -143,6 +156,19 @@ const baseLogos = [
   { src: sparkLogo, alt: "Apache Spark" },
   { src: javascriptLogo, alt: "JavaScript" },
   { src: html5Logo, alt: "HTML5" },
+  { src: reactLogo, alt: "React" },
+  { src: css3Logo, alt: "CSS3" },
+  { src: vueLogo, alt: "Vue.js" },
+  { src: dockerLogo, alt: "Docker" },
+  { src: kubernetesLogo, alt: "Kubernetes" },
+  { src: cursorLogo, alt: "Cursor" },
+  { src: bootstrapLogo, alt: "Bootstrap" },
+  { src: nodejsLogo, alt: "Node.js" },
+  { src: javaLogo, alt: "Java" },
+  { src: angularLogo, alt: "Angular" },
+  { src: odooLogo, alt: "Odoo ERP" },
+  { src: ubuntuLogo, alt: "Ubuntu" },
+  { src: winserverLogo, alt: "Windows Server" },
 ];
 
 // Fisher-Yates shuffle for randomized order on each load
