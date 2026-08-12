@@ -147,23 +147,21 @@ const HomeView = () => {
         <SoftBlob shape={4} color="secondary" className="w-64 h-80 bottom-0 -left-24" />
         <SoftBlob shape={5} color="primary" className="w-72 h-96 -bottom-24 -right-24" />
         <div className="relative container mx-auto px-4">
-          <div className="max-w-5xl mx-auto space-y-14 md:space-y-16">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-x-16 gap-y-14">
             <div>
-              <ScrollReveal className="grid md:grid-cols-[1fr_auto] gap-12 items-end mb-10 md:mb-12">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                    <TypewriterText text="Quiénes somos" />
-                  </p>
-                  <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
-                    Tu Director de Tecnología externo,<br className="hidden md:block" />
-                    sin el costo de uno a tiempo completo.
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed max-w-xl">
-                    Independencia Digital es una consultora tecnológica chilena que atiende personas
-                    naturales y jurídicas, incluyendo el sector público mediante licitaciones en
-                    Mercado Público.
-                  </p>
-                </div>
+              <ScrollReveal>
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
+                  <TypewriterText text="Quiénes somos" />
+                </p>
+                <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
+                  Tu Director de Tecnología externo,<br className="hidden md:block" />
+                  sin el costo de uno a tiempo completo.
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-10">
+                  Independencia Digital es una consultora tecnológica chilena que atiende personas
+                  naturales y jurídicas, incluyendo el sector público mediante licitaciones en
+                  Mercado Público.
+                </p>
               </ScrollReveal>
 
               <ScrollReveal variant="scale" delay={100} className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
@@ -172,7 +170,7 @@ const HomeView = () => {
                   { n: "5", label: "Áreas de consultoría" },
                   { n: "4", label: "Segmentos atendidos" },
                 ].map(({ n, label }) => (
-                  <div key={label} className="bg-card px-6 py-8 text-center">
+                  <div key={label} className="bg-card px-4 py-8 text-center">
                     <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground mb-1.5">{n}</p>
                     <p className="text-xs text-muted-foreground leading-snug">{label}</p>
                   </div>
@@ -180,7 +178,7 @@ const HomeView = () => {
               </ScrollReveal>
             </div>
 
-            <div id="metodo" className="grid md:grid-cols-[1fr_auto] gap-14 items-center pt-14 md:pt-16 border-t border-border">
+            <div id="metodo" className="md:pl-16 md:border-l border-border">
               <ScrollReveal>
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                   <TypewriterText text="Cómo trabajamos" />
@@ -188,11 +186,11 @@ const HomeView = () => {
                 <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-5">
                   Un mismo método,<br className="hidden md:block" /> ciclo tras ciclo.
                 </h2>
-                <p className="text-muted-foreground leading-relaxed max-w-md mb-6">
+                <p className="text-muted-foreground leading-relaxed mb-6">
                   No entregamos un proyecto y desaparecemos. Diagnosticamos, priorizamos,
                   implementamos y te acompañamos de forma continua.
                 </p>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mb-10">
                   {METHOD_STEPS.map((step, i) => (
                     <li key={step.title} className="flex items-center gap-3 text-sm">
                       <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[11px] font-bold flex items-center justify-center shrink-0">
@@ -205,7 +203,7 @@ const HomeView = () => {
               </ScrollReveal>
 
               <ScrollReveal variant="scale" delay={100}>
-                <AnimatedProcessCircle steps={METHOD_STEPS} className="w-72 h-72 md:w-96 md:h-96 mx-auto" enabled={explored} />
+                <AnimatedProcessCircle steps={METHOD_STEPS} className="w-64 h-64 md:w-72 md:h-72 mx-auto" enabled={explored} />
               </ScrollReveal>
             </div>
           </div>
