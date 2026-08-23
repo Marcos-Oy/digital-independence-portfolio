@@ -534,13 +534,13 @@ const PaginasWebServiceView = () => {
       </section>
 
       {/* ============ PROCESO ============ */}
-      <section className="py-16 md:py-24 bg-foreground text-background relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-brand-deep text-brand-foreground relative overflow-hidden">
         <div
           aria-hidden="true"
-          className="absolute inset-0 pointer-events-none opacity-[0.06]"
+          className="absolute inset-0 pointer-events-none opacity-[0.07]"
           style={{
             backgroundImage:
-              "linear-gradient(hsl(var(--background)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--background)) 1px, transparent 1px)",
+              "linear-gradient(hsl(var(--brand-foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--brand-foreground)) 1px, transparent 1px)",
             backgroundSize: "48px 48px",
           }}
         />
