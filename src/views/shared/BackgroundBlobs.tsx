@@ -66,7 +66,7 @@ export const SparkleDots = ({ className = "", color = "secondary" }: SparkleDots
 interface BlobImageProps {
   src: string;
   alt: string;
-  shape?: 1 | 2 | 3;
+  shape?: 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
 }
 
