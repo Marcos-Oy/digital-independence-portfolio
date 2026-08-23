@@ -89,18 +89,21 @@ const RadialOrbitDiagram = ({
       </svg>
 
       {/* Pulso luminoso detrás del núcleo */}
+      {/* Nota: framer-motion controla el transform, por eso el centrado se
+          pasa como x/y de motion y no con clases -translate-* de Tailwind. */}
       <motion.div
         aria-hidden="true"
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[30%] aspect-square rounded-full bg-primary/30 blur-2xl"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.45, 0.2, 0.45] }}
+        className="absolute left-1/2 top-1/2 w-[30%] aspect-square rounded-full bg-primary/30 blur-2xl"
+        initial={{ x: "-50%", y: "-50%" }}
+        animate={{ x: "-50%", y: "-50%", scale: [1, 1.2, 1], opacity: [0.45, 0.2, 0.45] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Núcleo */}
       <motion.div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[30%] aspect-square rounded-full gradient-brand shadow-brand flex flex-col items-center justify-center text-center p-[4%]"
-        initial={{ scale: 0, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
+        className="absolute left-1/2 top-1/2 w-[30%] aspect-square rounded-full gradient-brand shadow-brand flex flex-col items-center justify-center text-center p-[5%]"
+        initial={{ x: "-50%", y: "-50%", scale: 0, opacity: 0 }}
+        whileInView={{ x: "-50%", y: "-50%", scale: 1, opacity: 1 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ type: "spring", stiffness: 200, damping: 16 }}
       >
@@ -110,7 +113,7 @@ const RadialOrbitDiagram = ({
             strokeWidth={1.7}
           />
         )}
-        <p className="font-heading font-extrabold text-brand-foreground uppercase tracking-[0.14em] leading-snug text-[clamp(0.5rem,1.7vw,0.78rem)]">
+        <p className="font-heading font-extrabold text-brand-foreground uppercase tracking-[0.1em] leading-snug text-[clamp(0.5rem,1.4vw,0.72rem)]">
           {centerTitle}
         </p>
       </motion.div>
