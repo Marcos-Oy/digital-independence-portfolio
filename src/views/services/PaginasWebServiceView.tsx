@@ -21,7 +21,7 @@ import {
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 import { AccentBlob, BlobImage, GlowOrb, RingLoop, SparkleDots, StripeAccent } from "@/views/shared/BackgroundBlobs";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
-import bannerHero from "@/assets/banner-hero.png";
+
 import webHeroDevices from "@/assets/services/web-resultado-devices.jpg";
 import webSolucionLaptop from "@/assets/services/web-solucion-laptop.jpg";
 import webResultadoCrecimiento from "@/assets/services/web-resultado-crecimiento.jpg";
@@ -151,10 +151,8 @@ const PaginasWebServiceView = () => {
 
       {/* ============ HERO ============ */}
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden bg-background">
-        {/* Fondo: mismo banner y efectos del hero principal, por debajo del contenido */}
+        {/* Fondo: solo efectos del hero principal (sin la imagen del banner, exclusiva del home) */}
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-          <img src={bannerHero} alt="" className="w-full h-full object-cover opacity-60 dark:opacity-45" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/80" />
           <div className="hero-orb w-96 h-96 bg-primary/8 top-1/4 -left-20 animate-float" />
           <div className="hero-orb w-72 h-72 bg-secondary/8 top-1/3 right-0 animate-float" style={{ animationDelay: "2s" }} />
           <div className="hero-orb w-56 h-56 bg-primary/5 bottom-1/4 left-1/3 animate-float-slow" style={{ animationDelay: "1s" }} />
