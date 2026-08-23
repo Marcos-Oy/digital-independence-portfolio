@@ -299,7 +299,7 @@ const PaginasWebServiceView = () => {
       </section>
 
       {/* ============ NUESTRO PROCESO ============ */}
-      <section className="py-16 md:py-24 bg-brand-deep text-brand-foreground relative overflow-hidden">
+      <section className="py-16 md:py-24 gradient-brand text-brand-foreground relative overflow-hidden">
         <div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none opacity-[0.06]"
@@ -328,7 +328,7 @@ const PaginasWebServiceView = () => {
               {PROCESS_STEPS.map((s, i) => (
                 <ScrollReveal key={s.title} delay={i * 70} as="li">
                   <div className="relative text-center">
-                    <span className="relative z-10 inline-flex w-16 h-16 rounded-full bg-primary items-center justify-center mb-4 ring-4 ring-brand-deep shadow-brand">
+                    <span className="relative z-10 inline-flex w-16 h-16 rounded-full bg-primary items-center justify-center mb-4 ring-4 ring-white/15 shadow-brand">
                       <s.icon className="w-6 h-6 text-primary-foreground" strokeWidth={1.7} />
                     </span>
                     <p className="font-heading font-bold text-sm mb-1.5">
@@ -417,7 +417,7 @@ const PaginasWebServiceView = () => {
       </section>
 
       {/* ============ CTA FINAL ============ */}
-      <section className="relative py-16 md:py-24 bg-brand-deep text-brand-foreground overflow-hidden">
+      <section className="relative py-16 md:py-24 gradient-brand text-brand-foreground overflow-hidden">
         <div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none"
