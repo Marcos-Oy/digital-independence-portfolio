@@ -49,6 +49,7 @@ import {
   StripeAccent,
 } from "@/views/shared/BackgroundBlobs";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import RadialOrbitDiagram from "@/views/shared/RadialOrbitDiagram";
 import csHero from "@/assets/ciberseguridad-hero.jpg";
 import csRiesgo from "@/assets/ciberseguridad-riesgo.jpg";
 import csChile from "@/assets/ciberseguridad-chile.jpg";
@@ -506,40 +507,14 @@ const CiberseguridadServiceView = () => {
             </p>
           </ScrollReveal>
 
-          {/* Diagrama radial (desktop) */}
+          {/* Diagrama radial (desktop) — misma técnica que "Cómo trabajamos" */}
           <ScrollReveal variant="scale" className="hidden md:block">
-            <div className="relative mx-auto w-[560px] h-[560px] max-w-full">
-              <div aria-hidden="true" className="absolute inset-10 rounded-full border-2 border-dashed border-border" />
-              <div aria-hidden="true" className="absolute inset-24 rounded-full border border-border/60" />
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full gradient-brand shadow-brand flex flex-col items-center justify-center text-center px-6">
-                <ShieldCheck className="w-7 h-7 text-brand-foreground mb-2" strokeWidth={1.7} />
-                <p className="font-heading font-extrabold text-brand-foreground text-sm uppercase tracking-[0.14em] leading-snug">
-                  Gestión del riesgo
-                </p>
-              </div>
-              {RISK_LAYERS.map((layer, i) => {
-                const angle = (i * 360) / RISK_LAYERS.length - 90;
-                return (
-                  <div
-                    key={layer.label}
-                    className="absolute left-1/2 top-1/2"
-                    style={{ transform: `rotate(${angle}deg) translateY(-220px)` }}
-                  >
-                    <div
-                      className="flex flex-col items-center -translate-x-1/2 -translate-y-1/2"
-                      style={{ transform: `translate(-50%, -50%) rotate(${-angle}deg)` }}
-                    >
-                      <span className="inline-flex w-16 h-16 rounded-full bg-card border border-border items-center justify-center shadow-card mb-2">
-                        <layer.icon className="w-6 h-6 text-primary" strokeWidth={1.7} />
-                      </span>
-                      <span className="font-heading font-bold text-xs uppercase tracking-[0.16em] text-foreground">
-                        {layer.label}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <RadialOrbitDiagram
+              nodes={RISK_LAYERS}
+              centerIcon={ShieldCheck}
+              centerTitle="Gestión del riesgo"
+              className="mx-auto w-full max-w-[560px]"
+            />
           </ScrollReveal>
 
           {/* Flujo vertical (mobile) */}
@@ -958,40 +933,15 @@ const CiberseguridadServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale">
-              <div className="relative mx-auto w-full max-w-[380px] aspect-square">
-                <div aria-hidden="true" className="absolute inset-8 rounded-full border-2 border-dashed border-border" />
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full gradient-brand shadow-brand flex items-center justify-center text-center px-4">
-                  <p className="font-heading font-extrabold text-brand-foreground text-[11px] uppercase tracking-[0.14em] leading-snug">
-                    Seguridad sostenible
-                  </p>
-                </div>
-                {[
-                  { icon: Cpu, label: "Tecnología", desc: "Controles y herramientas", angle: -90 },
-                  { icon: Users, label: "Personas", desc: "Conocimiento y cultura", angle: 30 },
-                  { icon: ClipboardCheck, label: "Gestión", desc: "Políticas, procesos y responsabilidades", angle: 150 },
-                ].map((node) => (
-                  <div
-                    key={node.label}
-                    className="absolute left-1/2 top-1/2"
-                    style={{ transform: `rotate(${node.angle}deg) translateY(-150px)` }}
-                  >
-                    <div
-                      className="flex flex-col items-center text-center w-28"
-                      style={{ transform: `translate(-50%, -50%) rotate(${-node.angle}deg)` }}
-                    >
-                      <span className="inline-flex w-14 h-14 rounded-full bg-card border border-border items-center justify-center shadow-card mb-2">
-                        <node.icon className="w-5 h-5 text-primary" strokeWidth={1.7} />
-                      </span>
-                      <span className="font-heading font-bold text-[11px] uppercase tracking-[0.14em] text-foreground">
-                        {node.label}
-                      </span>
-                      <span className="text-[10px] text-muted-foreground leading-tight mt-0.5">
-                        {node.desc}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <RadialOrbitDiagram
+                nodes={[
+                  { icon: Cpu, label: "Tecnología", desc: "Controles y herramientas" },
+                  { icon: Users, label: "Personas", desc: "Conocimiento y cultura" },
+                  { icon: ClipboardCheck, label: "Gestión", desc: "Políticas y procesos" },
+                ]}
+                centerTitle="Seguridad sostenible"
+                className="mx-auto w-full max-w-[380px]"
+              />
             </ScrollReveal>
           </div>
         </div>
