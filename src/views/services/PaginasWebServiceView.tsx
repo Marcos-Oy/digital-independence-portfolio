@@ -180,7 +180,7 @@ const TRUST_PRINCIPLES = [
   { icon: Sparkles, title: "Diseño que inspira confianza", desc: "Cada detalle está pensado para transmitir profesionalismo y credibilidad." },
 ];
 
-const FALLBACK_FAQS: ServiceFaq[] = [
+const WEB_FAQS: { q: string; a: string }[] = [
   { q: "¿Cuánto tiempo toma crear mi página web?", a: "Dependiendo de la complejidad, entre 2 y 6 semanas. En el diagnóstico te damos un cronograma específico." },
   { q: "¿Necesito conocimientos técnicos?", a: "No. Nos encargamos de todo: diseño, desarrollo, contenido, SEO y mantenimiento." },
   { q: "¿Puedo actualizar el contenido yo mismo?", a: "Sí. Te entregamos capacitación para que puedas hacer cambios básicos, o lo hacemos por ti." },
@@ -246,7 +246,7 @@ const FramedImage = ({
 /* ------------------------------ view ------------------------------ */
 
 const PaginasWebServiceView = () => {
-  const faqs = SERVICE_FAQS[service.slug] ?? FALLBACK_FAQS;
+  const faqs = WEB_FAQS;
 
   return (
     <div className="min-h-screen bg-background">
