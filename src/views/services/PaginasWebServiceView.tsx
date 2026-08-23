@@ -23,10 +23,10 @@ import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 import { AccentBlob, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
 import bannerHero from "@/assets/banner-hero.png";
-import webHeroDevices from "@/assets/services/web-resultado-devices.jpg";
-import webSolucionLaptop from "@/assets/services/web-solucion-laptop.jpg";
-import webResultadoCrecimiento from "@/assets/services/web-resultado-crecimiento.jpg";
-import webCtaProfesional from "@/assets/services/web-cta-profesional.jpg";
+import webHeroDevices from "@/assets/services/web-hero-devices.png";
+import webSolucionLaptop from "@/assets/services/web-solucion-laptop.png";
+import webResultadoLaptop from "@/assets/services/web-resultado-laptop.png";
+import webCtaProfesional from "@/assets/services/web-cta-profesional.png";
 
 /* ------------------------------ content ------------------------------ */
 
