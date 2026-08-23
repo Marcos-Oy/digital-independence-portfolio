@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import { SoftBlob, AccentBlob, LayeredWaveDivider, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
 import TypewriterText from "@/views/shared/TypewriterText";
@@ -68,6 +69,9 @@ const HomeView = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://www.independenciadigital.cl/" />
+      </Helmet>
       <SiteNavbarView />
 
       {/* Hero */}
