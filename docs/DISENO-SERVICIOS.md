@@ -40,3 +40,24 @@ index.html (lo maneja Helmet por ruta). Dominio canonical:
 ## Imágenes
 Generar 5 fotorealistas por servicio con imagegen: hero, problema, solución,
 resultado, cta → `src/assets/`. Dark navy #0A0F1E con acentos azul/teal.
+
+## Diagramas radiales/orbitales (obligatorio)
+
+Para cualquier diagrama de nodos alrededor de un círculo central usar SIEMPRE el componente compartido:
+
+```tsx
+import RadialOrbitDiagram from "@/views/shared/RadialOrbitDiagram";
+
+<RadialOrbitDiagram
+  nodes={[{ icon: Users, label: "Personas", desc: "Opcional" }, ...]}
+  centerIcon={ShieldCheck}   // opcional
+  centerTitle="Gestión del riesgo"
+  className="mx-auto w-full max-w-[560px]"
+/>
+```
+
+- Usa la misma técnica que `AnimatedProcessCircle` ("Cómo trabajamos"): anillos en SVG con viewBox 0-100 y nodos posicionados con trigonometría en porcentajes → alineación perfecta a cualquier tamaño.
+- Efectos incluidos: anillo que se dibuja al entrar en viewport, franja punteada rotando, núcleo con pulso luminoso, nodos con entrada de resorte escalonada y escala al hover.
+- PROHIBIDO posicionar nodos con `rotate(deg) translateY(px)`: se desalinean (el usuario lo rechazó).
+- Gotcha: framer-motion sobrescribe el `transform` de Tailwind. El centrado (-50%) se pasa como `x`/`y` de motion, nunca con clases `-translate-x-1/2` junto a `initial`/`animate`.
+- Referencia de uso: `CiberseguridadServiceView.tsx` (diagramas "Gestión del riesgo" y "Seguridad sostenible").
