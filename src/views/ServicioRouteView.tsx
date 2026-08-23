@@ -4,6 +4,7 @@ import ServicioView from "@/views/ServicioView";
 import PaginasWebServiceView from "@/views/services/PaginasWebServiceView";
 import DesarrolloSoftwareServiceView from "@/views/services/DesarrolloSoftwareServiceView";
 import CiberseguridadServiceView from "@/views/services/CiberseguridadServiceView";
+import VigilanciaInnovacionServiceView from "@/views/services/VigilanciaInnovacionServiceView";
 
 const ServicioRouteView = () => {
   const { slug } = useParams<{ slug: string }>();
