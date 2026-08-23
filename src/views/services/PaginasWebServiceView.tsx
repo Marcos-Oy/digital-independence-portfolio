@@ -208,7 +208,7 @@ const PaginasWebServiceView = () => {
                 width={1024}
                 height={768}
                 loading="eager"
-                className="w-full object-cover img-blend"
+                className="w-full object-contain drop-shadow-2xl"
               />
               <div className="absolute -right-3 top-6 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
                 <p className="font-heading font-extrabold text-lg text-secondary leading-none">+120%</p>
@@ -258,7 +258,7 @@ const PaginasWebServiceView = () => {
                   width={1024}
                   height={768}
                   loading="lazy"
-                  className="w-full object-cover img-blend"
+                  className="w-full object-contain drop-shadow-xl"
                 />
               </div>
             </ScrollReveal>
@@ -376,12 +376,12 @@ const PaginasWebServiceView = () => {
 
             <ScrollReveal delay={120} variant="scale" className="relative">
               <img
-                src={webResultadoCrecimiento}
-                alt="Profesional revisando el crecimiento de visitas de su página web"
+                src={webResultadoLaptop}
+                alt="Laptop mostrando una página web profesional optimizada"
                 width={1024}
                 height={768}
                 loading="lazy"
-                className="w-full object-cover img-blend"
+                className="w-full object-contain drop-shadow-2xl"
               />
               <div className="absolute -right-3 bottom-8 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
                 <p className="font-heading font-bold text-sm text-foreground mb-1.5">
@@ -457,7 +457,7 @@ const PaginasWebServiceView = () => {
                 width={1024}
                 height={768}
                 loading="lazy"
-                className="w-full object-cover img-blend"
+                className="w-full object-contain drop-shadow-2xl"
               />
             </ScrollReveal>
           </div>
