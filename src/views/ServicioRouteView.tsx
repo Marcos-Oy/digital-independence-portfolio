@@ -14,6 +14,7 @@ const ServicioRouteView = () => {
   if (slug === "presencia-digital") return <PaginasWebServiceView />;
   if (slug === "desarrollo-software") return <DesarrolloSoftwareServiceView />;
   if (slug === "ciberseguridad") return <CiberseguridadServiceView />;
+  if (slug === "vigilancia-innovacion") return <VigilanciaInnovacionServiceView />;
   return <ServicioView service={service} />;
 };
 
