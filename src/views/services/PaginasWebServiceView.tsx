@@ -197,15 +197,18 @@ const PaginasWebServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale" className="relative">
-              <img
-                src={webHeroDevices}
-                alt="Página web profesional mostrada en laptop y smartphone con gráfico de crecimiento"
-                width={1024}
-                height={768}
-                loading="eager"
-                className="w-full rounded-3xl border border-border object-cover shadow-card"
-              />
-              <div className="absolute -right-3 top-6 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
+              <div className="relative pt-6 pr-4 pb-6 pl-4">
+                <StripeAccent className="absolute -top-1 right-0 w-24 h-14 rounded-xl opacity-90" />
+                <BlobImage
+                  src={webHeroDevices}
+                  shape={2}
+                  alt="Página web profesional mostrada en laptop y smartphone con gráfico de crecimiento"
+                  className="w-full aspect-[4/3] shadow-card-hover"
+                />
+                <RingLoop color="secondary" className="absolute -bottom-2 -left-2 w-24 h-24" />
+                <AccentBlob shape={6} color="secondary" className="absolute bottom-4 right-4 w-7 h-5 opacity-80" />
+              </div>
+              <div className="absolute -right-3 top-10 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
                 <p className="font-heading font-extrabold text-lg text-secondary leading-none">+120%</p>
                 <p className="text-[11px] text-muted-foreground mt-1 mb-1.5">Más visitas orgánicas</p>
                 <MiniLineChart />
