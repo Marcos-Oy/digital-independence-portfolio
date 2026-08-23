@@ -958,7 +958,7 @@ const CiberseguridadServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale">
-              <div className="relative mx-auto w-[380px] h-[380px] max-w-full scale-[0.82] sm:scale-100 origin-center">
+              <div className="relative mx-auto w-full max-w-[380px] aspect-square">
                 <div aria-hidden="true" className="absolute inset-8 rounded-full border-2 border-dashed border-border" />
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full gradient-brand shadow-brand flex items-center justify-center text-center px-4">
                   <p className="font-heading font-extrabold text-brand-foreground text-[11px] uppercase tracking-[0.14em] leading-snug">
@@ -1112,8 +1112,8 @@ const CiberseguridadServiceView = () => {
                 loading="lazy"
                 className="w-full rounded-3xl border border-border object-cover shadow-card"
               />
-              <div className="absolute -left-3 bottom-6 md:-left-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
-                <div className="flex items-center gap-1.5">
+              <div className="absolute -left-3 bottom-6 md:-left-6 max-w-[calc(100%-0.5rem)] bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
+                <div className="flex flex-wrap items-center gap-1.5">
                   {RESULT_FLOW.map((step, i) => (
                     <span key={step} className="flex items-center gap-1.5">
                       <span className="text-[10px] md:text-[11px] font-heading font-bold uppercase tracking-wide text-foreground bg-muted border border-border px-2.5 py-1 rounded-full">
