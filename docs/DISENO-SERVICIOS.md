@@ -2,9 +2,13 @@
 
 ## Patrón obligatorio para páginas individuales de servicios
 
-Template de referencia: `src/views/services/PaginasWebServiceView.tsx` y
-`src/views/services/DesarrolloSoftwareServiceView.tsx`. Toda página nueva de
-servicio debe reutilizar este sistema visual (el usuario lo aprobó).
+Template de referencia: `src/views/services/PaginasWebServiceView.tsx`,
+`src/views/services/DesarrolloSoftwareServiceView.tsx`,
+`src/views/services/CiberseguridadServiceView.tsx` y
+`src/views/services/VigilanciaInnovacionServiceView.tsx` (servicios de
+retainer/continuo: ciclo mensual, mockup de informe, mapas radiales de
+dimensiones y competencia). Toda página nueva de servicio debe reutilizar
+este sistema visual (el usuario lo aprobó).
 
 ## Estructura de secciones (17)
 Hero (breadcrumb + partículas + imagen blob) → Dolor (imaginería) → Problema →
