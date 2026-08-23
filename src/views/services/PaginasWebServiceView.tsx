@@ -19,7 +19,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
-import { AccentBlob, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
+import { AccentBlob, BlobImage, GlowOrb, RingLoop, SparkleDots, StripeAccent } from "@/views/shared/BackgroundBlobs";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
 import bannerHero from "@/assets/banner-hero.png";
 import webHeroDevices from "@/assets/services/web-resultado-devices.jpg";
@@ -448,14 +448,17 @@ const PaginasWebServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale">
-              <img
-                src={webCtaProfesional}
-                alt="Profesional trabajando en su nueva página web"
-                width={1024}
-                height={768}
-                loading="lazy"
-                className="w-full rounded-3xl border border-brand-foreground/20 object-cover shadow-card"
-              />
+              <div className="relative pt-6 pr-4 pb-6 pl-4">
+                <StripeAccent className="absolute -top-1 right-0 w-24 h-14 rounded-xl opacity-90" />
+                <BlobImage
+                  src={webCtaProfesional}
+                  shape={1}
+                  alt="Profesional trabajando en su nueva página web"
+                  className="w-full aspect-[4/3] shadow-card-hover"
+                />
+                <RingLoop color="secondary" className="absolute -bottom-2 -left-2 w-24 h-24" />
+                <AccentBlob shape={6} color="secondary" className="absolute bottom-4 right-4 w-7 h-5 opacity-80" />
+              </div>
             </ScrollReveal>
           </div>
         </div>
