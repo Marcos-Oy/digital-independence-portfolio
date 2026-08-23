@@ -2,61 +2,78 @@ import { Link } from "react-router-dom";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
-import RightClientSection from "@/views/landing/RightClientSection";
-import { CheckCircle2, XCircle, Clock, Sparkles, ArrowLeft } from "lucide-react";
+import {
+  CheckCircle2,
+  Target,
+  TrendingUp,
+  ChevronDown,
+  ShieldCheck,
+  MessageCircle,
+  Handshake,
+} from "lucide-react";
 import { type Service, MODALITY_LABELS, MODALITY_COLORS } from "@/models/services";
-import { SEGMENTS } from "@/models/segments";
-import { SERVICE_PAIN_REFRAME } from "@/models/serviceLandingContent";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
-import { AREA_VISUALS } from "@/models/areaVisuals";
-import ScrollContextIcon from "@/views/shared/ScrollContextIcon";
+import { FAQS } from "@/models/faq";
+import { SERVICE_DESCRIPTIONS } from "@/models/serviceDescriptionContent";
 
-const segmentLabel: Record<string, string> = {
-  emprendedores: "Emprendedores",
-  pymes: "PyMEs",
-  empresas: "Grandes Empresas",
-  publico: "Sector Público",
-};
+const TRUST_SIGNALS = [
+  { icon: ShieldCheck, title: "Confidencialidad", desc: "Tu información se maneja con reserva en cada etapa del proyecto." },
+  { icon: Handshake, title: "Trato directo", desc: "Trabajas con quien ejecuta, sin intermediarios ni tercerización." },
+  { icon: MessageCircle, title: "Comunicación clara", desc: "Explicamos cada paso en lenguaje simple, sin tecnicismos innecesarios." },
+];
 
 interface Props {
   service: Service;
 }
 
+const CtaButton = ({ label }: { label: string }) => (
+  <button
+    className={`${SYSTEME_TRIGGER_CLASS} inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
+  >
+    {label}
+    <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
+  </button>
+);
+
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">{children}</p>
+);
+
 const ServicioView = ({ service }: Props) => {
   const Icon = service.icon;
-  const hasTools = !!service.tools && service.tools.length > 0;
-  const areaVisual = AREA_VISUALS[service.area];
+  const content = SERVICE_DESCRIPTIONS[service.slug];
 
   return (
     <div className="min-h-screen bg-background">
       <SiteNavbarView />
 
       {/* Hero */}
-      <section className="relative pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
+      <section className="relative pt-28 pb-14 md:pt-36 md:pb-16 overflow-hidden">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
           <img src={service.image} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/35 via-background/75 to-background" />
-          <div className="hero-orb w-80 h-80 bg-primary/6 top-1/4 -left-24 animate-float" style={{ animationDelay: "0s" }} />
-          <div className="hero-orb w-60 h-60 bg-secondary/6 top-1/3 right-0 animate-float" style={{ animationDelay: "2.5s" }} />
-          <div className="hero-orb w-44 h-44 bg-primary/4 bottom-0 left-1/2 animate-float-slow" style={{ animationDelay: "1s" }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/85 to-background" />
         </div>
         <div className="relative container mx-auto px-4">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-foreground bg-card/90 backdrop-blur-sm border border-border rounded-full px-3.5 py-1.5 hover:text-primary transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" /> Volver al inicio
-          </Link>
-          <div className="flex flex-col md:flex-row items-start gap-8">
-            <ScrollReveal variant="scale" className="w-14 h-14 rounded-xl bg-card/90 backdrop-blur-sm border border-border flex items-center justify-center shrink-0">
-              <Icon className="w-7 h-7 text-primary" />
-            </ScrollReveal>
-            <ScrollReveal delay={80} className="flex-1">
-              <div className="inline-flex flex-wrap items-center gap-2 mb-3 bg-card/90 backdrop-blur-sm border border-border rounded-full px-4 py-2">
-                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary">
-                  {service.areaLabel}
-                </p>
-                <span className="text-border">·</span>
+          <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground mb-8">
+            <Link to="/" className="hover:text-primary transition-colors">Inicio</Link>
+            <span>/</span>
+            <Link to="/#servicios" className="hover:text-primary transition-colors">Servicios</Link>
+            <span>/</span>
+            <span className="text-foreground">{service.title}</span>
+          </div>
+
+          <div className="grid md:grid-cols-[1fr_auto] gap-10 items-center">
+            <ScrollReveal>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
+                {service.areaLabel}
+              </p>
+              <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground mb-4 leading-tight tracking-tight">
+                {service.title}
+              </h1>
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mb-3 leading-relaxed">
+                {service.tagline}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-8">
                 {service.modality.map((m) => (
                   <span
                     key={m}
@@ -66,89 +83,125 @@ const ServicioView = ({ service }: Props) => {
                   </span>
                 ))}
               </div>
-              <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground mb-4 leading-tight tracking-tight">
-                {service.title}
-              </h1>
-              <p className="text-base md:text-lg text-muted-foreground max-w-3xl mb-8 leading-relaxed">
-                {service.tagline}
-              </p>
-              <button
-                className={`${SYSTEME_TRIGGER_CLASS} btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
-              >
-                Agendar diagnóstico
-                <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-              </button>
+              <div className="flex flex-wrap gap-3">
+                <CtaButton label="Agendar diagnóstico" />
+                <Link
+                  to="/#servicios"
+                  className="inline-flex items-center gap-2 border border-border text-foreground text-sm font-semibold px-6 py-3.5 rounded-full hover:border-primary hover:text-primary transition-colors"
+                >
+                  Ver todos los servicios
+                </Link>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={80} variant="scale" className="hidden md:flex w-40 h-40 rounded-2xl bg-card border border-border items-center justify-center shrink-0">
+              <Icon className="w-16 h-16 text-primary" strokeWidth={1.3} />
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Dolor / Problema */}
+      {/* 1. Información sobre el servicio */}
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4 max-w-3xl">
-          <ScrollReveal className="mb-8">
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-3">
-              ¿Alguna de estas señales te resulta familiar?
+          <ScrollReveal>
+            <SectionLabel>Información del servicio</SectionLabel>
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-6">
+              {service.title} en términos simples
             </h2>
-            <p className="text-muted-foreground">
-              Antes de seguir leyendo, revisa si tu negocio hoy vive alguna de estas situaciones.
+            <div className="space-y-4 text-foreground/90 leading-relaxed text-base md:text-lg">
+              {content.info.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* 2. Cobertura */}
+      <section className="py-16 md:py-20 bg-muted">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <ScrollReveal className="mb-10">
+            <SectionLabel>Cobertura</SectionLabel>
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground">
+              Qué incluye este servicio
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal>
+            <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-3 max-w-4xl">
+              {content.coverage.map((b) => (
+                <li key={b} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+                  <span className="text-foreground text-sm md:text-base">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* 3. Hook */}
+      <section className="py-14 md:py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <ScrollReveal variant="scale" className="max-w-3xl mx-auto text-center">
+            <p className="font-heading font-bold text-xl md:text-3xl text-foreground leading-snug">
+              {content.hook}
             </p>
           </ScrollReveal>
+        </div>
+      </section>
 
-          <div className="space-y-4 mb-10">
-            {service.painPoints.map((p) => (
-              <div key={p} className="flex items-start gap-3">
-                <XCircle className="w-4 h-4 text-destructive/70 mt-0.5 shrink-0" />
+      {/* 4. Dolor */}
+      <section className="py-16 md:py-20 bg-muted">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <ScrollReveal className="mb-10">
+            <SectionLabel>¿Cuándo puedes necesitarlo?</SectionLabel>
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground">
+              Situaciones frecuentes
+            </h2>
+          </ScrollReveal>
+          <div className="grid sm:grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden">
+            {content.pain.map((p, i) => (
+              <div key={p} className="bg-card p-6 md:p-7">
+                <span className="font-heading font-extrabold text-2xl text-border leading-none block mb-3 select-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <p className="text-sm md:text-base text-foreground/90 leading-relaxed">{p}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
+      {/* 5. Problema */}
+      <section className="py-16 md:py-20 bg-foreground text-background">
+        <div className="container mx-auto px-4 max-w-3xl">
           <ScrollReveal>
-            <p className="text-foreground/90 leading-relaxed">{SERVICE_PAIN_REFRAME}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-primary mb-4">El problema</p>
+            <p className="text-lg md:text-2xl font-heading font-semibold leading-snug">
+              {content.problem}
+            </p>
           </ScrollReveal>
         </div>
       </section>
 
-      <RightClientSection text={service.rightClient} />
-
-      {/* Descripción */}
-      <section className="relative py-16 md:py-20 bg-background overflow-hidden">
-        <ScrollContextIcon
-          icon={areaVisual.icon}
-          mode={areaVisual.mode}
-          className="absolute -right-10 top-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 text-primary/[0.16]"
-        />
-        <ScrollReveal className="relative container mx-auto px-4 max-w-3xl">
-          <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-6">
-            ¿En qué consiste?
-          </h2>
-          <div className="space-y-5 text-foreground/90 leading-relaxed text-base md:text-lg">
-            <p>{service.description}</p>
-            <p>{service.approach}</p>
-          </div>
-        </ScrollReveal>
-      </section>
-
-      {/* Valor agregado */}
-      <section className="py-16 md:py-20 bg-muted">
+      {/* 6. Solución */}
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4 max-w-5xl">
           <ScrollReveal className="mb-10">
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-3">
-              Valor agregado
+            <SectionLabel>Nuestra solución</SectionLabel>
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground">
+              Cómo lo resolvemos
             </h2>
-            <p className="text-muted-foreground max-w-2xl">
-              Esto es lo que nos diferencia de contratar cualquier proveedor técnico suelto.
-            </p>
           </ScrollReveal>
           <div className="grid sm:grid-cols-3 gap-6">
-            {service.addedValue.map((v, i) => (
-              <ScrollReveal key={v} delay={i * 60} variant="scale">
+            {content.solution.map((v, i) => (
+              <ScrollReveal key={v.title} delay={i * 60} variant="scale">
                 <div className="bg-card border border-border rounded-xl p-6 h-full">
                   <span className="inline-flex w-10 h-10 rounded-lg bg-secondary/10 items-center justify-center mb-4">
-                    <Sparkles className="w-5 h-5 text-secondary" />
+                    <TrendingUp className="w-5 h-5 text-secondary" />
                   </span>
-                  <p className="text-sm text-foreground/90 leading-relaxed">{v}</p>
+                  <h3 className="font-heading font-bold text-base text-foreground mb-2">{v.title}</h3>
+                  <p className="text-sm text-foreground/90 leading-relaxed">{v.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -156,122 +209,74 @@ const ServicioView = ({ service }: Props) => {
         </div>
       </section>
 
-      {/* Qué incluye */}
-      <section className="py-16 md:py-20 bg-background">
+      {/* 7. Satisfacción */}
+      <section className="py-16 md:py-20 bg-muted">
         <div className="container mx-auto px-4 max-w-5xl">
-          <ScrollReveal>
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-8">
-              ¿Qué incluye?
-            </h2>
-          </ScrollReveal>
-          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-10">
             <ScrollReveal>
-              <ul className="space-y-4">
-                {service.includes.map((b) => (
-                  <li key={b} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                    <span className="text-foreground text-base">{b}</span>
-                  </li>
-                ))}
-              </ul>
+              <SectionLabel>Así se ve tu negocio después</SectionLabel>
+              <p className="text-foreground/90 leading-relaxed text-base md:text-lg">{content.satisfaction}</p>
             </ScrollReveal>
-            <ScrollReveal variant="scale" className="bg-card border border-border rounded-xl p-6 md:w-72">
-              <span className="inline-flex w-10 h-10 rounded-lg bg-primary/10 items-center justify-center mb-4">
-                <Clock className="w-5 h-5 text-primary" />
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-wide text-secondary mb-2">
-                ¿En cuánto tiempo?
+            <ScrollReveal delay={80}>
+              <p className="text-xs font-semibold uppercase tracking-wide text-secondary mb-4">
+                Elementos de confianza
               </p>
-              <p className="text-sm text-foreground/90 leading-relaxed">{service.timeFactor}</p>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Herramientas + Segmentos */}
-      <section className="py-12 md:py-16 bg-muted">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className={`grid gap-10 ${hasTools ? "md:grid-cols-2" : ""}`}>
-            {hasTools && (
-              <ScrollReveal>
-                <h2 className="font-heading font-bold text-lg md:text-xl text-foreground mb-4">
-                  Herramientas que utilizamos
-                </h2>
-                <div className="flex flex-wrap gap-2.5">
-                  {service.tools!.map((t) => (
-                    <span
-                      key={t}
-                      className="bg-card text-foreground text-sm font-medium px-4 py-2 rounded-lg border border-border"
-                    >
-                      {t}
+              <div className="space-y-4">
+                {TRUST_SIGNALS.map((t) => (
+                  <div key={t.title} className="flex items-start gap-3">
+                    <span className="inline-flex w-9 h-9 rounded-lg bg-primary/10 items-center justify-center shrink-0">
+                      <t.icon className="w-[18px] h-[18px] text-primary" />
                     </span>
-                  ))}
-                </div>
-              </ScrollReveal>
-            )}
-
-            <ScrollReveal delay={hasTools ? 80 : 0}>
-              <h2 className="font-heading font-bold text-lg md:text-xl text-foreground mb-4">
-                ¿Para quién es?
-              </h2>
-              <div className="flex flex-wrap gap-2.5">
-                {service.segments.map((s) => {
-                  const seg = SEGMENTS.find((x) => x.id === s);
-                  return (
-                    <Link
-                      key={s}
-                      to={seg ? `/segmentos/${seg.slug}` : "/"}
-                      className="bg-card border border-border text-sm font-medium px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition-colors"
-                    >
-                      {segmentLabel[s]}
-                    </Link>
-                  );
-                })}
+                    <div>
+                      <p className="font-semibold text-foreground text-sm">{t.title}</p>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{t.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Satisfacción / El resultado */}
+      {/* 8. Llamada a la acción (con FAQ como manejo de objeciones previo) */}
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4 max-w-3xl">
-          <ScrollReveal variant="scale">
-            <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/30 via-border to-secondary/20">
-              <div className="bg-card rounded-[calc(1rem-1.5px)] px-8 py-12 md:px-14 md:py-16 text-center">
-                <span className="inline-flex w-12 h-12 rounded-full bg-secondary/10 items-center justify-center mb-5">
-                  <Icon className="w-5 h-5 text-secondary" />
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
-                  Así se ve tu negocio después
-                </p>
-                <p className="font-heading font-bold text-xl md:text-2xl text-foreground leading-snug">
-                  {service.valuePromise}
-                </p>
-              </div>
-            </div>
+          <ScrollReveal className="mb-8 text-center">
+            <SectionLabel>Preguntas frecuentes</SectionLabel>
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground">
+              Dudas habituales antes de agendar
+            </h2>
           </ScrollReveal>
+          <div className="space-y-3">
+            {FAQS.map((f) => (
+              <ScrollReveal key={f.q}>
+                <details className="group bg-card border border-border rounded-xl p-5 [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="flex items-center justify-between gap-4 cursor-pointer font-semibold text-foreground text-sm md:text-base">
+                    {f.q}
+                    <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                  </summary>
+                  <p className="text-muted-foreground text-sm leading-relaxed mt-3">{f.a}</p>
+                </details>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4">
-          <ScrollReveal variant="scale" className="max-w-3xl mx-auto p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/30 via-border to-secondary/20">
-            <div className="bg-card rounded-[calc(1rem-1.5px)] px-8 py-12 md:px-14 md:py-16 text-center">
-              <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
-                ¿Hablamos de tu caso?
-              </h2>
-              <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
-                Agenda un diagnóstico sin costo y evalúa cómo aplicar {service.shortTitle} a tu negocio.
-              </p>
-              <button
-                className={`${SYSTEME_TRIGGER_CLASS} btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
-              >
-                Agendar diagnóstico
-                <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
-              </button>
-            </div>
+          <ScrollReveal variant="scale" className="max-w-3xl mx-auto text-center">
+            <span className="inline-flex w-12 h-12 rounded-full bg-secondary/10 items-center justify-center mb-5">
+              <Target className="w-5 h-5 text-secondary" />
+            </span>
+            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-4 leading-tight">
+              {content.ctaQuestion}
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
+              Agenda un diagnóstico sin costo y evalúa cómo aplicar {service.shortTitle} a tu negocio.
+            </p>
+            <CtaButton label="Agendar diagnóstico" />
           </ScrollReveal>
         </div>
       </section>

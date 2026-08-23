@@ -275,10 +275,16 @@ const HomeView = () => {
           <img src={bannerPlan360} alt="" className="w-full h-full object-cover opacity-40 dark:opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
         </div>
+        <ParticleNetworkBackground
+          className="absolute inset-x-0 top-0 h-96 w-full opacity-70 [mask-image:linear-gradient(to_right,black_0%,black_38%,transparent_72%)] [-webkit-mask-image:linear-gradient(to_right,black_0%,black_38%,transparent_72%)]"
+          density={36}
+          active={explored}
+        />
+        <TechNetworkBlob className="hidden md:block absolute w-56 h-56 lg:w-80 lg:h-80 xl:w-96 xl:h-96 top-6 right-[3%] lg:right-[6%] xl:right-[8%]" />
 
         <div className="relative container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
-            <ScrollReveal className="mb-10 text-center max-w-3xl mx-auto">
+            <ScrollReveal className="mb-10 text-left max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                 <TypewriterText text="Nuestros servicios" />
               </p>
@@ -286,12 +292,12 @@ const HomeView = () => {
                 Tecnología que resuelve problemas reales
               </h2>
               <p className="text-muted-foreground">
-                14 soluciones especializadas en 6 áreas. Cada una pensada en tu operación diaria, no en la tecnología por sí sola.
+                12 soluciones especializadas en 6 áreas. Cada una pensada en tu operación diaria, no en la tecnología por sí sola.
               </p>
             </ScrollReveal>
 
             {/* Buscador */}
-            <ScrollReveal delay={60} className="max-w-2xl mx-auto mb-6">
+            <ScrollReveal delay={60} className="max-w-2xl mb-6">
               <div className="relative flex items-center">
                 <Search className="absolute left-4 w-4 h-4 text-muted-foreground pointer-events-none" />
                 <input
@@ -314,7 +320,7 @@ const HomeView = () => {
             </ScrollReveal>
 
             {/* Filtro por modalidad */}
-            <ScrollReveal delay={70} className="flex flex-wrap justify-center gap-2 mb-4">
+            <ScrollReveal delay={70} className="flex flex-wrap justify-start gap-2 mb-4">
               <button
                 onClick={() => setActiveModality(null)}
                 className={`text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all duration-150 ${
@@ -341,7 +347,7 @@ const HomeView = () => {
             </ScrollReveal>
 
             {/* Filtro por área */}
-            <ScrollReveal delay={80} className="flex flex-wrap justify-center gap-2 mb-10">
+            <ScrollReveal delay={80} className="flex flex-wrap justify-start gap-2 mb-10">
               {AREAS.map((area) => (
                 <button
                   key={area.id}
@@ -358,7 +364,7 @@ const HomeView = () => {
             </ScrollReveal>
 
             {isFiltering && (
-              <p className="text-center text-xs text-muted-foreground mb-8">
+              <p className="text-left text-xs text-muted-foreground mb-8">
                 {filteredServices.length} servicio{filteredServices.length !== 1 ? "s" : ""} encontrado{filteredServices.length !== 1 ? "s" : ""}.{" "}
                 <button onClick={clearServiceFilters} className="text-primary font-semibold hover:underline">
                   Limpiar filtros
@@ -416,11 +422,6 @@ const HomeView = () => {
                     </ScrollReveal>
                   );
                 })}
-                {filteredServices.length % 3 === 2 && (
-                  <ScrollReveal delay={(filteredServices.length % 3) * 80} variant="scale">
-                    <TechNetworkBlob className="relative w-full h-full min-h-[280px]" />
-                  </ScrollReveal>
-                )}
               </div>
             )}
           </div>

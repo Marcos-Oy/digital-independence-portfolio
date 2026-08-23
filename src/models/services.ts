@@ -6,7 +6,6 @@ import {
   Wallet,
   Globe,
   Code2,
-  Megaphone,
   Shield,
   Radar,
   Lightbulb,
@@ -19,7 +18,6 @@ import {
   Plug,
   Cog,
   BarChart3,
-  Database,
   type LucideIcon,
 } from "lucide-react";
 import imgArquitectura from "@/assets/services/arquitectura-ti.jpg";
@@ -28,14 +26,12 @@ import imgDireccion from "@/assets/services/direccion-ti.jpg";
 import imgOptimizacion from "@/assets/services/optimizacion-costos-ti.jpg";
 import imgPresencia from "@/assets/services/presencia-digital.jpg";
 import imgDesarrollo from "@/assets/services/desarrollo-software.jpg";
-import imgMarketing from "@/assets/services/marketing-digital.jpg";
 import imgCiberseguridad from "@/assets/services/ciberseguridad.jpg";
 import imgVigilancia from "@/assets/services/vigilancia-innovacion.jpg";
 import imgIA from "@/assets/services/ia-corporativa.jpg";
 import imgIntegracionPlataformas from "@/assets/services/integracion-plataformas.jpg";
 import imgAutomatizacion from "@/assets/services/automatizacion-procesos.jpg";
 import imgDashboards from "@/assets/services/dashboards-kpi.jpg";
-import imgIntegracionBD from "@/assets/services/integracion-bd.jpg";
 
 export type ServiceArea =
   | "estrategia-direccion-ti"
@@ -76,7 +72,6 @@ export interface Service {
   // 3 diferenciadores concretos, no genéricos ("valor agregado").
   addedValue: string[];
   rightClient: string;
-  timeFactor: string;
   valuePromise: string;
   // Dolores específicos que resuelve este servicio (usados en landings de
   // conversión). "description" hace de nutrir, "includes" de método y
@@ -95,14 +90,12 @@ const SERVICE_IMAGES: Record<string, string> = {
   "optimizacion-costos-ti": imgOptimizacion,
   "presencia-digital": imgPresencia,
   "desarrollo-software": imgDesarrollo,
-  "marketing-digital": imgMarketing,
   "ciberseguridad": imgCiberseguridad,
   "vigilancia-innovacion": imgVigilancia,
   "ia-corporativa": imgIA,
   "integracion-plataformas": imgIntegracionPlataformas,
   "automatizacion-procesos": imgAutomatizacion,
   "dashboards-kpi": imgDashboards,
-  "integracion-bd": imgIntegracionBD,
 };
 
 export const AREAS: { id: ServiceArea; label: string; desc: string; icon: LucideIcon }[] = [
@@ -121,7 +114,7 @@ export const AREAS: { id: ServiceArea; label: string; desc: string; icon: Lucide
   {
     id: "desarrollo-presencia",
     label: "Desarrollo y Presencia Digital",
-    desc: "Sitios web, software a medida y marketing digital con criterio técnico. Desde tu primera página hasta sistemas que escalan.",
+    desc: "Sitios web y software a medida con criterio técnico. Desde tu primera página hasta sistemas que escalan.",
     icon: Layers,
   },
   {
@@ -167,7 +160,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Dueño de PyME o gerente con tecnología desordenada, accesos perdidos y sin documentación.",
-    timeFactor: "Primeros 90 días",
     valuePromise:
       "Infraestructura tecnológica completamente ordenada, documentada y bajo tu control directo con ecosistema empresarial configurado.",
     painPoints: [
@@ -209,7 +201,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Gerente de empresa que opera con procesos manuales y siente que la competencia le gana con tecnología.",
-    timeFactor: "Primer trimestre",
     valuePromise:
       "Hoja de ruta de transformación digital implementada con procesos manuales convertidos en flujos digitales.",
     painPoints: [
@@ -249,7 +240,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Empresa o institución que necesita un director de tecnología pero no puede absorber el costo de un CTO full-time.",
-    timeFactor: "Primer trimestre",
     valuePromise:
       "Área TI estructurada, procesos documentados y dirección estratégica activa con tu negocio.",
     painPoints: [
@@ -290,7 +280,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Dueño o gerente que siente que gasta demasiado en tecnología o está a punto de hacer una inversión grande.",
-    timeFactor: "Desde el primer diagnóstico",
     valuePromise:
       "Plan concreto para reducir costos TI entre un 30% y un 50% sin sacrificar rendimiento ni seguridad.",
     painPoints: [
@@ -310,9 +299,9 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
   },
   {
     slug: "presencia-digital",
-    title: "Presencia Digital",
-    shortTitle: "Presencia Digital",
-    navLabel: "Presencia digital y páginas web",
+    title: "Creación y Posicionamiento de Páginas Web",
+    shortTitle: "Páginas Web",
+    navLabel: "Creación y posicionamiento de páginas web",
     area: "desarrollo-presencia",
     areaLabel: "Desarrollo y Presencia Digital",
     icon: Globe,
@@ -330,7 +319,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Profesional independiente o dueño de PyME sin presencia digital profesional o con una que no genera confianza.",
-    timeFactor: "Primeras semanas",
     valuePromise:
       "Presencia digital completamente operativa: sitio web bajo tu dominio, correo corporativo, Google Maps y canales listos.",
     painPoints: [
@@ -350,7 +338,7 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
   },
   {
     slug: "desarrollo-software",
-    title: "Desarrollo de Software Web",
+    title: "Desarrollo de Software",
     shortTitle: "Desarrollo de Software",
     navLabel: "Apps y sistemas web a medida",
     area: "desarrollo-presencia",
@@ -370,7 +358,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Dueño de PyME que gestiona clientes o procesos con Excel y sabe que eso no puede escalar.",
-    timeFactor: "Antes de cerrar el primer trimestre",
     valuePromise:
       "Sistema web funcionando en producción con base de datos, panel de administración y versión móvil instalable.",
     painPoints: [
@@ -387,46 +374,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     segments: ["pymes", "empresas", "publico"],
     modality: ["consultoria"],
-  },
-  {
-    slug: "marketing-digital",
-    title: "Dirección de Marketing Digital",
-    shortTitle: "Marketing Digital",
-    navLabel: "Publicidad y marketing digital",
-    area: "desarrollo-presencia",
-    areaLabel: "Desarrollo y Presencia Digital",
-    icon: Megaphone,
-    tagline: "Publicidad con criterio, sin perder dinero ni cuentas suspendidas.",
-    summary:
-      "SEO/SEM, Meta Ads, LinkedIn Ads, TikTok Ads, Google Ads y estrategia de contenidos con IA. Tres niveles: mentoría, asesoría y consultoría.",
-    description:
-      "Trabajamos SEO/SEM, Meta Ads, LinkedIn Ads, TikTok Ads y Google Ads con foco en políticas y cumplimiento publicitario por plataforma (evitar suspensiones y rechazos). Estrategia de contenidos con IA (ChatGPT, Claude, Canva AI). Operamos en tres niveles: mentoría para emprendedores, asesoría para PyMEs y consultoría para empresas.",
-    approach:
-      "Trabajamos SEO/SEM, Meta Ads, LinkedIn Ads, TikTok Ads y Google Ads con foco explícito en cumplir las políticas publicitarias de cada plataforma, para que tu cuenta no termine suspendida o tus campañas rechazadas. Sumamos estrategia de contenidos apoyada en IA (ChatGPT, Claude, Canva AI) y operamos en tres niveles distintos según el tamaño de tu negocio: mentoría, asesoría o consultoría.",
-    addedValue: [
-      "Cuidamos el cumplimiento publicitario de cada plataforma para evitar suspensiones y rechazos.",
-      "Medimos con métricas reales de costo de adquisición de cliente, no solo alcance o likes.",
-      "Tienes tres niveles de trabajo: desde aprender a pautar tú mismo hasta que gestionemos todo por ti.",
-    ],
-    rightClient:
-      "Desde emprendedores que no saben cómo pautar hasta gerentes que necesitan auditar a su agencia.",
-    timeFactor: "Primeros 90 días",
-    valuePromise:
-      "Inversión publicitaria alineada a resultados con métricas claras de costo de adquisición de cliente.",
-    painPoints: [
-      "Inviertes en publicidad sin saber si realmente te está generando clientes o solo alcance.",
-      "Te han suspendido o rechazado campañas por no cumplir las políticas de cada plataforma.",
-      "No sabes si tu agencia actual está optimizando tu inversión o solo cobrando por gestionarla.",
-    ],
-    includes: [
-      "SEO técnico y SEM",
-      "Meta Ads, LinkedIn Ads, TikTok Ads, Google Ads",
-      "Cumplimiento publicitario por plataforma",
-      "Estrategia de contenidos con IA",
-      "Tres niveles: mentoría, asesoría y consultoría",
-    ],
-    segments: ["emprendedores", "pymes", "empresas", "publico"],
-    modality: ["consultoria", "asesoria", "mentoria"],
   },
   {
     slug: "ciberseguridad",
@@ -450,7 +397,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Desde el dueño de PyME sin controles básicos hasta la gran empresa con ISO pero sin seguridad real en las personas.",
-    timeFactor: "Primeros 90 días",
     valuePromise:
       "Postura de seguridad real: controles técnicos activos, equipo formado para detectar ataques de ingeniería social y plan documentado.",
     painPoints: [
@@ -490,7 +436,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Gerente que toma decisiones tecnológicas y necesita información estructurada, no opinión.",
-    timeFactor: "Entrega mensual desde el primer mes",
     valuePromise:
       "Inteligencia tecnológica continua para que cada decisión se tome con criterio.",
     painPoints: [
@@ -530,7 +475,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "PyMEs y empresas que ya tienen procesos definidos y quieren liberarlos del trabajo manual repetitivo.",
-    timeFactor: "Primeros 90 días",
     valuePromise:
       "Procesos clave automatizados con agentes de IA conectados a tu negocio, con biblioteca de prompts y clones digitales operativos.",
     painPoints: [
@@ -551,42 +495,41 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
   },
   {
     slug: "integracion-plataformas",
-    title: "Integración de Plataformas",
+    title: "Integración de Plataformas y Bases de Datos",
     shortTitle: "Integración de Plataformas",
-    navLabel: "Conecta tus sistemas",
-    area: "desarrollo-presencia",
-    areaLabel: "Desarrollo y Presencia Digital",
+    navLabel: "Conecta y consolida tus sistemas",
+    area: "estrategia-direccion-ti",
+    areaLabel: "Estrategia y Dirección TI",
     icon: Plug,
-    tagline: "Que tus herramientas conversen entre sí, sin reescribirlas.",
+    tagline: "Que tus sistemas se conecten y tus datos vivan en un solo lugar.",
     summary:
-      "Conectamos tus sistemas existentes (CRM, ERP, e-commerce, planillas, plataformas SaaS) mediante APIs, webhooks y conectores personalizados.",
+      "Conectamos tus plataformas existentes (CRM, ERP, e-commerce, planillas, SaaS) vía APIs y consolidamos tus datos dispersos en una base única, estructurada y consultable.",
     description:
-      "Diseñamos e implementamos integraciones entre las plataformas que ya usas para que dejen de operar en silos. Trabajamos con APIs REST, webhooks, middleware de integración (N8N, Zapier, Make) y conectores personalizados cuando se requiere. Resultado: tus datos fluyen entre sistemas sin doble digitación ni archivos manuales.",
+      "Diseñamos e implementamos integraciones entre las plataformas que ya usas para que dejen de operar en silos (APIs REST, webhooks, middleware como N8N, Zapier y Make), y auditamos tus fuentes de datos dispersas para consolidarlas en una base de datos única mediante procesos ETL. Trabajamos con SQL Server, PostgreSQL, MySQL y bases cloud. Resultado: tus sistemas conversan entre sí y tus datos viven en una sola fuente de verdad, sin doble digitación ni archivos manuales.",
     approach:
-      "Mapeamos las plataformas que ya usas (CRM, ERP, e-commerce, planillas, SaaS) y sus flujos de datos, y diseñamos las integraciones necesarias vía APIs REST, webhooks o middleware como N8N, Zapier y Make. El resultado es que tus sistemas dejan de operar como islas separadas y tus datos fluyen entre ellos sin doble digitación.",
+      "Mapeamos las plataformas que ya usas (CRM, ERP, e-commerce, planillas, SaaS) y sus flujos de datos, y diseñamos las integraciones necesarias vía APIs REST, webhooks o middleware como N8N, Zapier y Make. En paralelo, auditamos tus fuentes de datos actuales (Excel, sistemas legacy, plataformas SaaS, bases existentes), diseñamos un modelo de datos unificado e implementamos procesos ETL para consolidar todo en una sola base confiable. El resultado es que tus sistemas dejan de operar como islas separadas y tus datos fluyen entre ellos sin doble digitación, en una única fuente de verdad.",
     addedValue: [
-      "No reescribimos tus sistemas actuales: los conectamos, protegiendo tu inversión previa.",
-      "Eliminamos la doble digitación manual entre plataformas, con la integración documentada.",
-      "Quedas con monitoreo de las integraciones, no una conexión frágil que nadie sabe mantener.",
+      "No reescribimos tus sistemas actuales: los conectamos y consolidamos, protegiendo tu inversión previa.",
+      "Eliminamos la doble digitación manual entre plataformas y terminas con una sola fuente de verdad, no versiones distintas de los mismos datos por área.",
+      "Los procesos de carga quedan automatizados y documentados, no dependen de que alguien copie y pegue cada semana.",
     ],
     rightClient:
-      "PyME o empresa que ya invirtió en varias plataformas (CRM, e-commerce, contabilidad, ERP) y necesita que se comuniquen entre sí.",
-    timeFactor: "Primeros 60 días",
+      "PyME o empresa que ya invirtió en varias plataformas (CRM, e-commerce, contabilidad, ERP) que no se comunican entre sí, con datos críticos dispersos en planillas y reportes que nadie confía porque cada área tiene su versión.",
     valuePromise:
-      "Tus plataformas conectadas operando como un solo ecosistema, con datos sincronizados y sin trabajo manual de copiado.",
+      "Tus plataformas conectadas y tus datos consolidados en una base única, limpia y consultable, con procesos automáticos de carga y sin trabajo manual de copiado.",
     painPoints: [
       "Cargas los mismos datos a mano en dos o tres sistemas distintos porque no se comunican entre sí.",
-      "Ya invertiste en varias plataformas, pero cada una funciona como una isla separada.",
-      "Los errores de doble digitación te están costando tiempo y, a veces, plata.",
+      "Cada área tiene 'su' versión de los datos, y nadie confía del todo en los reportes.",
+      "Ya invertiste en varias plataformas, pero cada una funciona como una isla separada y migrar o consolidar suena riesgoso.",
     ],
     includes: [
       "Mapeo de plataformas y flujos de datos",
-      "Integraciones vía API REST y webhooks",
-      "Middleware de integración (N8N, Zapier, Make)",
-      "Conectores personalizados cuando se requiere",
+      "Integraciones vía API REST, webhooks y middleware (N8N, Zapier, Make)",
+      "Auditoría de fuentes de datos y diseño de modelo unificado",
+      "Procesos ETL y carga automatizada",
       "Documentación técnica y monitoreo",
     ],
-    tools: ["N8N", "Zapier", "Make", "REST APIs", "Webhooks"],
+    tools: ["N8N", "Zapier", "Make", "SQL Server", "PostgreSQL", "MySQL", "Oracle"],
     segments: ["pymes", "empresas", "publico"],
     modality: ["consultoria"],
   },
@@ -612,7 +555,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Empresa con procesos definidos pero ejecutados manualmente, con doble digitación, planillas y tareas repetitivas que consumen horas del equipo.",
-    timeFactor: "Primeros 90 días",
     valuePromise:
       "Procesos clave automatizados con reducción medible de tiempos y errores, y trazabilidad completa de cada ejecución.",
     painPoints: [
@@ -653,7 +595,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     ],
     rightClient:
       "Gerente o dueño que toma decisiones a ciegas, con reportes manuales tardíos y sin visibilidad real de su operación.",
-    timeFactor: "Primer mes",
     valuePromise:
       "Tablero ejecutivo en tiempo real con los KPIs clave de tu negocio, accesible desde cualquier dispositivo.",
     painPoints: [
@@ -671,47 +612,6 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     tools: ["Power BI", "Looker Studio", "Metabase", "Excel"],
     segments: ["pymes", "empresas", "publico"],
     modality: ["consultoria", "asesoria"],
-  },
-  {
-    slug: "integracion-bd",
-    title: "Integración de Bases de Datos",
-    shortTitle: "Integración de Bases de Datos",
-    navLabel: "Una sola fuente de verdad",
-    area: "estrategia-direccion-ti",
-    areaLabel: "Estrategia y Dirección TI",
-    icon: Database,
-    tagline: "De datos dispersos a una única fuente confiable.",
-    summary:
-      "Consolidamos información dispersa entre planillas, sistemas y plataformas en una base de datos única, estructurada y consultable.",
-    description:
-      "Auditamos tus fuentes de datos (Excel, sistemas legacy, plataformas SaaS, bases de datos), diseñamos el modelo unificado, implementamos procesos ETL y entregamos una base consolidada lista para reportería, analítica y operación diaria. Trabajamos con SQL Server, PostgreSQL, MySQL y bases cloud.",
-    approach:
-      "Auditamos tus fuentes de datos actuales (Excel, sistemas legacy, plataformas SaaS, bases de datos existentes), diseñamos un modelo de datos unificado e implementamos procesos ETL para consolidar todo en una sola base confiable. Trabajamos con SQL Server, PostgreSQL, MySQL y bases en la nube según lo que tu operación necesite.",
-    addedValue: [
-      "Terminas con una sola fuente de verdad, no versiones distintas de los mismos datos por área.",
-      "Los procesos de carga quedan automatizados, no dependen de que alguien copie y pegue cada semana.",
-      "Incluye documentación y gobierno de datos, para que la base se mantenga confiable en el tiempo.",
-    ],
-    rightClient:
-      "Empresa con datos críticos en planillas dispersas, sistemas que no se hablan y reportes que nadie confía porque cada área tiene su versión.",
-    timeFactor: "Primer trimestre",
-    valuePromise:
-      "Base de datos única, limpia y consultable con procesos automáticos de carga desde tus fuentes operativas.",
-    painPoints: [
-      "Cada área tiene 'su' versión de los datos, y nadie confía del todo en los reportes.",
-      "Tu información crítica vive dispersa entre Excel, sistemas legacy y plataformas que no se conectan.",
-      "Migrar o consolidar tus datos suena riesgoso, así que sigues postergándolo.",
-    ],
-    includes: [
-      "Auditoría de fuentes de datos",
-      "Diseño de modelo de datos unificado",
-      "Procesos ETL y carga automatizada",
-      "Migración desde planillas y sistemas legacy",
-      "Documentación y gobierno de datos",
-    ],
-    tools: ["SQL Server", "PostgreSQL", "MySQL", "Oracle"],
-    segments: ["pymes", "empresas", "publico"],
-    modality: ["consultoria"],
   },
 ];
 
@@ -766,13 +666,6 @@ export const SEARCH_TAGS: Record<string, string[]> = {
     'base de datos', 'erp', 'crm', 'tienda online', 'ecommerce', 'e-commerce',
     'control inventario', 'facturacion', 'cotizacion', 'gestion empresa',
     'sistema propio', 'quiero automatizar mis procesos', 'software a medida',
-  ],
-  'marketing-digital': [
-    'redes sociales', 'publicidad', 'ads', 'anuncios', 'facebook', 'instagram',
-    'tiktok', 'linkedin', 'google ads', 'sem', 'campanas publicitarias',
-    'quiero mas seguidores', 'quiero mas clientes', 'marketing', 'contenido',
-    'estrategia redes sociales', 'publicidad online', 'pauta digital',
-    'meta ads', 'llegar a mas gente', 'vender mas por redes',
   ],
   'ciberseguridad': [
     'me hackearon', 'hackeo', 'hacker', 'seguridad', 'proteger', 'proteger empresa',

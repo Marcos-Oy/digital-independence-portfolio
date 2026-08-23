@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import HomeView from "@/views/HomeView";
 import LandingHubView from "@/views/landing/LandingHubView";
 import GeneralLandingView from "@/views/landing/GeneralLandingView";
-import AreaLandingView from "@/views/landing/AreaLandingView";
 import ServiceLandingRouteView from "@/views/landing/ServiceLandingRouteView";
 import FundadorView from "@/views/FundadorView";
 import PrivacidadView from "@/views/PrivacidadView";
@@ -53,12 +52,6 @@ const AnimatedRoutes = () => {
         <Route path="/inteligenciaartificial" element={<Navigate to="/servicios/ia-corporativa" replace />} />
         <Route path="/landing" element={<LandingHubView />} />
         <Route path="/landing/general" element={<GeneralLandingView />} />
-        <Route path="/landing/estrategia-direccion-ti" element={<AreaLandingView area="estrategia-direccion-ti" />} />
-        <Route path="/landing/optimizacion-costos" element={<AreaLandingView area="optimizacion-costos" />} />
-        <Route path="/landing/desarrollo-presencia" element={<AreaLandingView area="desarrollo-presencia" />} />
-        <Route path="/landing/ciberseguridad" element={<AreaLandingView area="ciberseguridad" />} />
-        <Route path="/landing/vigilancia-innovacion" element={<AreaLandingView area="vigilancia-innovacion" />} />
-        <Route path="/landing/ia-corporativa" element={<AreaLandingView area="ia-corporativa" />} />
         <Route path="/landing/servicio/:slug" element={<ServiceLandingRouteView />} />
         <Route path="/diagnostico" element={<DiagnosticoView />} />
         <Route path="*" element={<NotFoundView />} />

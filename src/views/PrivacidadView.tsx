@@ -41,16 +41,19 @@ const PrivacidadView = () => {
           <Section title="1. Quiénes somos">
             <p>
               Este sitio (<strong>independenciadigital.cl</strong>) es operado por{" "}
-              <strong>Independencia Digital SpA</strong>, consultora tecnológica chilena. Para efectos de
-              esta política, somos el "responsable del tratamiento" de los datos personales que recopilamos
-              a través de este sitio.
+              <strong>Independencia Digital SpA</strong>, RUT <strong>78.430.447-7</strong>, consultora
+              tecnológica con domicilio en Santiago, Región Metropolitana, Chile. Para efectos de esta
+              política, somos el "responsable del tratamiento" de los datos personales que recopilamos a
+              través de este sitio.
             </p>
             <p>
-              Ante cualquier duda sobre esta política o el tratamiento de tus datos, puedes escribirnos a{" "}
+              Ante cualquier duda sobre esta política, el tratamiento de tus datos o para ejercer tus
+              derechos, puedes escribirnos a{" "}
               <a href="mailto:contacto@independenciadigital.cl" className="text-primary hover:underline">
                 contacto@independenciadigital.cl
               </a>
-              .
+              . Esta misma casilla concentra hoy las funciones de contacto para materias de privacidad de
+              la empresa.
             </p>
           </Section>
 
@@ -79,14 +82,30 @@ const PrivacidadView = () => {
             </p>
           </Section>
 
-          <Section title="3. Para qué usamos tus datos">
+          <Section title="3. Para qué usamos tus datos y con qué base legal">
             <p>Usamos los datos que nos entregas para:</p>
             <ul className="list-disc pl-5 space-y-1.5">
-              <li>Contactarte y coordinar tu diagnóstico o consulta gratuita.</li>
-              <li>Responder tus preguntas sobre nuestros servicios.</li>
-              <li>Elaborar y enviarte propuestas comerciales cuando corresponda.</li>
-              <li>Si eres cliente, administrar y dar seguimiento a tu proyecto a través de nuestro sistema interno de gestión (ERP).</li>
+              <li>
+                Contactarte, coordinar tu diagnóstico gratuito y responder tus preguntas — en base a tu{" "}
+                <strong>consentimiento</strong>, que otorgas voluntariamente al completar el formulario.
+              </li>
+              <li>
+                Elaborar y enviarte propuestas comerciales cuando corresponda — en base a tu{" "}
+                <strong>consentimiento</strong> y a las <strong>medidas precontractuales</strong> que
+                solicitas al pedir una propuesta.
+              </li>
+              <li>
+                Si eres cliente, administrar y dar seguimiento a tu proyecto a través de nuestro sistema
+                interno de gestión (ERP) — en base a la <strong>ejecución del contrato de servicios</strong>{" "}
+                que suscribimos contigo.
+              </li>
             </ul>
+            <p>
+              Entregar tus datos es siempre <strong>voluntario</strong>. Si no completas el formulario de
+              contacto no podremos comunicarnos contigo ni avanzar en tu diagnóstico, pero eso no tiene
+              ninguna otra consecuencia para ti. No tomamos decisiones automatizadas ni elaboramos perfiles
+              a partir de tus datos: toda evaluación de tu caso la hace una persona de nuestro equipo.
+            </p>
             <p>
               No vendemos, arrendamos ni compartimos tus datos personales con terceros para fines
               publicitarios ajenos a Independencia Digital.
@@ -153,7 +172,8 @@ const PrivacidadView = () => {
             </p>
           </Section>
 
-          <Section title="8. Tus derechos (ARCO+)">
+          <Section title="8. Tus derechos (ARCOP) y cómo ejercerlos">
+            <div id="derechos" className="scroll-mt-24" />
             <p>
               Actualmente estos derechos están reconocidos por la Ley N° 19.628 sobre Protección de la Vida
               Privada, y desde el <strong>1 de diciembre de 2026</strong> pasan a estar regulados de forma
@@ -163,7 +183,7 @@ const PrivacidadView = () => {
             </p>
             <p>Sobre tus datos personales, en cualquier momento puedes solicitarnos:</p>
             <ul className="list-disc pl-5 space-y-1.5">
-              <li><strong>Acceso:</strong> puedes solicitarnos por correo todos los datos que tenemos sobre ti (o tu empresa) y te los enviaremos en un plazo razonable.</li>
+              <li><strong>Acceso:</strong> te enviamos todos los datos que tenemos sobre ti (o tu empresa).</li>
               <li><strong>Rectificación:</strong> corregir datos inexactos o desactualizados.</li>
               <li><strong>Cancelación:</strong> eliminar todos tus datos de nuestros registros, tanto del CRM (Systeme.io) como de nuestro ERP interno.</li>
               <li><strong>Oposición:</strong> oponerte a que usemos tus datos para un fin determinado.</li>
@@ -175,8 +195,15 @@ const PrivacidadView = () => {
               <a href="mailto:contacto@independenciadigital.cl" className="text-primary hover:underline">
                 contacto@independenciadigital.cl
               </a>{" "}
-              indicando tu nombre (o razón social) y el derecho que deseas ejercer. Responderemos dentro de
-              un plazo razonable.
+              indicando tu nombre (o razón social) y el derecho que deseas ejercer. No cobramos nada por
+              atender esta solicitud. Nos comprometemos a responder dentro de un plazo máximo de{" "}
+              <strong>20 días hábiles</strong> desde su recepción, sin perjuicio de los plazos que
+              establezca la normativa vigente en cada momento.
+            </p>
+            <p>
+              Si consideras que no hemos dado respuesta adecuada a tu solicitud, tienes derecho a reclamar
+              directamente ante la <strong>Agencia de Protección de Datos Personales</strong> (una vez que
+              entre en funciones) o ante los tribunales de justicia competentes.
             </p>
           </Section>
 

@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { XCircle, Check, Clock } from "lucide-react";
+import { XCircle, Check } from "lucide-react";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import WistiaEmbed from "@/views/shared/WistiaEmbed";
 import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
@@ -138,29 +138,18 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
             </p>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-secondary mb-3">
-                Qué incluye
-              </p>
-              <ul className="space-y-2.5">
-                {service.includes.map((inc) => (
-                  <li key={inc} className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-                    <span className="text-sm text-foreground/90 leading-relaxed">{inc}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-card border border-border rounded-xl p-6 h-full">
-              <span className="inline-flex w-10 h-10 rounded-lg bg-primary/10 items-center justify-center mb-4">
-                <Clock className="w-5 h-5 text-primary" />
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-wide text-secondary mb-2">
-                ¿En cuánto tiempo?
-              </p>
-              <p className="text-sm text-foreground/90 leading-relaxed">{service.timeFactor}</p>
-            </div>
+          <div className="mb-12">
+            <p className="text-xs font-semibold uppercase tracking-wide text-secondary mb-3">
+              Qué incluye
+            </p>
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2.5">
+              {service.includes.map((inc) => (
+                <li key={inc} className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
+                  <span className="text-sm text-foreground/90 leading-relaxed">{inc}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden">

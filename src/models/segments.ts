@@ -30,12 +30,11 @@ export const SEGMENTS: Segment[] = [
     size: "~500.000 en Chile",
     ticket: "Bajo - medio",
     channel: "Redes sociales, boca a boca, contenido orgánico",
-    entryPoint: "Presencia Digital · Marketing Digital",
+    entryPoint: "Páginas Web",
     description:
-      "Si recién estás levantando tu negocio o trabajas por tu cuenta, te ayudamos a crear una presencia digital profesional y a aprender a pautar sin perder dinero. Hablamos claro, con ejemplos cotidianos y sin tecnicismos innecesarios.",
+      "Si recién estás levantando tu negocio o trabajas por tu cuenta, te ayudamos a crear una presencia digital profesional. Hablamos claro, con ejemplos cotidianos y sin tecnicismos innecesarios.",
     recommendedServices: [
       "presencia-digital",
-      "marketing-digital",
       "ciberseguridad",
       "optimizacion-costos-ti",
     ],

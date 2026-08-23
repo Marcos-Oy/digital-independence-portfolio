@@ -15,47 +15,9 @@ const CORE_LANDINGS: LandingMeta[] = [
       "Landing principal de captación con el VSL de Marcos Oyarzo: diagnóstico, arquitectura TI, ciberseguridad, automatización e IA.",
     status: "activa",
   },
-  {
-    path: "/landing/estrategia-direccion-ti",
-    title: "Estrategia y Dirección TI",
-    summary:
-      "Arquitectura TI, transformación digital, dirección de TI, dashboards y consolidación de bases de datos.",
-    status: "activa",
-  },
-  {
-    path: "/landing/optimizacion-costos",
-    title: "Optimización y Costos TI",
-    summary: "Reducción de costos TI y soporte técnico gestionado con SLA.",
-    status: "activa",
-  },
-  {
-    path: "/landing/desarrollo-presencia",
-    title: "Desarrollo y Presencia Digital",
-    summary:
-      "Presencia digital, desarrollo de software, marketing digital e integración de plataformas.",
-    status: "activa",
-  },
-  {
-    path: "/landing/ciberseguridad",
-    title: "Ciberseguridad",
-    summary: "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva.",
-    status: "activa",
-  },
-  {
-    path: "/landing/vigilancia-innovacion",
-    title: "Vigilancia e Innovación Tecnológica",
-    summary: "Monitoreo continuo de tendencias, competencia digital y cambios regulatorios.",
-    status: "activa",
-  },
-  {
-    path: "/landing/ia-corporativa",
-    title: "Inteligencia Artificial Corporativa",
-    summary: "Agentes de IA, automatización de procesos y clones digitales.",
-    status: "activa",
-  },
 ];
 
-// Una landing por cada uno de los 14 servicios, bajo /landing/servicio/ para no
+// Una landing por cada uno de los 12 servicios, bajo /landing/servicio/ para no
 // chocar con los slugs de las áreas (p. ej. el servicio "ia-corporativa"
 // comparte slug con su área).
 const SERVICE_LANDINGS: LandingMeta[] = SERVICES.map((s) => ({

@@ -124,6 +124,10 @@ const SiteFooterView = () => {
             Política de Privacidad
           </Link>
           <span className="hidden sm:inline text-border">·</span>
+          <Link to="/privacidad#derechos" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+            Ejercicio de derechos
+          </Link>
+          <span className="hidden sm:inline text-border">·</span>
           <Link
             to="/landing"
             className="text-[10px] text-muted-foreground/40 hover:text-muted-foreground transition-colors lowercase tracking-wide"

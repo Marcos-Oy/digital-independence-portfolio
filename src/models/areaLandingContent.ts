@@ -39,11 +39,11 @@ export const AREA_LANDING_CONTENT: Record<ServiceArea, AreaLandingContent> = {
     eyebrow: "Desarrollo y Presencia Digital, Independencia Digital",
     headline: "Una presencia digital y sistemas que realmente venden",
     subtext:
-      "Sitios web, software a medida, marketing digital e integración de plataformas, todo con criterio técnico.",
+      "Sitios web, software a medida e integración de plataformas, todo con criterio técnico.",
     painReframe:
-      "Si algo de esto te resulta familiar, no es porque no sepas de marketing o tecnología. Es porque tu presencia digital y tus sistemas se construyeron por separado, sin nadie que los hiciera trabajar juntos.",
+      "Si algo de esto te resulta familiar, no es porque no sepas de tecnología. Es porque tu presencia digital y tus sistemas se construyeron por separado, sin nadie que los hiciera trabajar juntos.",
     rightClient:
-      "Emprendedores y PyMEs sin presencia digital profesional, con procesos en Excel que no escalan, o que invierten en publicidad sin saber si realmente funciona.",
+      "Emprendedores y PyMEs sin presencia digital profesional, o con procesos en Excel que no escalan.",
     wistiaMediaId: SHARED_VSL,
   },
   "ciberseguridad": {
