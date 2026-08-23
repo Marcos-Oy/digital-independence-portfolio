@@ -93,9 +93,11 @@ const FIT_ITEMS = [
 
 /* ------------------------------ ui atoms ------------------------------ */
 
-const PrimaryCta = ({ label, className = "" }: { label: string; className?: string }) => (
+const PrimaryCta = ({ label, className = "", inverse = false }: { label: string; className?: string; inverse?: boolean }) => (
   <button
-    className={`${SYSTEME_TRIGGER_CLASS} inline-flex items-center gap-2 gradient-brand text-primary-foreground font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 ${className}`}
+    className={`${SYSTEME_TRIGGER_CLASS} inline-flex items-center gap-2 font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 ${
+      inverse ? "bg-brand-foreground text-primary" : "gradient-brand text-primary-foreground"
+    } ${className}`}
   >
     {label}
     <ArrowRight className="w-4 h-4" />
@@ -299,7 +301,7 @@ const PaginasWebServiceView = () => {
       </section>
 
       {/* ============ NUESTRO PROCESO ============ */}
-      <section className="py-16 md:py-24 bg-brand-deep text-brand-foreground relative overflow-hidden">
+      <section className="py-16 md:py-24 gradient-brand text-brand-foreground relative overflow-hidden">
         <div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none opacity-[0.06]"
@@ -328,8 +330,8 @@ const PaginasWebServiceView = () => {
               {PROCESS_STEPS.map((s, i) => (
                 <ScrollReveal key={s.title} delay={i * 70} as="li">
                   <div className="relative text-center">
-                    <span className="relative z-10 inline-flex w-16 h-16 rounded-full bg-primary items-center justify-center mb-4 ring-4 ring-brand-deep shadow-brand">
-                      <s.icon className="w-6 h-6 text-primary-foreground" strokeWidth={1.7} />
+                    <span className="relative z-10 inline-flex w-16 h-16 rounded-full bg-brand-foreground/15 backdrop-blur-sm items-center justify-center mb-4 ring-4 ring-brand-foreground/20 shadow-brand">
+                      <s.icon className="w-6 h-6 text-brand-foreground" strokeWidth={1.7} />
                     </span>
                     <p className="font-heading font-bold text-sm mb-1.5">
                       {i + 1}. {s.title}
@@ -417,7 +419,7 @@ const PaginasWebServiceView = () => {
       </section>
 
       {/* ============ CTA FINAL ============ */}
-      <section className="relative py-16 md:py-24 bg-brand-deep text-brand-foreground overflow-hidden">
+      <section className="relative py-16 md:py-24 gradient-brand text-brand-foreground overflow-hidden">
         <div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none"
@@ -437,7 +439,7 @@ const PaginasWebServiceView = () => {
                 a construir una presencia digital que genere resultados.
               </p>
               <div className="flex flex-wrap items-center gap-4">
-                <PrimaryCta label="Agendar diagnóstico gratuito" />
+                <PrimaryCta label="Agendar diagnóstico gratuito" inverse />
                 <span className="inline-flex items-center gap-2 text-xs font-semibold text-brand-foreground/80 bg-brand-foreground/10 border border-brand-foreground/20 px-4 py-2.5 rounded-full">
                   <CheckCircle2 className="w-4 h-4 text-secondary" />
                   Diagnóstico sin costo y sin compromiso
