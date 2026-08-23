@@ -55,6 +55,8 @@ export default {
           DEFAULT: "hsl(var(--tech-carousel))",
           foreground: "hsl(var(--tech-carousel-foreground))",
         },
+        "brand-deep": "hsl(var(--brand-deep))",
+        "brand-foreground": "hsl(var(--brand-foreground))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
