@@ -49,6 +49,7 @@ import {
   StripeAccent,
 } from "@/views/shared/BackgroundBlobs";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import RadialOrbitDiagram from "@/views/shared/RadialOrbitDiagram";
 import csHero from "@/assets/ciberseguridad-hero.jpg";
 import csRiesgo from "@/assets/ciberseguridad-riesgo.jpg";
 import csChile from "@/assets/ciberseguridad-chile.jpg";
