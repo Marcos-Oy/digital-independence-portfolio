@@ -558,13 +558,13 @@ const PaginasWebServiceView = () => {
           <div className="relative max-w-6xl mx-auto">
             <div
               aria-hidden="true"
-              className="hidden lg:block absolute top-8 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-background/30 to-transparent"
+              className="hidden lg:block absolute top-8 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-brand-foreground/30 to-transparent"
             />
             <ol className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-10">
               {PROCESS_STEPS.map((s, i) => (
                 <ScrollReveal key={s.title} delay={i * 70} as="li">
                   <div className="relative text-center group">
-                    <span className="relative z-10 inline-flex w-16 h-16 rounded-2xl bg-background/10 border border-background/20 items-center justify-center mb-4 group-hover:bg-background/20 group-hover:border-secondary/50 transition-all duration-300">
+                    <span className="relative z-10 inline-flex w-16 h-16 rounded-2xl bg-brand-foreground/10 border border-brand-foreground/20 items-center justify-center mb-4 group-hover:bg-brand-foreground/20 group-hover:border-secondary/50 transition-all duration-300">
                       <s.icon className="w-6 h-6 text-secondary" strokeWidth={1.6} />
                     </span>
                     <span className="absolute top-0 right-1/2 translate-x-8 md:translate-x-10 font-heading font-extrabold text-xs opacity-50">
