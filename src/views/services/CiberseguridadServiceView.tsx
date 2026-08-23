@@ -958,7 +958,7 @@ const CiberseguridadServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale">
-              <div className="relative mx-auto w-[380px] h-[380px] max-w-full">
+              <div className="relative mx-auto w-[380px] h-[380px] max-w-full scale-[0.82] sm:scale-100 origin-center">
                 <div aria-hidden="true" className="absolute inset-8 rounded-full border-2 border-dashed border-border" />
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full gradient-brand shadow-brand flex items-center justify-center text-center px-4">
                   <p className="font-heading font-extrabold text-brand-foreground text-[11px] uppercase tracking-[0.14em] leading-snug">
