@@ -142,6 +142,11 @@
   .text-gradient-brand {
     color: hsl(var(--primary));
   }
+  /* Imagen fundida con el fondo de la página (sin marco ni bordes visibles) */
+  .img-blend {
+    -webkit-mask-image: radial-gradient(ellipse 92% 90% at 50% 50%, black 55%, transparent 98%);
+    mask-image: radial-gradient(ellipse 92% 90% at 50% 50%, black 55%, transparent 98%);
+  }
 }
 
 /* Easing premium (Emil Kowalski / high-end-visual-design) */

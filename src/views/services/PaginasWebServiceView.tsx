@@ -3,6 +3,7 @@ import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import {
+  ArrowLeft,
   ArrowRight,
   Building2,
   CheckCircle2,
@@ -165,12 +166,14 @@ const PaginasWebServiceView = () => {
           <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={70} />
         </div>
         <div className="relative container mx-auto px-4">
-          <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground mb-10">
-            <Link to="/" className="hover:text-primary transition-colors">Inicio</Link>
-            <span>/</span>
-            <Link to="/#servicios" className="hover:text-primary transition-colors">Servicios</Link>
-            <span>/</span>
-            <span className="text-foreground">Creación y Posicionamiento de Páginas Web</span>
+          <div className="mb-10">
+            <Link
+              to="/#servicios"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Volver a servicios
+            </Link>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -205,7 +208,7 @@ const PaginasWebServiceView = () => {
                 width={1024}
                 height={768}
                 loading="eager"
-                className="w-full rounded-3xl border border-border object-cover shadow-card"
+                className="w-full object-cover img-blend"
               />
               <div className="absolute -right-3 top-6 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
                 <p className="font-heading font-extrabold text-lg text-secondary leading-none">+120%</p>
@@ -255,7 +258,7 @@ const PaginasWebServiceView = () => {
                   width={1024}
                   height={768}
                   loading="lazy"
-                  className="w-full rounded-2xl border border-border object-cover shadow-card"
+                  className="w-full object-cover img-blend"
                 />
               </div>
             </ScrollReveal>
@@ -378,7 +381,7 @@ const PaginasWebServiceView = () => {
                 width={1024}
                 height={768}
                 loading="lazy"
-                className="w-full rounded-3xl border border-border object-cover shadow-card"
+                className="w-full object-cover img-blend"
               />
               <div className="absolute -right-3 bottom-8 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
                 <p className="font-heading font-bold text-sm text-foreground mb-1.5">
@@ -454,7 +457,7 @@ const PaginasWebServiceView = () => {
                 width={1024}
                 height={768}
                 loading="lazy"
-                className="w-full rounded-3xl border border-brand-foreground/20 object-cover shadow-card"
+                className="w-full object-cover img-blend"
               />
             </ScrollReveal>
           </div>
