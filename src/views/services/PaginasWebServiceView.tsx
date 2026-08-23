@@ -19,6 +19,9 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { AccentBlob, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
+import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import bannerHero from "@/assets/banner-hero.png";
 import webHeroDevices from "@/assets/services/web-resultado-devices.jpg";
 import webSolucionLaptop from "@/assets/services/web-solucion-laptop.jpg";
 import webResultadoCrecimiento from "@/assets/services/web-resultado-crecimiento.jpg";
@@ -146,14 +149,19 @@ const PaginasWebServiceView = () => {
 
       {/* ============ HERO ============ */}
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden bg-background">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 55% at 75% 20%, hsl(var(--primary) / 0.08), transparent), radial-gradient(ellipse 45% 40% at 15% 85%, hsl(var(--secondary) / 0.07), transparent)",
-          }}
-        />
+        {/* Fondo: mismo banner y efectos del hero principal, por debajo del contenido */}
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+          <img src={bannerHero} alt="" className="w-full h-full object-cover opacity-60 dark:opacity-45" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/80" />
+          <div className="hero-orb w-96 h-96 bg-primary/8 top-1/4 -left-20 animate-float" />
+          <div className="hero-orb w-72 h-72 bg-secondary/8 top-1/3 right-0 animate-float" style={{ animationDelay: "2s" }} />
+          <div className="hero-orb w-56 h-56 bg-primary/5 bottom-1/4 left-1/3 animate-float-slow" style={{ animationDelay: "1s" }} />
+          <AccentBlob shape={1} color="secondary" className="w-16 h-12 top-[18%] right-[18%] opacity-80 animate-float-slow" />
+          <AccentBlob shape={2} className="w-8 h-11 bottom-[22%] left-[12%] opacity-70 animate-float" />
+          <GlowOrb color="secondary" className="absolute w-12 h-12 md:w-16 md:h-16 top-[12%] left-[8%]" />
+          <SparkleDots color="secondary" className="absolute w-64 h-64 bottom-[8%] right-[6%] text-white" />
+          <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={70} />
+        </div>
         <div className="relative container mx-auto px-4">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground mb-10">
             <Link to="/" className="hover:text-primary transition-colors">Inicio</Link>
@@ -195,9 +203,9 @@ const PaginasWebServiceView = () => {
                 width={1024}
                 height={768}
                 loading="eager"
-                className="w-full rounded-3xl border border-border object-cover shadow-soft"
+                className="w-full rounded-3xl border border-border object-cover shadow-card"
               />
-              <div className="absolute -right-3 top-6 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-soft">
+              <div className="absolute -right-3 top-6 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
                 <p className="font-heading font-extrabold text-lg text-secondary leading-none">+120%</p>
                 <p className="text-[11px] text-muted-foreground mt-1 mb-1.5">Más visitas orgánicas</p>
                 <MiniLineChart />
@@ -245,7 +253,7 @@ const PaginasWebServiceView = () => {
                   width={1024}
                   height={768}
                   loading="lazy"
-                  className="w-full rounded-2xl border border-border object-cover shadow-soft"
+                  className="w-full rounded-2xl border border-border object-cover shadow-card"
                 />
               </div>
             </ScrollReveal>
@@ -266,7 +274,7 @@ const PaginasWebServiceView = () => {
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {INCLUDE_CARDS.map((card, i) => (
               <ScrollReveal key={card.title} delay={i * 80} variant="scale">
-                <div className="relative bg-card border border-border rounded-2xl p-7 pt-12 h-full shadow-soft hover:shadow-brand hover:border-primary/30 transition-all duration-300">
+                <div className="relative bg-card border border-border rounded-2xl p-7 pt-12 h-full shadow-card hover:shadow-brand hover:border-primary/30 transition-all duration-300">
                   <span
                     className={`absolute -top-7 left-1/2 -translate-x-1/2 inline-flex w-14 h-14 rounded-full ${card.accent} items-center justify-center shadow-brand ring-4 ring-background`}
                   >
@@ -368,9 +376,9 @@ const PaginasWebServiceView = () => {
                 width={1024}
                 height={768}
                 loading="lazy"
-                className="w-full rounded-3xl border border-border object-cover shadow-soft"
+                className="w-full rounded-3xl border border-border object-cover shadow-card"
               />
-              <div className="absolute -right-3 bottom-8 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-soft">
+              <div className="absolute -right-3 bottom-8 md:-right-6 bg-card border border-border rounded-2xl px-4 py-3 shadow-card">
                 <p className="font-heading font-bold text-sm text-foreground mb-1.5">
                   Mejores resultados para tu negocio
                 </p>
@@ -444,7 +452,7 @@ const PaginasWebServiceView = () => {
                 width={1024}
                 height={768}
                 loading="lazy"
-                className="w-full rounded-3xl border border-brand-foreground/20 object-cover shadow-soft"
+                className="w-full rounded-3xl border border-brand-foreground/20 object-cover shadow-card"
               />
             </ScrollReveal>
           </div>
