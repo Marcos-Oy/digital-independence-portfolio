@@ -3,6 +3,7 @@ import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import {
+  ArrowLeft,
   CheckCircle2,
   Target,
   TrendingUp,
@@ -54,13 +55,13 @@ const ServicioView = ({ service }: Props) => {
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/85 to-background" />
         </div>
         <div className="relative container mx-auto px-4">
-          <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground mb-8">
-            <Link to="/" className="hover:text-primary transition-colors">Inicio</Link>
-            <span>/</span>
-            <Link to="/#servicios" className="hover:text-primary transition-colors">Servicios</Link>
-            <span>/</span>
-            <span className="text-foreground">{service.title}</span>
-          </div>
+          <Link
+            to="/#servicios"
+            className="group inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground hover:text-primary border border-border/60 hover:border-primary/50 bg-card/50 backdrop-blur-sm rounded-full pl-3.5 pr-4 py-2 mb-8 transition-all duration-300 hover:shadow-card"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+            Volver a Servicios
+          </Link>
 
           <div className="grid md:grid-cols-[1fr_auto] gap-10 items-center">
             <ScrollReveal>
