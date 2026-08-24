@@ -18,8 +18,8 @@ import logoFull from "@/assets/logo-full.png";
 import bannerHero from "@/assets/banner-hero.png";
 import bannerPlan360 from "@/assets/banner-plan360.png";
 import { ChevronRight, ChevronDown, Instagram, Facebook, Linkedin, Mail, Search, X } from "lucide-react";
-import { AREAS, MODALITY_LABELS, MODALITY_COLORS, type ServiceArea, type ServiceModality } from "@/models/services";
-import { ALL_MODALITIES, filterAndSortServices } from "@/models/serviceSearch";
+import { AREAS, type ServiceArea } from "@/models/services";
+import { filterAndSortServices } from "@/models/serviceSearch";
 import { SEGMENTS } from "@/models/segments";
 import { FAQS } from "@/models/faq";
 import { METHOD_STEPS } from "@/models/method";
@@ -52,18 +52,15 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => {
 const HomeView = () => {
   const explored = useSiteExplored();
   const [query, setQuery] = useState("");
-  const [activeModality, setActiveModality] = useState<ServiceModality | null>(null);
   const [activeArea, setActiveArea] = useState<ServiceArea | null>(null);
 
   const { filtered: filteredServices, isSearching } = filterAndSortServices({
     query,
-    modality: activeModality,
     area: activeArea,
   });
-  const isFiltering = isSearching || activeModality !== null || activeArea !== null;
+  const isFiltering = isSearching || activeArea !== null;
   const clearServiceFilters = () => {
     setQuery("");
-    setActiveModality(null);
     setActiveArea(null);
   };
 
@@ -326,33 +323,6 @@ const HomeView = () => {
                   </button>
                 )}
               </div>
-            </ScrollReveal>
-
-            {/* Filtro por modalidad */}
-            <ScrollReveal delay={70} className="flex flex-wrap justify-start gap-2 mb-4">
-              <button
-                onClick={() => setActiveModality(null)}
-                className={`text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all duration-150 ${
-                  activeModality === null
-                    ? "bg-foreground text-background border-foreground"
-                    : "bg-card text-muted-foreground border-border hover:border-foreground/30 hover:text-foreground"
-                }`}
-              >
-                Todos
-              </button>
-              {ALL_MODALITIES.map((m) => (
-                <button
-                  key={m}
-                  onClick={() => setActiveModality(activeModality === m ? null : m)}
-                  className={`text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all duration-150 ${
-                    activeModality === m
-                      ? MODALITY_COLORS[m] + " border-current"
-                      : "bg-card text-muted-foreground border-border hover:border-foreground/30 hover:text-foreground"
-                  }`}
-                >
-                  {MODALITY_LABELS[m]}
-                </button>
-              ))}
             </ScrollReveal>
 
             {/* Filtro por área */}

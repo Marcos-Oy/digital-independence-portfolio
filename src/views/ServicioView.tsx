@@ -12,7 +12,7 @@ import {
   MessageCircle,
   Handshake,
 } from "lucide-react";
-import { type Service, MODALITY_LABELS, MODALITY_COLORS } from "@/models/services";
+import { type Service } from "@/models/services";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 import { FAQS } from "@/models/faq";
 import { SERVICE_DESCRIPTIONS } from "@/models/serviceDescriptionContent";
@@ -74,16 +74,6 @@ const ServicioView = ({ service }: Props) => {
               <p className="text-base md:text-lg text-muted-foreground max-w-2xl mb-3 leading-relaxed">
                 {service.tagline}
               </p>
-              <div className="flex flex-wrap gap-2 mb-8">
-                {service.modality.map((m) => (
-                  <span
-                    key={m}
-                    className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full border ${MODALITY_COLORS[m]}`}
-                  >
-                    {MODALITY_LABELS[m]}
-                  </span>
-                ))}
-              </div>
               <div className="flex flex-wrap gap-3">
                 <CtaButton label="Agendar diagnóstico" />
                 <Link
