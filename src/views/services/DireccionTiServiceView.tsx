@@ -315,7 +315,7 @@ const PhoneMock = ({ children, className = "" }: { children: React.ReactNode; cl
 );
 
 /** Fila del panel de dirección: icono + etiqueta + estado de gobierno. */
-const GovernanceRow = ({ icon: Icon, label, decided = true }: { icon: React.ComponentType<{ className?: string }>; label: string; decided?: boolean }) => (
+const GovernanceRow = ({ icon: Icon, label, decided = true }: { icon: React.ComponentType<{ className?: string; strokeWidth?: string | number }>; label: string; decided?: boolean }) => (
   <div className="flex items-center gap-2.5">
     <span className={`inline-flex w-7 h-7 rounded-lg items-center justify-center shrink-0 ${decided ? "bg-primary/10" : "bg-muted"}`}>
       <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.8} />

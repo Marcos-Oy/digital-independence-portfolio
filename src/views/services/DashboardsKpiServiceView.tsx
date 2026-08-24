@@ -318,7 +318,7 @@ const MiniBars = ({ values }: { values: number[] }) => (
 );
 
 /** Fila de KPI: icono + etiqueta + tendencia mini. */
-const KpiRow = ({ icon: Icon, label, defined = true }: { icon: React.ComponentType<{ className?: string }>; label: string; defined?: boolean }) => (
+const KpiRow = ({ icon: Icon, label, defined = true }: { icon: React.ComponentType<{ className?: string; strokeWidth?: string | number }>; label: string; defined?: boolean }) => (
   <div className="flex items-center gap-2.5">
     <span className={`inline-flex w-7 h-7 rounded-lg items-center justify-center shrink-0 ${defined ? "bg-primary/10" : "bg-muted"}`}>
       <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.8} />

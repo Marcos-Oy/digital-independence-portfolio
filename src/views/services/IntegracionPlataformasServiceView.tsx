@@ -305,7 +305,7 @@ const PhoneMock = ({ children, className = "" }: { children: React.ReactNode; cl
 );
 
 /** Fila de plataforma: icono + etiqueta + estado de sincronización. */
-const PlatformRow = ({ icon: Icon, label, synced = true }: { icon: React.ComponentType<{ className?: string }>; label: string; synced?: boolean }) => (
+const PlatformRow = ({ icon: Icon, label, synced = true }: { icon: React.ComponentType<{ className?: string; strokeWidth?: string | number }>; label: string; synced?: boolean }) => (
   <div className="flex items-center gap-2.5">
     <span className={`inline-flex w-7 h-7 rounded-lg items-center justify-center shrink-0 ${synced ? "bg-primary/10" : "bg-muted"}`}>
       <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.8} />

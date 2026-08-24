@@ -316,7 +316,7 @@ const PhoneMock = ({ children, className = "" }: { children: React.ReactNode; cl
 );
 
 /** Nodo del ecosistema: icono + etiqueta + estado (gobernado / conectado). */
-const EcosystemNode = ({ icon: Icon, label, governed = true }: { icon: React.ComponentType<{ className?: string }>; label: string; governed?: boolean }) => (
+const EcosystemNode = ({ icon: Icon, label, governed = true }: { icon: React.ComponentType<{ className?: string; strokeWidth?: string | number }>; label: string; governed?: boolean }) => (
   <div className="flex items-center gap-2.5">
     <span className={`inline-flex w-7 h-7 rounded-lg items-center justify-center shrink-0 ${governed ? "bg-primary/10" : "bg-muted"}`}>
       <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.8} />
