@@ -3,6 +3,7 @@ import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import {
+  ArrowLeft,
   ArrowRight,
   Building2,
   CheckCircle2,

@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  ArrowLeft,
   ArrowRight,
   Blocks,
   CheckCircle2,
