@@ -311,7 +311,7 @@ const PhoneMock = ({ children, className = "" }: { children: React.ReactNode; cl
 );
 
 /** Fila de paso del flujo: icono + etiqueta + estado de ejecución. */
-const FlowStepRow = ({ icon: Icon, label, done = true }: { icon: React.ComponentType<{ className?: string }>; label: string; done?: boolean }) => (
+const FlowStepRow = ({ icon: Icon, label, done = true }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; label: string; done?: boolean }) => (
   <div className="flex items-center gap-2.5">
     <span className={`inline-flex w-7 h-7 rounded-lg items-center justify-center shrink-0 ${done ? "bg-primary/10" : "bg-muted"}`}>
       <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.8} />
