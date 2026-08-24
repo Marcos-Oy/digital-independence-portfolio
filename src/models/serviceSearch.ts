@@ -1,6 +1,4 @@
-import { SERVICES, SEARCH_TAGS, type ServiceModality, type ServiceArea } from "@/models/services";
-
-export const ALL_MODALITIES: ServiceModality[] = ["consultoria", "asesoria", "mentoria"];
+import { SERVICES, SEARCH_TAGS, type ServiceArea } from "@/models/services";
 
 const STOP_WORDS = new Set([
   "quiero", "necesito", "para", "mi", "empresa", "tengo", "como", "que", "es",
@@ -27,11 +25,10 @@ const scoreService = (slug: string, haystack: string, words: string[]): number =
 
 export interface ServiceFilters {
   query: string;
-  modality: ServiceModality | null;
   area: ServiceArea | null;
 }
 
-export const filterAndSortServices = ({ query, modality, area }: ServiceFilters) => {
+export const filterAndSortServices = ({ query, area }: ServiceFilters) => {
   const q = query.trim();
   const words = getWords(q);
   const isSearching = words.length > 0;
@@ -42,9 +39,7 @@ export const filterAndSortServices = ({ query, modality, area }: ServiceFilters)
         const haystack = norm([s.title, s.navLabel, s.summary, s.areaLabel, ...s.includes].join(" "));
         if (scoreService(s.slug, haystack, words) === 0) return false;
       }
-      const matchesModality = !modality || s.modality.includes(modality);
-      const matchesArea = !area || s.area === area;
-      return matchesModality && matchesArea;
+      return !area || s.area === area;
     })
     .sort((a, b) => {
       if (!isSearching) return 0;

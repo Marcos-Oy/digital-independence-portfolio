@@ -4,7 +4,7 @@ import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { type Segment } from "@/models/segments";
-import { getServiceBySlug, MODALITY_LABELS, MODALITY_COLORS } from "@/models/services";
+import { getServiceBySlug } from "@/models/services";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 
 interface Props {
@@ -96,20 +96,8 @@ const SegmentoView = ({ segment }: Props) => {
                     to={`/servicios/${s.slug}`}
                     className="group bg-card border border-border rounded-xl p-6 hover:border-primary/25 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-300 flex flex-col h-full"
                   >
-                    <div className="flex items-start justify-between gap-2 mb-4">
-                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
-                        <SIcon className="w-5 h-5 text-primary" />
-                      </div>
-                      <div className="flex flex-wrap gap-1 justify-end">
-                        {s.modality.map((m) => (
-                          <span
-                            key={m}
-                            className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${MODALITY_COLORS[m]}`}
-                          >
-                            {MODALITY_LABELS[m]}
-                          </span>
-                        ))}
-                      </div>
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors duration-200 mb-4">
+                      <SIcon className="w-5 h-5 text-primary" />
                     </div>
                     <h3 className="font-heading font-bold text-base text-foreground mb-2">{s.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
