@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 import {
+  BlobImage,
   AccentBlob,
   GlowOrb,
   RingLoop,
@@ -42,6 +43,12 @@ import {
   StripeAccent,
 } from "@/views/shared/BackgroundBlobs";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import ServicePhoto from "@/views/shared/ServicePhoto";
+import iaHero from "@/assets/services/ia-hero.jpg";
+import iaProblema from "@/assets/services/ia-problema.jpg";
+import iaSolucion from "@/assets/services/ia-solucion.jpg";
+import iaResultado from "@/assets/services/ia-resultado.jpg";
+import iaCta from "@/assets/services/ia-cta.jpg";
 
 /* ------------------------------ content ------------------------------ */
 
@@ -302,182 +309,6 @@ const FlowChips = ({ steps, className = "" }: { steps: string[]; className?: str
   </div>
 );
 
-/* ------------------------------ device mockups (CSS-only, sin fotografía) ------------------------------ */
-
-const DeviceDots = () => (
-  <span className="flex items-center gap-1.5">
-    <span className="w-2 h-2 rounded-full bg-primary/30" />
-    <span className="w-2 h-2 rounded-full bg-secondary/40" />
-    <span className="w-2 h-2 rounded-full bg-muted-foreground/25" />
-  </span>
-);
-
-const LaptopMock = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`rounded-2xl border border-border bg-card overflow-hidden ${className}`}>
-    <div className="h-7 bg-muted border-b border-border flex items-center px-3">
-      <DeviceDots />
-    </div>
-    <div className="p-4 md:p-5">{children}</div>
-  </div>
-);
-
-const PhoneMock = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`rounded-[1.4rem] border border-border bg-card overflow-hidden ${className}`}>
-    <div className="h-5 bg-muted border-b border-border flex items-center justify-center">
-      <span className="w-8 h-1 rounded-full bg-border" />
-    </div>
-    <div className="p-3">{children}</div>
-  </div>
-);
-
-/** Fila del agente: icono + fuente de contexto + estado de conexión. */
-const AgentContextRow = ({ icon: Icon, label, connected = true }: { icon: React.ComponentType<{ className?: string; strokeWidth?: string | number }>; label: string; connected?: boolean }) => (
-  <div className="flex items-center gap-2.5">
-    <span className={`inline-flex w-7 h-7 rounded-lg items-center justify-center shrink-0 ${connected ? "bg-secondary/10" : "bg-muted"}`}>
-      <Icon className="w-3.5 h-3.5 text-secondary" strokeWidth={1.8} />
-    </span>
-    <span className="text-[10px] font-semibold text-foreground/80 flex-1 truncate">{label}</span>
-    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${connected ? "bg-secondary" : "bg-border"}`} aria-hidden="true" />
-  </div>
-);
-
-/** Panel del hero: laptop con agente conectado a contexto del negocio + teléfono con flujos activos. */
-const HeroAgentPanel = () => (
-  <div className="grid grid-cols-[1fr_auto] gap-3 items-end">
-    <LaptopMock className="shadow-card-hover">
-      <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-3">
-        Agente conectado al negocio
-      </p>
-      <div className="space-y-3">
-        <AgentContextRow icon={BookOpenText} label="Documentos" />
-        <AgentContextRow icon={Database} label="Historial de clientes" />
-        <AgentContextRow icon={Workflow} label="Flujos de trabajo" />
-        <AgentContextRow icon={Plug} label="Integraciones" connected={false} />
-      </div>
-    </LaptopMock>
-    <PhoneMock className="w-24 shadow-card hidden sm:block">
-      <p className="text-[8px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-2">
-        Automatización
-      </p>
-      <div className="space-y-1.5">
-        <span className="block text-[8px] font-semibold text-secondary bg-secondary/10 rounded px-1.5 py-1">Activa</span>
-        <span className="block text-[8px] font-semibold text-primary bg-primary/8 rounded px-1.5 py-1">Con memoria</span>
-        <span className="block text-[8px] font-semibold text-foreground/70 bg-muted rounded px-1.5 py-1">Conectada</span>
-      </div>
-    </PhoneMock>
-  </div>
-);
-
-/** Panel del problema: herramientas de IA aisladas, sin contexto del negocio. */
-const DisconnectedAiPanel = () => {
-  const rows = [
-    { icon: Bot, label: "IA genérica", connected: true },
-    { icon: BookOpenText, label: "Documentos", connected: false },
-    { icon: Database, label: "Historial", connected: false },
-    { icon: Workflow, label: "Flujo A", connected: true },
-    { icon: Plug, label: "CRM", connected: false },
-    { icon: MessagesSquare, label: "Mensajería", connected: false },
-  ];
-  return (
-    <div className="rounded-2xl border border-border bg-card p-5 md:p-6 shadow-card-hover">
-      <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-4">
-        IA sin conexión al negocio
-      </p>
-      <div className="grid grid-cols-2 gap-3">
-        {rows.map((r) => (
-          <div
-            key={r.label}
-            className={`flex items-center gap-2 rounded-lg border px-2.5 py-2 ${
-              r.connected ? "border-border bg-muted/40" : "border-dashed border-border/70"
-            }`}
-          >
-            <r.icon className="w-3.5 h-3.5 text-muted-foreground shrink-0" strokeWidth={1.8} />
-            <span className="text-[10px] text-foreground/70 truncate">{r.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-/** Panel de solución: laptop + monitor con ecosistema de IA conectado y activo. */
-const ConnectedAiPanel = () => (
-  <div className="grid grid-cols-2 gap-3">
-    <LaptopMock className="col-span-2 shadow-card-hover">
-      <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-3">
-        Ecosistema de IA conectado
-      </p>
-      <div className="space-y-3">
-        <AgentContextRow icon={BookOpenText} label="Base de conocimiento" />
-        <AgentContextRow icon={Workflow} label="Automatización de flujos" />
-        <AgentContextRow icon={Plug} label="Herramientas integradas" />
-      </div>
-    </LaptopMock>
-    <div className="col-span-2 rounded-xl border border-border bg-muted/60 px-4 py-3">
-      <p className="text-[9px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-2">
-        Operación real
-      </p>
-      <div className="flex flex-wrap gap-1.5">
-        <span className="text-[9px] font-semibold text-secondary bg-secondary/10 rounded-full px-2.5 py-1">Con contexto</span>
-        <span className="text-[9px] font-semibold text-primary bg-primary/8 rounded-full px-2.5 py-1">En producción</span>
-      </div>
-    </div>
-  </div>
-);
-
-/** Panel de resultado: agentes y automatizaciones activos. */
-const ResultPanel = () => (
-  <div className="grid grid-cols-[1fr_auto] gap-3 items-end">
-    <LaptopMock className="shadow-card-hover">
-      <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-3">
-        Agentes y automatizaciones
-      </p>
-      <div className="space-y-2.5">
-        <AgentContextRow icon={Bot} label="Agente de atención" />
-        <AgentContextRow icon={Workflow} label="Flujo de seguimiento" />
-        <AgentContextRow icon={UserCircle2} label="Clon digital" />
-        <AgentContextRow icon={MessagesSquare} label="Conversaciones" />
-        <AgentContextRow icon={Plug} label="Nueva integración" connected={false} />
-      </div>
-    </LaptopMock>
-    <PhoneMock className="w-24 shadow-card hidden sm:block">
-      <p className="text-[8px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-2">
-        Estado
-      </p>
-      <div className="space-y-1.5">
-        {[1, 2, 3].map((n) => (
-          <div key={n} className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-2.5 h-2.5 text-secondary shrink-0" />
-            <span className="h-1.5 flex-1 rounded-full bg-muted" />
-          </div>
-        ))}
-      </div>
-    </PhoneMock>
-  </div>
-);
-
-/** Panel del CTA final: diagnóstico agendado, tono calmo. */
-const CtaPanel = () => (
-  <div className="rounded-2xl border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur-sm p-5 md:p-6">
-    <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-brand-foreground/70 mb-4">
-      Diagnóstico agendado
-    </p>
-    <div className="space-y-3">
-      {["Diagnóstico", "Diseño", "Entrenamiento", "Implementación"].map((step, i) => (
-        <div key={step} className="flex items-center gap-3">
-          <span className="w-5 h-5 rounded-full bg-brand-foreground/15 border border-brand-foreground/25 flex items-center justify-center text-[9px] font-bold text-brand-foreground shrink-0">
-            {i + 1}
-          </span>
-          <span className="h-1.5 flex-1 rounded-full bg-brand-foreground/15 overflow-hidden">
-            <span className="block h-full bg-brand-foreground/50 rounded-full" style={{ width: i === 0 ? "100%" : "0%" }} />
-          </span>
-          <span className="text-[10px] text-brand-foreground/80 w-24 shrink-0">{step}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
 /* ------------------------------ view ------------------------------ */
 
 const IaCorporativaServiceView = () => {
@@ -552,11 +383,12 @@ const IaCorporativaServiceView = () => {
             <ScrollReveal delay={120} variant="scale" className="relative">
               <div className="relative pt-6 pr-4 pb-6 pl-4">
                 <StripeAccent className="absolute -top-1 right-0 w-24 h-14 rounded-xl opacity-90" />
-                <div className="blob-shape-1 overflow-hidden shadow-card-hover">
-                  <div className="bg-gradient-to-br from-muted via-background to-muted p-6 md:p-8 aspect-[4/3] flex items-center">
-                    <HeroAgentPanel />
-                  </div>
-                </div>
+                <BlobImage
+                  src={iaHero}
+                  shape={1}
+                  alt="Equipo de empresa trabajando con herramientas de inteligencia artificial en una oficina moderna"
+                  className="w-full aspect-[4/3] shadow-card-hover"
+                />
                 <RingLoop color="secondary" className="absolute -bottom-2 -left-2 w-24 h-24" />
                 <AccentBlob shape={6} color="secondary" className="absolute bottom-4 right-4 w-7 h-5 opacity-80" />
               </div>
@@ -589,7 +421,14 @@ const IaCorporativaServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale">
-              <DisconnectedAiPanel />
+              <img
+                src={iaProblema}
+                alt="Profesional frustrado usando herramientas de IA desconectadas del contexto de su negocio"
+                width={1280}
+                height={960}
+                loading="lazy"
+                className="w-full rounded-3xl border border-border object-cover shadow-card"
+              />
             </ScrollReveal>
           </div>
 
@@ -620,11 +459,12 @@ const IaCorporativaServiceView = () => {
             <ScrollReveal variant="scale" className="relative order-last lg:order-first">
               <div className="relative pt-6 pr-4 pb-6 pl-4">
                 <StripeAccent className="absolute -top-1 left-6 w-24 h-14 rounded-xl opacity-90" />
-                <div className="blob-shape-3 overflow-hidden shadow-card-hover">
-                  <div className="bg-gradient-to-br from-muted via-background to-muted p-6 md:p-8 aspect-[4/3] flex items-center">
-                    <ConnectedAiPanel />
-                  </div>
-                </div>
+                <BlobImage
+                  src={iaSolucion}
+                  shape={3}
+                  alt="Consultores implementando inteligencia artificial conectada a los datos de una empresa"
+                  className="w-full aspect-[4/3] shadow-card-hover"
+                />
                 <RingLoop color="primary" className="absolute -bottom-2 -right-2 w-24 h-24" />
                 <AccentBlob shape={5} color="secondary" className="absolute top-6 right-2 w-8 h-6 opacity-80" />
               </div>
@@ -908,7 +748,7 @@ const IaCorporativaServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale" className="relative">
-              <ResultPanel />
+              <ServicePhoto src={iaResultado} alt="Equipo tomando decisiones con apoyo de inteligencia artificial corporativa" shape={2} />
             </ScrollReveal>
           </div>
         </div>
@@ -1047,7 +887,17 @@ const IaCorporativaServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale">
-              <CtaPanel />
+              <div className="relative pt-6 pr-4 pb-6 pl-4">
+                <StripeAccent className="absolute -top-1 right-0 w-24 h-14 rounded-xl opacity-90" />
+                <BlobImage
+                  src={iaCta}
+                  shape={4}
+                  alt="Profesional explorando casos de uso de inteligencia artificial para su empresa"
+                  className="w-full aspect-[4/3] shadow-card-hover"
+                />
+                <RingLoop color="secondary" className="absolute -bottom-2 -left-2 w-24 h-24" />
+                <AccentBlob shape={6} color="secondary" className="absolute bottom-4 right-4 w-7 h-5 opacity-80" />
+              </div>
             </ScrollReveal>
           </div>
         </div>
