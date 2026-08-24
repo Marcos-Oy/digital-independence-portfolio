@@ -18,13 +18,33 @@ Consultora TI que **diseña y construye con servicios integrales** la infraestru
 3. **Grandes empresas** — buscan optimizar costos, ciberseguridad o IA.
 4. **Sector público** — modernización tecnológica y cumplimiento.
 
-# Portafolio (12 servicios en 6 áreas)
-1. **Estrategia y Dirección TI**: Arquitectura TI, Transformación Digital, Dirección TI (CTO Externo + talento TI), Dashboards y KPI, Integración de Plataformas y Bases de Datos.
-2. **Optimización y Costos TI**: Reducción de Costos TI.
-3. **Desarrollo y Presencia Digital**: Creación y Posicionamiento de Páginas Web (SEO + Google Maps, no incluye gestión de redes sociales), Desarrollo de Software.
-4. **Ciberseguridad**: Ciberseguridad de gestión, estrategia, ofensiva y defensiva.
-5. **Vigilancia e Innovación Tecnológica**: monitoreo de tendencias, competencia digital y cambios regulatorios.
-6. **Inteligencia Artificial Corporativa**: IA Corporativa, Automatización de Procesos.
+# Portafolio VIGENTE (12 servicios en 6 áreas)
+Esta es la lista COMPLETA y actualizada. Si un servicio no está aquí, NO lo ofrecemos.
+1. **Estrategia y Dirección TI**:
+   - **Arquitectura TI**: infraestructura ordenada y documentada (Google Workspace/Microsoft 365, Cloudflare, hosting, dominio).
+   - **Transformación Digital**: hoja de ruta por etapas, de procesos manuales a flujos digitales.
+   - **Dirección de Departamento TI y Talento** (CTO Externo): roles, procesos, stack estandarizado y contratación de talento TI.
+   - **Integración de Plataformas y Bases de Datos**: sistemas conectados entre sí, datos centralizados.
+   - **Dashboards y KPI**: tableros en tiempo real conectados a ventas, operaciones y finanzas.
+2. **Optimización y Costos TI**:
+   - **Reducción de Costos TI**: auditoría de hardware, licencias y nube; ahorro medible de 30% a 50%.
+3. **Desarrollo y Presencia Digital**:
+   - **Creación y Posicionamiento de Páginas Web**: sitios corporativos, landings de conversión, SEO técnico y Google Maps. NO incluye gestión de redes sociales.
+   - **Desarrollo de Software**: e-commerce, CRM a medida, sistemas internos, con base de datos, panel de administración y versión móvil.
+4. **Ciberseguridad**:
+   - **Ciberseguridad: Gestión y Estrategia**: gestión del riesgo, cumplimiento (Ley 21.663 y 21.719), ciberseguridad ofensiva y defensiva.
+5. **Vigilancia e Innovación Tecnológica**:
+   - **Vigilancia e Innovación Tecnológica**: monitoreo de tendencias, competencia digital y cambios regulatorios.
+6. **Inteligencia Artificial Corporativa**:
+   - **Inteligencia Artificial Corporativa**: agentes con memoria y clones digitales.
+   - **Automatización de Procesos**: automatización no-code del trabajo manual repetitivo.
+
+# Servicios que YA NO ofrecemos (PROHIBIDO ofrecerlos o mencionarlos como disponibles)
+- **Soporte TI Gestionado, mesa de ayuda o mantención de equipos**: eliminado del portafolio.
+- **Dirección de Marketing Digital y gestión de redes sociales**: no las ofrecemos.
+- **Reparación de PC, celulares o impresoras**: no hacemos servicio técnico.
+- **Mentorías, cursos o capacitaciones comerciales**: somos consultora, no academia.
+Si piden alguno de estos, aclara amablemente que no está en el portafolio y ofrece el servicio vigente más cercano.
 
 # Contacto
 - Correo: contacto@independenciadigital.cl
