@@ -34,6 +34,7 @@ import {
 } from "lucide-react";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 import {
+  BlobImage,
   AccentBlob,
   GlowOrb,
   RingLoop,
@@ -41,6 +42,12 @@ import {
   StripeAccent,
 } from "@/views/shared/BackgroundBlobs";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import ServicePhoto from "@/views/shared/ServicePhoto";
+import costosHero from "@/assets/services/costos-hero.jpg";
+import costosProblema from "@/assets/services/costos-problema.jpg";
+import costosSolucion from "@/assets/services/costos-solucion.jpg";
+import costosResultado from "@/assets/services/costos-resultado.jpg";
+import costosCta from "@/assets/services/costos-cta.jpg";
 
 /* ------------------------------ content ------------------------------ */
 
@@ -318,201 +325,6 @@ const FlowChips = ({ steps, className = "" }: { steps: string[]; className?: str
   </div>
 );
 
-/* ------------------------------ device mockups (CSS-only, sin fotografía) ------------------------------ */
-
-const DeviceDots = () => (
-  <span className="flex items-center gap-1.5">
-    <span className="w-2 h-2 rounded-full bg-primary/30" />
-    <span className="w-2 h-2 rounded-full bg-secondary/40" />
-    <span className="w-2 h-2 rounded-full bg-muted-foreground/25" />
-  </span>
-);
-
-const LaptopMock = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`rounded-2xl border border-border bg-card overflow-hidden ${className}`}>
-    <div className="h-7 bg-muted border-b border-border flex items-center px-3">
-      <DeviceDots />
-    </div>
-    <div className="p-4 md:p-5">{children}</div>
-  </div>
-);
-
-const PhoneMock = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`rounded-[1.4rem] border border-border bg-card overflow-hidden ${className}`}>
-    <div className="h-5 bg-muted border-b border-border flex items-center justify-center">
-      <span className="w-8 h-1 rounded-full bg-border" />
-    </div>
-    <div className="p-3">{children}</div>
-  </div>
-);
-
-/** Fila de inventario: icono + etiqueta + barra "contratado vs. uso real". */
-const InventoryRow = ({ icon: Icon, label, contracted, used, flagged = false }: { icon: React.ComponentType<{ className?: string; strokeWidth?: string | number }>; label: string; contracted: number; used: number; flagged?: boolean }) => (
-  <div className="flex items-center gap-2.5">
-    <Icon className="w-3.5 h-3.5 text-muted-foreground shrink-0" strokeWidth={1.8} />
-    <span className="text-[10px] font-semibold text-foreground/80 w-16 shrink-0 truncate">{label}</span>
-    <span className="relative flex-1 h-2 rounded-full bg-muted overflow-hidden">
-      <span className="absolute inset-y-0 left-0 rounded-full bg-border" style={{ width: `${contracted}%` }} />
-      <span
-        className={`absolute inset-y-0 left-0 rounded-full ${flagged ? "bg-secondary" : "bg-primary/70"}`}
-        style={{ width: `${used}%` }}
-      />
-    </span>
-    {flagged && <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" aria-hidden="true" />}
-  </div>
-);
-
-/** Panel del hero: laptop con inventario de gasto + teléfono con hallazgos clasificados. */
-const HeroSpendPanel = () => (
-  <div className="grid grid-cols-[1fr_auto] gap-3 items-end">
-    <LaptopMock className="shadow-card-hover">
-      <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-3">
-        Inventario de gasto
-      </p>
-      <div className="space-y-3">
-        <InventoryRow icon={ServerCog} label="Hardware" contracted={100} used={78} />
-        <InventoryRow icon={KeyRound} label="Licencias" contracted={100} used={46} flagged />
-        <InventoryRow icon={Cloud} label="Cloud" contracted={100} used={54} flagged />
-        <InventoryRow icon={FileText} label="Contratos" contracted={100} used={83} />
-      </div>
-    </LaptopMock>
-    <PhoneMock className="w-24 shadow-card hidden sm:block">
-      <p className="text-[8px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-2">
-        Hallazgos
-      </p>
-      <div className="space-y-1.5">
-        <span className="block text-[8px] font-semibold text-secondary bg-secondary/10 rounded px-1.5 py-1">Optimizar</span>
-        <span className="block text-[8px] font-semibold text-primary bg-primary/8 rounded px-1.5 py-1">Renegociar</span>
-        <span className="block text-[8px] font-semibold text-foreground/70 bg-muted rounded px-1.5 py-1">Mantener</span>
-      </div>
-    </PhoneMock>
-  </div>
-);
-
-/** Panel del problema: acumulación ordenada de gasto, sin caos. */
-const AccumulationPanel = () => {
-  const rows = [
-    { label: "Licencias activas", w: 92 },
-    { label: "Suscripciones", w: 78 },
-    { label: "Instancias cloud", w: 86 },
-    { label: "Contratos vigentes", w: 64 },
-    { label: "Equipos y leasing", w: 70 },
-    { label: "Ambientes de prueba", w: 40 },
-  ];
-  return (
-    <div className="rounded-2xl border border-border bg-card p-5 md:p-6 shadow-card-hover">
-      <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-4">
-        Gasto acumulado por categoría
-      </p>
-      <div className="space-y-3">
-        {rows.map((r, i) => (
-          <div key={r.label} className="flex items-center gap-3">
-            <span className="text-[10px] text-foreground/70 w-28 shrink-0 truncate">{r.label}</span>
-            <span className="relative flex-1 h-3 rounded-full bg-muted overflow-hidden">
-              <span
-                className={`absolute inset-y-0 left-0 rounded-full ${i === 1 || i === 5 ? "bg-secondary/70" : "bg-primary/40"}`}
-                style={{ width: `${r.w}%` }}
-              />
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-/** Panel de solución: laptop + monitor con comparación uso vs. contratado. */
-const AnalysisPlatformPanel = () => (
-  <div className="grid grid-cols-2 gap-3">
-    <LaptopMock className="col-span-2 shadow-card-hover">
-      <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-3">
-        Uso versus contratado
-      </p>
-      <div className="space-y-3">
-        <InventoryRow icon={ServerCog} label="Hardware" contracted={100} used={81} />
-        <InventoryRow icon={KeyRound} label="Licencias" contracted={100} used={39} flagged />
-        <InventoryRow icon={Cloud} label="Cloud" contracted={100} used={58} flagged />
-      </div>
-    </LaptopMock>
-    <div className="col-span-2 rounded-xl border border-border bg-muted/60 px-4 py-3">
-      <p className="text-[9px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-2">
-        Plan de acción
-      </p>
-      <div className="flex flex-wrap gap-1.5">
-        <span className="text-[9px] font-semibold text-secondary bg-secondary/10 rounded-full px-2.5 py-1">Optimizar cloud</span>
-        <span className="text-[9px] font-semibold text-primary bg-primary/8 rounded-full px-2.5 py-1">Renegociar licencias</span>
-      </div>
-    </div>
-  </div>
-);
-
-/** Panel de resultado: antes vs. después del orden en el gasto, sin cifras. */
-const ResultPanel = () => (
-  <div className="grid grid-cols-[1fr_auto] gap-3 items-end">
-    <LaptopMock className="shadow-card-hover">
-      <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-3">
-        Estructura de gasto
-      </p>
-      <div className="space-y-4">
-        <div>
-          <p className="text-[9px] text-muted-foreground mb-1.5">Antes</p>
-          <div className="flex gap-1 h-3">
-            <span className="rounded-sm bg-border" style={{ width: "22%" }} />
-            <span className="rounded-sm bg-secondary/60" style={{ width: "14%" }} />
-            <span className="rounded-sm bg-border" style={{ width: "18%" }} />
-            <span className="rounded-sm bg-secondary/60" style={{ width: "10%" }} />
-            <span className="rounded-sm bg-border" style={{ width: "20%" }} />
-            <span className="rounded-sm bg-secondary/60" style={{ width: "9%" }} />
-          </div>
-        </div>
-        <div>
-          <p className="text-[9px] text-muted-foreground mb-1.5">Después</p>
-          <div className="flex gap-1 h-3">
-            <span className="rounded-sm bg-primary/50" style={{ width: "38%" }} />
-            <span className="rounded-sm bg-primary/30" style={{ width: "26%" }} />
-            <span className="rounded-sm bg-primary/70" style={{ width: "20%" }} />
-          </div>
-        </div>
-      </div>
-    </LaptopMock>
-    <PhoneMock className="w-24 shadow-card hidden sm:block">
-      <p className="text-[8px] font-heading font-bold uppercase tracking-wide text-muted-foreground mb-2">
-        Plan priorizado
-      </p>
-      <div className="space-y-1.5">
-        {[1, 2, 3].map((n) => (
-          <div key={n} className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-2.5 h-2.5 text-secondary shrink-0" />
-            <span className="h-1.5 flex-1 rounded-full bg-muted" />
-          </div>
-        ))}
-      </div>
-    </PhoneMock>
-  </div>
-);
-
-/** Panel del CTA final: plan de acción confirmado, tono calmo. */
-const CtaPanel = () => (
-  <div className="rounded-2xl border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur-sm p-5 md:p-6">
-    <p className="text-[10px] font-heading font-bold uppercase tracking-wide text-brand-foreground/70 mb-4">
-      Diagnóstico agendado
-    </p>
-    <div className="space-y-3">
-      {["Levantamiento", "Inventario", "Análisis de uso", "Plan de acción"].map((step, i) => (
-        <div key={step} className="flex items-center gap-3">
-          <span className="w-5 h-5 rounded-full bg-brand-foreground/15 border border-brand-foreground/25 flex items-center justify-center text-[9px] font-bold text-brand-foreground shrink-0">
-            {i + 1}
-          </span>
-          <span className="h-1.5 flex-1 rounded-full bg-brand-foreground/15 overflow-hidden">
-            <span className="block h-full bg-brand-foreground/50 rounded-full" style={{ width: i === 0 ? "100%" : "0%" }} />
-          </span>
-          <span className="text-[10px] text-brand-foreground/80 w-24 shrink-0">{step}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
 /* ------------------------------ view ------------------------------ */
 
 const ReduccionCostosTiServiceView = () => {
@@ -586,11 +398,12 @@ const ReduccionCostosTiServiceView = () => {
             <ScrollReveal delay={120} variant="scale" className="relative">
               <div className="relative pt-6 pr-4 pb-6 pl-4">
                 <StripeAccent className="absolute -top-1 right-0 w-24 h-14 rounded-xl opacity-90" />
-                <div className="blob-shape-1 overflow-hidden shadow-card-hover">
-                  <div className="bg-gradient-to-br from-muted via-background to-muted p-6 md:p-8 aspect-[4/3] flex items-center">
-                    <HeroSpendPanel />
-                  </div>
-                </div>
+                <BlobImage
+                  src={costosHero}
+                  shape={1}
+                  alt="Consultor TI revisando los costos tecnológicos de una empresa en una oficina moderna y luminosa"
+                  className="w-full aspect-[4/3] shadow-card-hover"
+                />
                 <RingLoop color="secondary" className="absolute -bottom-2 -left-2 w-24 h-24" />
                 <AccentBlob shape={6} color="secondary" className="absolute bottom-4 right-4 w-7 h-5 opacity-80" />
               </div>
@@ -622,7 +435,14 @@ const ReduccionCostosTiServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale">
-              <AccumulationPanel />
+              <img
+                src={costosProblema}
+                alt="Dueño de negocio preocupado revisando facturas y gastos tecnológicos acumulados en su escritorio"
+                width={1280}
+                height={960}
+                loading="lazy"
+                className="w-full rounded-3xl border border-border object-cover shadow-card"
+              />
             </ScrollReveal>
           </div>
 
@@ -653,11 +473,12 @@ const ReduccionCostosTiServiceView = () => {
             <ScrollReveal variant="scale" className="relative order-last lg:order-first">
               <div className="relative pt-6 pr-4 pb-6 pl-4">
                 <StripeAccent className="absolute -top-1 left-6 w-24 h-14 rounded-xl opacity-90" />
-                <div className="blob-shape-3 overflow-hidden shadow-card-hover">
-                  <div className="bg-gradient-to-br from-muted via-background to-muted p-6 md:p-8 aspect-[4/3] flex items-center">
-                    <AnalysisPlatformPanel />
-                  </div>
-                </div>
+                <BlobImage
+                  src={costosSolucion}
+                  shape={3}
+                  alt="Consultores analizando juntos los costos de infraestructura y licencias de una empresa"
+                  className="w-full aspect-[4/3] shadow-card-hover"
+                />
                 <RingLoop color="primary" className="absolute -bottom-2 -right-2 w-24 h-24" />
                 <AccentBlob shape={5} className="absolute top-6 right-2 w-8 h-6 opacity-80" />
               </div>
@@ -895,7 +716,7 @@ const ReduccionCostosTiServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale" className="relative">
-              <ResultPanel />
+              <ServicePhoto src={costosResultado} alt="Dueño de negocio sonriendo al revisar un informe de ahorro en costos tecnológicos" shape={2} />
               <div className="mt-6 flex justify-center">
                 <FlowChips steps={RESULT_FLOW} />
               </div>
@@ -1105,7 +926,17 @@ const ReduccionCostosTiServiceView = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={120} variant="scale">
-              <CtaPanel />
+              <div className="relative pt-6 pr-4 pb-6 pl-4">
+                <StripeAccent className="absolute -top-1 right-0 w-24 h-14 rounded-xl opacity-90" />
+                <BlobImage
+                  src={costosCta}
+                  shape={4}
+                  alt="Dueño de negocio chileno confiado en su oficina luminosa con vista a Santiago"
+                  className="w-full aspect-[4/3] shadow-card-hover"
+                />
+                <RingLoop color="secondary" className="absolute -bottom-2 -left-2 w-24 h-24" />
+                <AccentBlob shape={6} color="secondary" className="absolute bottom-4 right-4 w-7 h-5 opacity-80" />
+              </div>
             </ScrollReveal>
           </div>
         </div>
