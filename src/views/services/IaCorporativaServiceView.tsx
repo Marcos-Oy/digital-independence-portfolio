@@ -331,7 +331,7 @@ const PhoneMock = ({ children, className = "" }: { children: React.ReactNode; cl
 );
 
 /** Fila del agente: icono + fuente de contexto + estado de conexión. */
-const AgentContextRow = ({ icon: Icon, label, connected = true }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; label: string; connected?: boolean }) => (
+const AgentContextRow = ({ icon: Icon, label, connected = true }: { icon: React.ComponentType<{ className?: string; strokeWidth?: string | number }>; label: string; connected?: boolean }) => (
   <div className="flex items-center gap-2.5">
     <span className={`inline-flex w-7 h-7 rounded-lg items-center justify-center shrink-0 ${connected ? "bg-secondary/10" : "bg-muted"}`}>
       <Icon className="w-3.5 h-3.5 text-secondary" strokeWidth={1.8} />

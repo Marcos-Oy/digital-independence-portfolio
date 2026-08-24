@@ -347,7 +347,7 @@ const PhoneMock = ({ children, className = "" }: { children: React.ReactNode; cl
 );
 
 /** Fila de inventario: icono + etiqueta + barra "contratado vs. uso real". */
-const InventoryRow = ({ icon: Icon, label, contracted, used, flagged = false }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; label: string; contracted: number; used: number; flagged?: boolean }) => (
+const InventoryRow = ({ icon: Icon, label, contracted, used, flagged = false }: { icon: React.ComponentType<{ className?: string; strokeWidth?: string | number }>; label: string; contracted: number; used: number; flagged?: boolean }) => (
   <div className="flex items-center gap-2.5">
     <Icon className="w-3.5 h-3.5 text-muted-foreground shrink-0" strokeWidth={1.8} />
     <span className="text-[10px] font-semibold text-foreground/80 w-16 shrink-0 truncate">{label}</span>
