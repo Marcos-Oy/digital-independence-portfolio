@@ -290,7 +290,7 @@ const HomeView = () => {
           <div className="max-w-7xl mx-auto">
             {/* Red neuronal — solo móvil, encima del encabezado */}
             <ScrollReveal className="md:hidden flex justify-center mb-8">
-              <TechNetworkBlob className="w-52 h-52" />
+              <TechNetworkBlob className="relative w-52 h-52" />
             </ScrollReveal>
 
             <ScrollReveal className="mb-10 text-left max-w-2xl">
