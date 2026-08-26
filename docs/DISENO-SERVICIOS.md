@@ -35,6 +35,11 @@ gradient-brand → Aclaración final (centrado).
   (Agendar diagnóstico). WhatsApp SOLO para contacto general.
 
 ## SEO por ruta
+Usar SIEMPRE `<PageMeta>` (`src/views/shared/PageMeta.tsx`): title, description,
+canonical, Open Graph, Twitter y JSON-LD opcional. No escribir `<Helmet>` a mano.
+Los meta estáticos de `index.html` llevan `data-rh="true"` para que Helmet los
+reemplace por ruta. Rutas internas/funnel usan `noindex`.
+
 `react-helmet-async@^2.0.5` (v2 obligatoria, v3 rompe React 18 con warnings de
 refs). `HelmetProvider` en `src/main.tsx`. Cada vista define `<Helmet>` con
 title/description/canonical/og:*. NO reponer `<link rel="canonical">` en
