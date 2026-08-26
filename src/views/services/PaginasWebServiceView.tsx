@@ -27,6 +27,7 @@ import webHeroDevices from "@/assets/services/web-resultado-devices.jpg";
 import webSolucionLaptop from "@/assets/services/web-solucion-laptop.jpg";
 import webResultadoCrecimiento from "@/assets/services/web-resultado-crecimiento.jpg";
 import webCtaProfesional from "@/assets/services/web-cta-profesional.jpg";
+import PageMeta from "@/views/shared/PageMeta";
 
 /* ------------------------------ content ------------------------------ */
 
@@ -148,6 +149,12 @@ const MiniBarChart = () => (
 const PaginasWebServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Creación y Posicionamiento de Páginas Web | Independencia Digital"
+        description="Diseñamos y posicionamos sitios web profesionales para PyMEs, emprendedores y empresas en Chile: velocidad, SEO técnico, contenido claro y una web que genera contactos reales."
+        path="/servicios/presencia-digital"
+      />
+
       <SiteNavbarView />
 
       {/* ============ HERO ============ */}

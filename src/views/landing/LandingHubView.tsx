@@ -6,6 +6,7 @@ import ScrollReveal from "@/views/shared/ScrollReveal";
 import { useLandingHubController } from "@/controllers/landing/useLandingHubController";
 import { SoftBlob, AccentBlob, LayeredWaveDivider } from "@/views/shared/BackgroundBlobs";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import PageMeta from "@/views/shared/PageMeta";
 
 const STATUS_LABEL: Record<string, string> = {
   activa: "Activa",
@@ -17,6 +18,12 @@ const LandingHubView = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Landing Pages | Independencia Digital"
+        description="Índice interno de landing pages de captación de Independencia Digital."
+        noindex
+      />
+
       <SiteNavbarView />
 
       <section className="relative gradient-hero pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">

@@ -19,12 +19,19 @@ import { useLandingController } from "@/controllers/landing/useLandingController
 import { SoftBlob, AccentBlob, LayeredWaveDivider, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
 import TypewriterText from "@/views/shared/TypewriterText";
+import PageMeta from "@/views/shared/PageMeta";
 
 const GeneralLandingView = () => {
   useLandingController("Independencia Digital | Diagnóstico gratuito");
 
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Diagnóstico tecnológico gratuito | Independencia Digital"
+        description="Agenda un diagnóstico gratuito con Independencia Digital: arquitectura TI, ciberseguridad, automatización e inteligencia artificial para tu empresa en Chile."
+        path="/landing/general"
+      />
+
       <LandingHeader />
 
       {/* Hero */}

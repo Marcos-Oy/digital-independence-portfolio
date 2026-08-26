@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import PageMeta from "@/views/shared/PageMeta";
 
 const NotFoundView = () => {
   const location = useLocation();
@@ -10,6 +11,12 @@ const NotFoundView = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
+      <PageMeta
+        title="Página no encontrada | Independencia Digital"
+        description="La página que buscas no existe o cambió de dirección. Vuelve al inicio para explorar nuestros servicios de consultoría TI."
+        noindex
+      />
+
       <div className="text-center">
         <h1 className="mb-4 text-4xl font-bold">404</h1>
         <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
