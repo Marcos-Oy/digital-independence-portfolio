@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -288,21 +288,11 @@ const PillLabel = ({ children }: { children: React.ReactNode }) => (
 const TransformacionDigitalServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Transformación Digital | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Diagnóstico de procesos, hoja de ruta de modernización por etapas y digitalización de flujos manuales con seguridad incorporada. Transformación digital para empresas y pymes en Chile."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/transformacion-digital" />
-        <meta property="og:title" content="Transformación Digital | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="Cuando una empresa dice que quiere digitalizarse, casi siempre se refiere a algo más específico: dejar de perder tiempo en tareas que ya deberían funcionar solas."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/transformacion-digital" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Transformación Digital | Independencia Digital"
+        description="Diagnóstico de procesos, hoja de ruta de modernización por etapas y digitalización de flujos manuales con seguridad incorporada. Transformación digital para empresas y pymes en Chile."
+        path="/servicios/transformacion-digital"
+      />
 
       <SiteNavbarView />
 

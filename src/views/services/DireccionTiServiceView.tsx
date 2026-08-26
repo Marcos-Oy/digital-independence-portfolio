@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -298,21 +298,11 @@ const PillLabel = ({ children }: { children: React.ReactNode }) => (
 const DireccionTiServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Dirección de Departamento TI y Talento | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Director de Tecnología externo para empresas en crecimiento: definición de roles, stack tecnológico, hoja de ruta y dirección estratégica continua sin contratar un CTO a tiempo completo."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/direccion-ti" />
-        <meta property="og:title" content="Dirección de Departamento TI y Talento | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="Las decisiones tecnológicas de tu empresa no deberían depender de quien más sabe de computadores en la oficina. Actuamos como tu Director de Tecnología externo."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/direccion-ti" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Dirección de Departamento TI y Talento | Independencia Digital"
+        description="Director de Tecnología externo para empresas en crecimiento: definición de roles, stack tecnológico, hoja de ruta y dirección estratégica continua sin contratar un CTO a tiempo completo."
+        path="/servicios/direccion-ti"
+      />
 
       <SiteNavbarView />
 

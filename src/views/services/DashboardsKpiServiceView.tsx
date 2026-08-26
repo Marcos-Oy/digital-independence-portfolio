@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -291,21 +291,11 @@ const PillLabel = ({ children }: { children: React.ReactNode }) => (
 const DashboardsKpiServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Dashboards y KPI | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Definimos los indicadores que importan, conectamos tus fuentes de datos reales y construimos dashboards interactivos en Power BI, Looker Studio o Metabase con capacitación para tu equipo."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/dashboards-kpi" />
-        <meta property="og:title" content="Dashboards y KPI | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="Tomar decisiones con el reporte de la semana pasada, armado a mano por cada área, no es tener visibilidad. Es reconstruir el panorama cada vez."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/dashboards-kpi" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Dashboards y KPI | Independencia Digital"
+        description="Definimos los indicadores que importan, conectamos tus fuentes de datos reales y construimos dashboards interactivos en Power BI, Looker Studio o Metabase con capacitación para tu equipo."
+        path="/servicios/dashboards-kpi"
+      />
 
       <SiteNavbarView />
 
