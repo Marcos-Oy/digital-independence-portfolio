@@ -43,6 +43,14 @@ const PageMeta = ({
       <meta property="og:type" content={type} />
       {url && <meta property="og:url" content={url} />}
       <meta property="og:image" content={OG_IMAGE} />
+      <meta property="og:image:secure_url" content={OG_IMAGE} />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta
+        property="og:image:alt"
+        content="Independencia Digital SpA - Consultora tecnológica chilena"
+      />
       <meta property="og:locale" content="es_CL" />
       <meta property="og:site_name" content="Independencia Digital" />
 
