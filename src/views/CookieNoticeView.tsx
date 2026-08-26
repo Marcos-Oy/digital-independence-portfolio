@@ -16,7 +16,7 @@ const CookieNoticeView = ({ waitForWelcomeModal = true }: CookieNoticeViewProps)
         <p className="text-xs text-muted-foreground leading-relaxed flex-1 text-center sm:text-left">
           Este sitio no usa cookies propias de seguimiento. Solo guardamos tus preferencias (como el tema
           claro/oscuro) en tu navegador. Los datos que envías por nuestro formulario de contacto se
-          gestionan a través de un proveedor externo (Systeme.io).{" "}
+          gestionan a través de un proveedor externo de CRM.{" "}
           <Link to="/privacidad" className="text-primary font-semibold hover:underline">
             Ver política de privacidad
           </Link>

@@ -119,27 +119,19 @@ const PrivacidadView = () => {
             </p>
           </Section>
 
-          <Section title="4. Formularios y proveedor externo (Systeme.io)">
+          <Section title="4. Formularios y proveedor externo de CRM">
             <p>
-              El formulario de contacto de este sitio es gestionado a través de{" "}
-              <strong>Systeme.io</strong>, una plataforma externa de gestión comercial (CRM) que utilizamos
+              El formulario de contacto de este sitio es gestionado a través de un{" "}
+              <strong>proveedor externo de CRM</strong>, una plataforma de gestión comercial que utilizamos
               como encargado de tratamiento. Cuando completas el formulario, tus datos se almacenan en los
-              servidores de Systeme.io para que podamos gestionar el contacto contigo.
+              servidores de ese proveedor para que podamos gestionar el contacto contigo.
             </p>
             <p>
-              Systeme.io es un proveedor con infraestructura fuera de Chile, por lo que el tratamiento de
-              tus datos puede implicar una transferencia internacional. Systeme.io cuenta con sus propias
-              políticas de seguridad y privacidad, disponibles en{" "}
-              <a
-                href="https://systeme.io/privacy-policy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                systeme.io/privacy-policy
-              </a>
-              . Solo utilizamos esta herramienta para la gestión de contactos comerciales generados desde
-              nuestros formularios, no para fines distintos.
+              Nuestro proveedor externo de CRM cuenta con infraestructura fuera de Chile, por lo que el
+              tratamiento de tus datos puede implicar una transferencia internacional. Cuenta con sus
+              propias políticas de seguridad y privacidad, que puedes solicitarnos si lo necesitas. Solo
+              utilizamos esta herramienta para la gestión de contactos comerciales generados desde nuestros
+              formularios, no para fines distintos.
             </p>
           </Section>
 
@@ -150,7 +142,7 @@ const PrivacidadView = () => {
               un sistema interno de gestión que usamos exclusivamente para planificar, ejecutar y dar
               seguimiento a tu proyecto (por ejemplo: datos de contacto, información de facturación,
               hitos y comunicaciones del proyecto). A diferencia del formulario de contacto inicial, esta
-              información no se procesa en Systeme.io: queda en un sistema propio, con acceso restringido a
+              información no se procesa en nuestro proveedor externo de CRM: queda en un sistema propio, con acceso restringido a
               las personas de Independencia Digital que trabajan directamente en tu proyecto.
             </p>
           </Section>
@@ -166,8 +158,8 @@ const PrivacidadView = () => {
             </p>
             <p>
               La única cookie presente en el sitio es técnica y la genera el widget de formulario de
-              Systeme.io, para recordar si cerraste su ventana emergente y no volver a mostrarla de
-              inmediato. No se utiliza con fines de seguimiento publicitario.
+              nuestro proveedor externo de CRM, para recordar si cerraste su ventana emergente y no volver
+              a mostrarla de inmediato. No se utiliza con fines de seguimiento publicitario.
             </p>
           </Section>
 
@@ -192,7 +184,7 @@ const PrivacidadView = () => {
             <ul className="list-disc pl-5 space-y-1.5">
               <li><strong>Acceso:</strong> te enviamos todos los datos que tenemos sobre ti (o tu empresa).</li>
               <li><strong>Rectificación:</strong> corregir datos inexactos o desactualizados.</li>
-              <li><strong>Cancelación:</strong> eliminar todos tus datos de nuestros registros, tanto del CRM (Systeme.io) como de nuestro ERP interno.</li>
+              <li><strong>Cancelación:</strong> eliminar todos tus datos de nuestros registros, tanto de nuestro proveedor externo de CRM como de nuestro ERP interno.</li>
               <li><strong>Oposición:</strong> oponerte a que usemos tus datos para un fin determinado.</li>
               <li><strong>Portabilidad:</strong> solicitar una copia de tus datos en un formato manejable para trasladarlos a otro proveedor.</li>
             </ul>
