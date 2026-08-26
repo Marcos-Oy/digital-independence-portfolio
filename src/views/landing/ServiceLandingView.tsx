@@ -17,6 +17,7 @@ import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground"
 import ScrollContextIcon from "@/views/shared/ScrollContextIcon";
 import TypewriterText from "@/views/shared/TypewriterText";
 import DrawIcon from "@/views/shared/DrawIcon";
+import PageMeta from "@/views/shared/PageMeta";
 
 interface ServiceLandingViewProps {
   slug: string;
@@ -38,6 +39,12 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title={`${service.title} | Independencia Digital`}
+        description={service.summary}
+        path={`/landing/servicio/${service.slug}`}
+        noindex
+      />
       <LandingHeader />
 
       {/* Hero */}

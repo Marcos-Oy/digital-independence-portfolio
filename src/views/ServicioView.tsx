@@ -16,6 +16,7 @@ import { type Service } from "@/models/services";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 import { FAQS } from "@/models/faq";
 import { SERVICE_DESCRIPTIONS } from "@/models/serviceDescriptionContent";
+import PageMeta from "@/views/shared/PageMeta";
 
 const TRUST_SIGNALS = [
   { icon: ShieldCheck, title: "Confidencialidad", desc: "Tu información se maneja con reserva en cada etapa del proyecto." },

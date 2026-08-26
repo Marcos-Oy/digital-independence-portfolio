@@ -6,6 +6,7 @@ import { ArrowLeft, ChevronRight } from "lucide-react";
 import { type Segment } from "@/models/segments";
 import { getServiceBySlug } from "@/models/services";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import PageMeta from "@/views/shared/PageMeta";
 
 interface Props {
   segment: Segment;
@@ -19,6 +20,11 @@ const SegmentoView = ({ segment }: Props) => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title={`${segment.title} | Independencia Digital`}
+        description={segment.description}
+        path={`/segmentos/${segment.slug}`}
+      />
       <SiteNavbarView />
 
       {/* Hero */}
