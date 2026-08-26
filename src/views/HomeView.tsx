@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import ScrollReveal from "@/views/shared/ScrollReveal";
 import { SoftBlob, AccentBlob, LayeredWaveDivider, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
 import TypewriterText from "@/views/shared/TypewriterText";
@@ -66,9 +66,11 @@ const HomeView = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <link rel="canonical" href="https://www.independenciadigital.cl/" />
-      </Helmet>
+      <PageMeta
+        title="Independencia Digital SpA Consultora TI en Chile | Arquitectura, Ciberseguridad e IA"
+        description="Consultora tecnológica chilena. Diseñamos y construimos la infraestructura tecnológica de PyMEs, grandes empresas y sector público: arquitectura TI, ciberseguridad, desarrollo de software e inteligencia artificial. Fundada por Marcos Oyarzo."
+        path="/"
+      />
       <SiteNavbarView />
 
       {/* Hero */}
