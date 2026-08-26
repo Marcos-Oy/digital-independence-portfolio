@@ -83,6 +83,14 @@ import angularLogo from "@/assets/logos/angular.png";
 import odooLogo from "@/assets/logos/odoo.png";
 import ubuntuLogo from "@/assets/logos/ubuntu.png";
 import winserverLogo from "@/assets/logos/winserver.png";
+import hubspotLogo from "@/assets/logos/hubspot.png";
+import fintocLogo from "@/assets/logos/fintoc.png";
+import flowLogo from "@/assets/logos/flow.png";
+import mercadopagoLogo from "@/assets/logos/mercadopago.png";
+import transbankLogo from "@/assets/logos/transbank.png";
+import salesforceLogo from "@/assets/logos/salesforce.png";
+import sapLogo from "@/assets/logos/sap.png";
+import softlandLogo from "@/assets/logos/softland.png";
 
 const baseLogos = [
   { src: microsoftLogo, alt: "Microsoft" },
@@ -169,6 +177,14 @@ const baseLogos = [
   { src: odooLogo, alt: "Odoo ERP" },
   { src: ubuntuLogo, alt: "Ubuntu" },
   { src: winserverLogo, alt: "Windows Server" },
+  { src: hubspotLogo, alt: "HubSpot" },
+  { src: fintocLogo, alt: "Fintoc" },
+  { src: flowLogo, alt: "Flow" },
+  { src: mercadopagoLogo, alt: "Mercado Pago" },
+  { src: transbankLogo, alt: "Transbank" },
+  { src: salesforceLogo, alt: "Salesforce" },
+  { src: sapLogo, alt: "SAP" },
+  { src: softlandLogo, alt: "Softland ERP" },
 ];
 
 // Fisher-Yates shuffle for randomized order on each load
