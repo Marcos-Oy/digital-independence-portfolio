@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -477,21 +477,11 @@ const MiniSignalChart = () => (
 const VigilanciaInnovacionServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Vigilancia e Innovación Tecnológica | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Monitoreamos tendencias tecnológicas, competencia, mercado y cambios regulatorios para detectar señales, oportunidades y riesgos relevantes para tu negocio."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/vigilancia-innovacion" />
-        <meta property="og:title" content="Vigilancia e Innovación Tecnológica | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="Vigilancia tecnológica, inteligencia competitiva, vigilancia regulatoria y de mercado en Chile: detectamos señales del entorno y las convertimos en información útil para decidir."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/vigilancia-innovacion" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Vigilancia e Innovación Tecnológica | Independencia Digital"
+        description="Monitoreamos tendencias tecnológicas, competencia, mercado y cambios regulatorios para detectar señales, oportunidades y riesgos relevantes para tu negocio."
+        path="/servicios/vigilancia-innovacion"
+      />
 
       <SiteNavbarView />
 

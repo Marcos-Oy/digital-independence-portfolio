@@ -16,6 +16,7 @@ import { type Service } from "@/models/services";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 import { FAQS } from "@/models/faq";
 import { SERVICE_DESCRIPTIONS } from "@/models/serviceDescriptionContent";
+import PageMeta from "@/views/shared/PageMeta";
 
 const TRUST_SIGNALS = [
   { icon: ShieldCheck, title: "Confidencialidad", desc: "Tu información se maneja con reserva en cada etapa del proyecto." },
@@ -46,7 +47,27 @@ const ServicioView = ({ service }: Props) => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title={`${service.title} | Independencia Digital`}
+        description={service.summary}
+        path={`/servicios/${service.slug}`}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: service.title,
+          serviceType: service.areaLabel,
+          description: service.summary,
+          url: `https://www.independenciadigital.cl/servicios/${service.slug}`,
+          provider: {
+            "@type": "Organization",
+            name: "Independencia Digital SpA",
+            url: "https://www.independenciadigital.cl",
+          },
+          areaServed: { "@type": "Country", name: "Chile" },
+        }}
+      />
       <SiteNavbarView />
+
 
       {/* Hero */}
       <section className="relative pt-28 pb-14 md:pt-36 md:pb-16 overflow-hidden">

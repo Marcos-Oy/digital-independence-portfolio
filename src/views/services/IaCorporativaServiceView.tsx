@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -315,21 +315,11 @@ const FlowChips = ({ steps, className = "" }: { steps: string[]; className?: str
 const IaCorporativaServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Inteligencia Artificial Corporativa | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Diagnóstico de procesos automatizables, agentes con memoria e IA conectada a tus documentos y operación, automatización con N8N y ManyChat, y clones digitales para empresas en Chile."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/ia-corporativa" />
-        <meta property="og:title" content="Inteligencia Artificial Corporativa | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="La mayoría de las empresas ya probaron la IA genérica. Lo que no han probado es la IA conectada a su negocio."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/ia-corporativa" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Inteligencia Artificial Corporativa | Independencia Digital"
+        description="Diagnóstico de procesos automatizables, agentes con memoria e IA conectada a tus documentos y operación, automatización con N8N y ManyChat, y clones digitales para empresas en Chile."
+        path="/servicios/ia-corporativa"
+      />
 
       <SiteNavbarView />
 

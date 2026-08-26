@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -282,21 +282,11 @@ const MiniLineChart = () => (
 const DesarrolloSoftwareServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Desarrollo de Software a Medida | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Desarrollo de software a medida para empresas: sistemas internos, plataformas web, aplicaciones, automatización de procesos e integraciones. Primero entendemos tu operación, después construimos la herramienta."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/desarrollo-software" />
-        <meta property="og:title" content="Desarrollo de Software a Medida | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="Sistemas personalizados para automatizar procesos, integrar información y convertir necesidades específicas en herramientas digitales."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/desarrollo-software" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Desarrollo de Software a Medida | Independencia Digital"
+        description="Desarrollo de software a medida para empresas: sistemas internos, plataformas web, aplicaciones, automatización de procesos e integraciones. Primero entendemos tu operación, después construimos la herramienta."
+        path="/servicios/desarrollo-software"
+      />
 
       <SiteNavbarView />
 

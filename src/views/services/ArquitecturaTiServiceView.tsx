@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -299,21 +299,11 @@ const FlowChips = ({ steps, className = "" }: { steps: string[]; className?: str
 const ArquitecturaTiServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Arquitectura TI | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Diseño e implementación del ecosistema tecnológico de tu negocio: correo corporativo, dominio, hosting, infraestructura cloud, accesos y herramientas seleccionadas según tu operación."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/arquitectura-ti" />
-        <meta property="og:title" content="Arquitectura TI | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="Tu negocio corre sobre tecnología que probablemente nadie diseñó. Diseñamos y documentamos tu ecosistema completo: correo, dominio, hosting, accesos y herramientas."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/arquitectura-ti" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Arquitectura TI | Independencia Digital"
+        description="Diseño e implementación del ecosistema tecnológico de tu negocio: correo corporativo, dominio, hosting, infraestructura cloud, accesos y herramientas seleccionadas según tu operación."
+        path="/servicios/arquitectura-ti"
+      />
 
       <SiteNavbarView />
 

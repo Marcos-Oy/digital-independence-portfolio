@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -331,21 +331,11 @@ const FlowChips = ({ steps, className = "" }: { steps: string[]; className?: str
 const ReduccionCostosTiServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Reducción de Costos TI | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Auditoría de hardware, licencias de software e infraestructura cloud para identificar sobregasto, optimizar contratos y controlar el gasto en tecnología de tu organización."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/optimizacion-costos-ti" />
-        <meta property="og:title" content="Reducción de Costos TI | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="El gasto en tecnología crece solo. Reducirlo requiere revisarlo: auditamos hardware, licencias y cloud para mostrarte dónde estás pagando de más."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/optimizacion-costos-ti" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Reducción de Costos TI | Independencia Digital"
+        description="Auditoría de hardware, licencias de software e infraestructura cloud para identificar sobregasto, optimizar contratos y controlar el gasto en tecnología de tu organización."
+        path="/servicios/optimizacion-costos-ti"
+      />
 
       <SiteNavbarView />
 

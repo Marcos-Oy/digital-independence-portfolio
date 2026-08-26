@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -288,21 +288,11 @@ const PillLabel = ({ children }: { children: React.ReactNode }) => (
 const IntegracionPlataformasServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Integración de Plataformas y Bases de Datos | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Conectamos CRM, ERP, e-commerce y otras plataformas vía APIs y consolidamos datos dispersos en una base única, estructurada y confiable. Integración de sistemas para empresas en Chile."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/integracion-plataformas" />
-        <meta property="og:title" content="Integración de Plataformas y Bases de Datos | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="El problema no es que te falten plataformas. Es que las que tienes no se hablan entre sí. Conectamos lo que ya tienes, no hace falta empezar de cero."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/integracion-plataformas" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Integración de Plataformas y Bases de Datos | Independencia Digital"
+        description="Conectamos CRM, ERP, e-commerce y otras plataformas vía APIs y consolidamos datos dispersos en una base única, estructurada y confiable. Integración de sistemas para empresas en Chile."
+        path="/servicios/integracion-plataformas"
+      />
 
       <SiteNavbarView />
 

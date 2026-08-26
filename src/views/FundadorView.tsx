@@ -6,10 +6,18 @@ import marcosAzul from "@/assets/marcos-terno-azul.jpg";
 import marcosNegro from "@/assets/marcos-terno-negro.jpeg";
 import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
 import { BlobImage, RingLoop, StripeAccent, AccentBlob } from "@/views/shared/BackgroundBlobs";
+import PageMeta from "@/views/shared/PageMeta";
 
 const FundadorView = () => {
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Marcos Oyarzo, Fundador y CEO | Independencia Digital"
+        description="Marcos Alberto Oyarzo Alvarez, ingeniero en informática y fundador de Independencia Digital SpA. Director de Tecnología externo para PyMEs, grandes empresas y sector público en Chile."
+        path="/fundador"
+        type="profile"
+      />
+
       <SiteNavbarView />
 
       <section className="gradient-hero pt-28 pb-12 md:pt-36 md:pb-20">

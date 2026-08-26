@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -291,21 +291,11 @@ const PillLabel = ({ children }: { children: React.ReactNode }) => (
 const AutomatizacionProcesosServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Automatización de Procesos | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Levantamos procesos manuales, los rediseñamos y automatizamos flujos completos con N8N, ManyChat, Power Automate y scripts a medida, con trazabilidad de cada ejecución."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/automatizacion-procesos" />
-        <meta property="og:title" content="Automatización de Procesos | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="Tu equipo no debería estar ejecutando a mano lo que ya podría funcionar solo. Levantamos, rediseñamos y automatizamos con trazabilidad completa."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/automatizacion-procesos" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Automatización de Procesos | Independencia Digital"
+        description="Levantamos procesos manuales, los rediseñamos y automatizamos flujos completos con N8N, ManyChat, Power Automate y scripts a medida, con trazabilidad de cada ejecución."
+        path="/servicios/automatizacion-procesos"
+      />
 
       <SiteNavbarView />
 

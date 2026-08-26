@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
+import PageMeta from "@/views/shared/PageMeta";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-10">
@@ -13,6 +14,12 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 const PrivacidadView = () => {
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Política de Privacidad y Términos de Uso | Independencia Digital"
+        description="Cómo Independencia Digital SpA recopila, usa y protege tus datos personales cuando visitas el sitio o completas un formulario de contacto."
+        path="/privacidad"
+      />
+
       <SiteNavbarView />
 
       <section className="gradient-hero pt-28 pb-14 md:pt-36 md:pb-16">

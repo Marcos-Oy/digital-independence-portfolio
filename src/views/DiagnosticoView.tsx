@@ -3,6 +3,7 @@ import marcosImg from "@/assets/marcos.jpg";
 import { LOADING_STEPS } from "@/models/diagnostico";
 import { useDiagnosticoController } from "@/controllers/useDiagnosticoController";
 import SimpleMarkdown from "@/views/shared/SimpleMarkdown";
+import PageMeta from "@/views/shared/PageMeta";
 
 const DiagnosticoView = () => {
   const {
@@ -88,6 +89,12 @@ const DiagnosticoView = () => {
         top: viewportFrame.top ? `${viewportFrame.top}px` : 0,
       }}
     >
+      <PageMeta
+        title="Diagnóstico tecnológico privado | Independencia Digital"
+        description="Sesión privada de diagnóstico tecnológico con Independencia Digital SpA."
+        noindex
+      />
+
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-border bg-card shrink-0 shadow-sm">
         <div className="relative">

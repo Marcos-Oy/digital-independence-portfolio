@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
@@ -354,21 +354,11 @@ const MiniRiskChart = () => (
 const CiberseguridadServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Ciberseguridad, Gestión y Estrategia | Independencia Digital</title>
-        <meta
-          name="description"
-          content="Diagnóstico, gestión de riesgos, estrategia de ciberseguridad, protección de datos, preparación ante incidentes y alineamiento con ISO 27001 y normativa chilena."
-        />
-        <link rel="canonical" href="https://www.independenciadigital.cl/servicios/ciberseguridad" />
-        <meta property="og:title" content="Ciberseguridad, Gestión y Estrategia | Independencia Digital" />
-        <meta
-          property="og:description"
-          content="Estrategias de ciberseguridad para proteger información, personas y operaciones: gestión de riesgos, normativa chilena y continuidad operacional."
-        />
-        <meta property="og:url" content="https://www.independenciadigital.cl/servicios/ciberseguridad" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <PageMeta
+        title="Ciberseguridad, Gestión y Estrategia | Independencia Digital"
+        description="Diagnóstico, gestión de riesgos, estrategia de ciberseguridad, protección de datos, preparación ante incidentes y alineamiento con ISO 27001 y normativa chilena."
+        path="/servicios/ciberseguridad"
+      />
 
       <SiteNavbarView />
 
