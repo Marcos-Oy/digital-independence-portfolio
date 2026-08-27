@@ -12,16 +12,21 @@ import {
 import {
   ArrowLeft,
   ArrowRight,
+  CalendarCheck,
   CheckCircle2,
   ClipboardList,
   Code2,
   Compass,
   Cpu,
   Database,
+  Factory,
   FileSpreadsheet,
   Globe,
+  Handshake,
+  HeartPulse,
   LayoutDashboard,
   Network,
+  Package,
   Palette,
   Plug,
   Puzzle,
@@ -30,7 +35,10 @@ import {
   ShieldCheck,
   Smartphone,
   TrendingUp,
+  Truck,
   Unlink,
+  UserCog,
+  Wallet,
   Zap,
 } from "lucide-react";
 import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
@@ -140,6 +148,51 @@ const BUILD_AREAS = [
       "Sistemas de reservas",
       "Herramientas específicas para procesos particulares",
     ],
+  },
+];
+
+// Ejemplos concretos por rubro, para que quien lee entienda de inmediato
+// el rango de lo que puede pedirnos, no solo el concepto abstracto "software a medida".
+const SOFTWARE_EXAMPLES = [
+  {
+    icon: Package,
+    title: "Control de inventario y bodega",
+    desc: "Stock en tiempo real, trazabilidad de productos y alertas de reposición.",
+  },
+  {
+    icon: Handshake,
+    title: "Ventas y CRM a medida",
+    desc: "Seguimiento de clientes, cotizaciones y un embudo de ventas propio.",
+  },
+  {
+    icon: Wallet,
+    title: "Control financiero",
+    desc: "Facturación, flujo de caja, conciliación y reportes financieros.",
+  },
+  {
+    icon: Factory,
+    title: "Software industrial",
+    desc: "Control de producción, mantenimiento de maquinaria y trazabilidad de procesos.",
+  },
+  {
+    icon: HeartPulse,
+    title: "Sistemas para el área de salud",
+    desc: "Fichas clínicas, agenda de pacientes y control de tratamientos.",
+  },
+  {
+    icon: Truck,
+    title: "Logística y distribución",
+    desc: "Seguimiento de pedidos, rutas de reparto y control de flota.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Reservas y agendamiento",
+    desc: "Citas, salas o recursos que tus clientes reservan en línea, sin llamadas ni WhatsApp.",
+  },
+  {
+    icon: UserCog,
+    title: "Recursos humanos",
+    desc: "Control de asistencia, turnos y evaluaciones de desempeño.",
   },
 ];
 
@@ -469,30 +522,54 @@ const DesarrolloSoftwareServiceView = () => {
             </h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-14">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {BUILD_AREAS.map((area, i) => (
               <ScrollReveal key={area.num} delay={i * 80}>
-                <div className="relative border-t-2 border-border pt-8">
+                <div className="relative bg-card border border-border rounded-2xl p-6 h-full">
                   <span
                     aria-hidden="true"
-                    className="absolute -top-2 right-0 font-heading font-extrabold text-6xl md:text-7xl text-primary/10 leading-none select-none"
+                    className="absolute top-4 right-5 font-heading font-extrabold text-3xl text-primary/10 leading-none select-none"
                   >
                     {area.num}
                   </span>
-                  <span className="inline-flex w-14 h-14 rounded-full gradient-brand items-center justify-center shadow-brand mb-5">
-                    <area.icon className="w-6 h-6 text-primary-foreground" strokeWidth={1.8} />
+                  <span className="inline-flex w-10 h-10 rounded-lg gradient-brand items-center justify-center shadow-brand mb-4">
+                    <area.icon className="w-4.5 h-4.5 text-primary-foreground" strokeWidth={1.8} />
                   </span>
-                  <h3 className="font-heading font-bold text-lg md:text-xl uppercase tracking-wide text-foreground mb-5 max-w-[75%]">
+                  <h3 className="font-heading font-bold text-sm uppercase tracking-wide text-foreground mb-3 max-w-[80%]">
                     {area.title}
                   </h3>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-1.5">
                     {area.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/85">
-                        <CheckCircle2 className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
+                      <li key={item} className="flex items-start gap-2 text-xs text-foreground/85">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0 mt-0.5" />
                         {item}
                       </li>
                     ))}
                   </ul>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal className="text-center mt-16 mb-12">
+            <h3 className="font-heading font-bold text-xl md:text-2xl text-foreground leading-tight max-w-xl mx-auto">
+              Ejemplos concretos por rubro
+            </h3>
+            <p className="text-sm md:text-base text-muted-foreground mt-3 max-w-xl mx-auto">
+              Software a medida no es un concepto abstracto. Así se ve en distintos rubros.
+            </p>
+          </ScrollReveal>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {SOFTWARE_EXAMPLES.map((ex, i) => (
+              <ScrollReveal key={ex.title} delay={i * 60}>
+                <div className="bg-card border border-border rounded-2xl p-5 h-full">
+                  <span className="inline-flex w-10 h-10 rounded-lg bg-primary/8 border border-primary/15 items-center justify-center mb-3">
+                    <ex.icon className="w-4.5 h-4.5 text-primary" strokeWidth={1.7} />
+                  </span>
+                  <h4 className="font-heading font-bold text-sm text-foreground mb-1.5">
+                    {ex.title}
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{ex.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
