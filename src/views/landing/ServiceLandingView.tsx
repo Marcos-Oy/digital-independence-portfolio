@@ -9,7 +9,7 @@ import LandingCtaButton from "@/views/landing/LandingCtaButton";
 import RightClientSection from "@/views/landing/RightClientSection";
 import { getServiceBySlug } from "@/models/services";
 import { METHOD_STEPS } from "@/models/generalLandingContent";
-import { SERVICE_LANDING_WISTIA_ID, SERVICE_PAIN_REFRAME } from "@/models/serviceLandingContent";
+import { getServiceLandingWistiaId, SERVICE_PAIN_REFRAME } from "@/models/serviceLandingContent";
 import { AREA_VISUALS } from "@/models/areaVisuals";
 import { useLandingController } from "@/controllers/landing/useLandingController";
 import { SoftBlob, AccentBlob, LayeredWaveDivider, GlowOrb, SparkleDots } from "@/views/shared/BackgroundBlobs";
@@ -69,7 +69,7 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
         </div>
 
         <ScrollReveal className="container mx-auto px-4 max-w-3xl mt-12" variant="scale">
-          <WistiaEmbed mediaId={SERVICE_LANDING_WISTIA_ID} />
+          <WistiaEmbed mediaId={getServiceLandingWistiaId(service.slug)} />
         </ScrollReveal>
 
         <div className="relative container mx-auto px-4 text-center mt-8">
