@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { X } from "lucide-react";
 import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
+import { getHubspotFormIdForPath } from "@/lib/hubspotForms";
 
 const HUBSPOT_SCRIPT_SRC = "https://js.hsforms.net/forms/embed/51925077.js";
 const HUBSPOT_REGION = "na1";
 const HUBSPOT_PORTAL_ID = "51925077";
-const HUBSPOT_FORM_ID = "1e48917a-7f40-4380-993f-435b88fb7df2";
 
 // Alto aproximado del pie de marca gratuita de HubSpot ("Create your own
 // free forms"). Ese pie vive dentro del iframe de HubSpot (otro dominio),
@@ -17,11 +18,29 @@ const HUBSPOT_BRANDING_HEIGHT_PX = 90;
 
 // Modal de agendamiento con el formulario embebido de HubSpot. Se monta una
 // sola vez a nivel de la app (ver App.tsx) y permanece siempre en el DOM;
-// se muestra u oculta con clases CSS en vez de montar/desmontar, así el
-// script de HubSpot solo tiene que crear el iframe del formulario una vez.
-// Cualquier botón o link con la clase BOOKING_TRIGGER_CLASS lo abre.
+// se muestra u oculta con clases CSS en vez de montar/desmontar. Cualquier
+// botón o link con la clase BOOKING_TRIGGER_CLASS lo abre.
+//
+// Cada servicio tiene su propio formulario de HubSpot (ver
+// src/lib/hubspotForms.ts): al hacer clic en el disparador se determina el
+// formulario según la página actual (servicio o landing de servicio usan
+// el formulario de ese servicio; el resto usa el formulario general) y se
+// monta el div hs-form-frame correspondiente. Si el formulario activo
+// cambia de un uso a otro, el div se remonta (vía `key`) para que HubSpot
+// cree el iframe correcto; si es el mismo formulario que ya estaba
+// montado, no se toca.
 const BookingFormModal = () => {
+  const location = useLocation();
+  // Ref en vez de dependencia del efecto de click: el listener se agrega
+  // una sola vez al montar y siempre lee la ruta más reciente.
+  const pathnameRef = useRef(location.pathname);
+  useEffect(() => {
+    pathnameRef.current = location.pathname;
+  }, [location.pathname]);
+
   const [open, setOpen] = useState(false);
+  const [activeFormId, setActiveFormId] = useState<string | null>(null);
+
   const scriptInjectedRef = useRef(false);
   const formFrameRef = useRef<HTMLDivElement>(null);
   const clipWrapperRef = useRef<HTMLDivElement>(null);
@@ -37,11 +56,16 @@ const BookingFormModal = () => {
 
   // Recorta el pie de marca de HubSpot y mantiene el recorte al día si el
   // formulario cambia de alto (por ejemplo, al mostrar errores de
-  // validación, que agrandan el iframe).
+  // validación, que agrandan el iframe). Se reinicia cada vez que se monta
+  // un formulario distinto (activeFormId cambia), porque cada formulario
+  // vive en un nodo de iframe nuevo.
   useEffect(() => {
+    if (!activeFormId) return;
     const frame = formFrameRef.current;
     const wrapper = clipWrapperRef.current;
     if (!frame || !wrapper) return;
+
+    wrapper.style.maxHeight = "";
 
     const applyClip = () => {
       const height = frame.offsetHeight;
@@ -63,7 +87,7 @@ const BookingFormModal = () => {
       window.clearInterval(interval);
       window.clearTimeout(stopInterval);
     };
-  }, []);
+  }, [activeFormId]);
 
   useEffect(() => {
     const onClickCapture = (event: MouseEvent) => {
@@ -71,6 +95,7 @@ const BookingFormModal = () => {
       const trigger = target?.closest<HTMLElement>(`.${BOOKING_TRIGGER_CLASS}`);
       if (!trigger) return;
       event.preventDefault();
+      setActiveFormId(getHubspotFormIdForPath(pathnameRef.current));
       setOpen(true);
     };
     document.addEventListener("click", onClickCapture, true);
@@ -117,13 +142,16 @@ const BookingFormModal = () => {
         </button>
         <div className="overflow-y-auto p-6 pt-10">
           <div ref={clipWrapperRef} className="overflow-hidden">
-            <div
-              ref={formFrameRef}
-              className="hs-form-frame"
-              data-region={HUBSPOT_REGION}
-              data-form-id={HUBSPOT_FORM_ID}
-              data-portal-id={HUBSPOT_PORTAL_ID}
-            />
+            {activeFormId && (
+              <div
+                key={activeFormId}
+                ref={formFrameRef}
+                className="hs-form-frame"
+                data-region={HUBSPOT_REGION}
+                data-form-id={activeFormId}
+                data-portal-id={HUBSPOT_PORTAL_ID}
+              />
+            )}
           </div>
         </div>
       </div>

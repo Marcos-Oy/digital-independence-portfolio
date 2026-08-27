@@ -17,6 +17,10 @@ dist
 dist-ssr
 *.local
 
+# Informes internos de servicios (contenido para uso propio, no forma
+# parte del sitio ni debe quedar en el historial del repo)
+informes-servicios/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
