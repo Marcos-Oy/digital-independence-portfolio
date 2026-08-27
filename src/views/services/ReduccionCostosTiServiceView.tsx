@@ -33,7 +33,7 @@ import {
   Trash2,
   Wallet,
 } from "lucide-react";
-import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
 import {
   BlobImage,
   AccentBlob,
@@ -298,7 +298,7 @@ const FAQ_ITEMS = [
 
 const PrimaryCta = ({ label, className = "", inverse = false }: { label: string; className?: string; inverse?: boolean }) => (
   <button
-    className={`${SYSTEME_TRIGGER_CLASS} inline-flex items-center gap-2 font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 ${
+    className={`${BOOKING_TRIGGER_CLASS} inline-flex items-center gap-2 font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 ${
       inverse ? "bg-brand-foreground text-primary" : "gradient-brand text-primary-foreground"
     } ${className}`}
   >
@@ -844,7 +844,7 @@ const ReduccionCostosTiServiceView = () => {
             </p>
             <a
               href="#contacto"
-              className={`${SYSTEME_TRIGGER_CLASS} inline-flex items-center gap-2 border border-border text-foreground text-sm font-semibold px-6 py-3.5 rounded-full hover:border-primary hover:text-primary transition-colors`}
+              className={`${BOOKING_TRIGGER_CLASS} inline-flex items-center gap-2 border border-border text-foreground text-sm font-semibold px-6 py-3.5 rounded-full hover:border-primary hover:text-primary transition-colors`}
             >
               Consultar modalidad
               <ArrowRight className="w-4 h-4" />

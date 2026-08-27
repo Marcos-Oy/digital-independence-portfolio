@@ -5,7 +5,7 @@ import ScrollReveal from "@/views/shared/ScrollReveal";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { type Segment } from "@/models/segments";
 import { getServiceBySlug } from "@/models/services";
-import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
 import PageMeta from "@/views/shared/PageMeta";
 
 interface Props {
@@ -133,7 +133,7 @@ const SegmentoView = ({ segment }: Props) => {
                 Te respondemos personalmente para entender tu caso y proponerte una hoja de ruta.
               </p>
               <button
-                className={`${SYSTEME_TRIGGER_CLASS} btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
+                className={`${BOOKING_TRIGGER_CLASS} btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
               >
                 Agendar diagnóstico
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>

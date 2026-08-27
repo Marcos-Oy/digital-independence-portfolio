@@ -42,7 +42,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
 import {
   AccentBlob,
   BlobImage,
@@ -415,7 +415,7 @@ const FAQ_ITEMS = [
 
 const PrimaryCta = ({ label, className = "", inverse = false }: { label: string; className?: string; inverse?: boolean }) => (
   <button
-    className={`${SYSTEME_TRIGGER_CLASS} inline-flex items-center gap-2 font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 ${
+    className={`${BOOKING_TRIGGER_CLASS} inline-flex items-center gap-2 font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 ${
       inverse ? "bg-brand-foreground text-primary" : "gradient-brand text-primary-foreground"
     } ${className}`}
   >

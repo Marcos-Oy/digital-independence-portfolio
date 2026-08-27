@@ -4,7 +4,7 @@ import SiteFooterView from "@/views/SiteFooterView";
 import { ArrowLeft, Linkedin, Globe } from "lucide-react";
 import marcosAzul from "@/assets/marcos-terno-azul.jpg";
 import marcosNegro from "@/assets/marcos-terno-negro.jpeg";
-import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
 import { BlobImage, RingLoop, StripeAccent, AccentBlob } from "@/views/shared/BackgroundBlobs";
 import PageMeta from "@/views/shared/PageMeta";
 
@@ -126,7 +126,7 @@ const FundadorView = () => {
                 Agenda un diagnóstico sin costo y encuentra el punto de partida ideal para tu caso.
               </p>
               <button
-                className={`${SYSTEME_TRIGGER_CLASS} inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
+                className={`${BOOKING_TRIGGER_CLASS} inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
               >
                 Agendar diagnóstico
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>

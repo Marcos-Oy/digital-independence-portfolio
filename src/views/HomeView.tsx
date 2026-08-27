@@ -23,7 +23,7 @@ import { filterAndSortServices } from "@/models/serviceSearch";
 import { SEGMENTS } from "@/models/segments";
 import { FAQS } from "@/models/faq";
 import { METHOD_STEPS } from "@/models/method";
-import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
 
 const FaqItem = ({ q, a }: { q: string; a: string }) => {
   const [open, setOpen] = useState(false);
@@ -129,7 +129,7 @@ const HomeView = () => {
             style={{ animationDelay: "0.3s" }}
           >
             <button
-              className={`${SYSTEME_TRIGGER_CLASS} btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
+              className={`${BOOKING_TRIGGER_CLASS} btn-shimmer inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
             >
               Agendar diagnóstico gratis
               <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
@@ -504,7 +504,7 @@ const HomeView = () => {
                   </div>
 
                   <button
-                    className={`${SYSTEME_TRIGGER_CLASS} inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
+                    className={`${BOOKING_TRIGGER_CLASS} inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-8 py-4 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
                   >
                     Agendar diagnóstico
                     <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>

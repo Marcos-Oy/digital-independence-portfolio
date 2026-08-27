@@ -18,7 +18,7 @@ import WhatsAppButtonView from "@/views/WhatsAppButtonView";
 import ChatBotView from "@/views/ChatBotView";
 import WelcomeModalView from "@/views/WelcomeModalView";
 import CookieNoticeView from "@/views/CookieNoticeView";
-import SystemeIoFloatingForm from "@/views/landing/SystemeIoFloatingForm";
+import BookingFormModal from "@/views/landing/BookingFormModal";
 import GlobalClickSound from "@/views/shared/GlobalClickSound";
 
 const queryClient = new QueryClient();
@@ -76,7 +76,7 @@ const AppLayout = () => {
       {!hideChat && <ChatBotView />}
       {!hideWelcomeModal && <WelcomeModalView />}
       <CookieNoticeView waitForWelcomeModal={!hideWelcomeModal} />
-      <SystemeIoFloatingForm />
+      <BookingFormModal />
       <GlobalClickSound />
     </>
   );

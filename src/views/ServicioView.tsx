@@ -13,7 +13,7 @@ import {
   Handshake,
 } from "lucide-react";
 import { type Service } from "@/models/services";
-import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
 import { FAQS } from "@/models/faq";
 import { SERVICE_DESCRIPTIONS } from "@/models/serviceDescriptionContent";
 import PageMeta from "@/views/shared/PageMeta";
@@ -30,7 +30,7 @@ interface Props {
 
 const CtaButton = ({ label }: { label: string }) => (
   <button
-    className={`${SYSTEME_TRIGGER_CLASS} inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
+    className={`${BOOKING_TRIGGER_CLASS} inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-bold text-sm px-7 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
   >
     {label}
     <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>

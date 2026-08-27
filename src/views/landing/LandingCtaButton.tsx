@@ -1,4 +1,4 @@
-import { SYSTEME_TRIGGER_CLASS } from "@/lib/systemeIo";
+import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
 
 interface LandingCtaButtonProps {
   onClick?: () => void;
@@ -12,7 +12,7 @@ const LandingCtaButton = ({ onClick, className = "", size = "default" }: Landing
   return (
     <button
       onClick={onClick}
-      className={`${SYSTEME_TRIGGER_CLASS} whitespace-nowrap inline-flex items-center gap-2 gradient-brand text-primary-foreground font-heading font-bold rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 ${sizeClasses} ${className}`}
+      className={`${BOOKING_TRIGGER_CLASS} whitespace-nowrap inline-flex items-center gap-2 gradient-brand text-primary-foreground font-heading font-bold rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 ${sizeClasses} ${className}`}
     >
       Quiero mi diagnóstico
       {size === "default" && (
