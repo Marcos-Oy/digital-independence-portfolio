@@ -18,7 +18,7 @@ import logoFull from "@/assets/logo-full.png";
 import bannerHero from "@/assets/banner-hero.png";
 import bannerPlan360 from "@/assets/banner-plan360.png";
 import { ChevronRight, ChevronDown, Instagram, Facebook, Linkedin, Mail, Search, X } from "lucide-react";
-import { AREAS, type ServiceArea } from "@/models/services";
+import { AREAS, SERVICES, type ServiceArea } from "@/models/services";
 import { filterAndSortServices } from "@/models/serviceSearch";
 import { SEGMENTS } from "@/models/segments";
 import { FAQS } from "@/models/faq";
@@ -172,8 +172,8 @@ const HomeView = () => {
 
               <ScrollReveal variant="scale" delay={100} className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
                 {[
-                  { n: "14", label: "Servicios especializados" },
-                  { n: "6", label: "Áreas de consultoría" },
+                  { n: String(SERVICES.length), label: "Servicios especializados" },
+                  { n: String(AREAS.length), label: "Áreas de consultoría" },
                   { n: "4", label: "Segmentos atendidos" },
                 ].map(({ n, label }) => (
                   <div key={label} className="bg-card px-4 py-8 text-center">
