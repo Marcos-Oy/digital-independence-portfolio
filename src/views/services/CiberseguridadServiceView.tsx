@@ -139,6 +139,7 @@ const COVERAGE_AREAS = [
       "Gestión de riesgos y pólizas de ciberseguro",
       "Gobierno de datos y políticas de seguridad",
       "Cumplimiento Ley 21.663 y Ley 21.719",
+      "Evaluación de Impacto en la Protección de Datos (PIA/EIPD)",
       "Alineamiento con ISO 27001",
       "Gestión de presupuesto de seguridad",
     ],
@@ -189,6 +190,7 @@ const COVERAGE_AREAS = [
     items: [
       "Gestión de incidentes",
       "Planes de respuesta",
+      "Análisis de Impacto al Negocio (BIA)",
       "Continuidad operacional",
       "Recuperación",
       "Simulaciones y ejercicios",
@@ -328,6 +330,10 @@ const FAQ_ITEMS = [
   {
     q: "¿Pueden evaluar mi nivel actual de ciberseguridad?",
     a: "Sí. Realizamos un diagnóstico adaptado a tu contexto que identifica activos, riesgos, vulnerabilidades y brechas, y que termina en una hoja de ruta priorizada según el impacto real para tu organización.",
+  },
+  {
+    q: "¿Qué son el BIA y el PIA que mencionan?",
+    a: "El BIA (Análisis de Impacto al Negocio) evalúa qué pasaría en tu operación si un proceso o sistema crítico dejara de funcionar, y en cuánto tiempo necesitas recuperarlo. El PIA o EIPD (Evaluación de Impacto en la Protección de Datos) evalúa los riesgos que un tratamiento de datos personales representa para las personas titulares, tal como lo exige la Ley N.º 21.719. Ambos son insumos clave para priorizar riesgos y cumplir con la normativa.",
   },
   {
     q: "¿Qué pasa si ya tengo antivirus y firewall?",

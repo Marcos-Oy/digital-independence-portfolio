@@ -103,6 +103,7 @@ const SOLUTION_CONCEPTS: SolutionConcept[] = [
 
 const INCLUDES = [
   "Gestión de riesgos y cumplimiento normativo (Ley 21.663, Ley 21.719, ISO 27001)",
+  "Análisis de Impacto al Negocio (BIA) y de Impacto en la Protección de Datos (PIA/EIPD)",
   "Protección técnica: MFA, antivirus, respaldo y directivas de grupo",
   "Seguridad de aplicaciones (DevSecOps) y monitoreo SIEM/SOC/SOAR",
   "Formación, simulacros de phishing y de ciberdelito corporativo",
