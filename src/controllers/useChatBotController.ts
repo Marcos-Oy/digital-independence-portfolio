@@ -2,9 +2,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import {
   type ChatMessage,
-  SUGGESTED_QUESTIONS,
   getSuggestedQuestionsForPath,
-  pickRandom,
   streamChatResponse,
   unlockChatAudio,
   playChatPopSound,
@@ -134,7 +132,9 @@ export const useChatBotController = () => {
           return copy;
         });
       });
-      setChips(pickRandom(SUGGESTED_QUESTIONS, 3));
+      // Igual que el saludo inicial: preguntas del servicio actual si estamos
+      // en su página o landing, genéricas en el resto del sitio.
+      setChips(getSuggestedQuestionsForPath(pathname));
     } catch (err) {
       console.error("Chat IA falló:", err);
       const text =
