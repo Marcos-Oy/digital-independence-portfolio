@@ -35,7 +35,7 @@ import csResultado from "@/assets/ciberseguridad-resultado.jpg";
 
 const PAIN_POINTS = [
   "Cualquiera de tu equipo podría caer en un correo de phishing bien armado, y hoy nadie está entrenado para detectarlo.",
-  "No sabes con certeza si cumples con la Ley 19.628, ni qué exige realmente la nueva Ley Marco de Ciberseguridad.",
+  "No sabes con certeza si cumples con la Ley Marco de Ciberseguridad ni con la nueva Ley de Protección de Datos Personales.",
   "Tienes antivirus y firewall, pero cero formación humana contra ingeniería social.",
   "Si ocurriera un incidente mañana, nadie en tu equipo sabría exactamente qué hacer los primeros minutos.",
   "Información de clientes, financiera o estratégica podría estar más expuesta de lo que crees.",
@@ -92,7 +92,7 @@ const SOLUTION_CONCEPTS: SolutionConcept[] = [
   {
     icon: ShieldCheck,
     title: "Protección",
-    desc: "Implementamos medidas técnicas, organizacionales y humanas.",
+    desc: "MFA, antivirus, respaldo, seguridad de aplicaciones y monitoreo SIEM/SOC/SOAR.",
   },
   {
     icon: Siren,
@@ -102,9 +102,10 @@ const SOLUTION_CONCEPTS: SolutionConcept[] = [
 ];
 
 const INCLUDES = [
-  "Auditoría técnica y controles",
-  "Formación contra phishing e ingeniería social",
-  "Cumplimiento ISO 27001 y Ley 19.628",
+  "Gestión de riesgos y cumplimiento normativo (Ley 21.663, Ley 21.719, ISO 27001)",
+  "Protección técnica: MFA, antivirus, respaldo y directivas de grupo",
+  "Seguridad de aplicaciones (DevSecOps) y monitoreo SIEM/SOC/SOAR",
+  "Formación, simulacros de phishing y de ciberdelito corporativo",
   "Ciberseguridad industrial OT/ICS",
   "Módulos diferenciales: infantil y de género",
 ];
@@ -168,7 +169,7 @@ const BENEFITS: Benefit[] = [
   {
     icon: Scale,
     title: "Preparación frente a la normativa chilena",
-    desc: "Alineado con la Ley 19.628, la nueva Ley Marco de Ciberseguridad y estándares como ISO 27001 cuando corresponde.",
+    desc: "Alineado con la Ley Marco de Ciberseguridad, la Ley de Protección de Datos Personales y estándares como ISO 27001 cuando corresponde.",
   },
 ];
 
@@ -208,7 +209,7 @@ const CiberseguridadLandingView = () => {
     <div className="min-h-screen bg-background">
       <PageMeta
         title="Ciberseguridad, Gestión y Estrategia | Independencia Digital"
-        description="Diagnóstico, gestión de riesgos, formación contra phishing y alineamiento con la Ley 19.628, la Ley Marco de Ciberseguridad e ISO 27001. Diagnóstico sin costo."
+        description="Diagnóstico, gestión de riesgos, protección técnica (MFA, antivirus, DevSecOps), monitoreo SIEM/SOC/SOAR y cumplimiento con la Ley Marco de Ciberseguridad, la Ley de Protección de Datos Personales e ISO 27001. Diagnóstico sin costo."
         path="/landing/servicio/ciberseguridad"
         noindex
       />

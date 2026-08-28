@@ -18,6 +18,7 @@ import {
   CheckCircle2,
   ChevronDown,
   ClipboardCheck,
+  Code2,
   Compass,
   Cpu,
   Database,
@@ -135,28 +136,54 @@ const COVERAGE_AREAS = [
     title: "Gestión y estrategia",
     items: [
       "Diagnóstico de ciberseguridad",
-      "Gestión de riesgos",
-      "Políticas y procedimientos",
-      "Gobierno de seguridad",
-      "Planes de acción",
-      "Gestión de activos",
+      "Gestión de riesgos y pólizas de ciberseguro",
+      "Gobierno de datos y políticas de seguridad",
+      "Cumplimiento Ley 21.663 y Ley 21.719",
+      "Alineamiento con ISO 27001",
+      "Gestión de presupuesto de seguridad",
     ],
   },
   {
     num: "02",
     icon: ShieldCheck,
-    title: "Protección",
+    title: "Protección técnica y endpoints",
     items: [
-      "Identidades y accesos",
-      "Seguridad de endpoints",
-      "Seguridad de redes",
-      "Protección de información",
-      "Seguridad cloud",
-      "Seguridad de aplicaciones",
+      "Autenticación multifactor (MFA)",
+      "Instalación y gestión de antivirus",
+      "Respaldo y recuperación de datos",
+      "Bloqueo de puertos USB",
+      "Directivas de grupo (GPO / Active Directory)",
+      "Gestión de identidades y accesos",
     ],
   },
   {
     num: "03",
+    icon: Code2,
+    title: "Seguridad de aplicaciones (DevSecOps)",
+    items: [
+      "Buenas prácticas de autenticación (login seguro)",
+      "Protección contra inyección SQL",
+      "Protección contra XSS (inyección JS)",
+      "Búsqueda de vulnerabilidades en software",
+      "Revisión orientada a seguridad",
+      "Recomendaciones de hardening",
+    ],
+  },
+  {
+    num: "04",
+    icon: Radar,
+    title: "Monitoreo y respuesta",
+    items: [
+      "Análisis y revisión de logs",
+      "Visibilidad de eventos con SIEM",
+      "Capacidad humana de monitoreo (SOC)",
+      "Automatización de respuesta con SOAR",
+      "Detección temprana de incidentes",
+      "Alertas y escalamiento",
+    ],
+  },
+  {
+    num: "05",
     icon: LifeBuoy,
     title: "Respuesta y continuidad",
     items: [
@@ -169,16 +196,16 @@ const COVERAGE_AREAS = [
     ],
   },
   {
-    num: "04",
+    num: "06",
     icon: GraduationCap,
     title: "Personas y cultura",
     items: [
       "Concientización",
       "Capacitación",
-      "Phishing simulado cuando corresponda",
+      "Phishing simulado",
+      "Simulacros de ciberdelito corporativo",
       "Buenas prácticas",
       "Protección de cuentas",
-      "Seguridad digital personal",
     ],
   },
 ];
@@ -313,6 +340,14 @@ const FAQ_ITEMS = [
   {
     q: "¿Qué pasa si ya tuve un incidente?",
     a: "Podemos evaluar la situación, ayudar a contener riesgos, preservar la información relevante y definir los próximos pasos según el alcance del incidente. Después trabajamos en las medidas necesarias para reducir la probabilidad de que vuelva a ocurrir.",
+  },
+  {
+    q: "¿Hacen red team, pentesting ofensivo o pruebas de intrusión?",
+    a: "No. El enfoque del servicio es de gestión, estrategia y protección técnica: MFA, antivirus, respaldo, directivas de grupo, seguridad de aplicaciones y monitoreo con SIEM/SOC/SOAR, entre otros. No realizamos ataques ofensivos ni pruebas de intrusión activa (red team) contra tus sistemas.",
+  },
+  {
+    q: "¿Diseñan o implementan infraestructura de red, firewalls o VPN?",
+    a: "No. El diseño e implementación de infraestructura de red, firewalls y VPN privadas no forma parte de este servicio. Si tu organización lo necesita, podemos orientarte sobre a qué tipo de proveedor especializado conviene recurrir.",
   },
 ];
 
@@ -778,11 +813,11 @@ const CiberseguridadServiceView = () => {
           <ScrollReveal className="text-center mb-16">
             <PillLabel>¿Qué incluye?</PillLabel>
             <h2 className="font-heading font-bold text-2xl md:text-4xl text-foreground mt-5 leading-tight max-w-2xl mx-auto">
-              Desde el diagnóstico hasta la estrategia de protección
+              Desde la estrategia hasta la protección técnica del día a día
             </h2>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {COVERAGE_AREAS.map((area, i) => (
               <ScrollReveal key={area.num} delay={i * 80}>
                 <div className="relative bg-card border border-border rounded-2xl p-6 h-full">

@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import {
   type ChatMessage,
   SUGGESTED_QUESTIONS,
+  getSuggestedQuestionsForPath,
   pickRandom,
   streamChatResponse,
   unlockChatAudio,
@@ -16,7 +17,10 @@ export const useChatBotController = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [suggestions] = useState<string[]>(() => pickRandom(SUGGESTED_QUESTIONS, 3));
+  // Preguntas del saludo inicial: específicas del servicio si estamos en su
+  // página o landing, genéricas en el resto del sitio. Se recalculan al
+  // navegar (no solo al montar) para que reflejen la página actual.
+  const suggestions = useMemo(() => getSuggestedQuestionsForPath(pathname), [pathname]);
   const [chips, setChips] = useState<string[]>([]);
   const [kbStyle, setKbStyle] = useState<React.CSSProperties>({});
   const scrollRef = useRef<HTMLDivElement>(null);

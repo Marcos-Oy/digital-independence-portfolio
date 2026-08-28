@@ -80,6 +80,90 @@ export const pickRandom = <T,>(arr: T[], n: number): T[] => {
   return out;
 };
 
+// ── Preguntas sugeridas por servicio ────────────────────────────────────────
+// Al abrir el chat en la página de un servicio (/servicios/:slug) o en su
+// landing (/landing/servicio/:slug), se muestran estas 3 preguntas en vez del
+// pool genérico, para que el saludo inicial hable del servicio que la
+// persona ya está mirando. Las claves son los slugs de src/models/services.ts.
+const SERVICE_SUGGESTED_QUESTIONS: Record<string, string[]> = {
+  "presencia-digital": [
+    "¿Hacen sitios web y posicionamiento SEO?",
+    "¿Qué incluye la creación de una página web?",
+    "¿Cuánto demora tener mi sitio listo?",
+  ],
+  "desarrollo-software": [
+    "¿Hacen sitios web y software a medida?",
+    "¿Qué tipo de sistemas pueden desarrollar?",
+    "¿Cómo funciona el diagnóstico de un proyecto de software?",
+  ],
+  "ciberseguridad": [
+    "¿Qué incluye el servicio de ciberseguridad?",
+    "¿Hacen red team o pentesting?",
+    "¿Cumplen con la Ley de Ciberseguridad chilena?",
+  ],
+  "vigilancia-innovacion": [
+    "¿Qué es la Vigilancia e Innovación Tecnológica?",
+    "¿Cómo funciona el informe mensual?",
+    "¿Qué tendencias monitorean?",
+  ],
+  "optimizacion-costos-ti": [
+    "¿Cuánto puedo ahorrar en tecnología?",
+    "¿Qué incluye la auditoría de costos TI?",
+    "¿Revisan licencias y contratos cloud?",
+  ],
+  "arquitectura-ti": [
+    "¿Qué incluye Arquitectura TI?",
+    "¿Ordenan la tecnología que ya tengo?",
+    "¿Configuran correo y dominio corporativo?",
+  ],
+  "transformacion-digital": [
+    "¿Qué es la Transformación Digital?",
+    "¿Cómo digitalizan procesos manuales?",
+    "¿Incluye capacitación para mi equipo?",
+  ],
+  "direccion-ti": [
+    "¿Qué hace un CTO externo?",
+    "¿En qué se diferencia del soporte técnico?",
+    "¿Ayudan a contratar talento TI?",
+  ],
+  "ia-corporativa": [
+    "¿Qué es la IA Corporativa?",
+    "¿Qué es un clon digital?",
+    "¿Automatizan con N8N o ManyChat?",
+  ],
+  "integracion-plataformas": [
+    "¿Qué es la Integración de Plataformas?",
+    "¿Pueden conectar mi CRM con otros sistemas?",
+    "¿Consolidan bases de datos dispersas?",
+  ],
+  "automatizacion-procesos": [
+    "¿Qué procesos pueden automatizar?",
+    "¿Trabajan con N8N o Power Automate?",
+    "¿Cómo funciona el diagnóstico de automatización?",
+  ],
+  "dashboards-kpi": [
+    "¿Qué incluyen los Dashboards y KPI?",
+    "¿Con qué herramientas trabajan (Power BI, Looker)?",
+    "¿Conectan mis fuentes de datos reales?",
+  ],
+};
+
+// Determina qué 3 preguntas sugeridas mostrar según la ruta actual: en la
+// página de un servicio o su landing, las preguntas de ese servicio; en
+// cualquier otra ruta, 3 al azar del pool genérico. No restringe lo que se
+// puede preguntar, solo qué chips aparecen al saludar.
+export const getSuggestedQuestionsForPath = (pathname: string): string[] => {
+  const match =
+    pathname.match(/^\/servicios\/([^/]+)/) ??
+    pathname.match(/^\/landing\/servicio\/([^/]+)/);
+  if (match) {
+    const slug = match[1];
+    const forService = SERVICE_SUGGESTED_QUESTIONS[slug];
+    if (forService) return forService;
+  }
+  return pickRandom(SUGGESTED_QUESTIONS, 3);
+};
+
 // ── API del chat ──────────────────────────────────────────────────────────────
 
 const SUPA_URL =

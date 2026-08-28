@@ -105,7 +105,7 @@ export const AREAS: { id: ServiceArea; label: string; desc: string; icon: Lucide
   {
     id: "ciberseguridad",
     label: "Ciberseguridad",
-    desc: "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva.",
+    desc: "Ciberseguridad de gestión y estrategia, más protección técnica: MFA, antivirus, DevSecOps y monitoreo SOC/SIEM/SOAR.",
     icon: ShieldCheck,
   },
   {
@@ -362,33 +362,33 @@ const RAW_SERVICES: Omit<Service, "image">[] = [
     area: "ciberseguridad",
     areaLabel: "Ciberseguridad",
     icon: Shield,
-    tagline: "Postura de seguridad real, técnica y humana.",
+    tagline: "Postura de seguridad real, de gestión y técnica.",
     summary:
-      "Auditoría técnica, controles, formación contra ingeniería social, cumplimiento ISO 27001 / Ley 19.628 y ciberseguridad diferencial.",
+      "Gestión de riesgos, cumplimiento normativo (Ley 21.663, Ley 21.719, ISO 27001), protección técnica (MFA, antivirus, DevSecOps), monitoreo SOC/SIEM/SOAR, capacitación y ciberseguridad diferencial.",
     description:
-      "Auditoría técnica y controles de seguridad. Formación a funcionarios y colaboradores contra ingeniería social y phishing. Cumplimiento ISO 27001 y Ley 19.628. Ciberseguridad industrial OT/ICS para entornos productivos. Ciberseguridad diferencial con módulo para niños (grooming, acoso, controles parentales) y módulo para mujeres (doxing, acoso digital, seguridad física integrada).",
+      "Gestión de riesgos y gobierno de datos, cumplimiento con la Ley Marco de Ciberseguridad y la Ley de Protección de Datos Personales, alineamiento con ISO 27001, y gestión de incidentes y de presupuesto de seguridad. En el plano técnico: MFA, antivirus, respaldo de datos, bloqueo de puertos USB, directivas de grupo (GPO), seguridad de aplicaciones (DevSecOps: protección contra inyección SQL y XSS, búsqueda de vulnerabilidades) y monitoreo con SIEM, SOC y SOAR. Formación a funcionarios y colaboradores contra ingeniería social, phishing y ciberdelito corporativo. Ciberseguridad industrial OT/ICS para entornos productivos. Ciberseguridad diferencial con módulo para niños (grooming, acoso, controles parentales) y módulo para mujeres (doxing, acoso digital, seguridad física integrada).",
     approach:
-      "Partimos con una auditoría técnica de tus controles actuales y formamos a tu equipo contra phishing e ingeniería social, porque la mayoría de los ataques entran por las personas, no por la tecnología. Si tu negocio lo requiere, trabajamos también cumplimiento ISO 27001 y Ley 19.628, ciberseguridad industrial OT/ICS, y módulos diferenciales de seguridad para la protección de niños y de mujeres frente al acoso digital.",
+      "Partimos con un diagnóstico de riesgos y del estado real de tus controles, y formamos a tu equipo contra phishing e ingeniería social, porque la mayoría de los ataques entran por las personas, no solo por la tecnología. Implementamos protección técnica (MFA, antivirus, respaldo, directivas de grupo, seguridad de aplicaciones) y monitoreo con SIEM, SOC y SOAR, alineamos tu cumplimiento con la Ley 21.663, la Ley 21.719 e ISO 27001, y al cierre del diagnóstico entregamos una hoja de ruta de servicios profesionales priorizada. Si tu negocio lo requiere, trabajamos también ciberseguridad industrial OT/ICS y módulos diferenciales de seguridad para la protección de niños y de mujeres frente al acoso digital.",
     addedValue: [
-      "Formamos a las personas, no solo instalamos software: la mayoría de los ataques entran por ahí.",
-      "Cubrimos cumplimiento normativo real (ISO 27001, Ley 19.628), no solo una checklist genérica.",
+      "Formamos a las personas y protegemos la tecnología (MFA, antivirus, respaldo, directivas de grupo, seguridad de aplicaciones), no solo una charla de concientización.",
+      "Cubrimos cumplimiento normativo real (Ley 21.663, Ley 21.719, ISO 27001) con gestión de riesgos y de presupuesto, no solo una checklist genérica.",
       "Incluye módulos diferenciales poco comunes en el mercado: seguridad infantil y de género.",
     ],
     rightClient:
       "Desde el dueño de PyME sin controles básicos hasta la gran empresa con ISO pero sin seguridad real en las personas.",
     valuePromise:
-      "Postura de seguridad real: controles técnicos activos, equipo formado para detectar ataques de ingeniería social y plan documentado.",
+      "Postura de seguridad real: gestión de riesgos, protección técnica activa, monitoreo SOC/SIEM/SOAR, equipo formado y un plan documentado para cuando algo falle.",
     painPoints: [
       "Cualquiera de tu equipo podría caer en un correo de phishing bien armado, y hoy nadie está entrenado para detectarlo.",
-      "No cumples, o no sabes si cumples, con la Ley 19.628 o estándares como ISO 27001.",
-      "Tienes controles técnicos, pero cero formación humana contra ingeniería social.",
+      "No sabes si cumples con la Ley Marco de Ciberseguridad ni con la nueva Ley de Protección de Datos Personales.",
+      "Tienes controles básicos, pero nadie está gestionando el riesgo, monitoreando eventos ni preparado para responder a un incidente.",
     ],
     includes: [
-      "Auditoría técnica y controles",
-      "Formación contra phishing e ingeniería social",
-      "Cumplimiento ISO 27001 y Ley 19.628",
-      "Ciberseguridad industrial OT/ICS",
-      "Módulos diferenciales: infantil y de género",
+      "Gestión de riesgos y cumplimiento normativo (Ley 21.663, Ley 21.719, ISO 27001)",
+      "Protección técnica: MFA, antivirus, respaldo y directivas de grupo",
+      "Seguridad de aplicaciones (DevSecOps) y monitoreo SIEM/SOC/SOAR",
+      "Formación, simulacros de phishing y de ciberdelito corporativo",
+      "Ciberseguridad industrial OT/ICS y módulos diferenciales",
     ],
     segments: ["emprendedores", "pymes", "empresas", "publico"],
   },
@@ -647,6 +647,9 @@ export const SEARCH_TAGS: Record<string, string[]> = {
     'backup', 'respaldo', 'ciberataque', 'vulnerabilidad', 'datos seguros',
     'alguien entro a mis cuentas', 'me robaron datos', 'quiero estar seguro',
     'proteger mis clientes', 'seguridad informatica', 'cumplimiento seguridad',
+    'mfa', 'autenticacion multifactor', 'devsecops', 'siem', 'soc', 'soar',
+    'directivas de grupo', 'gpo', 'gobierno de datos', 'inyeccion sql',
+    'vulnerabilidades software', 'simulacro phishing', 'ciso',
   ],
   'vigilancia-innovacion': [
     'tendencias tecnologicas', 'innovacion', 'nuevas tecnologias', 'que tecnologia usar',
