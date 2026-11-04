@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
 import { initialLanguage, isLanguage, LANGUAGE_STORAGE_KEY, type LanguageCode } from "@/lib/languages";
 import { supabase } from "@/integrations/supabase/client";
 
-type LanguageContextValue = { language: LanguageCode; selectLanguage: (code: LanguageCode) => void; translating: boolean; error: string | null };
+type LanguageContextValue = { language: LanguageCode; selectLanguage: (code: LanguageCode) => void; translating: boolean; error: string | null; translateText: (text: string) => string };
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 const readSaved = () => { try { return localStorage.getItem(LANGUAGE_STORAGE_KEY); } catch { return null; } };
 const translations = new Map<LanguageCode, Map<string, string>>();
@@ -12,6 +12,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<LanguageCode>(() => initialLanguage(readSaved(), undefined, navigator.languages));
   const [translating, setTranslating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [, setRevision] = useState(0);
   const manual = useRef(isLanguage(readSaved()));
   const sources = useRef(new Map<Text, { source: string; applied: string }>());
   const attributes = useRef(new Map<Element, Map<string, { source: string; applied: string }>>());
@@ -52,7 +53,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     translations.set(language, cache);
     const scan = () => {
       const jobs: { source: string; apply: (value: string) => void }[] = [];
-      const root = document.getElementById("root");
+      const root = document.body;
       if (!root) return jobs;
       for (const [node] of sources.current) if (!node.isConnected) sources.current.delete(node);
       for (const [node] of attributes.current) if (!node.isConnected) attributes.current.delete(node);
@@ -113,6 +114,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
             throw new Error(message);
           }
           data.translations.forEach((text: string, i: number) => { if (typeof text === "string") cache.set(batch[i], text); });
+          if (!cancelled) setRevision(value => value + 1);
           if (!cancelled) scan().forEach(job => { const translated = cache.get(job.source); if (translated) job.apply(translated); });
         }
       } catch (error) { failed = true; if (!cancelled) setError(error instanceof Error ? error.message : "Traducción no disponible"); }
@@ -123,12 +125,13 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       }
     };
     const observer = new MutationObserver(() => { if (timer) clearTimeout(timer); timer = window.setTimeout(refresh, 350); });
-    const root = document.getElementById("root");
+    const root = document.body;
     if (root) observer.observe(root, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["placeholder", "title", "aria-label", "alt"] });
     setError(null); setTranslating(false); void refresh();
     return () => { cancelled = true; observer.disconnect(); if (timer) clearTimeout(timer); };
   }, [language]);
-  return <LanguageContext.Provider value={{ language, selectLanguage, translating, error }}>{children}</LanguageContext.Provider>;
+  const translateText = (text: string) => language === "es" ? text : translations.get(language)?.get(text) ?? text;
+  return <LanguageContext.Provider value={{ language, selectLanguage, translating, error, translateText }}>{children}</LanguageContext.Provider>;
 };
 
 export const useLanguage = () => {
