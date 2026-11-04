@@ -65,14 +65,15 @@ export const useChatBotController = () => {
 
   useEffect(() => {
     if (autoOpenedRef.current) return;
-    try { if (sessionStorage.getItem("chatbot_auto_opened")) return; } catch { }
 
     let timerId: number | null = null;
     const startTimer = () => {
       if (timerId !== null || autoOpenedRef.current) return;
       timerId = window.setTimeout(() => {
         autoOpenedRef.current = true;
-        try { sessionStorage.setItem("chatbot_auto_opened", "1"); } catch { }
+        // claimChatAutoOpen() da permiso una sola vez por carga de página, y
+        // nunca si el visitante ya abrió el chat a mano.
+        if (!claimChatAutoOpen()) return;
         setOpen(true); playChatPopSound();
       }, 10000);
     };
