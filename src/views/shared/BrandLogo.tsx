@@ -1,4 +1,4 @@
-import brandLogo from "@/assets/brand-logo-lateral.png.asset.json";
+import brandLogo from "@/assets/brand-logo-lateral.png";
 
 /**
  * Logotipo lateral oficial (emblema + nombre en dos líneas).
@@ -6,7 +6,7 @@ import brandLogo from "@/assets/brand-logo-lateral.png.asset.json";
  */
 const BrandLogo = ({ className = "" }: { className?: string }) => (
   <img
-    src={brandLogo.url}
+    src={brandLogo}
     alt="- MOT[IA]RZO - LABS"
     className={`w-auto object-contain ${className}`}
   />
