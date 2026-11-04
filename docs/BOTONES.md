@@ -20,8 +20,8 @@ El efecto se monta solo en los botones que llevan alguna de estas dos clases:
    `src/lib/booking.ts`): la usan los botones que abren el formulario de
    diagnóstico. **No hay que hacer nada**, ya reciben la luz.
 2. `cta-estrella`: para cualquier otro botón de acción (Ver servicios, Volver a
-   servicios, Enviar reseña, la burbuja de WhatsApp, la del chatbot, el botón
-   del modal de bienvenida...).
+   servicios, Enviar reseña, la burbuja del chatbot, el botón del modal de
+   bienvenida...).
 
 ```tsx
 <button className="cta-estrella inline-flex ...">Acción</button>
@@ -29,6 +29,19 @@ El efecto se monta solo en los botones que llevan alguna de estas dos clases:
 
 El montaje global los encuentra tanto si ya existían al cargar como si aparecen
 después (cambio de página, modal abierto), gracias a un `MutationObserver`.
+
+## Excepción: la burbuja de WhatsApp
+
+La burbuja de WhatsApp (`src/views/WhatsAppButtonView.tsx`) **no lleva
+`cta-estrella`**. A pedido del dueño del sitio parpadea como una llamada
+entrante: dos ondas que salen del círculo, un flash de brillo y el auricular
+que se menea como teléfono sonando.
+
+Todo eso vive en `src/index.css` bajo las clases `.wa-llamada`,
+`.wa-llamada__onda` y `.wa-llamada__auricular` (keyframes `wa-onda`,
+`wa-destello`, `wa-auricular`; ciclo de 2,6 s). Si algún día vuelve a querer la
+luz del borde, hay que devolverle la clase `cta-estrella` y quitar esas tres
+clases.
 
 ## Qué hace por dentro
 
