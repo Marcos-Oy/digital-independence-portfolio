@@ -28,7 +28,7 @@ import type { LanguageCode } from "@/lib/languages";
 const flags: Record<LanguageCode, { url: string }> = { es: cl, en: us, pt: br, fr, de, it, zh: cn, ja: jp, ko: kr, ar: sa, ru, hi: india, nl, pl, sv, tr, uk, he, el, id, vi, th, bn, ro, cs };
 
 const LanguageFlag = ({ language }: { language: LanguageCode }) => (
-  <img src={flags[language].url} alt="" aria-hidden="true" width={24} height={18} className="h-[18px] w-6 shrink-0 rounded-sm object-cover" />
+  <img src={new URL(flags[language].url, "https://independencia-digital.lovable.app").href} alt="" aria-hidden="true" width={24} height={18} className="h-[18px] w-6 shrink-0 rounded-sm object-cover" />
 );
 
 export default LanguageFlag;
