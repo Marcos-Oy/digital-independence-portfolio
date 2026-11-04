@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import BrandLogo from "@/views/shared/BrandLogo";
 import chileFlag from "@/assets/chile-flag.png";
 import ThemeToggleView from "@/views/ThemeToggleView";
+import LanguageSelector from "@/views/shared/LanguageSelector";
 import { ChevronDown, X, Search } from "lucide-react";
 import { SERVICES } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
@@ -129,7 +130,7 @@ const SiteNavbarView = () => {
               </li>
             </ul>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-0 sm:gap-2">
               <button
                 onClick={openSearch}
                 aria-label="Buscar en el sitio"
@@ -138,6 +139,7 @@ const SiteNavbarView = () => {
                 <Search className="w-4 h-4" />
               </button>
               <ThemeToggleView />
+              <LanguageSelector />
               <button
                 className={`${BOOKING_TRIGGER_CLASS} hidden lg:inline-flex items-center gap-2.5 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-5 py-2.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
               >

@@ -57,7 +57,7 @@ const TypewriterText = ({ text, className = "", speed = 45, startDelay = 0, trig
 
   return (
     <span ref={ref} className={`font-mono ${className}`} role="text" aria-label={text}>
-      <span aria-hidden="true">{shown}</span>
+      <span aria-hidden="true" data-no-translate>{shown}</span>
       <span className="typewriter-cursor" aria-hidden="true" />
     </span>
   );
