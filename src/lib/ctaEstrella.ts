@@ -190,11 +190,19 @@ const dibujar = (
   if (w <= 0 || h <= 0) return;
 
   const { color: c, fuerza } = estado.style;
-  const camino = construirCamino(w, h, r);
+  // El lienzo desborda MARGIN px por cada lado, así que el contorno del botón
+  // queda desplazado: se dibuja dentro de ese recuadro, no en el borde del lienzo.
+  const bw = w - MARGIN * 2;
+  const bh = h - MARGIN * 2;
+  if (bw <= 0 || bh <= 0) return;
+  const camino = construirCamino(bw, bh, r);
   if (!camino.total) return;
 
   const oscuro = modoOscuro();
   const p = puntoEnCamino(camino, estado.fase);
+
+  ctx.save();
+  ctx.translate(MARGIN, MARGIN);
 
   if (oscuro) {
     /* Modo oscuro: la luz se SUMA al fondo, así que brilla de verdad. */
