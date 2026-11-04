@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { markWelcomeClosed } from "@/lib/welcomeFlow";
 
 export const useWelcomeModalController = () => {
   const [open, setOpen] = useState(false);
@@ -15,6 +16,7 @@ export const useWelcomeModalController = () => {
   const close = () => {
     setVisible(false);
     setTimeout(() => setOpen(false), 350);
+    markWelcomeClosed();
     try { sessionStorage.setItem("welcome_modal_seen", "1"); } catch { }
     window.dispatchEvent(new Event("welcome-modal-closed"));
   };
