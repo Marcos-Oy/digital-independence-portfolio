@@ -204,12 +204,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const VigilanciaInnovacionLandingView = () => {
-  useLandingController("Vigilancia e Innovación Tecnológica | MOT[IA]RZO Labs");
+  useLandingController("Vigilancia e Innovación Tecnológica | - MOT[IA]RZO - LABS");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Vigilancia e Innovación Tecnológica | MOT[IA]RZO Labs"
+        title="Vigilancia e Innovación Tecnológica | - MOT[IA]RZO - LABS"
         description="Monitoreamos tecnología, competencia, mercado y entorno regulatorio, y te entregamos un informe ejecutivo mensual para que decidas con información, no con suposiciones."
         path="/landing/servicio/vigilancia-innovacion"
         noindex
@@ -227,7 +227,7 @@ const VigilanciaInnovacionLandingView = () => {
         <AccentBlob shape={4} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Vigilancia e Innovación Tecnológica, MOT[IA]RZO Labs" speed={30} />
+            <TypewriterText text="Vigilancia e Innovación Tecnológica, - MOT[IA]RZO - LABS" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Cuando te enteras de una tendencia importante, tu competencia probablemente

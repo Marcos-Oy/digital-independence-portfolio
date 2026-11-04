@@ -14,7 +14,7 @@ const SHARED_VSL = "68c4rkopry";
 
 export const AREA_LANDING_CONTENT: Record<ServiceArea, AreaLandingContent> = {
   "estrategia-direccion-ti": {
-    eyebrow: "Estrategia y Dirección TI, MOT[IA]RZO Labs",
+    eyebrow: "Estrategia y Dirección TI, - MOT[IA]RZO - LABS",
     headline: "Ordena y dirige la estrategia tecnológica de tu negocio",
     subtext:
       "Arquitectura TI, transformación digital, dirección de TI, dashboards y datos consolidados en un solo lugar.",
@@ -25,7 +25,7 @@ export const AREA_LANDING_CONTENT: Record<ServiceArea, AreaLandingContent> = {
     wistiaMediaId: SHARED_VSL,
   },
   "optimizacion-costos": {
-    eyebrow: "Optimización y Costos TI, MOT[IA]RZO Labs",
+    eyebrow: "Optimización y Costos TI, - MOT[IA]RZO - LABS",
     headline: "Gasta menos en tecnología sin perder rendimiento",
     subtext:
       "Auditoría de costos TI y soporte técnico mensual con SLA, para que sepas exactamente en qué se va tu inversión.",
@@ -36,7 +36,7 @@ export const AREA_LANDING_CONTENT: Record<ServiceArea, AreaLandingContent> = {
     wistiaMediaId: SHARED_VSL,
   },
   "desarrollo-presencia": {
-    eyebrow: "Desarrollo y Presencia Digital, MOT[IA]RZO Labs",
+    eyebrow: "Desarrollo y Presencia Digital, - MOT[IA]RZO - LABS",
     headline: "Una presencia digital y sistemas que realmente venden",
     subtext:
       "Sitios web, software a medida e integración de plataformas, todo con criterio técnico.",
@@ -47,7 +47,7 @@ export const AREA_LANDING_CONTENT: Record<ServiceArea, AreaLandingContent> = {
     wistiaMediaId: SHARED_VSL,
   },
   "ciberseguridad": {
-    eyebrow: "Ciberseguridad, MOT[IA]RZO Labs",
+    eyebrow: "Ciberseguridad, - MOT[IA]RZO - LABS",
     headline: "Protege tu negocio antes de que el problema te encuentre a ti",
     subtext:
       "Ciberseguridad de gestión y estrategia, más ciberseguridad técnica ofensiva y defensiva.",
@@ -58,7 +58,7 @@ export const AREA_LANDING_CONTENT: Record<ServiceArea, AreaLandingContent> = {
     wistiaMediaId: SHARED_VSL,
   },
   "vigilancia-innovacion": {
-    eyebrow: "Vigilancia e Innovación Tecnológica, MOT[IA]RZO Labs",
+    eyebrow: "Vigilancia e Innovación Tecnológica, - MOT[IA]RZO - LABS",
     headline: "Decide con inteligencia tecnológica, no con opinión",
     subtext:
       "Monitoreo continuo de tendencias del sector, competencia digital y cambios regulatorios, con entrega mensual.",
@@ -69,7 +69,7 @@ export const AREA_LANDING_CONTENT: Record<ServiceArea, AreaLandingContent> = {
     wistiaMediaId: SHARED_VSL,
   },
   "ia-corporativa": {
-    eyebrow: "Inteligencia Artificial Corporativa, MOT[IA]RZO Labs",
+    eyebrow: "Inteligencia Artificial Corporativa, - MOT[IA]RZO - LABS",
     headline: "Automatiza y libera a tu equipo del trabajo repetitivo",
     subtext:
       "Agentes de IA con memoria, automatización de procesos y clones digitales operando tu negocio.",

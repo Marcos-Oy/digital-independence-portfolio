@@ -36,10 +36,10 @@ const AboutBrandSectionView = () => {
                 <TypewriterText text="Sobre nosotros" />
               </p>
               <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight mb-5">
-                ¿Qué es MOT[IA]RZO Labs?
+                ¿Qué es - MOT[IA]RZO - LABS?
               </h2>
               <p className="text-muted-foreground leading-relaxed max-w-2xl text-base">
-                <strong className="text-foreground font-semibold">MOT[IA]RZO Labs</strong> es
+                <strong className="text-foreground font-semibold">- MOT[IA]RZO - LABS</strong> es
                 una consultora tecnológica chilena que diseña y construye con servicios integrales la
                 infraestructura tecnológica de emprendedores, profesionales independientes, PyMEs,
                 grandes empresas y organismos del sector público, actuando como tu Asesor en

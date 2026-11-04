@@ -6,7 +6,7 @@ export const useServicioController = (slug: string | undefined) => {
 
   useEffect(() => {
     if (service) {
-      document.title = `${service.title} | MOT[IA]RZO Labs`;
+      document.title = `${service.title} | - MOT[IA]RZO - LABS`;
     }
   }, [service]);
 

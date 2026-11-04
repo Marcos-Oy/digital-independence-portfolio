@@ -33,7 +33,7 @@ const RightClientSection = ({ text }: RightClientSectionProps) => (
           </div>
           <img
             src={robotImg}
-            alt="Autonomía Digital, la mascota de MOT[IA]RZO Labs"
+            alt="Autonomía Digital, la mascota de - MOT[IA]RZO - LABS"
             className="w-48 md:w-64 h-auto rounded-2xl mx-auto shrink-0 order-1 sm:order-2"
           />
         </div>

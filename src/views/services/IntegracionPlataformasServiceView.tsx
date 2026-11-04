@@ -289,7 +289,7 @@ const IntegracionPlataformasServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Integración de Plataformas y Bases de Datos | MOT[IA]RZO Labs"
+        title="Integración de Plataformas y Bases de Datos | - MOT[IA]RZO - LABS"
         description="Conectamos CRM, ERP, e-commerce y otras plataformas vía APIs y consolidamos datos dispersos en una base única, estructurada y confiable. Integración de sistemas para empresas en Chile."
         path="/servicios/integracion-plataformas"
       />

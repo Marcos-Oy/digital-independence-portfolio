@@ -221,7 +221,7 @@ patrón como base canónica.
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
 const SYSTEM_PROMPT = `Eres el asistente de gestión de clientes de
-MOT[IA]RZO Labs. Tu rol es ... [definir aquí el comportamiento
+- MOT[IA]RZO - LABS. Tu rol es ... [definir aquí el comportamiento
 específico de este bot].`;
 
 Deno.serve(async (req: Request) => {

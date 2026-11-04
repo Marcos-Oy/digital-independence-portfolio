@@ -292,7 +292,7 @@ const AutomatizacionProcesosServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Automatización de Procesos | MOT[IA]RZO Labs"
+        title="Automatización de Procesos | - MOT[IA]RZO - LABS"
         description="Levantamos procesos manuales, los rediseñamos y automatizamos flujos completos con N8N, ManyChat, Power Automate y scripts a medida, con trazabilidad de cada ejecución."
         path="/servicios/automatizacion-procesos"
       />

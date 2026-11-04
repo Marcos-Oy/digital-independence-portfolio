@@ -48,7 +48,7 @@ const ServicioView = ({ service }: Props) => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title={`${service.title} | MOT[IA]RZO Labs`}
+        title={`${service.title} | - MOT[IA]RZO - LABS`}
         description={service.summary}
         path={`/servicios/${service.slug}`}
         jsonLd={{
@@ -60,7 +60,7 @@ const ServicioView = ({ service }: Props) => {
           url: `https://www.independenciadigital.cl/servicios/${service.slug}`,
           provider: {
             "@type": "Organization",
-            name: "MOT[IA]RZO Labs SpA",
+            name: "- MOT[IA]RZO - LABS SpA",
             url: "https://www.independenciadigital.cl",
           },
           areaServed: { "@type": "Country", name: "Chile" },

@@ -150,7 +150,7 @@ const PaginasWebServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Creación y Posicionamiento de Páginas Web | MOT[IA]RZO Labs"
+        title="Creación y Posicionamiento de Páginas Web | - MOT[IA]RZO - LABS"
         description="Diseñamos y posicionamos sitios web profesionales para PyMEs, emprendedores y empresas en Chile: velocidad, SEO técnico, contenido claro y una web que genera contactos reales."
         path="/servicios/presencia-digital"
       />

@@ -94,7 +94,7 @@ const ReviewsView = () => {
             Lo que dicen nuestros clientes
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
-            Experiencias reales de personas y empresas que ya trabajan con MOT[IA]RZO Labs.
+            Experiencias reales de personas y empresas que ya trabajan con - MOT[IA]RZO - LABS.
           </p>
         </div>
 
