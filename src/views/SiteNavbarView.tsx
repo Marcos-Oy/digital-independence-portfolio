@@ -34,7 +34,7 @@ const SiteNavbarView = () => {
         <div className="bg-card/90 backdrop-blur-md border border-border rounded-2xl shadow-card px-5 py-3">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-              <img src={logo} alt="Independencia Digital" className="h-9 w-9" />
+              <img src={logo} alt="MOT[IA]RZO Labs" className="h-9 w-9" />
               <span className="font-heading font-bold text-base leading-none">
                 <span className="text-[#2E6FB5]">Independencia</span>{" "}
                 <span className="text-[#3CB878]">Digital</span>

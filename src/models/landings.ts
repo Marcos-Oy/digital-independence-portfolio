@@ -10,7 +10,7 @@ export interface LandingMeta {
 const CORE_LANDINGS: LandingMeta[] = [
   {
     path: "/landing/general",
-    title: "Independencia Digital General",
+    title: "MOT[IA]RZO Labs General",
     summary:
       "Landing principal de captación con el VSL de Marcos Oyarzo: diagnóstico, arquitectura TI, ciberseguridad, automatización e IA.",
     status: "activa",

@@ -235,12 +235,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const ReduccionCostosTiLandingView = () => {
-  useLandingController("Reducción de Costos TI | Independencia Digital");
+  useLandingController("Reducción de Costos TI | MOT[IA]RZO Labs");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Reducción de Costos TI | Independencia Digital"
+        title="Reducción de Costos TI | MOT[IA]RZO Labs"
         description="Auditamos tu hardware, licencias e infraestructura cloud y te mostramos, con datos reales, dónde estás gastando de más. Diagnóstico sin costo."
         path="/landing/servicio/optimizacion-costos-ti"
         noindex
@@ -258,7 +258,7 @@ const ReduccionCostosTiLandingView = () => {
         <AccentBlob shape={2} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Reducción de Costos TI, Independencia Digital" speed={30} />
+            <TypewriterText text="Reducción de Costos TI, MOT[IA]RZO Labs" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Cada mes hay un número exacto: cuánto de tu gasto en tecnología no debería estar ahí.

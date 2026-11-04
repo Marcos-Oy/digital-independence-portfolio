@@ -237,12 +237,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const ArquitecturaTiLandingView = () => {
-  useLandingController("Arquitectura TI | Independencia Digital");
+  useLandingController("Arquitectura TI | MOT[IA]RZO Labs");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Arquitectura TI | Independencia Digital"
+        title="Arquitectura TI | MOT[IA]RZO Labs"
         description="Diseñamos y documentamos el ecosistema tecnológico completo de tu negocio: correo, dominio, hosting, accesos y herramientas. Diagnóstico sin costo."
         path="/landing/servicio/arquitectura-ti"
         noindex
@@ -260,7 +260,7 @@ const ArquitecturaTiLandingView = () => {
         <AccentBlob shape={3} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Arquitectura TI, Independencia Digital" speed={30} />
+            <TypewriterText text="Arquitectura TI, MOT[IA]RZO Labs" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Si hoy se va la persona que sabe cómo funciona tu tecnología, ¿alguien más podría hacerla funcionar?

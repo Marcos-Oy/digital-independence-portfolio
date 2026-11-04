@@ -316,7 +316,7 @@ const IaCorporativaServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Inteligencia Artificial Corporativa | Independencia Digital"
+        title="Inteligencia Artificial Corporativa | MOT[IA]RZO Labs"
         description="Diagnóstico de procesos automatizables, agentes con memoria e IA conectada a tus documentos y operación, automatización con N8N y ManyChat, y clones digitales para empresas en Chile."
         path="/servicios/ia-corporativa"
       />

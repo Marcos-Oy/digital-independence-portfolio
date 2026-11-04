@@ -1,6 +1,6 @@
 export const FAQS = [
   {
-    q: "¿Qué hace exactamente Independencia Digital?",
+    q: "¿Qué hace exactamente MOT[IA]RZO Labs?",
     a: "Somos una consultora tecnológica chilena. Diseñamos y construimos con servicios integrales la infraestructura tecnológica de emprendedores, profesionales independientes, PyMEs, grandes empresas y organismos públicos. Trabajamos principalmente online, con visitas presenciales a tus oficinas cuando el proyecto lo requiere.",
   },
   {

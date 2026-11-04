@@ -67,7 +67,7 @@ const HomeView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Independencia Digital SpA Consultora TI en Chile | Arquitectura, Ciberseguridad e IA"
+        title="MOT[IA]RZO Labs SpA Consultora TI en Chile | Arquitectura, Ciberseguridad e IA"
         description="Consultora tecnológica chilena. Diseñamos y construimos la infraestructura tecnológica de PyMEs, grandes empresas y sector público: arquitectura TI, ciberseguridad, desarrollo de software e inteligencia artificial. Fundada por Marcos Oyarzo."
         path="/"
       />
@@ -95,7 +95,7 @@ const HomeView = () => {
         <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
           <img
             src={logoFull}
-            alt="Independencia Digital"
+            alt="MOT[IA]RZO Labs"
             className={`h-16 md:h-24 mb-8 ${explored ? "animate-fade-in" : "opacity-0"}`}
           />
 
@@ -164,7 +164,7 @@ const HomeView = () => {
                   sin el costo de uno a tiempo completo.
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-10">
-                  Independencia Digital es una consultora tecnológica chilena que atiende personas
+                  MOT[IA]RZO Labs es una consultora tecnológica chilena que atiende personas
                   naturales y jurídicas, incluyendo el sector público mediante licitaciones en
                   Mercado Público.
                 </p>
@@ -491,7 +491,7 @@ const HomeView = () => {
                       className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
                     >
                       <Linkedin className="w-4 h-4" />
-                      <span>Independencia Digital</span>
+                      <span>MOT[IA]RZO Labs</span>
                     </a>
                     <span className="hidden sm:block text-border">·</span>
                     <a

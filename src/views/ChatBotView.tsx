@@ -50,7 +50,7 @@ const ChatBotView = () => {
             <RobotIcon className="w-6 h-6 text-primary-foreground" />
             <div className="flex-1">
               <p className="text-sm font-heading font-semibold text-primary-foreground">Marbot IArzo</p>
-              <p className="text-xs text-primary-foreground/80">Independencia Digital</p>
+              <p className="text-xs text-primary-foreground/80">MOT[IA]RZO Labs</p>
             </div>
             <button
               onClick={handleToggle}
@@ -69,7 +69,7 @@ const ChatBotView = () => {
                 <div className="text-center space-y-2">
                   <RobotIcon className="w-10 h-10 text-muted-foreground/50 mx-auto" />
                   <p className="text-sm text-muted-foreground">
-                    ¡Hola! 👋 Soy <strong>Marbot IArzo</strong>, el asistente de Independencia Digital.
+                    ¡Hola! 👋 Soy <strong>Marbot IArzo</strong>, el asistente de MOT[IA]RZO Labs.
                   </p>
                   <p className="text-xs text-muted-foreground/70">
                     Pregúntame sobre nuestros servicios, áreas de consultoría o cómo podemos ayudar a tu negocio.

@@ -13,9 +13,9 @@ const SiteFooterView = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Independencia Digital" className="h-8 w-8" />
+              <img src={logo} alt="MOT[IA]RZO Labs" className="h-8 w-8" />
               <span className="font-heading font-bold text-sm flex items-center gap-1.5">
-                <span className="text-foreground">Independencia Digital</span>
+                <span className="text-foreground">MOT[IA]RZO Labs</span>
                 <img src={chileFlag} alt="Chile" className="h-4 w-auto inline-block" />
               </span>
             </Link>
@@ -100,7 +100,7 @@ const SiteFooterView = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <Linkedin className="w-4 h-4" /> Independencia Digital
+                  <Linkedin className="w-4 h-4" /> MOT[IA]RZO Labs
                 </a>
               </li>
               <li>
@@ -117,7 +117,7 @@ const SiteFooterView = () => {
 
         <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Independencia Digital
+            © {new Date().getFullYear()} MOT[IA]RZO Labs
           </p>
           <span className="hidden sm:inline text-border">·</span>
           <Link to="/privacidad" className="text-xs text-muted-foreground hover:text-primary transition-colors">

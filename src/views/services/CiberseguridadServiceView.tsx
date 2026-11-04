@@ -396,7 +396,7 @@ const CiberseguridadServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Ciberseguridad, Gestión y Estrategia | Independencia Digital"
+        title="Ciberseguridad, Gestión y Estrategia | MOT[IA]RZO Labs"
         description="Diagnóstico, gestión de riesgos, estrategia de ciberseguridad, protección de datos, preparación ante incidentes y alineamiento con ISO 27001 y normativa chilena."
         path="/servicios/ciberseguridad"
       />
@@ -723,7 +723,7 @@ const CiberseguridadServiceView = () => {
 
           <ScrollReveal delay={120}>
             <p className="mt-10 text-xs md:text-sm text-muted-foreground/80 leading-relaxed max-w-4xl border-l-2 border-border pl-4">
-              Los servicios de Independencia Digital tienen carácter de
+              Los servicios de MOT[IA]RZO Labs tienen carácter de
               diagnóstico, consultoría, implementación y acompañamiento
               tecnológico. El alcance de las obligaciones legales depende de la
               naturaleza, actividad y condición específica de cada organización.

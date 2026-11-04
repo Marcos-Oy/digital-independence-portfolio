@@ -203,12 +203,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const IntegracionPlataformasLandingView = () => {
-  useLandingController("Integración de Plataformas y Bases de Datos | Independencia Digital");
+  useLandingController("Integración de Plataformas y Bases de Datos | MOT[IA]RZO Labs");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Integración de Plataformas y Bases de Datos | Independencia Digital"
+        title="Integración de Plataformas y Bases de Datos | MOT[IA]RZO Labs"
         description="Conectamos tus sistemas existentes vía APIs y consolidamos tus datos dispersos en una base única, estructurada y confiable. Sin reemplazar lo que ya funciona. Diagnóstico sin costo."
         path="/landing/servicio/integracion-plataformas"
         noindex
@@ -226,7 +226,7 @@ const IntegracionPlataformasLandingView = () => {
         <AccentBlob shape={4} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Integración de Plataformas y Bases de Datos, Independencia Digital" speed={30} />
+            <TypewriterText text="Integración de Plataformas y Bases de Datos, MOT[IA]RZO Labs" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Tu equipo no necesita más plataformas. Necesita que las que ya tiene se hablen entre sí.

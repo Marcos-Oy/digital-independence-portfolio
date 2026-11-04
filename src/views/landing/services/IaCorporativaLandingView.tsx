@@ -239,12 +239,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const IaCorporativaLandingView = () => {
-  useLandingController("Inteligencia Artificial Corporativa | Independencia Digital");
+  useLandingController("Inteligencia Artificial Corporativa | MOT[IA]RZO Labs");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Inteligencia Artificial Corporativa | Independencia Digital"
+        title="Inteligencia Artificial Corporativa | MOT[IA]RZO Labs"
         description="Agentes de IA con memoria conectados a tus documentos, automatización no-code y clones digitales para liberar a tu equipo del trabajo manual repetitivo. Diagnóstico sin costo."
         path="/landing/servicio/ia-corporativa"
         noindex
@@ -262,7 +262,7 @@ const IaCorporativaLandingView = () => {
         <AccentBlob shape={4} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Inteligencia Artificial Corporativa, Independencia Digital" speed={30} />
+            <TypewriterText text="Inteligencia Artificial Corporativa, MOT[IA]RZO Labs" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Tienes IA en tu empresa. Lo que no tienes es IA que sepa algo de tu negocio.

@@ -478,7 +478,7 @@ const VigilanciaInnovacionServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Vigilancia e Innovación Tecnológica | Independencia Digital"
+        title="Vigilancia e Innovación Tecnológica | MOT[IA]RZO Labs"
         description="Monitoreamos tendencias tecnológicas, competencia, mercado y cambios regulatorios para detectar señales, oportunidades y riesgos relevantes para tu negocio."
         path="/servicios/vigilancia-innovacion"
       />
@@ -1153,7 +1153,7 @@ const VigilanciaInnovacionServiceView = () => {
                   <div className="flex items-center justify-between mb-5">
                     <div>
                       <p className="text-[10px] font-heading font-bold uppercase tracking-[0.18em] text-secondary mb-1">
-                        Independencia Digital
+                        MOT[IA]RZO Labs
                       </p>
                       <p className="font-heading font-extrabold text-base md:text-lg text-foreground leading-tight">
                         Informe ejecutivo mensual
@@ -1365,7 +1365,7 @@ const VigilanciaInnovacionServiceView = () => {
               Un equipo externo observando lo que tu empresa no tiene tiempo de observar
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-9">
-              Independencia Digital funciona como una capacidad externa de
+              MOT[IA]RZO Labs funciona como una capacidad externa de
               vigilancia e inteligencia para mantener monitoreado el entorno
               tecnológico, competitivo y regulatorio relevante para tu
               organización.

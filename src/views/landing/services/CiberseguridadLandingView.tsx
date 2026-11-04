@@ -204,12 +204,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const CiberseguridadLandingView = () => {
-  useLandingController("Ciberseguridad, Gestión y Estrategia | Independencia Digital");
+  useLandingController("Ciberseguridad, Gestión y Estrategia | MOT[IA]RZO Labs");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Ciberseguridad, Gestión y Estrategia | Independencia Digital"
+        title="Ciberseguridad, Gestión y Estrategia | MOT[IA]RZO Labs"
         description="Diagnóstico, gestión de riesgos, protección técnica (MFA, antivirus, DevSecOps), monitoreo SIEM/SOC/SOAR y cumplimiento con la Ley Marco de Ciberseguridad, la Ley de Protección de Datos Personales e ISO 27001. Diagnóstico sin costo."
         path="/landing/servicio/ciberseguridad"
         noindex
@@ -227,7 +227,7 @@ const CiberseguridadLandingView = () => {
         <AccentBlob shape={4} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Ciberseguridad, Gestión y Estrategia, Independencia Digital" speed={30} />
+            <TypewriterText text="Ciberseguridad, Gestión y Estrategia, MOT[IA]RZO Labs" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Tu empresa puede tener antivirus, firewall y contraseñas seguras, y aun así

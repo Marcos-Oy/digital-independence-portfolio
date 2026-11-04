@@ -22,13 +22,13 @@ import TypewriterText from "@/views/shared/TypewriterText";
 import PageMeta from "@/views/shared/PageMeta";
 
 const GeneralLandingView = () => {
-  useLandingController("Independencia Digital | Diagnóstico gratuito");
+  useLandingController("MOT[IA]RZO Labs | Diagnóstico gratuito");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Diagnóstico tecnológico gratuito | Independencia Digital"
-        description="Agenda un diagnóstico gratuito con Independencia Digital: arquitectura TI, ciberseguridad, automatización e inteligencia artificial para tu empresa en Chile."
+        title="Diagnóstico tecnológico gratuito | MOT[IA]RZO Labs"
+        description="Agenda un diagnóstico gratuito con MOT[IA]RZO Labs: arquitectura TI, ciberseguridad, automatización e inteligencia artificial para tu empresa en Chile."
         path="/landing/general"
       />
 
@@ -41,7 +41,7 @@ const GeneralLandingView = () => {
         <AccentBlob shape={5} className="absolute w-7 h-10 bottom-[16%] left-[8%] opacity-70 animate-float" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Plan 360, Independencia Digital" speed={30} />
+            <TypewriterText text="Plan 360, MOT[IA]RZO Labs" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Ordena tu tecnología, protege tu negocio y hazlo crecer

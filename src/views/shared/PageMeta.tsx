@@ -49,10 +49,10 @@ const PageMeta = ({
       <meta property="og:image:height" content="630" />
       <meta
         property="og:image:alt"
-        content="Independencia Digital SpA - Consultora tecnológica chilena"
+        content="MOT[IA]RZO Labs SpA - Consultora tecnológica chilena"
       />
       <meta property="og:locale" content="es_CL" />
-      <meta property="og:site_name" content="Independencia Digital" />
+      <meta property="og:site_name" content="MOT[IA]RZO Labs" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />

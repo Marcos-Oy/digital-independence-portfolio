@@ -265,12 +265,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const DesarrolloSoftwareLandingView = () => {
-  useLandingController("Desarrollo de Software a Medida | Independencia Digital");
+  useLandingController("Desarrollo de Software a Medida | MOT[IA]RZO Labs");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Desarrollo de Software a Medida | Independencia Digital"
+        title="Desarrollo de Software a Medida | MOT[IA]RZO Labs"
         description="Diseñamos y construimos el sistema que tu negocio necesita: procesos a medida, información centralizada y menos trabajo manual. Diagnóstico sin costo."
         path="/landing/servicio/desarrollo-software"
         noindex
@@ -288,7 +288,7 @@ const DesarrolloSoftwareLandingView = () => {
         <AccentBlob shape={4} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Desarrollo de Software, Independencia Digital" speed={30} />
+            <TypewriterText text="Desarrollo de Software, MOT[IA]RZO Labs" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Tu negocio no necesita más aplicaciones. Necesita una que realmente le sirva.

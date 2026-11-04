@@ -250,7 +250,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "¿La documentación queda solo con ustedes o también con nosotros?",
-    a: "Todo queda en manos del cliente. El objetivo es que el negocio tenga control total e independencia, no que dependa de Independencia Digital para operar su ecosistema.",
+    a: "Todo queda en manos del cliente. El objetivo es que el negocio tenga control total e independencia, no que dependa de MOT[IA]RZO Labs para operar su ecosistema.",
   },
   {
     q: "¿Cuánto demora implementar una arquitectura?",
@@ -300,7 +300,7 @@ const ArquitecturaTiServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Arquitectura TI | Independencia Digital"
+        title="Arquitectura TI | MOT[IA]RZO Labs"
         description="Diseño e implementación del ecosistema tecnológico de tu negocio: correo corporativo, dominio, hosting, infraestructura cloud, accesos y herramientas seleccionadas según tu operación."
         path="/servicios/arquitectura-ti"
       />

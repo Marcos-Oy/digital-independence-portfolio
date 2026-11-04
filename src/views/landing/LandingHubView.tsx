@@ -19,8 +19,8 @@ const LandingHubView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Landing Pages | Independencia Digital"
-        description="Índice interno de landing pages de captación de Independencia Digital."
+        title="Landing Pages | MOT[IA]RZO Labs"
+        description="Índice interno de landing pages de captación de MOT[IA]RZO Labs."
         noindex
       />
 

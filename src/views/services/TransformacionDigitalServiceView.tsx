@@ -289,7 +289,7 @@ const TransformacionDigitalServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Transformación Digital | Independencia Digital"
+        title="Transformación Digital | MOT[IA]RZO Labs"
         description="Diagnóstico de procesos, hoja de ruta de modernización por etapas y digitalización de flujos manuales con seguridad incorporada. Transformación digital para empresas y pymes en Chile."
         path="/servicios/transformacion-digital"
       />
