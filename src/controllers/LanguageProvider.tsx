@@ -15,8 +15,23 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     manual.current = true;
     try { localStorage.setItem(LANGUAGE_STORAGE_KEY, code); } catch { /* Cookie remains available. */ }
     writeGoogleLanguage(code);
-    if (code !== language) window.location.reload();
+    if (code === language) return;
+    // Recargar en la misma posición, sin saltar a secciones (#servicios) guardadas en la URL.
+    try { sessionStorage.setItem("lang-scroll", String(window.scrollY)); } catch { /* ignore */ }
+    window.location.replace(window.location.pathname + window.location.search);
   };
+
+  useEffect(() => {
+    let y: string | null = null;
+    try { y = sessionStorage.getItem("lang-scroll"); sessionStorage.removeItem("lang-scroll"); } catch { /* ignore */ }
+    if (y === null) return;
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    const target = Number(y);
+    const restore = () => window.scrollTo({ top: target, behavior: "instant" as ScrollBehavior });
+    restore();
+    const timers = [100, 400, 900, 1600].map(ms => window.setTimeout(restore, ms));
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
   useEffect(() => {
     if (manual.current) return;
