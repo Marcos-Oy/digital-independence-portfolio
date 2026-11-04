@@ -425,13 +425,16 @@ const adjuntar = (boton: HTMLElement) => {
     canvas.remove();
     delete (boton as never as Record<string, unknown>)[MARCA];
   };
-  if (typeof queueMicrotask === "function") {
-    const anterior = (boton as never as Record<string, unknown>)[MARCA];
-    (boton as never as Record<string, unknown>)[MARCA] = true;
-    void anterior;
-  }
-  boton.dataset.ctaEstrella = "1";
-  boton.addEventListener("removedfrom-dom-like", limpiar);
+  // Si el botón sale del DOM (por ejemplo al cambiar de página), se sueltan
+  // los observadores y el lienzo para no dejar trabajo colgado.
+  const alDesmontar = () => {
+    if (!boton.isConnected) limpiar();
+  };
+  const chequeo = window.setInterval(alDesmontar, 4000);
+  boton.addEventListener("ctatestrella:limpiar", () => {
+    window.clearInterval(chequeo);
+    limpiar();
+  });
 
   redibujar();
   if (estado.visible) arrancar();
