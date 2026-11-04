@@ -1,3 +1,4 @@
+import AiSolutionsSection from "@/views/shared/AiSolutionsSection";
 import { Link } from "react-router-dom";
 import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
@@ -689,6 +690,7 @@ const IaCorporativaServiceView = () => {
         </div>
       </section>
 
+      <AiSolutionsSection />
       <AiGovernanceServicesSection variant="ia" />
 
       {/* ============ HERRAMIENTAS ============ */}

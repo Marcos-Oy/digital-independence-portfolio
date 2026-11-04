@@ -1,3 +1,5 @@
+import AiSolutionsSection from "@/views/shared/AiSolutionsSection";
+import AiGovernanceServicesSection from "@/views/shared/AiGovernanceServicesSection";
 import {
   AlertTriangle,
   Bot,
@@ -500,6 +502,9 @@ const IaCorporativaLandingView = () => {
         </div>
         <LayeredWaveDivider seed={2} className="absolute bottom-0 left-0 w-full h-20 md:h-28" />
       </section>
+
+      <AiSolutionsSection />
+      <AiGovernanceServicesSection variant="ia" />
 
       {/* ============ SATISFACCIÓN ============ */}
       <section className="relative py-16 md:py-24 bg-background overflow-hidden">
