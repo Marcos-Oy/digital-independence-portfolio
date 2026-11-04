@@ -15,3 +15,7 @@
 - [x] Cambiar a Google Translate mediante su script público y cookie googtrans, sin conexión a Google Cloud.
 - [x] Ampliar a 25 idiomas y verificar búsqueda multilingüe, selección persistente y traducción real.
 - [x] Verificar logos en celular y completar el cambio de traductor.
+# Barra de navegación en landing
+- [x] Evitar que la barra de las landing se parta en dos filas en celular.
+- [x] Centrar el logo verticalmente y acortar el botón en pantallas chicas.
+- [x] Verificar barra en 320px, 394px y escritorio sin recortes ni desbordes.
