@@ -180,7 +180,7 @@ const dibujar = (
     fase: number;
     motion: number;
     lap: number;
-    flash: number | null;
+    flash: { t: number; x: number; y: number } | null;
     ondas: { t: number; x: number; y: number }[];
     style: EstrellaStyle;
   },
@@ -326,7 +326,7 @@ const adjuntar = (boton: HTMLElement) => {
     fase: Math.random(),
     motion: 0,
     lap: -1,
-    flash: null as number | null,
+    flash: null as { t: number; x: number; y: number } | null,
     ondas: [] as { t: number; x: number; y: number }[],
     style: detectarEstilo(boton),
     w: 0,
@@ -377,7 +377,7 @@ const adjuntar = (boton: HTMLElement) => {
       const velocidad = estado.motion + (reducir() ? 0 : creep);
       estado.fase = (estado.fase + (velocidad * dt) / 1000 / Math.max(1, estado.w)) % 1;
 
-      if (estado.flash != null && t - estado.flash > DURACION_DESTELLO) estado.flash = null;
+      if (estado.flash && t - estado.flash.t > DURACION_DESTELLO) estado.flash = null;
       estado.ondas = estado.ondas.filter((o) => t - o.t <= DURACION_ONDA);
 
       dibujar(ctx, estado.w, estado.h, estado.r, estado, t);
@@ -406,7 +406,7 @@ const adjuntar = (boton: HTMLElement) => {
     const x = e.clientX - rect.left + MARGIN;
     const y = e.clientY - rect.top + MARGIN;
     const t = performance.now();
-    estado.flash = t;
+    estado.flash = { t, x, y };
     estado.ondas.push({ t, x, y });
     if (estado.ondas.length > 3) estado.ondas.shift();
     arrancar();
