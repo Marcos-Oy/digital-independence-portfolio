@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import BrandLogo from "@/views/shared/BrandLogo";
 import ThemeToggleView from "@/views/ThemeToggleView";
 import LandingCtaButton from "@/views/landing/LandingCtaButton";
 
@@ -7,11 +7,7 @@ const LandingHeader = () => (
   <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-md border-b border-border">
     <div className="container mx-auto px-4 h-16 flex items-center justify-between max-w-5xl gap-2">
       <Link to="/" className="flex items-center gap-2 shrink-0">
-        <img src={logo} alt="- MOT[IA]RZO - LABS" className="h-8 w-8 shrink-0" />
-        <span className="font-heading font-bold text-xs leading-[1.15] flex flex-col">
-          <span className="text-[#2E6FB5]">Independencia</span>
-          <span className="text-[#3CB878]">Digital</span>
-        </span>
+        <BrandLogo className="h-9" />
       </Link>
       <div className="flex items-center gap-2 shrink-0">
         <ThemeToggleView />
