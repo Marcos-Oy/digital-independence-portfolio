@@ -1,0 +1,21 @@
+# - MOT[IA]RZO - LABS SpA
+
+> Consultora tecnológica chilena (antes Independencia Digital), fundada por Marcos Alberto Oyarzo Alvarez. Resultados concretos en los primeros 90 días. Sitio: https://www.independenciadigital.cl
+
+## Servicios destacados: Gobernanza, auditoría y ciberseguridad de la IA
+- Implementación de Sistema de Gestión de IA ISO/IEC 42001 (AIMS, 38 controles, declaración de aplicabilidad) y preparación para certificación.
+- Gestión del riesgo de IA ISO/IEC 23894 (sesgo, alucinaciones, deriva, opacidad).
+- Ciberseguridad de sistemas de IA ISO/IEC 27090: inyección de prompts, envenenamiento de datos, robo de modelos, modelos maliciosos.
+- Evaluación de impacto de IA y EIPD/PIA según Ley 21.719 de Protección de Datos Personales (Chile).
+- Auditoría interna de IA con evidencias; integración SGSI ISO/IEC 27001 + 42001.
+- Prevención de fraude con deepfakes y respuesta a incidentes según Ley Marco de Ciberseguridad 21.663.
+- Gobernanza y uso responsable de IA: ISO/IEC 22989 y EU AI Act.
+- No somos organismo certificador; la certificación la otorga una entidad acreditada.
+
+## Páginas
+- [Ciberseguridad, Gestión y Estrategia](https://www.independenciadigital.cl/servicios/ciberseguridad): riesgos, ISO 27001, Ley 21.663/21.719, BIA, EIPD, SIEM/SOC, ciberseguridad de la IA.
+- [Inteligencia Artificial Corporativa](https://www.independenciadigital.cl/servicios/ia-corporativa): agentes con memoria, clones digitales, automatización, gobernanza ISO/IEC 42001.
+- [Inicio](https://www.independenciadigital.cl/)
+
+## Contacto
+- Agendar diagnóstico: https://independencia-digital.systeme.io/registro

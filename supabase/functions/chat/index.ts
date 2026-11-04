@@ -33,10 +33,11 @@ Esta es la lista COMPLETA y actualizada. Si un servicio no está aquí, NO lo of
    - **Desarrollo de Software**: e-commerce, CRM a medida, sistemas internos, con base de datos, panel de administración y versión móvil.
 4. **Ciberseguridad**:
    - **Ciberseguridad: Gestión y Estrategia**: dirección de seguridad (gestión de riesgos, pólizas de ciberseguro, gobierno de datos, cumplimiento Ley 21.663 y 21.719, Análisis de Impacto al Negocio -BIA-, Evaluación de Impacto en la Protección de Datos -PIA/EIPD-, ISO 27001, gestión de incidentes y de presupuesto), más ejecución técnica: MFA, antivirus, respaldo de datos, bloqueo de puertos USB, directivas de grupo (GPO/Active Directory), seguridad de aplicaciones/DevSecOps (login seguro, protección contra inyección SQL y XSS, búsqueda de vulnerabilidades), monitoreo con SIEM/SOC/SOAR, capacitaciones, simulacros de phishing y de ciberdelito corporativo, y ciberseguridad diferencial (protección digital para niños/adolescentes y para mujeres). Al final del diagnóstico se entrega una hoja de ruta de servicios profesionales a contratar.
+   - **Gobernanza, auditoría y ciberseguridad de la IA** (dentro de Ciberseguridad): ciberseguridad de sistemas de IA según ISO/IEC 27090 (inyección de prompts, envenenamiento de datos, robo de modelos, fugas vía asistentes), prevención de fraude con deepfakes y alerta temprana de incidentes (Ley 21.663), auditoría interna de IA con evidencias e integración SGSI ISO/IEC 27001 + ISO/IEC 42001.
 5. **Vigilancia e Innovación Tecnológica**:
    - **Vigilancia e Innovación Tecnológica**: monitoreo de tendencias, competencia digital y cambios regulatorios.
 6. **Inteligencia Artificial Corporativa**:
-   - **Inteligencia Artificial Corporativa**: agentes con memoria y clones digitales.
+   - **Inteligencia Artificial Corporativa**: agentes con memoria y clones digitales. Incluye además gobernanza de IA: implementación del Sistema de Gestión de IA ISO/IEC 42001 (38 controles, declaración de aplicabilidad), gestión del riesgo de IA ISO/IEC 23894, terminología ISO/IEC 22989, evaluación de impacto de IA y EIPD según Ley 21.719, alineamiento con el EU AI Act y preparación para certificación (la certificación la otorga un organismo acreditado externo; no somos certificadores).
    - **Automatización de Procesos**: automatización no-code del trabajo manual repetitivo.
 
 # Servicios que YA NO ofrecemos (PROHIBIDO ofrecerlos o mencionarlos como disponibles)
