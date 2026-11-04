@@ -14,7 +14,7 @@ import SiteFooterView from "@/views/SiteFooterView";
 import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
 import AboutBrandSectionView from "@/views/AboutBrandSectionView";
 import ReviewsView from "@/views/ReviewsView";
-import logoVertical from "@/assets/motiarzo-logo-vertical.png.asset.json";
+import logoVertical from "@/assets/motiarzo-logo-vertical.webp";
 import bannerHero from "@/assets/banner-hero.png";
 import bannerPlan360 from "@/assets/banner-plan360.png";
 import { ChevronRight, ChevronDown, Instagram, Facebook, Linkedin, Mail, Search, X } from "lucide-react";
@@ -94,7 +94,7 @@ const HomeView = () => {
 
         <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
           <img
-            src={logoVertical.url}
+            src={logoVertical}
             alt="- MOT[IA]RZO - LABS"
             width={1536}
             height={1024}

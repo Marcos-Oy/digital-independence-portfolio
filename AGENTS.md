@@ -1,5 +1,5 @@
 # Project conventions
-- Use the shared lateral BrandLogo for navigation and the uploaded vertical logo asset pointer for the home hero and welcome dialog, preserving the distinct brand lockups without duplicating assets.
+- Use shared lateral BrandLogo for navigation and the optimized bundled vertical WebP for home and welcome; the bundled derivative preserves the uploaded logo and loads on Cloudflare without Lovable asset routing.
 - Localization uses LanguageProvider, preserving original text nodes and translating batches through the site-translate edge function with server-only cache; mark visitor-authored or animated partial text data-no-translate to avoid sending personal input or repeated fragments.
 - Translation cache and gateway pause state are service-role-only RLS tables; terminal gateway failures pause all new translation requests until the owner restores access and explicitly clears the pause record.
 - Render language flags with LanguageFlag's hosted image pointers, not Unicode flag emojis, so Windows and embedded browsers display flags consistently.

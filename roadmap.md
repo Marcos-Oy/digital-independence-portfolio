@@ -9,3 +9,8 @@
 - [x] Seleccionar idioma inicial por país con alternativa del navegador y guardar elección manual.
 - [x] Traducir contenido del sitio al cambiar idioma sin modificar la marca ni entradas del visitante.
 - [x] Probar búsqueda, detección, persistencia, traducción y vista móvil.
+
+# Logos móviles y Google Traductor
+- [x] Corregir carga de logos verticales en inicio y bienvenida, incluidos alojamientos externos.
+- [ ] Cambiar las traducciones a Google Traductor. Pendiente: conexión de Google Cloud con Cloud Translation habilitado.
+- [x] Verificar logos en celular; cambio de proveedor pendiente de conexión.
