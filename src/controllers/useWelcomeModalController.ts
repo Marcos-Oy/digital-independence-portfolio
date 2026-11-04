@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { markWelcomeClosed } from "@/lib/welcomeFlow";
 
 export const useWelcomeModalController = () => {
   const [open, setOpen] = useState(false);
