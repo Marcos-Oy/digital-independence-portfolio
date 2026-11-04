@@ -208,13 +208,6 @@ const dibujar = (
     /* Modo oscuro: la luz se SUMA al fondo, así que brilla de verdad. */
     ctx.globalCompositeOperation = "lighter";
 
-    // Destello de clic: un latido de luz en el punto del borde.
-    if (estado.flash != null) {
-      const u = Math.min(1, (tiempo - estado.flash) / DURACION_DESTELLO);
-      const a = Math.pow(1 - u, 2);
-      halo(ctx, p.x, p.y, RADIO_HALO * (1 + u * 0.6), c, 0.9 * a * fuerza);
-    }
-
     // Halo del frente que recorre el borde.
     halo(ctx, p.x, p.y, RADIO_HALO, c, 0.55 * fuerza);
 
@@ -229,35 +222,10 @@ const dibujar = (
 
     // Núcleo del frente.
     halo(ctx, p.x, p.y, RADIO_NUCLEO, [255, 255, 255], 0.9 * fuerza);
-
-    // Rayos del destello (solo en oscuro, donde no ensucian).
-    if (estado.flash != null) {
-      const u = Math.min(1, (tiempo - estado.flash) / DURACION_DESTELLO);
-      const a = Math.pow(1 - u, 2);
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.ang);
-      ctx.strokeStyle = rgba(c, 0.35 * a);
-      ctx.lineWidth = 1.4;
-      const largo = 26 * (1 - u * 0.5);
-      for (const s of [-1, 1]) {
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(s * largo, 0);
-        ctx.stroke();
-      }
-      ctx.restore();
-    }
   } else {
     /* Modo claro: sumar luz sobre blanco no se ve, así que se pinta con
        colores saturados de la marca (azul real y verde azulado). */
     ctx.globalCompositeOperation = "source-over";
-
-    if (estado.flash != null) {
-      const u = Math.min(1, (tiempo - estado.flash) / DURACION_DESTELLO);
-      const a = Math.pow(1 - u, 2);
-      halo(ctx, p.x, p.y, RADIO_HALO * (1 + u * 0.6), c, 0.5 * a);
-    }
 
     // Aura ancha: sobre fondo claro es lo que hace visible la luz por fuera.
     ctx.strokeStyle = rgba(c, 0.22);
@@ -284,20 +252,46 @@ const dibujar = (
 
   ctx.restore();
 
-  // Ondas que salen del punto del borde al hacer clic. Se dibujan ya fuera del
-  // recuadro del botón, con coordenadas propias del lienzo.
-  if (estado.ondas.length) {
+  // Destello y ondas del clic. Se dibujan ya fuera del recuadro del botón, con
+  // coordenadas propias del lienzo (el punto del clic llega en ese sistema).
+  if (estado.flash) {
+    const u = Math.min(1, (tiempo - estado.flash.t) / DURACION_DESTELLO);
+    const a = Math.pow(1 - u, 2);
     ctx.globalCompositeOperation = oscuro ? "lighter" : "source-over";
-    for (const o of estado.ondas) {
-      const u = Math.min(1, (tiempo - o.t) / DURACION_ONDA);
-      const radio = 8 + u * 46;
-      const a = Math.pow(1 - u, 1.6) * (oscuro ? 0.5 : 0.35);
-      const g = ctx.createRadialGradient(o.x, o.y, Math.max(0, radio - 6), o.x, o.y, radio);
-      g.addColorStop(0, rgba(c, 0));
-      g.addColorStop(1, rgba(c, a));
-      ctx.fillStyle = g;
-      ctx.fillRect(o.x - radio, o.y - radio, radio * 2, radio * 2);
+    halo(ctx, estado.flash.x, estado.flash.y, RADIO_HALO * (1 + u * 0.6), c,
+         (oscuro ? 0.9 : 0.5) * a * fuerza);
+    halo(ctx, estado.flash.x, estado.flash.y, RADIO_NUCLEO * (1 - u * 0.4), [255, 255, 255],
+         (oscuro ? 0.9 : 0.55) * a);
+    if (oscuro) {
+      // Rayos del destello: solo en oscuro, donde no ensucian el fondo claro.
+      ctx.save();
+      ctx.translate(estado.flash.x, estado.flash.y);
+      ctx.strokeStyle = rgba(c, 0.4 * a);
+      ctx.lineWidth = 1.4;
+      const largo = 28 * (1 - u * 0.5);
+      for (const ang of [0, Math.PI / 2, Math.PI, Math.PI * 1.5]) {
+        ctx.beginPath();
+        ctx.moveTo(Math.cos(ang) * 3, Math.sin(ang) * 3);
+        ctx.lineTo(Math.cos(ang) * largo, Math.sin(ang) * largo);
+        ctx.stroke();
+      }
+      ctx.restore();
     }
+  }
+
+  for (const o of estado.ondas) {
+    const u = Math.min(1, (tiempo - o.t) / DURACION_ONDA);
+    const radio = 10 + u * 48;
+    const a = Math.pow(1 - u, 1.6) * (oscuro ? 0.55 : 0.4);
+    // El degradado vuelve a transparente en el borde exterior: si terminara en
+    // un color opaco, las esquinas del recuadro pintado se verían como un cuadro.
+    const g = ctx.createRadialGradient(o.x, o.y, Math.max(0, radio - 7), o.x, o.y, radio);
+    g.addColorStop(0, rgba(c, 0));
+    g.addColorStop(0.75, rgba(c, a));
+    g.addColorStop(1, rgba(c, 0));
+    ctx.globalCompositeOperation = oscuro ? "lighter" : "source-over";
+    ctx.fillStyle = g;
+    ctx.fillRect(o.x - radio, o.y - radio, radio * 2, radio * 2);
   }
 
   ctx.globalCompositeOperation = "source-over";
