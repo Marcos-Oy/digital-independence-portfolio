@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo.png";
-import BrandWordmark from "@/views/shared/BrandWordmark";
+import BrandLogo from "@/views/shared/BrandLogo";
 import chileFlag from "@/assets/chile-flag.png";
 import ThemeToggleView from "@/views/ThemeToggleView";
 import { ChevronDown, X, Search } from "lucide-react";
@@ -35,8 +34,7 @@ const SiteNavbarView = () => {
         <div className="bg-card/90 backdrop-blur-md border border-border rounded-2xl shadow-card px-5 py-3">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-              <img src={logo} alt="- MOT[IA]RZO - LABS" className="h-9 w-9" />
-              <BrandWordmark className="text-base" />
+              <BrandLogo className="h-10" />
               <img src={chileFlag} alt="Chile" className="h-4 w-auto hidden sm:block" title="Servicios en Chile" />
             </Link>
 
