@@ -327,3 +327,11 @@ wistia-player[media-id='68c4rkopry']:not(:defined) {
   padding-top: 56.25%;
 }
 
+
+/* Ocultar la interfaz de Google Translate (barra, tooltips, resaltado) */
+iframe.goog-te-banner-frame, .goog-te-banner-frame, .skiptranslate > iframe,
+iframe.skiptranslate, #goog-gt-tt, .goog-te-balloon-frame, .goog-tooltip,
+.goog-te-spinner-pos, .VIpgJd-ZVi9od-ORHb-OEVmcd, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-yAWNEb-L7lbkb, #google_translate_element { display: none !important; visibility: hidden !important; }
+body { top: 0 !important; position: static !important; }
+.goog-text-highlight, font[style] { background: transparent !important; box-shadow: none !important; }
