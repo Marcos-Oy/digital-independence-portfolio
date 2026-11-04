@@ -168,7 +168,7 @@ const HomeView = () => {
                 <p className="text-muted-foreground leading-relaxed mb-10">
                   - MOT[IA]RZO - LABS es una consultora tecnológica chilena que atiende personas
                   naturales y jurídicas, incluyendo el sector público mediante licitaciones en
-                  Mercado Público.
+                  Mercado Público. Prestamos servicios desde 2020.
                 </p>
               </ScrollReveal>
 

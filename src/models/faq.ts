@@ -1,7 +1,7 @@
 export const FAQS = [
   {
     q: "¿Qué hace exactamente - MOT[IA]RZO - LABS?",
-    a: "Somos una consultora tecnológica chilena. Diseñamos y construimos con servicios integrales la infraestructura tecnológica de emprendedores, profesionales independientes, PyMEs, grandes empresas y organismos públicos. Trabajamos principalmente online, con visitas presenciales a tus oficinas cuando el proyecto lo requiere.",
+    a: "Somos una consultora tecnológica chilena y prestamos servicios desde 2020. Diseñamos y construimos con servicios integrales la infraestructura tecnológica de emprendedores, profesionales independientes, PyMEs, grandes empresas y organismos públicos. Trabajamos principalmente online, con visitas presenciales a tus oficinas cuando el proyecto lo requiere.",
   },
   {
     q: "¿En cuánto tiempo veo resultados?",

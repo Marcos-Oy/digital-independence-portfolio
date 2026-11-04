@@ -43,7 +43,8 @@ const AboutBrandSectionView = () => {
                 una consultora tecnológica chilena que diseña y construye con servicios integrales la
                 infraestructura tecnológica de emprendedores, profesionales independientes, PyMEs,
                 grandes empresas y organismos del sector público, actuando como tu Asesor en
-                Tecnologías de la Información sin el costo de un CTO full-time.
+                Tecnologías de la Información sin el costo de un CTO full-time. Prestamos servicios
+                desde 2020.
               </p>
             </div>
             <div className="hidden md:block">
