@@ -17,5 +17,5 @@
 - [x] Verificar logos en celular y completar el cambio de traductor.
 # Barra de navegación en landing
 - [x] Evitar que la barra de las landing se parta en dos filas en celular.
-- [x] Centrar el logo verticalmente y acortar el botón en pantallas chicas.
-- [x] Verificar barra en 320px, 394px y escritorio sin recortes ni desbordes.
+- [x] Mantener el botón "Quiero mi diagnóstico" completo y centrar el logo verticalmente.
+- [x] Verificar barra en 360px, 394px, 414px y escritorio, en español e idiomas traducidos, sin recortes ni desbordes.
