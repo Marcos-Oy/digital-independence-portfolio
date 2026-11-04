@@ -7,7 +7,7 @@ interface LandingCtaButtonProps {
 }
 
 const LandingCtaButton = ({ onClick, className = "", size = "default" }: LandingCtaButtonProps) => {
-  const sizeClasses = size === "compact" ? "text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5" : "text-sm px-8 py-4";
+  const sizeClasses = size === "compact" ? "text-xs sm:text-sm px-2.5 sm:px-5 py-2 sm:py-2.5" : "text-sm px-8 py-4";
 
   return (
     <button
