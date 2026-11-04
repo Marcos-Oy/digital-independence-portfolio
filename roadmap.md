@@ -3,3 +3,9 @@
 - [x] Actualizar el logo de bienvenida y quitar el nombre repetido.
 - [x] Actualizar el logo principal de inicio con el logo vertical entregado.
 - [x] Verificar inicio, bienvenida y landing en escritorio y celular.
+
+# Idiomas
+- [ ] Añadir selector con banderas y búsqueda multilingüe en sitio y landing.
+- [ ] Seleccionar idioma inicial por país con alternativa del navegador y guardar elección manual.
+- [ ] Traducir contenido del sitio al cambiar idioma sin modificar la marca ni entradas del visitante.
+- [ ] Probar búsqueda, detección, persistencia, traducción y vista móvil.
