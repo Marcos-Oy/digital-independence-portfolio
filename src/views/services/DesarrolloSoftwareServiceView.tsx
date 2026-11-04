@@ -336,7 +336,7 @@ const DesarrolloSoftwareServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Desarrollo de Software a Medida | Independencia Digital"
+        title="Desarrollo de Software a Medida | MOT[IA]RZO Labs"
         description="Desarrollo de software a medida para empresas: sistemas internos, plataformas web, aplicaciones, automatización de procesos e integraciones. Primero entendemos tu operación, después construimos la herramienta."
         path="/servicios/desarrollo-software"
       />

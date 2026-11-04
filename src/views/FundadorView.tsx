@@ -12,8 +12,8 @@ const FundadorView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Marcos Oyarzo, Fundador y CEO | Independencia Digital"
-        description="Marcos Alberto Oyarzo Alvarez, ingeniero en informática y fundador de Independencia Digital SpA. Director de Tecnología externo para PyMEs, grandes empresas y sector público en Chile."
+        title="Marcos Oyarzo, Fundador y CEO | MOT[IA]RZO Labs"
+        description="Marcos Alberto Oyarzo Alvarez, ingeniero en informática y fundador de MOT[IA]RZO Labs SpA. Director de Tecnología externo para PyMEs, grandes empresas y sector público en Chile."
         path="/fundador"
         type="profile"
       />
@@ -62,7 +62,7 @@ const FundadorView = () => {
             <div className="space-y-6 text-foreground/90 leading-relaxed text-base md:text-lg text-justify">
               <p>
                 Ingeniero en Informática con especialización en Ciberseguridad, Transformación Digital e
-                Inteligencia Artificial Generativa. Fundador de <strong>Independencia Digital</strong>, una
+                Inteligencia Artificial Generativa. Fundador de <strong>MOT[IA]RZO Labs</strong>, una
                 consultora tecnológica chilena.
               </p>
               <p>

@@ -44,7 +44,7 @@ const WelcomeModalView = () => {
           <div className="bg-card rounded-[calc(1rem-1.5px)] px-7 py-8 flex flex-col items-center text-center">
             <img
               src={logoFull}
-              alt="Independencia Digital"
+              alt="MOT[IA]RZO Labs"
               className="h-16 w-auto mb-5"
             />
 

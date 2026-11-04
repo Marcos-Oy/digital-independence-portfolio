@@ -21,7 +21,7 @@ const SegmentoView = ({ segment }: Props) => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title={`${segment.title} | Independencia Digital`}
+        title={`${segment.title} | MOT[IA]RZO Labs`}
         description={segment.description}
         path={`/segmentos/${segment.slug}`}
       />

@@ -15,7 +15,7 @@ export const LOADING_STEPS = [
 ];
 
 export const GREETING =
-  "¡Hola! Soy **Marcos Oyarzo**, fundador de Independencia Digital. Bienvenido a tu sesión de diagnóstico gratuita. Cuéntame, ¿en qué etapa está tu negocio y qué te tiene preocupado o frenado a nivel tecnológico?";
+  "¡Hola! Soy **Marcos Oyarzo**, fundador de MOT[IA]RZO Labs. Bienvenido a tu sesión de diagnóstico gratuita. Cuéntame, ¿en qué etapa está tu negocio y qué te tiene preocupado o frenado a nivel tecnológico?";
 
 // Tiempo que "tarda" Marcos en escribir, simulando una persona real en chat.
 // Velocidad ~40 WPM (≈200 caracteres/min ≈ 30ms por carácter) + pausa inicial

@@ -1,7 +1,7 @@
 import { buildWhatsAppLink } from "@/models/whatsapp";
 
 const WhatsAppButtonView = () => {
-  const href = buildWhatsAppLink("Hola, quiero más información sobre Independencia Digital");
+  const href = buildWhatsAppLink("Hola, quiero más información sobre MOT[IA]RZO Labs");
 
   return (
     <a

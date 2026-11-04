@@ -12,7 +12,7 @@ export const useLandingHubController = () => {
   const [copiedPath, setCopiedPath] = useState<string | null>(null);
 
   useEffect(() => {
-    document.title = "Landing Pages | Independencia Digital";
+    document.title = "Landing Pages | MOT[IA]RZO Labs";
   }, []);
 
   const q = normalize(query.trim());

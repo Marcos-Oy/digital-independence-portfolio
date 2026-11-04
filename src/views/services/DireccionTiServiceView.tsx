@@ -266,7 +266,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "¿Pueden tomar decisiones de compra o contratación en nombre de la empresa?",
-    a: "El rol es de asesoría y dirección estratégica. Las decisiones formales y los contratos los firma el cliente. Independencia Digital evalúa, recomienda y acompaña el proceso.",
+    a: "El rol es de asesoría y dirección estratégica. Las decisiones formales y los contratos los firma el cliente. MOT[IA]RZO Labs evalúa, recomienda y acompaña el proceso.",
   },
   {
     q: "¿Trabajan con cualquier tamaño de empresa?",
@@ -299,7 +299,7 @@ const DireccionTiServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Dirección de Departamento TI y Talento | Independencia Digital"
+        title="Dirección de Departamento TI y Talento | MOT[IA]RZO Labs"
         description="Director de Tecnología externo para empresas en crecimiento: definición de roles, stack tecnológico, hoja de ruta y dirección estratégica continua sin contratar un CTO a tiempo completo."
         path="/servicios/direccion-ti"
       />

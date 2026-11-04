@@ -221,12 +221,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const TransformacionDigitalLandingView = () => {
-  useLandingController("Transformación Digital | Independencia Digital");
+  useLandingController("Transformación Digital | MOT[IA]RZO Labs");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Transformación Digital | Independencia Digital"
+        title="Transformación Digital | MOT[IA]RZO Labs"
         description="Diagnosticamos qué frena a tu negocio y convertimos tus procesos manuales en flujos digitales por etapas, con tu equipo adoptando cada cambio. Diagnóstico sin costo."
         path="/landing/servicio/transformacion-digital"
         noindex
@@ -244,7 +244,7 @@ const TransformacionDigitalLandingView = () => {
         <AccentBlob shape={4} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Transformación Digital, Independencia Digital" speed={30} />
+            <TypewriterText text="Transformación Digital, MOT[IA]RZO Labs" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Tu competencia no te ganó por tener mejor tecnología. Te ganó por tener mejores procesos.

@@ -64,7 +64,7 @@ export const playChatPopSound = () => {
 // ── Preguntas sugeridas ───────────────────────────────────────────────────────
 
 export const SUGGESTED_QUESTIONS = [
-  "¿Qué es Independencia Digital?",
+  "¿Qué es MOT[IA]RZO Labs?",
   "¿Cómo funciona el diagnóstico inicial?",
   "¿En qué áreas de servicio trabajan?",
   "¿Hacen sitios web y software a medida?",

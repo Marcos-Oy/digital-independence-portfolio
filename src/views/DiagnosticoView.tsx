@@ -90,8 +90,8 @@ const DiagnosticoView = () => {
       }}
     >
       <PageMeta
-        title="Diagnóstico tecnológico privado | Independencia Digital"
-        description="Sesión privada de diagnóstico tecnológico con Independencia Digital SpA."
+        title="Diagnóstico tecnológico privado | MOT[IA]RZO Labs"
+        description="Sesión privada de diagnóstico tecnológico con MOT[IA]RZO Labs SpA."
         noindex
       />
 
@@ -108,7 +108,7 @@ const DiagnosticoView = () => {
         <div className="flex-1 min-w-0">
           <p className="font-heading font-semibold text-sm text-foreground leading-tight">Marcos Oyarzo</p>
           <p className="text-xs text-green-500 font-medium">
-            {isTyping ? "escribiendo…" : "En línea · CTO Externo — Independencia Digital"}
+            {isTyping ? "escribiendo…" : "En línea · CTO Externo — MOT[IA]RZO Labs"}
           </p>
         </div>
         <button
