@@ -327,6 +327,12 @@ const adjuntar = (boton: HTMLElement) => {
   if (getComputedStyle(boton).position === "static") {
     boton.style.position = "relative";
   }
+  // El botón debe ser su propio contexto de apilado: si no, el lienzo con
+  // z-index:-1 se escapa y queda pintado DETRÁS del fondo de tarjetas o
+  // modales con transform (como el mensaje de bienvenida), y la luz no se ve.
+  if (getComputedStyle(boton).zIndex === "auto") {
+    boton.style.zIndex = "0";
+  }
 
   const canvas = document.createElement("canvas");
   canvas.setAttribute("aria-hidden", "true");
