@@ -5,7 +5,7 @@
 - [x] Verificar inicio, bienvenida y landing en escritorio y celular.
 
 # Idiomas
-- [ ] Añadir selector con banderas y búsqueda multilingüe en sitio y landing.
-- [ ] Seleccionar idioma inicial por país con alternativa del navegador y guardar elección manual.
-- [ ] Traducir contenido del sitio al cambiar idioma sin modificar la marca ni entradas del visitante.
-- [ ] Probar búsqueda, detección, persistencia, traducción y vista móvil.
+- [x] Añadir selector con banderas y búsqueda multilingüe en sitio y landing.
+- [x] Seleccionar idioma inicial por país con alternativa del navegador y guardar elección manual.
+- [x] Traducir contenido del sitio al cambiar idioma sin modificar la marca ni entradas del visitante.
+- [x] Probar búsqueda, detección, persistencia, traducción y vista móvil.
