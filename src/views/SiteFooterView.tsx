@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import BrandLogo from "@/views/shared/BrandLogo";
-import chileFlag from "@/assets/chile-flag.png";
+
 import { Instagram, Facebook, Linkedin, Mail } from "lucide-react";
 import { SERVICES } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";

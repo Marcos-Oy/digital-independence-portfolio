@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import BrandLogo from "@/views/shared/BrandLogo";
-import chileFlag from "@/assets/chile-flag.png";
+
 import ThemeToggleView from "@/views/ThemeToggleView";
 import LanguageSelector from "@/views/shared/LanguageSelector";
 import { ChevronDown, X, Search } from "lucide-react";
