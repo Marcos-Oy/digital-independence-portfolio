@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import logoFull from "@/assets/logo-full.png";
+import logoVertical from "@/assets/motiarzo-logo-vertical.png.asset.json";
 import { WELCOME_MODAL_CONTENT as CONTENT } from "@/models/welcomeModalContent";
 import { useWelcomeModalController } from "@/controllers/useWelcomeModalController";
 
@@ -43,20 +43,15 @@ const WelcomeModalView = () => {
         <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-primary/25 via-border to-secondary/20">
           <div className="bg-card rounded-[calc(1rem-1.5px)] px-7 py-8 flex flex-col items-center text-center">
             <img
-              src={logoFull}
+              src={logoVertical.url}
               alt="- MOT[IA]RZO - LABS"
-              className="h-16 w-auto mb-5"
+              width={1536}
+              height={1024}
+              className="w-64 max-w-full h-auto object-contain mb-4"
             />
 
-            <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-secondary mb-2">
+            <h2 id="welcome-title" className="text-[11px] font-semibold uppercase tracking-[0.15em] text-secondary mb-3">
               {CONTENT.eyebrow}
-            </p>
-
-            <h2
-              id="welcome-title"
-              className="font-heading font-extrabold text-xl text-foreground leading-tight mb-3"
-            >
-              {CONTENT.title}
             </h2>
 
             <p className="text-sm text-muted-foreground leading-relaxed mb-7 max-w-[260px]">
