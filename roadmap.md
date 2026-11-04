@@ -11,6 +11,6 @@
 - [x] Probar búsqueda, detección, persistencia, traducción y vista móvil.
 
 # Logos móviles y Google Traductor
-- [ ] Corregir carga de logos verticales en inicio y bienvenida, incluidos alojamientos externos.
-- [ ] Cambiar las traducciones a Google Traductor.
-- [ ] Verificar logos en celular y cambio de idioma.
+- [x] Corregir carga de logos verticales en inicio y bienvenida, incluidos alojamientos externos.
+- [ ] Cambiar las traducciones a Google Traductor. Pendiente: conexión de Google Cloud con Cloud Translation habilitado.
+- [x] Verificar logos en celular; cambio de proveedor pendiente de conexión.
