@@ -10,7 +10,7 @@ const LandingHeader = () => (
     <div className="container mx-auto px-4 min-h-16 py-2 flex flex-wrap items-center justify-between max-w-5xl gap-2">
       <Link to="/" className="flex items-center gap-2 shrink-0">
         <BrandLogo className="h-9" />
-        <img src={chileFlag} alt="Chile" title="Servicios en Chile" className="h-4 w-auto shrink-0" />
+
       </Link>
       <div className="flex items-center gap-1 sm:gap-2 ml-auto shrink-0">
         <ThemeToggleView />

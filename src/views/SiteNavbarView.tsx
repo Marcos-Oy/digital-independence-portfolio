@@ -36,7 +36,7 @@ const SiteNavbarView = () => {
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
               <BrandLogo className="h-10" />
-              <img src={chileFlag} alt="Chile" className="h-4 w-auto hidden sm:block" title="Servicios en Chile" />
+
             </Link>
 
             {/* Desktop links */}
