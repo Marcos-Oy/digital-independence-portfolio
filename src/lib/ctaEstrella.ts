@@ -132,6 +132,18 @@ const puntoEnCamino = (camino: Camino, fase: number) => {
   return { x: 0, y: 0, ang: 0 };
 };
 
+/** Punto del contorno más cercano a un punto dado (para el destello del clic). */
+const puntoMasCercano = (camino: Camino, x: number, y: number) => {
+  let mejor = { x: 0, y: 0, d: Infinity };
+  const pasos = 160;
+  for (let i = 0; i < pasos; i++) {
+    const p = puntoEnCamino(camino, i / pasos);
+    const d = (p.x - x) ** 2 + (p.y - y) ** 2;
+    if (d < mejor.d) mejor = { x: p.x, y: p.y, d };
+  }
+  return mejor;
+};
+
 /* ---------------------------------------------------------------------------
  * Dibujado
  * ------------------------------------------------------------------------ */
@@ -259,9 +271,11 @@ const dibujar = (
     const a = Math.pow(1 - u, 2);
     ctx.globalCompositeOperation = oscuro ? "lighter" : "source-over";
     halo(ctx, estado.flash.x, estado.flash.y, RADIO_HALO * (1 + u * 0.6), c,
-         (oscuro ? 0.9 : 0.5) * a * fuerza);
+         (oscuro ? 0.9 : 0.85) * a * fuerza);
+    halo(ctx, estado.flash.x, estado.flash.y, RADIO_HALO * 0.7, [0, 51, 153],
+         (oscuro ? 0.5 : 0.55) * a);
     halo(ctx, estado.flash.x, estado.flash.y, RADIO_NUCLEO * (1 - u * 0.4), [255, 255, 255],
-         (oscuro ? 0.9 : 0.55) * a);
+         (oscuro ? 0.9 : 0.8) * a);
     if (oscuro) {
       // Rayos del destello: solo en oscuro, donde no ensucian el fondo claro.
       ctx.save();
@@ -403,11 +417,16 @@ const adjuntar = (boton: HTMLElement) => {
 
   const alClic = (e: MouseEvent) => {
     const rect = boton.getBoundingClientRect();
-    const x = e.clientX - rect.left + MARGIN;
-    const y = e.clientY - rect.top + MARGIN;
+    const cx = e.clientX - rect.left;
+    const cy = e.clientY - rect.top;
+    // El destello sale del punto del BORDE más cercano al cursor: si se
+    // dibujara donde se hizo clic, quedaría tapado por el propio botón.
+    const camino = construirCamino(estado.w - MARGIN * 2, estado.h - MARGIN * 2, estado.r);
+    const borde = puntoMasCercano(camino, cx, cy);
     const t = performance.now();
-    estado.flash = { t, x, y };
-    estado.ondas.push({ t, x, y });
+    const punto = { t, x: borde.x + MARGIN, y: borde.y + MARGIN };
+    estado.flash = punto;
+    estado.ondas.push(punto);
     if (estado.ondas.length > 3) estado.ondas.shift();
     arrancar();
   };
