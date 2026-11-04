@@ -14,7 +14,8 @@ const LandingCtaButton = ({ onClick, className = "", size = "default" }: Landing
       onClick={onClick}
       className={`${BOOKING_TRIGGER_CLASS} whitespace-nowrap inline-flex items-center gap-2 gradient-brand text-primary-foreground font-heading font-bold rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 ${sizeClasses} ${className}`}
     >
-      Quiero mi diagnóstico
+      <span className="sm:hidden">Diagnóstico</span>
+      <span className="hidden sm:inline">Quiero mi diagnóstico</span>
       {size === "default" && (
         <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
       )}
