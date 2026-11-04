@@ -317,6 +317,10 @@ const TRUST_PRINCIPLES = [
 
 const FAQ_ITEMS = [
   {
+    q: "¿Pueden proteger y auditar los sistemas de inteligencia artificial de mi empresa?",
+    a: "Sí. Aplicamos ISO/IEC 27090 (ciberseguridad de la IA), ISO/IEC 42001 (sistema de gestión de IA) e ISO/IEC 23894 (riesgo de IA) para proteger tus modelos y asistentes frente a inyección de prompts, envenenamiento de datos, fuga de información y fraudes con deepfakes, y realizamos auditorías internas con evidencias para preparar la certificación.",
+  },
+  {
     q: "¿La Ley Marco de Ciberseguridad aplica a todas las empresas?",
     a: "No necesariamente. La aplicabilidad y las obligaciones dependen de la naturaleza, actividad y clasificación de cada entidad. Por eso el primer paso es siempre evaluar tu contexto: tipo de organización, servicios que entregas y condición regulatoria, para determinar qué obligaciones efectivamente te corresponden.",
   },

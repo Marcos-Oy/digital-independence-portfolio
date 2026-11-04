@@ -254,6 +254,10 @@ const TRUST_PRINCIPLES = [
 
 const FAQ_ITEMS = [
   {
+    q: "¿Ayudan a certificar ISO/IEC 42001?",
+    a: "Sí. Implementamos el Sistema de Gestión de IA (AIMS) según ISO/IEC 42001, gestionamos el riesgo con ISO/IEC 23894, realizamos la evaluación de impacto de IA y la EIPD de la Ley 21.719, y hacemos auditoría interna previa. La certificación final la otorga un organismo certificador acreditado.",
+  },
+  {
     q: "¿En qué se diferencia esto de usar ChatGPT?",
     a: "ChatGPT es una herramienta de IA genérica. Un agente corporativo está entrenado con el conocimiento, los documentos y el contexto del negocio específico, se integra con las plataformas que usa la empresa y puede ejecutar tareas dentro de flujos de trabajo reales.",
   },
