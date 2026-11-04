@@ -427,14 +427,7 @@ const adjuntar = (boton: HTMLElement) => {
   };
   // Si el botón sale del DOM (por ejemplo al cambiar de página), se sueltan
   // los observadores y el lienzo para no dejar trabajo colgado.
-  const alDesmontar = () => {
-    if (!boton.isConnected) limpiar();
-  };
-  const chequeo = window.setInterval(alDesmontar, 4000);
-  boton.addEventListener("ctatestrella:limpiar", () => {
-    window.clearInterval(chequeo);
-    limpiar();
-  });
+  REGISTRO.set(boton, limpiar);
 
   redibujar();
   if (estado.visible) arrancar();
