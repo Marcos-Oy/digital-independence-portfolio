@@ -12,5 +12,6 @@
 
 # Logos móviles y Google Traductor
 - [x] Corregir carga de logos verticales en inicio y bienvenida, incluidos alojamientos externos.
-- [ ] Cambiar las traducciones a Google Traductor. Pendiente: conexión de Google Cloud con Cloud Translation habilitado.
+- [ ] Cambiar a Google Translate mediante su script público y cookie googtrans, sin conexión a Google Cloud.
+- [ ] Ampliar a 25 idiomas y verificar búsqueda multilingüe, selección persistente y traducción real.
 - [x] Verificar logos en celular; cambio de proveedor pendiente de conexión.
