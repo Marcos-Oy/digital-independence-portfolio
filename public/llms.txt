@@ -19,3 +19,12 @@
 
 ## Contacto
 - Agendar diagnóstico: https://independencia-digital.systeme.io/registro
+
+## Inteligencia Artificial Corporativa — soluciones de IA aplicada
+- Auditoría de flujos y hoja de ruta de IA
+- Asistentes de IA (Claude, Gemini, GPT) conectados a las herramientas de la empresa
+- Integración de agentes con CRM, ERP, agenda, pagos y planillas
+- Plataformas y cotizadores a medida con IA
+- Agentes de WhatsApp con IA (atención 24/7, calificación de leads, agenda, cobro)
+- Campañas Meta Ads de clic a WhatsApp
+- Capacitación y traspaso: accesos a nombre del cliente

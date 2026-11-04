@@ -1,3 +1,4 @@
+import AiGovernanceServicesSection from "@/views/shared/AiGovernanceServicesSection";
 import {
   CheckCircle2,
   Clock3,
@@ -438,6 +439,8 @@ const CiberseguridadLandingView = () => {
         </div>
         <LayeredWaveDivider seed={2} className="absolute bottom-0 left-0 w-full h-20 md:h-28" />
       </section>
+
+      <AiGovernanceServicesSection variant="ciberseguridad" />
 
       {/* ============ SATISFACCIÓN ============ */}
       <section className="relative py-16 md:py-24 bg-background overflow-hidden">
