@@ -207,7 +207,7 @@ const ReviewsView = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full gradient-brand text-primary-foreground font-heading font-semibold text-base py-3 rounded-lg shadow-brand hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
+              className="cta-estrella w-full gradient-brand text-primary-foreground font-heading font-semibold text-base py-3 rounded-lg shadow-brand hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
               {submitting ? "Publicando…" : "Publicar reseña"}

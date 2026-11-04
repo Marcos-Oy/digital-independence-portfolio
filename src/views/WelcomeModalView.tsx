@@ -60,7 +60,7 @@ const WelcomeModalView = () => {
 
             <button
               onClick={close}
-              className="btn-shimmer inline-flex items-center justify-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 w-full"
+              className="cta-estrella inline-flex items-center justify-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-sm px-6 py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200 w-full"
             >
               {CONTENT.cta}
               <span className="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
