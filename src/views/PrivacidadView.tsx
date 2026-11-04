@@ -15,8 +15,8 @@ const PrivacidadView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Política de Privacidad y Términos de Uso | MOT[IA]RZO Labs"
-        description="Cómo MOT[IA]RZO Labs SpA recopila, usa y protege tus datos personales cuando visitas el sitio o completas un formulario de contacto."
+        title="Política de Privacidad y Términos de Uso | - MOT[IA]RZO - LABS"
+        description="Cómo - MOT[IA]RZO - LABS SpA recopila, usa y protege tus datos personales cuando visitas el sitio o completas un formulario de contacto."
         path="/privacidad"
       />
 
@@ -34,7 +34,7 @@ const PrivacidadView = () => {
             Política de Privacidad y Términos de Uso
           </h1>
           <p className="text-muted-foreground max-w-2xl">
-            Cómo MOT[IA]RZO Labs SpA recopila, usa y protege tus datos personales cuando visitas
+            Cómo - MOT[IA]RZO - LABS SpA recopila, usa y protege tus datos personales cuando visitas
             este sitio o completas alguno de nuestros formularios de contacto.
           </p>
           <p className="text-xs text-muted-foreground mt-4">
@@ -48,7 +48,7 @@ const PrivacidadView = () => {
           <Section title="1. Quiénes somos">
             <p>
               Este sitio (<strong>independenciadigital.cl</strong>) es operado por{" "}
-              <strong>MOT[IA]RZO Labs SpA</strong>, RUT <strong>78.430.447-7</strong>, consultora
+              <strong>- MOT[IA]RZO - LABS SpA</strong>, RUT <strong>78.430.447-7</strong>, consultora
               tecnológica con domicilio en Santiago, Región Metropolitana, Chile. Para efectos de esta
               política, somos el "responsable del tratamiento" de los datos personales que recopilamos a
               través de este sitio.
@@ -115,7 +115,7 @@ const PrivacidadView = () => {
             </p>
             <p>
               No vendemos, arrendamos ni compartimos tus datos personales con terceros para fines
-              publicitarios ajenos a MOT[IA]RZO Labs.
+              publicitarios ajenos a - MOT[IA]RZO - LABS.
             </p>
           </Section>
 
@@ -143,7 +143,7 @@ const PrivacidadView = () => {
               seguimiento a tu proyecto (por ejemplo: datos de contacto, información de facturación,
               hitos y comunicaciones del proyecto). A diferencia del formulario de contacto inicial, esta
               información no se procesa en nuestro proveedor externo de CRM: queda en un sistema propio, con acceso restringido a
-              las personas de MOT[IA]RZO Labs que trabajan directamente en tu proyecto.
+              las personas de - MOT[IA]RZO - LABS que trabajan directamente en tu proyecto.
             </p>
           </Section>
 

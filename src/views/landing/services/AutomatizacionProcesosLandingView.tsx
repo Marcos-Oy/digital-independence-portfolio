@@ -252,12 +252,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const AutomatizacionProcesosLandingView = () => {
-  useLandingController("Automatización de Procesos | MOT[IA]RZO Labs");
+  useLandingController("Automatización de Procesos | - MOT[IA]RZO - LABS");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Automatización de Procesos | MOT[IA]RZO Labs"
+        title="Automatización de Procesos | - MOT[IA]RZO - LABS"
         description="Levantamos tus procesos críticos, los rediseñamos y los automatizamos con notificaciones, reportes y trazabilidad completa de cada ejecución. Diagnóstico sin costo."
         path="/landing/servicio/automatizacion-procesos"
         noindex
@@ -275,7 +275,7 @@ const AutomatizacionProcesosLandingView = () => {
         <AccentBlob shape={4} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Automatización de Procesos, MOT[IA]RZO Labs" speed={30} />
+            <TypewriterText text="Automatización de Procesos, - MOT[IA]RZO - LABS" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Si tu equipo hace lo mismo cada semana, no necesita más gente. Necesita que ese trabajo se ejecute solo.

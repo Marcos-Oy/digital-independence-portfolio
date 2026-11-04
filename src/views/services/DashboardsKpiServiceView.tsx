@@ -292,7 +292,7 @@ const DashboardsKpiServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Dashboards y KPI | MOT[IA]RZO Labs"
+        title="Dashboards y KPI | - MOT[IA]RZO - LABS"
         description="Definimos los indicadores que importan, conectamos tus fuentes de datos reales y construimos dashboards interactivos en Power BI, Looker Studio o Metabase con capacitación para tu equipo."
         path="/servicios/dashboards-kpi"
       />

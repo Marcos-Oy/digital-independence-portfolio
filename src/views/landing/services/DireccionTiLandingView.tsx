@@ -206,12 +206,12 @@ const PROMISE_TEXT =
 /* ------------------------------ view ------------------------------ */
 
 const DireccionTiLandingView = () => {
-  useLandingController("Dirección de Departamento TI y Talento | MOT[IA]RZO Labs");
+  useLandingController("Dirección de Departamento TI y Talento | - MOT[IA]RZO - LABS");
 
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Dirección de Departamento TI y Talento | MOT[IA]RZO Labs"
+        title="Dirección de Departamento TI y Talento | - MOT[IA]RZO - LABS"
         description="Actuamos como tu Director de Tecnología externo: roles, stack y decisiones estratégicas continuas, sin el costo de un CTO a tiempo completo. Diagnóstico sin costo."
         path="/landing/servicio/direccion-ti"
         noindex
@@ -229,7 +229,7 @@ const DireccionTiLandingView = () => {
         <AccentBlob shape={4} color="secondary" className="absolute w-10 h-8 top-[16%] left-[8%] opacity-80 animate-float-slow" />
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-            <TypewriterText text="Dirección de Departamento TI y Talento, MOT[IA]RZO Labs" speed={30} />
+            <TypewriterText text="Dirección de Departamento TI y Talento, - MOT[IA]RZO - LABS" speed={30} />
           </p>
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-foreground leading-tight tracking-tight mb-5 max-w-3xl mx-auto">
             Alguien en tu empresa está tomando decisiones de tecnología que no debería estar tomando solo.

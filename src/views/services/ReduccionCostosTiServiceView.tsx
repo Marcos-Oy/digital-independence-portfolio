@@ -332,7 +332,7 @@ const ReduccionCostosTiServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Reducción de Costos TI | MOT[IA]RZO Labs"
+        title="Reducción de Costos TI | - MOT[IA]RZO - LABS"
         description="Auditoría de hardware, licencias de software e infraestructura cloud para identificar sobregasto, optimizar contratos y controlar el gasto en tecnología de tu organización."
         path="/servicios/optimizacion-costos-ti"
       />

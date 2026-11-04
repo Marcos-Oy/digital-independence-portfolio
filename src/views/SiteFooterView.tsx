@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import BrandWordmark from "@/views/shared/BrandWordmark";
 import chileFlag from "@/assets/chile-flag.png";
 import { Instagram, Facebook, Linkedin, Mail } from "lucide-react";
 import { SERVICES } from "@/models/services";
@@ -13,9 +14,9 @@ const SiteFooterView = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="MOT[IA]RZO Labs" className="h-8 w-8" />
-              <span className="font-heading font-bold text-sm flex items-center gap-1.5">
-                <span className="text-foreground">MOT[IA]RZO Labs</span>
+              <img src={logo} alt="- MOT[IA]RZO - LABS" className="h-8 w-8" />
+              <span className="flex items-center gap-1.5">
+                <BrandWordmark className="text-sm" />
                 <img src={chileFlag} alt="Chile" className="h-4 w-auto inline-block" />
               </span>
             </Link>

@@ -6,7 +6,7 @@ export const useSegmentoController = (slug: string | undefined) => {
 
   useEffect(() => {
     if (segment) {
-      document.title = `${segment.title} | MOT[IA]RZO Labs`;
+      document.title = `${segment.title} | - MOT[IA]RZO - LABS`;
     }
   }, [segment]);
 

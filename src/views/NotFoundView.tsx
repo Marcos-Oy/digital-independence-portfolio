@@ -12,7 +12,7 @@ const NotFoundView = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <PageMeta
-        title="Página no encontrada | MOT[IA]RZO Labs"
+        title="Página no encontrada | - MOT[IA]RZO - LABS"
         description="La página que buscas no existe o cambió de dirección. Vuelve al inicio para explorar nuestros servicios de consultoría TI."
         noindex
       />
