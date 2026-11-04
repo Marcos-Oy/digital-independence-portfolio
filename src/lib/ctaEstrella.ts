@@ -256,25 +256,29 @@ const dibujar = (
     if (estado.flash != null) {
       const u = Math.min(1, (tiempo - estado.flash) / DURACION_DESTELLO);
       const a = Math.pow(1 - u, 2);
-      halo(ctx, p.x, p.y, RADIO_HALO * (1 + u * 0.6), c, 0.35 * a);
+      halo(ctx, p.x, p.y, RADIO_HALO * (1 + u * 0.6), c, 0.5 * a);
     }
 
-    // Sombra suave que da profundidad al borde iluminado.
-    ctx.strokeStyle = rgba([0, 51, 153], 0.16);
-    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 4.5);
+    // Aura ancha: sobre fondo claro es lo que hace visible la luz por fuera.
+    ctx.strokeStyle = rgba(c, 0.22);
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 7);
+
+    // Sombra azulada que da profundidad al borde iluminado.
+    ctx.strokeStyle = rgba([0, 51, 153], 0.2);
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 3.6);
 
     // El borde iluminado en sí.
     const grad = ctx.createLinearGradient(p.x - 40, p.y - 40, p.x + 40, p.y + 40);
     grad.addColorStop(0, rgba(c, 0));
-    grad.addColorStop(1, rgba(c, 0.95));
+    grad.addColorStop(1, rgba(c, 1));
     ctx.strokeStyle = grad;
-    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 1.9);
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 2.2);
 
-    // Frente de la luz: un punto saturado con su centro algo más claro.
-    halo(ctx, p.x, p.y, 18, c, 0.5);
-    ctx.fillStyle = rgba([255, 255, 255], 0.9);
+    // Frente de la luz: un punto saturado con su centro más claro.
+    halo(ctx, p.x, p.y, 22, c, 0.75);
+    ctx.fillStyle = rgba([255, 255, 255], 0.95);
     ctx.beginPath();
-    ctx.arc(p.x, p.y, 2.4, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, 2.6, 0, Math.PI * 2);
     ctx.fill();
   }
 
