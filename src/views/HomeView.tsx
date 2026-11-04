@@ -68,7 +68,7 @@ const HomeView = () => {
     <div className="min-h-screen bg-background">
       <PageMeta
         title="- MOT[IA]RZO - LABS SpA Consultora TI en Chile | Arquitectura, Ciberseguridad e IA"
-        description="Consultora tecnológica chilena. Diseñamos y construimos la infraestructura tecnológica de PyMEs, grandes empresas y sector público: arquitectura TI, ciberseguridad, desarrollo de software e inteligencia artificial. Fundada por Marcos Oyarzo."
+        description="Consultora tecnológica chilena. Prestamos servicios desde 2020. Diseñamos y construimos la infraestructura tecnológica de PyMEs, grandes empresas y sector público: arquitectura TI, ciberseguridad, desarrollo de software e inteligencia artificial. Fundada por Marcos Oyarzo."
         path="/"
       />
       <SiteNavbarView />
@@ -168,7 +168,7 @@ const HomeView = () => {
                 <p className="text-muted-foreground leading-relaxed mb-10">
                   - MOT[IA]RZO - LABS es una consultora tecnológica chilena que atiende personas
                   naturales y jurídicas, incluyendo el sector público mediante licitaciones en
-                  Mercado Público.
+                  Mercado Público. Prestamos servicios desde 2020.
                 </p>
               </ScrollReveal>
 

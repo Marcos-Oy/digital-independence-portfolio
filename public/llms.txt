@@ -1,6 +1,6 @@
 # - MOT[IA]RZO - LABS SpA
 
-> Consultora tecnológica chilena (antes Independencia Digital), fundada por Marcos Alberto Oyarzo Alvarez. Resultados concretos en los primeros 90 días. Sitio: https://www.independenciadigital.cl
+> Consultora tecnológica chilena (antes Independencia Digital), fundada por Marcos Alberto Oyarzo Alvarez. Prestamos servicios desde 2020. Resultados concretos en los primeros 90 días. Sitio: https://www.independenciadigital.cl
 
 ## Servicios destacados: Gobernanza, auditoría y ciberseguridad de la IA
 - Implementación de Sistema de Gestión de IA ISO/IEC 42001 (AIMS, 38 controles, declaración de aplicabilidad) y preparación para certificación.

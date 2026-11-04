@@ -63,7 +63,7 @@ const FundadorView = () => {
               <p>
                 Ingeniero en Informática con especialización en Ciberseguridad, Transformación Digital e
                 Inteligencia Artificial Generativa. Fundador de <strong>- MOT[IA]RZO - LABS</strong>, una
-                consultora tecnológica chilena.
+                consultora tecnológica chilena con la que prestamos servicios desde 2020.
               </p>
               <p>
                 Diseño, construyo y dirijo la infraestructura tecnológica de mis clientes desde la arquitectura TI
