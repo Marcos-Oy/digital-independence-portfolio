@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import BrandLogo from "@/views/shared/BrandLogo";
-import chileFlag from "@/assets/chile-flag.png";
+
 import { Instagram, Facebook, Linkedin, Mail } from "lucide-react";
 import { SERVICES } from "@/models/services";
 import { SEGMENTS } from "@/models/segments";
@@ -14,7 +14,7 @@ const SiteFooterView = () => {
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
               <BrandLogo className="h-9" />
-              <img src={chileFlag} alt="Chile" className="h-4 w-auto" />
+
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Consultora tecnológica chilena. Diseñamos y construimos con servicios integrales la
