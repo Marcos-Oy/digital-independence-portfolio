@@ -68,7 +68,7 @@ const HomeView = () => {
     <div className="min-h-screen bg-background">
       <PageMeta
         title="- MOT[IA]RZO - LABS SpA Consultora TI en Chile | Arquitectura, Ciberseguridad e IA"
-        description="Consultora tecnológica chilena. Diseñamos y construimos la infraestructura tecnológica de PyMEs, grandes empresas y sector público: arquitectura TI, ciberseguridad, desarrollo de software e inteligencia artificial. Fundada por Marcos Oyarzo."
+        description="Consultora tecnológica chilena. Prestamos servicios desde 2020. Diseñamos y construimos la infraestructura tecnológica de PyMEs, grandes empresas y sector público: arquitectura TI, ciberseguridad, desarrollo de software e inteligencia artificial. Fundada por Marcos Oyarzo."
         path="/"
       />
       <SiteNavbarView />
