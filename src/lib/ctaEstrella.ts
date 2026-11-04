@@ -307,6 +307,11 @@ const adjuntar = (boton: HTMLElement) => {
   if (getComputedStyle(boton).overflow !== "visible") {
     boton.style.setProperty("overflow", "visible", "important");
   }
+  // El lienzo se posiciona respecto al botón: si el botón no está posicionado,
+  // el lienzo tomaría un contenedor más grande y la luz saldría desviada.
+  if (getComputedStyle(boton).position === "static") {
+    boton.style.position = "relative";
+  }
 
   const canvas = document.createElement("canvas");
   canvas.setAttribute("aria-hidden", "true");
