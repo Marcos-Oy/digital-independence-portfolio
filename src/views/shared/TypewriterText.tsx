@@ -16,8 +16,8 @@ interface TypewriterTextProps {
 /** Efecto de tipeo estilo consola. El texto completo queda en el DOM para
  * lectores de pantalla; la animación es solo visual. */
 const TypewriterText = ({ text: sourceText, className = "", speed = 45, startDelay = 0, triggerOnView = true }: TypewriterTextProps) => {
-  const { translateText } = useLanguage();
-  const text = translateText(sourceText);
+  const { language } = useLanguage();
+  const text = sourceText;
   const [shown, setShown] = useState("");
   const ref = useRef<HTMLSpanElement>(null);
   const [armed, setArmed] = useState(!triggerOnView);
@@ -57,6 +57,9 @@ const TypewriterText = ({ text: sourceText, className = "", speed = 45, startDel
       if (intervalId) window.clearInterval(intervalId);
     };
   }, [armed, text, speed, startDelay]);
+
+  // Google receives complete stable text rather than thousands of animated fragments.
+  if (language !== "es") return <span className={`font-mono ${className}`}>{text}</span>;
 
   return (
     <span ref={ref} className={`font-mono ${className}`} role="text" aria-label={text}>

@@ -1,5 +1,5 @@
 # Project conventions
 - Use shared lateral BrandLogo for navigation and the optimized bundled vertical WebP for home and welcome; the bundled derivative preserves the uploaded logo and loads on Cloudflare without Lovable asset routing.
-- Localization uses LanguageProvider, preserving original text nodes and translating batches through the site-translate edge function with server-only cache; mark visitor-authored or animated partial text data-no-translate to avoid sending personal input or repeated fragments.
+- Localization uses one Google Translate widget loaded by LanguageSelector after LanguageProvider country detection; set googtrans before initialization and reload on manual changes to avoid restoring Google-mutated React nodes. LanguageProvider maps data-no-translate to notranslate/translate=no; use stable full text instead of typewriter fragments outside Spanish. The browser no longer calls site-translate.
 - Translation cache and gateway pause state are service-role-only RLS tables; terminal gateway failures pause all new translation requests until the owner restores access and explicitly clears the pause record.
-- Render language flags with LanguageFlag's hosted image pointers, not Unicode flag emojis, so Windows and embedded browsers display flags consistently.
+- Render language flags with LanguageFlag's hosted image pointers resolved against the published Lovable asset origin, not Unicode emojis or deployment-relative asset URLs, so Cloudflare and embedded browsers display flags consistently.
