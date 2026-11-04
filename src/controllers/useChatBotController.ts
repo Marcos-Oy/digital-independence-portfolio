@@ -7,6 +7,7 @@ import {
   unlockChatAudio,
   playChatPopSound,
 } from "@/models/chatbot";
+import { claimChatAutoOpen, hasWelcomeClosed, markChatOpenedByUser } from "@/lib/welcomeFlow";
 
 export const useChatBotController = () => {
   const { pathname } = useLocation();
@@ -87,8 +88,10 @@ export const useChatBotController = () => {
     // hay nada que esperar: el timer arranca directo al llegar.
     if (isLandingFunnel) {
       startTimer();
-    } else {
-      try { if (sessionStorage.getItem("welcome_modal_seen")) startTimer(); } catch { }
+    } else if (hasWelcomeClosed()) {
+      // El bienvenida ya se cerró en esta carga de página (p. ej. volvimos a
+      // una ruta donde el chat estaba oculto): el timer arranca directo.
+      startTimer();
     }
 
     const onClosed = () => { unlockChatAudio(); startTimer(); };
@@ -105,6 +108,7 @@ export const useChatBotController = () => {
 
   const handleToggle = () => {
     unlockChatAudio();
+    if (!open) markChatOpenedByUser();
     setOpen((prev) => { playChatPopSound(); return !prev; });
   };
 
