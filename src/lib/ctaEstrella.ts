@@ -248,18 +248,6 @@ const dibujar = (
       }
       ctx.restore();
     }
-
-    // Ondas que salen del punto del borde al hacer clic.
-    for (const o of estado.ondas) {
-      const u = Math.min(1, (tiempo - o.t) / DURACION_ONDA);
-      const radio = 8 + u * 46;
-      const a = Math.pow(1 - u, 1.6) * 0.5;
-      const g = ctx.createRadialGradient(o.x, o.y, Math.max(0, radio - 6), o.x, o.y, radio);
-      g.addColorStop(0, rgba(c, 0));
-      g.addColorStop(1, rgba(c, a));
-      ctx.fillStyle = g;
-      ctx.fillRect(o.x - radio, o.y - radio, radio * 2, radio * 2);
-    }
   } else {
     /* Modo claro: sumar luz sobre blanco no se ve, así que se pinta con
        colores saturados de la marca (azul real y verde azulado). */
@@ -288,11 +276,18 @@ const dibujar = (
     ctx.beginPath();
     ctx.arc(p.x, p.y, 2.4, 0, Math.PI * 2);
     ctx.fill();
+  }
 
+  ctx.restore();
+
+  // Ondas que salen del punto del borde al hacer clic. Se dibujan ya fuera del
+  // recuadro del botón, con coordenadas propias del lienzo.
+  if (estado.ondas.length) {
+    ctx.globalCompositeOperation = oscuro ? "lighter" : "source-over";
     for (const o of estado.ondas) {
       const u = Math.min(1, (tiempo - o.t) / DURACION_ONDA);
       const radio = 8 + u * 46;
-      const a = Math.pow(1 - u, 1.6) * 0.35;
+      const a = Math.pow(1 - u, 1.6) * (oscuro ? 0.5 : 0.35);
       const g = ctx.createRadialGradient(o.x, o.y, Math.max(0, radio - 6), o.x, o.y, radio);
       g.addColorStop(0, rgba(c, 0));
       g.addColorStop(1, rgba(c, a));
