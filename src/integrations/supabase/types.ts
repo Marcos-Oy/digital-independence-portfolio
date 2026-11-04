@@ -44,6 +44,51 @@ export type Database = {
         }
         Relationships: []
       }
+      site_translation_cache: {
+        Row: {
+          cache_key: string
+          created_at: string
+          language: string
+          source: string
+          translated: string
+        }
+        Insert: {
+          cache_key: string
+          created_at?: string
+          language: string
+          source: string
+          translated: string
+        }
+        Update: {
+          cache_key?: string
+          created_at?: string
+          language?: string
+          source?: string
+          translated?: string
+        }
+        Relationships: []
+      }
+      site_translation_control: {
+        Row: {
+          id: string
+          message: string
+          status: number
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          message: string
+          status: number
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          message?: string
+          status?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
