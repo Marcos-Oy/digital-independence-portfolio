@@ -1,0 +1,2 @@
+# Project conventions
+- Use the shared lateral BrandLogo for navigation and the uploaded vertical logo asset pointer for the home hero and welcome dialog, preserving the distinct brand lockups without duplicating assets.

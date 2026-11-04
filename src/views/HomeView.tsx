@@ -14,7 +14,7 @@ import SiteFooterView from "@/views/SiteFooterView";
 import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
 import AboutBrandSectionView from "@/views/AboutBrandSectionView";
 import ReviewsView from "@/views/ReviewsView";
-import logoFull from "@/assets/logo-full.png";
+import logoVertical from "@/assets/motiarzo-logo-vertical.png.asset.json";
 import bannerHero from "@/assets/banner-hero.png";
 import bannerPlan360 from "@/assets/banner-plan360.png";
 import { ChevronRight, ChevronDown, Instagram, Facebook, Linkedin, Mail, Search, X } from "lucide-react";
@@ -94,9 +94,11 @@ const HomeView = () => {
 
         <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
           <img
-            src={logoFull}
+            src={logoVertical.url}
             alt="- MOT[IA]RZO - LABS"
-            className={`h-16 md:h-24 mb-8 ${explored ? "animate-fade-in" : "opacity-0"}`}
+            width={1536}
+            height={1024}
+            className={`w-64 md:w-80 max-w-full h-auto object-contain mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}
           />
 
           {/* Eyebrow tag */}
