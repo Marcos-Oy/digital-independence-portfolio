@@ -20,6 +20,7 @@ import WelcomeModalView from "@/views/WelcomeModalView";
 import CookieNoticeView from "@/views/CookieNoticeView";
 import BookingFormModal from "@/views/landing/BookingFormModal";
 import GlobalClickSound from "@/views/shared/GlobalClickSound";
+import CtaEstrellaEffect from "@/views/shared/CtaEstrellaEffect";
 import { LanguageProvider } from "@/controllers/LanguageProvider";
 
 const queryClient = new QueryClient();
@@ -79,6 +80,7 @@ const AppLayout = () => {
       <CookieNoticeView waitForWelcomeModal={!hideWelcomeModal} />
       <BookingFormModal />
       <GlobalClickSound />
+      <CtaEstrellaEffect />
     </>
   );
 };
