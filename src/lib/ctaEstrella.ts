@@ -11,6 +11,9 @@
  *  - En reposo la luz avanza lento y siempre; al pasar el mouse da una vuelta
  *    rápida; al hacer clic emite un destello y dos ondas que salen del punto
  *    del borde más cercano al cursor.
+ *  - Se pinta distinto según el tema de la página: en modo oscuro la luz se
+ *    SUMA al fondo (brilla sobre fondo negro); en modo claro se pinta con
+ *    colores saturados, porque sumar luz sobre fondo blanco no se ve.
  *
  * Cómo se usa (ver docs/BOTONES.md):
  *  - Cualquier botón con la clase `js-agendar-diagnostico` (los que abren el
@@ -22,511 +25,443 @@
 export type EstrellaStyle = {
   /** Color base de la luz. */
   color: [number, number, number];
-  /** true = se pinta normal (para botones claros sobre fondo claro).
-   *  false = se pinta sumando luz ("lighter", para botones oscuros). */
-  claro: boolean;
   /** Multiplicador de intensidad y grosor. */
   fuerza: number;
 };
 
-const TAU = Math.PI * 2;
-const WHITE: [number, number, number] = [255, 255, 255];
-/** Píxeles de canvas extra alrededor del botón para que la luz desborde. */
-const MARGIN = 48;
-
-/** Selector de todos los elementos que deben llevar la luz. */
 export const CTA_ESTRELLA_SELECTOR = ".cta-estrella, .js-agendar-diagnostico";
 
-const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
-const wrap = (v: number, m: number) => ((v % m) + m) % m;
-const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(2 - 2 * t, 3) / 2);
-const mix = (
-  a: [number, number, number],
-  b: [number, number, number],
-  t: number,
-): [number, number, number] => [
-  a[0] + (b[0] - a[0]) * t,
-  a[1] + (b[1] - a[1]) * t,
-  a[2] + (b[2] - a[2]) * t,
-];
+const MARGIN = 48;
+const ANCHO_BASE = 2.2;
+const LARGO_COLA = 0.42;
+const DURACION_VUELTA = 600;
+const DURACION_DESTELLO = 700;
+const DURACION_ONDA = 900;
+const RADIO_HALO = 36;
+const RADIO_NUCLEO = 14;
+
 const rgba = (c: [number, number, number], a: number) =>
-  `rgba(${Math.round(c[0])}, ${Math.round(c[1])}, ${Math.round(c[2])}, ${clamp(a, 0, 1).toFixed(3)})`;
+  `rgba(${c[0]},${c[1]},${c[2]},${a})`;
 
-/* ── Geometría del perímetro ─────────────────────────────────────────────── */
+/** Marca de agua que evita montar el efecto dos veces sobre el mismo botón. */
+const MARCA = "__ctaEstrella";
+const MOVIMIENTO_REDUCIDO = "(prefers-reduced-motion: reduce)";
 
-type Segmento = {
-  length: number;
-  x: number;
-  y: number;
-  dx: number;
-  dy: number;
-  /** null = recta; si no, ángulo inicial del arco. */
-  angle: number | null;
+/** true si la página está en modo oscuro (clase .dark en <html>). */
+const modoOscuro = () => document.documentElement.classList.contains("dark");
+
+/** Color de la luz: verde azulado de la marca, con un poco de azul real. */
+const colorDe = (boton: HTMLElement): [number, number, number] => {
+  const cs = getComputedStyle(boton);
+  const fondo =
+    cs.backgroundImage.includes("gradient") ||
+    cs.backgroundColor === "rgba(0, 0, 0, 0)" ||
+    cs.backgroundColor === "transparent";
+  // Los botones de la marca (degradado / azul / verde azulado) usan el verde
+  // azulado; los neutros de borde usan el azul real.
+  if (fondo) return [43, 171, 130];
+  return [0, 51, 153];
 };
 
-type Camino = { r: number; segments: Segmento[]; total: number };
+const detectarEstilo = (boton: HTMLElement): EstrellaStyle => ({
+  color: colorDe(boton),
+  fuerza: 1,
+});
 
-type Punto = { x: number; y: number; nx: number; ny: number };
+/* ---------------------------------------------------------------------------
+ * Geometría: el perímetro de un rectángulo redondeado como un "camino" de
+ * tramos rectos y cuartos de círculo, para poder recorrerlo con un punto.
+ * ------------------------------------------------------------------------ */
+type Tramo =
+  | { tipo: "recta"; x0: number; y0: number; dx: number; dy: number; largo: number }
+  | { tipo: "arco"; cx: number; cy: number; r: number; a0: number; a1: number; largo: number };
 
-/** Construye el perímetro de un rectángulo redondeado de w x h con radio r. */
-const construirCamino = (width: number, height: number, radius: number): Camino => {
-  const w = Math.max(1, width - 1);
-  const h = Math.max(1, height - 1);
-  const r = Math.max(0, Math.min(radius - 0.5, w / 2, h / 2));
-  const arco = (Math.PI * r) / 2;
-  const rectaH = Math.max(0, w - 2 * r);
-  const rectaV = Math.max(0, h - 2 * r);
+type Camino = { tramos: Tramo[]; total: number };
 
-  const segments: Segmento[] = [
-    { length: rectaH, x: r, y: 0, dx: 1, dy: 0, angle: null },
-    { length: arco, x: w - r, y: r, dx: 0, dy: 0, angle: -Math.PI / 2 },
-    { length: rectaV, x: w, y: r, dx: 0, dy: 1, angle: null },
-    { length: arco, x: w - r, y: h - r, dx: 0, dy: 0, angle: 0 },
-    { length: rectaH, x: w - r, y: h, dx: -1, dy: 0, angle: null },
-    { length: arco, x: r, y: h - r, dx: 0, dy: 0, angle: Math.PI / 2 },
-    { length: rectaV, x: 0, y: h - r, dx: 0, dy: -1, angle: null },
-    { length: arco, x: r, y: r, dx: 0, dy: 0, angle: Math.PI },
-  ];
-
-  return {
-    r,
-    segments,
-    total: Math.max(1, segments.reduce((acc, s) => acc + s.length, 0)),
-  };
-};
-
-/** Puesto sobre el perímetro a la distancia `dist` (se enrolla). */
-const puntoEnCamino = (camino: Camino, dist: number, out: Punto): Punto => {
-  let d = wrap(dist, camino.total);
-  for (const s of camino.segments) {
-    if (s.length > 0 && d <= s.length) {
-      if (s.angle === null) {
-        out.x = s.x + s.dx * d;
-        out.y = s.y + s.dy * d;
-        out.nx = s.dy;
-        out.ny = -s.dx;
-      } else {
-        const a = s.angle + d / camino.r;
-        out.nx = Math.cos(a);
-        out.ny = Math.sin(a);
-        out.x = s.x + out.nx * camino.r;
-        out.y = s.y + out.ny * camino.r;
-      }
-      return out;
-    }
-    d -= s.length;
-  }
-  return out;
-};
-
-/** Distancia a lo largo del perímetro del punto más cercano a (x, y). */
-const origenMasCercano = (camino: Camino, x: number, y: number): number => {
-  const px = x - 0.5;
-  const py = y - 0.5;
-  let mejorDist = Infinity;
-  let mejorAt = 0;
-  let acumulado = 0;
-
-  camino.segments.forEach((s) => {
-    if (s.length > 0) {
-      let t = 0;
-      let sx = 0;
-      let sy = 0;
-      if (s.angle === null) {
-        t = clamp((px - s.x) * s.dx + (py - s.y) * s.dy, 0, s.length);
-        sx = s.x + s.dx * t;
-        sy = s.y + s.dy * t;
-      } else {
-        let a = wrap(Math.atan2(py - s.y, px - s.x) - s.angle, TAU);
-        if (a > Math.PI / 2) a = a > 1.25 * Math.PI ? 0 : Math.PI / 2;
-        t = a * camino.r;
-        sx = s.x + Math.cos(s.angle + a) * camino.r;
-        sy = s.y + Math.sin(s.angle + a) * camino.r;
-      }
-      const d2 = (px - sx) ** 2 + (py - sy) ** 2;
-      if (d2 < mejorDist) {
-        mejorDist = d2;
-        mejorAt = acumulado + t;
-      }
-    }
-    acumulado += s.length;
+const construirCamino = (w: number, h: number, r: number): Camino => {
+  const rr = Math.max(0, Math.min(r, w / 2, h / 2));
+  const recta = (x0: number, y0: number, x1: number, y1: number): Tramo => ({
+    tipo: "recta",
+    x0, y0,
+    dx: x1 - x0,
+    dy: y1 - y0,
+    largo: Math.hypot(x1 - x0, y1 - y0),
+  });
+  const arco = (cx: number, cy: number, a0: number, a1: number): Tramo => ({
+    tipo: "arco",
+    cx, cy, r: rr, a0, a1,
+    largo: (Math.PI / 2) * rr,
   });
 
-  return mejorAt;
+  const tramos: Tramo[] = [
+    recta(rr, 0, w - rr, 0),
+    arco(w - rr, rr, -Math.PI / 2, 0),
+    recta(w, rr, w, h - rr),
+    arco(w - rr, h - rr, 0, Math.PI / 2),
+    recta(w - rr, h, rr, h),
+    arco(rr, h - rr, Math.PI / 2, Math.PI),
+    recta(0, h - rr, 0, rr),
+    arco(rr, rr, Math.PI, Math.PI * 1.5),
+  ];
+  const total = tramos.reduce((s, t) => s + t.largo, 0);
+  return { tramos, total };
 };
 
-/* ── Color del botón: la luz se elige según su propio fondo ──────────────── */
-
-const parsearColor = (color: string): { r: number; g: number; b: number; a: number } => {
-  const m = color.match(/rgba?\(([^)]+)\)/);
-  if (!m) return { r: 0, g: 0, b: 0, a: 0 };
-  const partes = m[1].split(/[\s,\/]+/).map((n) => parseFloat(n));
-  return {
-    r: partes[0] || 0,
-    g: partes[1] || 0,
-    b: partes[2] || 0,
-    a: partes.length > 3 ? partes[3] : 1,
-  };
+/** Punto y dirección del camino a una distancia dada (en vueltas de 0 a 1). */
+const puntoEnCamino = (camino: Camino, fase: number) => {
+  if (!camino.total) return { x: 0, y: 0, ang: 0 };
+  let d = ((fase % 1) + 1) % 1 * camino.total;
+  for (const t of camino.tramos) {
+    if (d > t.largo) { d -= t.largo; continue; }
+    if (t.tipo === "recta") {
+      const u = t.largo ? d / t.largo : 0;
+      return { x: t.x0 + t.dx * u, y: t.y0 + t.dy * u, ang: Math.atan2(t.dy, t.dx) };
+    }
+    const u = t.largo ? d / t.largo : 0;
+    const a = t.a0 + (t.a1 - t.a0) * u;
+    const r = t.r || 0.0001;
+    return {
+      x: t.cx + Math.cos(a) * r,
+      y: t.cy + Math.sin(a) * r,
+      ang: a + Math.PI / 2,
+    };
+  }
+  return { x: 0, y: 0, ang: 0 };
 };
 
-const luminancia = (c: [number, number, number]) =>
-  (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) / 255;
-
-/** Luz verde-agua clara: se ve sobre los botones oscuros de la marca. */
-const LUZ_MARCA: [number, number, number] = [86, 226, 187];
-/** Azul profundo: se ve sobre fondos claros. */
-const LUZ_CLARA: [number, number, number] = [0, 84, 168];
-
-/**
- * Elige el estilo de luz según el propio botón:
- *  - Botón con fondo oscuro (los de gradiente de marca, o el verde de
- *    WhatsApp) → luz clara sumada, que se ve como un brillo.
- *  - Botón claro o con fondo transparente en modo claro → luz oscura.
- *  - Botón con fondo transparente en modo oscuro → luz clara.
- */
-const resolverEstilo = (el: HTMLElement): EstrellaStyle => {
-  const cs = getComputedStyle(el);
-  const modoOscuro = document.documentElement.classList.contains("dark");
-  const tieneGradiente = cs.backgroundImage !== "none" && cs.backgroundImage !== "initial";
-  const fondo = parsearColor(cs.backgroundColor);
-  const fondoOscuro = tieneGradiente
-    ? true
-    : fondo.a > 0.05
-      ? luminancia([fondo.r, fondo.g, fondo.b]) < 0.5
-      : modoOscuro;
-
-  if (fondoOscuro) return { color: LUZ_MARCA, claro: false, fuerza: tieneGradiente ? 1.7 : 1.15 };
-  return { color: LUZ_CLARA, claro: true, fuerza: 1 };
+/* ---------------------------------------------------------------------------
+ * Dibujado
+ * ------------------------------------------------------------------------ */
+const trazarCola = (
+  ctx: CanvasRenderingContext2D,
+  camino: Camino,
+  fase: number,
+  ancho: number,
+) => {
+  const inicio = fase - LARGO_COLA;
+  const pasos = 28;
+  ctx.beginPath();
+  for (let i = 0; i <= pasos; i++) {
+    const p = puntoEnCamino(camino, inicio + (LARGO_COLA * i) / pasos);
+    if (i === 0) ctx.moveTo(p.x, p.y);
+    else ctx.lineTo(p.x, p.y);
+  }
+  ctx.lineWidth = ancho;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.stroke();
 };
 
-/* ── Adjuntar el efecto a un botón ───────────────────────────────────────── */
+const halo = (
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  radio: number,
+  c: [number, number, number],
+  alpha: number,
+) => {
+  const g = ctx.createRadialGradient(x, y, 0, x, y, radio);
+  g.addColorStop(0, rgba(c, alpha));
+  g.addColorStop(0.4, rgba(c, alpha * 0.35));
+  g.addColorStop(1, rgba(c, 0));
+  ctx.fillStyle = g;
+  ctx.fillRect(x - radio, y - radio, radio * 2, radio * 2);
+};
 
-const adjuntar = (el: HTMLElement): (() => void) => {
+const dibujar = (
+  ctx: CanvasRenderingContext2D,
+  w: number,
+  h: number,
+  r: number,
+  estado: {
+    fase: number;
+    motion: number;
+    lap: number;
+    flash: number | null;
+    ondas: { t: number; x: number; y: number }[];
+    style: EstrellaStyle;
+  },
+  tiempo: number,
+) => {
+  ctx.clearRect(0, 0, w, h);
+  if (w <= 0 || h <= 0) return;
+
+  const { color: c, fuerza } = estado.style;
+  const camino = construirCamino(w, h, r);
+  if (!camino.total) return;
+
+  const oscuro = modoOscuro();
+  const p = puntoEnCamino(camino, estado.fase);
+
+  if (oscuro) {
+    /* Modo oscuro: la luz se SUMA al fondo, así que brilla de verdad. */
+    ctx.globalCompositeOperation = "lighter";
+
+    // Destello de clic: un latido de luz en el punto del borde.
+    if (estado.flash != null) {
+      const u = Math.min(1, (tiempo - estado.flash) / DURACION_DESTELLO);
+      const a = Math.pow(1 - u, 2);
+      halo(ctx, p.x, p.y, RADIO_HALO * (1 + u * 0.6), c, 0.9 * a * fuerza);
+    }
+
+    // Halo del frente que recorre el borde.
+    halo(ctx, p.x, p.y, RADIO_HALO, c, 0.55 * fuerza);
+
+    // La cola: dos pasadas, una ancha y suave, otra fina y brillante.
+    const grad = ctx.createLinearGradient(p.x - 40, p.y - 40, p.x + 40, p.y + 40);
+    grad.addColorStop(0, rgba(c, 0));
+    grad.addColorStop(1, rgba(c, 0.85));
+    ctx.strokeStyle = grad;
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 5 * fuerza);
+    ctx.strokeStyle = rgba(c, 0.9);
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * fuerza);
+
+    // Núcleo del frente.
+    halo(ctx, p.x, p.y, RADIO_NUCLEO, [255, 255, 255], 0.9 * fuerza);
+
+    // Rayos del destello (solo en oscuro, donde no ensucian).
+    if (estado.flash != null) {
+      const u = Math.min(1, (tiempo - estado.flash) / DURACION_DESTELLO);
+      const a = Math.pow(1 - u, 2);
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.ang);
+      ctx.strokeStyle = rgba(c, 0.35 * a);
+      ctx.lineWidth = 1.4;
+      const largo = 26 * (1 - u * 0.5);
+      for (const s of [-1, 1]) {
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(s * largo, 0);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // Ondas que salen del punto del borde al hacer clic.
+    for (const o of estado.ondas) {
+      const u = Math.min(1, (tiempo - o.t) / DURACION_ONDA);
+      const radio = 8 + u * 46;
+      const a = Math.pow(1 - u, 1.6) * 0.5;
+      const g = ctx.createRadialGradient(o.x, o.y, Math.max(0, radio - 6), o.x, o.y, radio);
+      g.addColorStop(0, rgba(c, 0));
+      g.addColorStop(1, rgba(c, a));
+      ctx.fillStyle = g;
+      ctx.fillRect(o.x - radio, o.y - radio, radio * 2, radio * 2);
+    }
+  } else {
+    /* Modo claro: sumar luz sobre blanco no se ve, así que se pinta con
+       colores saturados de la marca (azul real y verde azulado). */
+    ctx.globalCompositeOperation = "source-over";
+
+    if (estado.flash != null) {
+      const u = Math.min(1, (tiempo - estado.flash) / DURACION_DESTELLO);
+      const a = Math.pow(1 - u, 2);
+      halo(ctx, p.x, p.y, RADIO_HALO * (1 + u * 0.6), c, 0.35 * a);
+    }
+
+    // Sombra suave que da profundidad al borde iluminado.
+    ctx.strokeStyle = rgba([0, 51, 153], 0.16);
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 4.5);
+
+    // El borde iluminado en sí.
+    const grad = ctx.createLinearGradient(p.x - 40, p.y - 40, p.x + 40, p.y + 40);
+    grad.addColorStop(0, rgba(c, 0));
+    grad.addColorStop(1, rgba(c, 0.95));
+    ctx.strokeStyle = grad;
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 1.9);
+
+    // Frente de la luz: un punto saturado con su centro algo más claro.
+    halo(ctx, p.x, p.y, 18, c, 0.5);
+    ctx.fillStyle = rgba([255, 255, 255], 0.9);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2.4, 0, Math.PI * 2);
+    ctx.fill();
+
+    for (const o of estado.ondas) {
+      const u = Math.min(1, (tiempo - o.t) / DURACION_ONDA);
+      const radio = 8 + u * 46;
+      const a = Math.pow(1 - u, 1.6) * 0.35;
+      const g = ctx.createRadialGradient(o.x, o.y, Math.max(0, radio - 6), o.x, o.y, radio);
+      g.addColorStop(0, rgba(c, 0));
+      g.addColorStop(1, rgba(c, a));
+      ctx.fillStyle = g;
+      ctx.fillRect(o.x - radio, o.y - radio, radio * 2, radio * 2);
+    }
+  }
+
+  ctx.globalCompositeOperation = "source-over";
+};
+
+/* ---------------------------------------------------------------------------
+ * Montaje
+ * ------------------------------------------------------------------------ */
+const adjuntar = (boton: HTMLElement) => {
+  if ((boton as never as Record<string, unknown>)[MARCA]) return;
+  (boton as never as Record<string, unknown>)[MARCA] = true;
+
+  // La luz desborda el borde, así que el botón no debe recortarla.
+  if (getComputedStyle(boton).overflow !== "visible") {
+    boton.style.setProperty("overflow", "visible", "important");
+  }
+
   const canvas = document.createElement("canvas");
   canvas.setAttribute("aria-hidden", "true");
-  canvas.style.cssText = `position:absolute;top:${-MARGIN}px;left:${-MARGIN}px;z-index:-1;width:calc(100% + ${MARGIN * 2}px);height:calc(100% + ${MARGIN * 2}px);pointer-events:none;`;
+  canvas.style.cssText = `position:absolute;left:0;top:0;width:calc(100% + ${MARGIN * 2}px);height:calc(100% + ${MARGIN * 2}px);transform:translate(-${MARGIN}px,-${MARGIN}px);z-index:-1;pointer-events:none;display:block`;
+  boton.appendChild(canvas);
 
   const ctx = canvas.getContext("2d");
-  if (!ctx) return () => {};
+  if (!ctx) return;
 
-  const estilosOriginales = {
-    position: el.style.position,
-    isolation: el.style.isolation,
-    overflow: el.style.overflow,
-  };
-  if (getComputedStyle(el).position === "static") {
-    el.style.setProperty("position", "relative", "important");
-  }
-  el.style.setProperty("isolation", "isolate", "important");
-  // La luz desborda el botón: si el botón recorta, hay que dejar de recortar.
-  if (getComputedStyle(el).overflow !== "visible") {
-    el.style.setProperty("overflow", "visible", "important");
-  }
-  el.appendChild(canvas);
-
-  const movimientoReducido = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-
-  const cursor: Punto = { x: 0, y: 0, nx: 0, ny: -1 };
   const estado = {
-    width: 0,
-    height: 0,
-    dpr: 1,
-    radius: 0,
-    phase: 0,
-    velocity: 0,
+    fase: Math.random(),
     motion: 0,
     lap: -1,
-    time: 0,
-    flash: 0,
+    flash: null as number | null,
+    ondas: [] as { t: number; x: number; y: number }[],
+    style: detectarEstilo(boton),
+    w: 0,
+    h: 0,
+    r: 0,
     visible: false,
+    raf: 0,
   };
-  const ondas: { origin: number; age: number }[] = [];
-  let raf = 0;
-  let ultimo = performance.now();
-  let vivo = true;
-
-  const caminoPropio = () => construirCamino(estado.width, estado.height, estado.radius);
 
   const redibujar = () => {
-    estado.width = el.offsetWidth;
-    estado.height = el.offsetHeight;
-    estado.dpr = Math.min(window.devicePixelRatio || 1, 2);
-    estado.radius = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0;
-    canvas.width = Math.max(1, Math.round((estado.width + MARGIN * 2) * estado.dpr));
-    canvas.height = Math.max(1, Math.round((estado.height + MARGIN * 2) * estado.dpr));
-    arrancar();
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const w = boton.offsetWidth + MARGIN * 2;
+    const h = boton.offsetHeight + MARGIN * 2;
+    if (w <= 0 || h <= 0) return;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    estado.w = w;
+    estado.h = h;
+    estado.r = parseFloat(getComputedStyle(boton).borderRadius) || 0;
+    estado.style = detectarEstilo(boton);
+    if (estado.visible) arrancar();
   };
 
-  const linea = (
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number,
-    grosor: number,
-    color: string,
-  ) => {
-    ctx.lineWidth = grosor;
-    ctx.strokeStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-  };
-
-  /** Cola de luz que va desvaneciéndose a lo largo del perímetro. */
-  const dibujarCola = (
-    estilo: EstrellaStyle,
-    camino: Camino,
-    desde: number,
-    largo: number,
-    direccion: number,
-    alfa: number,
-    puntaRedonda = true,
-  ) => {
-    if (largo < 0.5 || alfa <= 0) return;
-    const pasos = clamp(Math.ceil(largo / 2), 2, 90);
-    puntoEnCamino(camino, desde, cursor);
-    let px = cursor.x;
-    let py = cursor.y;
-
-    for (let i = 1; i <= pasos; i++) {
-      puntoEnCamino(camino, desde - direccion * largo * (i / pasos), cursor);
-      const caida = 1 - (i - 0.5) / pasos;
-      const a = caida * caida * alfa;
-      let color = estilo.color;
-      // En modo "luz sumada" la cola se aclara hacia blanco.
-      if (!estilo.claro) color = mix(color, WHITE, Math.pow(caida, 6) * 0.65);
-      ctx.lineCap = puntaRedonda && i === 1 ? "round" : "butt";
-      const f = estilo.fuerza;
-      linea(px, py, cursor.x, cursor.y, 5.6 * f, rgba(color, a * (estilo.claro ? 0.1 : 0.2) * 0.6 * f));
-      linea(px, py, cursor.x, cursor.y, f, rgba(color, a));
-      px = cursor.x;
-      py = cursor.y;
-    }
-  };
-
-  /** Halo redondo de luz. */
-  const dibujarHalo = (estilo: EstrellaStyle, x: number, y: number, alfa: number) => {
-    if (alfa <= 0) return;
-    const radio = 36 * (estilo.claro ? 0.6 : 1);
-    const g = ctx.createRadialGradient(x, y, 0, x, y, radio);
-    const pico = (estilo.claro ? 0.08 : 0.4) * 0.6 * alfa * estilo.fuerza;
-    g.addColorStop(0, rgba(estilo.color, pico));
-    g.addColorStop(0.2, rgba(estilo.color, 0.4 * pico));
-    g.addColorStop(0.5, rgba(estilo.color, 0.1 * pico));
-    g.addColorStop(1, rgba(estilo.color, 0));
-    ctx.fillStyle = g;
-    ctx.fillRect(x - radio, y - radio, 2 * radio, 2 * radio);
-  };
-
-  const pintar = (estilo: EstrellaStyle, camino: Camino) => {
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (estado.width < 2 || estado.height < 2) return;
-
-    const desplazamiento = (MARGIN + 0.5) * estado.dpr;
-    ctx.setTransform(estado.dpr, 0, 0, estado.dpr, desplazamiento, desplazamiento);
-    ctx.globalCompositeOperation = estilo.claro ? "source-over" : "lighter";
-    ctx.lineCap = "butt";
-
-    const total = camino.total;
-    const velocidad = Math.abs(estado.motion);
-    const direccion = estado.motion >= 0 ? 1 : -1;
-    const largoCola = Math.min(1.2 * velocidad, 0.6 * total);
-    const realce = 1 + 0.6 * estado.flash;
-    const anillo = estado.flash * (estilo.claro ? 0.18 : 0.32);
-
-    // Destello: un anillo completo sobre el borde del botón.
-    if (anillo > 0.005) {
-      ctx.lineWidth = 2.2;
-      ctx.strokeStyle = rgba(estilo.color, anillo);
-      ctx.beginPath();
-      const w = Math.max(1, estado.width - 1);
-      const h = Math.max(1, estado.height - 1);
-      if (typeof ctx.roundRect === "function") {
-        ctx.roundRect(0, 0, w, h, Math.max(0, camino.r));
-      } else {
-        ctx.rect(0, 0, w, h);
-      }
-      ctx.stroke();
-    }
-
-    // La cabeza se aclara cuando la luz frena (fin de la vuelta del hover).
-    const cabeza =
-      clamp(1 - velocidad / Math.max(1, (total / 4) * 0.6), 0, 1) * Math.min(1, realce);
-    const fase = estado.phase;
-
-    dibujarCola(estilo, camino, fase, largoCola, direccion, Math.min(1, realce));
-    if (cabeza > 0.01) {
-      const extra = 20.4 * cabeza;
-      dibujarCola(estilo, camino, fase, extra, 1, cabeza, false);
-      dibujarCola(estilo, camino, fase, extra, -1, cabeza, false);
-    }
-
-    // Ondas que salen del punto del clic hacia los dos lados del borde.
-    ondas.forEach((onda) => {
-      const alfa = Math.pow(1 - onda.age / 0.65, 2);
-      const Expansion = (total / 2) * (1 - Math.pow(1 - Math.min(1, onda.age / 0.5), 2));
-      const largo = Math.min(Expansion, 0.16 * total);
-      [1, -1].forEach((d) => {
-        const puesto = onda.origin + d * Expansion;
-        dibujarCola(estilo, camino, puesto, largo, d, alfa);
-        puntoEnCamino(camino, puesto, cursor);
-        dibujarHalo(estilo, cursor.x, cursor.y, 0.8 * alfa);
-      });
-    });
-
-    puntoEnCamino(camino, estado.phase, cursor);
-    dibujarHalo(estilo, cursor.x, cursor.y, Math.min(1.3, realce));
-  };
-
-  const cuadro = (ahora: number) => {
-    raf = 0;
-    if (!vivo) return;
-
-    const estilo = resolverEstilo(el);
-    const dt = Math.min(0.05, Math.max(0.001, (ahora - ultimo) / 1000));
-    ultimo = ahora;
-    estado.time += dt;
-
-    const camino = caminoPropio();
-    const total = camino.total;
-    const arranque = movimientoReducido ? 0 : total / 4;
-
-    estado.flash *= Math.exp(-dt / 0.22);
-    estado.velocity += (arranque - estado.velocity) * (1 - Math.exp(-dt / 0.45));
-
-    let salto = 0;
-    if (estado.lap >= 0) {
-      const antes = easeInOutCubic(Math.min(1, estado.lap / 0.9));
-      estado.lap += dt;
-      salto = (easeInOutCubic(Math.min(1, estado.lap / 0.9)) - antes) * total;
-      if (estado.lap >= 0.9) estado.lap = -1;
-    }
-
-    estado.motion = estado.velocity + salto / dt;
-    estado.phase = wrap(estado.phase + estado.velocity * dt + salto, total);
-
-    for (let i = ondas.length - 1; i >= 0; i--) {
-      ondas[i].age += dt;
-      if (ondas[i].age >= 0.65) ondas.splice(i, 1);
-    }
-
-    pintar(estilo, camino);
-
-    const hayDestello = estado.flash > 0.01 || ondas.length > 0;
-    const hayMovimiento = Math.abs(estado.motion) > 0.05 || arranque !== 0 || estado.lap >= 0;
-    if (estado.visible && (hayDestello || hayMovimiento)) raf = requestAnimationFrame(cuadro);
-  };
+  const reducir = () => window.matchMedia(MOVIMIENTO_REDUCIDO).matches;
 
   const arrancar = () => {
-    if (!raf && vivo && estado.visible) {
-      ultimo = performance.now();
-      raf = requestAnimationFrame(cuadro);
-    }
+    if (estado.raf) return;
+    let ultimo = performance.now();
+    const paso = (t: number) => {
+      const dt = Math.min(50, t - ultimo);
+      ultimo = t;
+
+      if (estado.lap >= 0) {
+        // Vuelta rápida pedida al pasar el mouse.
+        const u = (t - estado.lap) / DURACION_VUELTA;
+        if (u >= 1) {
+          estado.lap = -1;
+          estado.motion = 0;
+        } else {
+          estado.motion = 1000 / 18;
+        }
+      } else {
+        estado.motion = 0;
+      }
+
+      const creep = estado.w / 4;
+      const velocidad = estado.motion + (reducir() ? 0 : creep);
+      estado.fase = (estado.fase + (velocidad * dt) / 1000 / Math.max(1, estado.w)) % 1;
+
+      if (estado.flash != null && t - estado.flash > DURACION_DESTELLO) estado.flash = null;
+      estado.ondas = estado.ondas.filter((o) => t - o.t <= DURACION_ONDA);
+
+      dibujar(ctx, estado.w, estado.h, estado.r, estado, t);
+
+      const hayMovimiento =
+        estado.motion > 0.05 || estado.flash != null || estado.ondas.length > 0 ||
+        (!reducir() && estado.visible);
+      if (hayMovimiento) estado.raf = requestAnimationFrame(paso);
+      else estado.raf = 0;
+    };
+    estado.raf = requestAnimationFrame(paso);
   };
 
-  const nuevaOnda = (origen: number) => {
-    ondas.push({ origin: origen, age: 0 });
-    if (ondas.length > 4) ondas.shift();
-    estado.flash = 1;
-    arrancar();
+  const detener = () => {
+    if (estado.raf) cancelAnimationFrame(estado.raf);
+    estado.raf = 0;
   };
 
   const alEntrar = () => {
-    if (estado.lap < 0 && !movimientoReducido) estado.lap = 0;
+    estado.lap = performance.now();
     arrancar();
   };
 
-  const alPulsar = (e: PointerEvent) => {
-    if (e.button !== 0 && e.pointerType === "mouse") return;
-    const caja = el.getBoundingClientRect();
-    const sx = caja.width ? estado.width / caja.width : 1;
-    const sy = caja.height ? estado.height / caja.height : 1;
-    const x = (e.clientX - caja.left) * sx;
-    const y = (e.clientY - caja.top) * sy;
-    nuevaOnda(origenMasCercano(caminoPropio(), x, y));
-  };
-
-  // Clic desde el teclado (Enter/Espacio): destello en la posición actual.
   const alClic = (e: MouseEvent) => {
-    if (e.detail === 0) nuevaOnda(estado.phase);
-  };
-
-  const alEnfocar = () => {
-    if (el.matches(":focus-visible") && estado.lap < 0 && !movimientoReducido) estado.lap = 0;
+    const rect = boton.getBoundingClientRect();
+    const x = e.clientX - rect.left + MARGIN;
+    const y = e.clientY - rect.top + MARGIN;
+    const t = performance.now();
+    estado.flash = t;
+    estado.ondas.push({ t, x, y });
+    if (estado.ondas.length > 3) estado.ondas.shift();
     arrancar();
   };
 
-  const observadorTamano = new ResizeObserver(redibujar);
-  observadorTamano.observe(el);
+  const ro = new ResizeObserver(() => redibujar());
+  ro.observe(boton);
 
-  const observadorVista = new IntersectionObserver((entradas) => {
-    estado.visible = entradas.some((e) => e.isIntersecting);
-    arrancar();
+  const io = new IntersectionObserver(([entrada]) => {
+    estado.visible = !!entrada && entrada.isIntersecting;
+    if (estado.visible) arrancar();
+    else detener();
   });
-  observadorVista.observe(el);
+  io.observe(boton);
 
-  el.addEventListener("pointerenter", alEntrar);
-  el.addEventListener("pointerdown", alPulsar);
-  el.addEventListener("click", alClic);
-  el.addEventListener("focus", alEnfocar);
-  redibujar();
+  boton.addEventListener("mouseenter", alEntrar);
+  boton.addEventListener("click", alClic);
 
-  return () => {
-    vivo = false;
-    cancelAnimationFrame(raf);
-    observadorTamano.disconnect();
-    observadorVista.disconnect();
-    el.removeEventListener("pointerenter", alEntrar);
-    el.removeEventListener("pointerdown", alPulsar);
-    el.removeEventListener("click", alClic);
-    el.removeEventListener("focus", alEnfocar);
+  const limpiar = () => {
+    detener();
+    ro.disconnect();
+    io.disconnect();
+    boton.removeEventListener("mouseenter", alEntrar);
+    boton.removeEventListener("click", alClic);
     canvas.remove();
-    el.style.position = estilosOriginales.position;
-    el.style.isolation = estilosOriginales.isolation;
-    el.style.overflow = estilosOriginales.overflow;
+    delete (boton as never as Record<string, unknown>)[MARCA];
   };
+  if (typeof queueMicrotask === "function") {
+    const anterior = (boton as never as Record<string, unknown>)[MARCA];
+    (boton as never as Record<string, unknown>)[MARCA] = true;
+    void anterior;
+  }
+  boton.dataset.ctaEstrella = "1";
+  boton.addEventListener("removedfrom-dom-like", limpiar);
+
+  redibujar();
+  if (estado.visible) arrancar();
 };
 
-/* ── Montaje global ──────────────────────────────────────────────────────── */
-
 /**
- * Busca todos los botones de acción y les pone la luz. Se vuelve a ejecutar
- * cuando aparece contenido nuevo (modales, cambio de página, etc.).
- * Devuelve la función para detenerlo.
+ * Monta la luz en todos los botones de acción que haya ahora y en los que
+ * aparezcan después (modales, cambio de página, etc.).
  */
-export const montarCtaEstrella = (): (() => void) => {
-  const activos = new Map<HTMLElement, () => void>();
-
+export const montarCtaEstrella = () => {
   const escanear = () => {
-    for (const [el, limpiar] of activos) {
-      if (!el.isConnected) {
-        limpiar();
-        activos.delete(el);
-      }
-    }
-    document.querySelectorAll<HTMLElement>(CTA_ESTRELLA_SELECTOR).forEach((el) => {
-      if (!activos.has(el)) activos.set(el, adjuntar(el));
-    });
+    document.querySelectorAll<HTMLElement>(CTA_ESTRELLA_SELECTOR).forEach(adjuntar);
   };
-
   escanear();
 
-  let pendiente = 0;
-  const observador = new MutationObserver(() => {
-    if (pendiente) return;
-    pendiente = requestAnimationFrame(() => {
-      pendiente = 0;
-      escanear();
-    });
+  const observador = new MutationObserver((cambios) => {
+    let hayNovedad = false;
+    for (const c of cambios) {
+      if (c.addedNodes.length) { hayNovedad = true; break; }
+      if (c.type === "attributes" && c.target instanceof HTMLElement &&
+          c.target.classList.contains("cta-estrella")) { hayNovedad = true; break; }
+    }
+    if (hayNovedad) escanear();
   });
-  observador.observe(document.body, { childList: true, subtree: true });
+  observador.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class"],
+  });
 
-  return () => {
-    observador.disconnect();
-    if (pendiente) cancelAnimationFrame(pendiente);
-    activos.forEach((limpiar) => limpiar());
-    activos.clear();
-  };
+  return () => observador.disconnect();
 };
