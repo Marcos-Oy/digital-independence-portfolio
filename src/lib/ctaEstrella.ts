@@ -47,6 +47,9 @@ const rgba = (c: [number, number, number], a: number) =>
 const MARCA = "__ctaEstrella";
 const MOVIMIENTO_REDUCIDO = "(prefers-reduced-motion: reduce)";
 
+/** Botones con el efecto montado y su forma de soltar los recursos. */
+const REGISTRO = new Map<HTMLElement, () => void>();
+
 /** true si la página está en modo oscuro (clase .dark en <html>). */
 const modoOscuro = () => document.documentElement.classList.contains("dark");
 
@@ -443,6 +446,16 @@ export const montarCtaEstrella = () => {
   };
   escanear();
 
+  // Botón que desaparece del DOM (cambio de página, modal cerrado), se limpia.
+  const barrido = window.setInterval(() => {
+    for (const [boton, limpiar] of REGISTRO) {
+      if (!boton.isConnected || !document.contains(boton)) {
+        limpiar();
+        REGISTRO.delete(boton);
+      }
+    }
+  }, 4000);
+
   const observador = new MutationObserver((cambios) => {
     let hayNovedad = false;
     for (const c of cambios) {
@@ -459,5 +472,10 @@ export const montarCtaEstrella = () => {
     attributeFilter: ["class"],
   });
 
-  return () => observador.disconnect();
+  return () => {
+    observador.disconnect();
+    window.clearInterval(barrido);
+    for (const [, limpiar] of REGISTRO) limpiar();
+    REGISTRO.clear();
+  };
 };
