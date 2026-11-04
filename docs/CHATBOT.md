@@ -13,15 +13,19 @@ src/components/ChatBot.tsx  →  supabase/functions/chat   →   ai.gateway.lova
        (fetch SSE)              (proxy + system prompt)       (Google Gemini)
 ```
 
-- **Frontend**: `src/components/ChatBot.tsx`
+- **Frontend (UI)**: `src/views/ChatBotView.tsx`
+- **Frontend (lógica)**: `src/controllers/useChatBotController.ts`
+- **Permiso de auto-apertura**: `src/lib/welcomeFlow.ts`
 - **Backend (edge function)**: `supabase/functions/chat/index.ts`
 - **Proveedor IA**: Lovable AI Gateway (OpenAI-compatible).
 - **Modelo actual**: `google/gemini-3-flash-preview`.
 - **Streaming**: SSE línea por línea.
 
-El chatbot se monta globalmente en `src/App.tsx` (`<ChatBot />`) y aparece en
-todas las páginas. Tiene auto-apertura a los 10s después de que el
-`WelcomeModal` se cierra (evento `welcome-modal-closed`).
+El chatbot se monta globalmente en `src/App.tsx` (`<ChatBotView />`) y aparece
+en todas las páginas. Tiene auto-apertura a los 10s después de que el
+`WelcomeModalView` se cierra (evento `welcome-modal-closed`). El bienvenida se
+muestra en cada carga de página, así que el chat también debe volver a abrirse
+solo en cada carga de página (ver `src/lib/welcomeFlow.ts`).
 
 ---
 
@@ -145,8 +149,12 @@ Debe devolver `200` con SSE `data: {...}` chunks y un `data: [DONE]` final.
   para que suene en cada apertura/notificación. Requiere gesture-unlock previo.
 - **SimpleMarkdown** (~78-99): renderiza `**bold**` y saltos de línea. No usa
   `react-markdown` para mantener bundle ligero.
-- **Auto-apertura** (~207-238): a los 10s después de cerrar el `WelcomeModal`
-  (o de cargar si ya se vio). Se marca en `sessionStorage` para no repetirse.
+- **Auto-apertura**: a los 10s de cerrar el bienvenida (o de cargar, en las
+  landing que no muestran bienvenida). El permiso lo da `claimChatAutoOpen()`
+  en `src/lib/welcomeFlow.ts`: se concede **una vez por carga de página** y
+  nunca si el visitante ya abrió el chat a mano (`markChatOpenedByUser()`).
+  No guardar este permiso en `sessionStorage`: dura toda la pestaña y hace que
+  el chat deje de abrirse solo desde la segunda visita (bug que ya ocurrió).
 - **Teclado virtual mobile** (~143-196): usa `visualViewport` para empujar el
   chat sobre el teclado. Fallback al 45% del alto para navegadores in-app
   (Instagram, Facebook, TikTok) donde `visualViewport` no dispara `resize`.
@@ -193,9 +201,12 @@ Auto: cada cambio se publica. Las edge functions se redeployan solas.
 ## 7. Archivos clave (mapa rápido)
 
 ```
-src/components/ChatBot.tsx          ← UI, streaming, teclado mobile, auto-open
-src/components/WelcomeModal.tsx     ← Modal de bienvenida (dispara auto-open)
-src/App.tsx                         ← Monta <ChatBot /> global
+src/views/ChatBotView.tsx                 ← UI: burbuja, ventana, streaming
+src/controllers/useChatBotController.ts   ← Estado, teclado mobile, auto-open
+src/views/WelcomeModalView.tsx            ← Modal de bienvenida
+src/controllers/useWelcomeModalController.ts ← Abre/cierra el bienvenida
+src/lib/welcomeFlow.ts                    ← Permiso de auto-apertura por carga
+src/App.tsx                         ← Monta <ChatBotView /> global
 src/integrations/supabase/client.ts ← Cliente Supabase (NO EDITAR)
 supabase/functions/chat/index.ts    ← Edge function + SYSTEM_PROMPT
 supabase/config.toml                ← project_id (NO EDITAR project-level)
