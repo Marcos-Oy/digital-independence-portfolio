@@ -3,6 +3,7 @@ import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
+import AiGovernanceServicesSection, { AI_GOVERNANCE_SERVICES } from "@/views/shared/AiGovernanceServicesSection";
 import {
   Accordion,
   AccordionContent,
@@ -396,9 +397,10 @@ const CiberseguridadServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Ciberseguridad, Gestión y Estrategia | - MOT[IA]RZO - LABS"
-        description="Diagnóstico, gestión de riesgos, estrategia de ciberseguridad, protección de datos, preparación ante incidentes y alineamiento con ISO 27001 y normativa chilena."
+        title="Ciberseguridad e ISO 27001 / 42001 / 27090 para IA | - MOT[IA]RZO - LABS"
+        description="Ciberseguridad, gestión de riesgos, ISO 27001 y ciberseguridad de la IA (ISO/IEC 27090, 42001, 23894). Auditoría de IA, EIPD Ley 21.719, Ley 21.663 y prevención de deepfakes en Chile."
         path="/servicios/ciberseguridad"
+        jsonLd={{{"@context":"https://schema.org","@type":"Service","name":"Ciberseguridad, Gestión y Estrategia","serviceType":"Gobernanza, auditoría y ciberseguridad de IA","areaServed":"CL","provider":{{"@type":"Organization","name":"- MOT[IA]RZO - LABS SpA","url":"https://www.independenciadigital.cl"}},"url":"https://www.independenciadigital.cl/servicios/ciberseguridad","description":"Ciberseguridad, gestión de riesgos, ISO 27001 y ciberseguridad de la IA (ISO/IEC 27090, 42001, 23894). Auditoría de IA, EIPD Ley 21.719, Ley 21.663 y prevención de deepfakes en Chile.","hasOfferCatalog":{{"@type":"OfferCatalog","name":"Gobernanza y ciberseguridad de IA","itemListElement":AI_GOVERNANCE_SERVICES.map((s)=>({{"@type":"Offer","itemOffered":{{"@type":"Service","name":s.title,"description":s.text}}}}))}}}}}
       />
 
       <SiteNavbarView />
@@ -978,6 +980,8 @@ const CiberseguridadServiceView = () => {
           </div>
         </div>
       </section>
+
+      <AiGovernanceServicesSection variant="ciberseguridad" />
 
       {/* ============ CAPACITACIÓN ============ */}
       <section className="py-16 md:py-20 bg-muted">
