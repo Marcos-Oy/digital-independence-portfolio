@@ -73,7 +73,7 @@ const ServiceLandingView = ({ slug }: ServiceLandingViewProps) => {
         </ScrollReveal>
 
         <div className="relative container mx-auto px-4 text-center mt-8">
-          <LandingCtaButton className="btn-shimmer" />
+          <LandingCtaButton />
         </div>
       </section>
 

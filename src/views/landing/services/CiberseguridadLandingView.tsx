@@ -245,7 +245,7 @@ const CiberseguridadLandingView = () => {
         </ScrollReveal>
 
         <div className="relative container mx-auto px-4 text-center mt-8">
-          <LandingCtaButton className="btn-shimmer" />
+          <LandingCtaButton />
           <p className="text-xs text-muted-foreground mt-4">Diagnóstico sin costo · Sin compromiso</p>
         </div>
       </section>

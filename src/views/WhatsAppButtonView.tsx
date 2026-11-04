@@ -8,7 +8,7 @@ const WhatsAppButtonView = () => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-24 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+      className="cta-estrella fixed bottom-6 right-24 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
       style={{ background: "#25D366" }}
       aria-label="Contactar por WhatsApp"
     >
