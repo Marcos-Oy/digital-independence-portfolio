@@ -328,6 +328,125 @@ wistia-player[media-id='68c4rkopry']:not(:defined) {
 }
 
 
+/* ── Burbuja de WhatsApp: "llamada entrante" ──────────────────────────
+   La burbuja parpadea y suelta ondas como cuando entra una llamada:
+   dos ondas que salen, un flash de brillo y el auricular que se menea.
+   No usa la luz de cta-estrella (ver docs/BOTONES.md). */
+.wa-llamada {
+  background: #25d366;
+  animation: wa-destello 2.6s ease-out infinite;
+}
+
+.wa-llamada__onda {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid rgba(37, 211, 102, 0.9);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1);
+  animation: wa-onda 2.6s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+
+.wa-llamada__onda--2 {
+  animation-delay: 0.42s;
+}
+
+.wa-llamada__auricular {
+  animation: wa-auricular 2.6s ease-in-out infinite;
+  transform-origin: 50% 55%;
+}
+
+@keyframes wa-onda {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.85;
+  }
+  45% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes wa-destello {
+  0%,
+  100% {
+    background-color: #25d366;
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+  }
+  3% {
+    background-color: #7df7ad;
+    box-shadow: 0 0 0 7px rgba(37, 211, 102, 0.35), 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+  }
+  9% {
+    background-color: #25d366;
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+  }
+  19% {
+    background-color: #7df7ad;
+    box-shadow: 0 0 0 7px rgba(37, 211, 102, 0.35), 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+  }
+  25% {
+    background-color: #25d366;
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@keyframes wa-auricular {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  1% {
+    transform: rotate(-16deg);
+  }
+  3% {
+    transform: rotate(13deg);
+  }
+  5% {
+    transform: rotate(-10deg);
+  }
+  7% {
+    transform: rotate(7deg);
+  }
+  8.5% {
+    transform: rotate(0deg);
+  }
+  17% {
+    transform: rotate(-16deg);
+  }
+  19% {
+    transform: rotate(13deg);
+  }
+  21% {
+    transform: rotate(-10deg);
+  }
+  23% {
+    transform: rotate(7deg);
+  }
+  24.5% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-llamada,
+  .wa-llamada__onda,
+  .wa-llamada__auricular {
+    animation: none;
+  }
+  .wa-llamada__onda {
+    opacity: 0;
+  }
+}
+
 /* Ocultar la interfaz de Google Translate (barra, tooltips, resaltado) */
 iframe.goog-te-banner-frame, .goog-te-banner-frame, .skiptranslate > iframe,
 iframe.skiptranslate, #goog-gt-tt, .goog-te-balloon-frame, .goog-tooltip,
