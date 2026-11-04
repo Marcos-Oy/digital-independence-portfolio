@@ -97,7 +97,7 @@ const ChatBotView = () => {
                 ? msg.content.replace(/\[\[DIAGNOSTICO\]\]/gi, "").trim()
                 : msg.content;
               return (
-              <div key={i}>
+              <div key={i} data-no-translate>
                 <div className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.role === "assistant" && (
                     <div className="w-7 h-7 rounded-full gradient-brand flex items-center justify-center flex-shrink-0 mt-1">

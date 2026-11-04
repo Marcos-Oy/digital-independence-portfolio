@@ -20,6 +20,7 @@ import WelcomeModalView from "@/views/WelcomeModalView";
 import CookieNoticeView from "@/views/CookieNoticeView";
 import BookingFormModal from "@/views/landing/BookingFormModal";
 import GlobalClickSound from "@/views/shared/GlobalClickSound";
+import { LanguageProvider } from "@/controllers/LanguageProvider";
 
 const queryClient = new QueryClient();
 
@@ -88,7 +89,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AppLayout />
+        <LanguageProvider><AppLayout /></LanguageProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

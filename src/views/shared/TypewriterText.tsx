@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/controllers/LanguageProvider";
 
 interface TypewriterTextProps {
   text: string;
@@ -14,7 +15,9 @@ interface TypewriterTextProps {
 
 /** Efecto de tipeo estilo consola. El texto completo queda en el DOM para
  * lectores de pantalla; la animación es solo visual. */
-const TypewriterText = ({ text, className = "", speed = 45, startDelay = 0, triggerOnView = true }: TypewriterTextProps) => {
+const TypewriterText = ({ text: sourceText, className = "", speed = 45, startDelay = 0, triggerOnView = true }: TypewriterTextProps) => {
+  const { translateText } = useLanguage();
+  const text = translateText(sourceText);
   const [shown, setShown] = useState("");
   const ref = useRef<HTMLSpanElement>(null);
   const [armed, setArmed] = useState(!triggerOnView);
@@ -57,7 +60,7 @@ const TypewriterText = ({ text, className = "", speed = 45, startDelay = 0, trig
 
   return (
     <span ref={ref} className={`font-mono ${className}`} role="text" aria-label={text}>
-      <span aria-hidden="true">{shown}</span>
+      <span aria-hidden="true" data-no-translate>{shown}</span>
       <span className="typewriter-cursor" aria-hidden="true" />
     </span>
   );

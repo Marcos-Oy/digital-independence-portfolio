@@ -4,6 +4,7 @@ import { LOADING_STEPS } from "@/models/diagnostico";
 import { useDiagnosticoController } from "@/controllers/useDiagnosticoController";
 import SimpleMarkdown from "@/views/shared/SimpleMarkdown";
 import PageMeta from "@/views/shared/PageMeta";
+import LanguageSelector from "@/views/shared/LanguageSelector";
 
 const DiagnosticoView = () => {
   const {
@@ -111,6 +112,7 @@ const DiagnosticoView = () => {
             {isTyping ? "escribiendo…" : "En línea · CTO Externo — - MOT[IA]RZO - LABS"}
           </p>
         </div>
+        <LanguageSelector />
         <button
           type="button"
           onClick={() => setShowExitConfirm(true)}
@@ -125,7 +127,7 @@ const DiagnosticoView = () => {
       {/* Messages */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
         {messages.map((msg, i) => (
-          <div key={i} className={`flex items-end gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+          <div key={i} data-no-translate className={`flex items-end gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             {msg.role === "assistant" && (
               <img
                 src={marcosImg}
