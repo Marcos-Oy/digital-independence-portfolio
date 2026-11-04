@@ -3,6 +3,7 @@ import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
+import AiGovernanceServicesSection, { AI_GOVERNANCE_SERVICES } from "@/views/shared/AiGovernanceServicesSection";
 import {
   Accordion,
   AccordionContent,
@@ -253,6 +254,10 @@ const TRUST_PRINCIPLES = [
 
 const FAQ_ITEMS = [
   {
+    q: "¿Ayudan a certificar ISO/IEC 42001?",
+    a: "Sí. Implementamos el Sistema de Gestión de IA (AIMS) según ISO/IEC 42001, gestionamos el riesgo con ISO/IEC 23894, realizamos la evaluación de impacto de IA y la EIPD de la Ley 21.719, y hacemos auditoría interna previa. La certificación final la otorga un organismo certificador acreditado.",
+  },
+  {
     q: "¿En qué se diferencia esto de usar ChatGPT?",
     a: "ChatGPT es una herramienta de IA genérica. Un agente corporativo está entrenado con el conocimiento, los documentos y el contexto del negocio específico, se integra con las plataformas que usa la empresa y puede ejecutar tareas dentro de flujos de trabajo reales.",
   },
@@ -316,9 +321,10 @@ const IaCorporativaServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Inteligencia Artificial Corporativa | - MOT[IA]RZO - LABS"
-        description="Diagnóstico de procesos automatizables, agentes con memoria e IA conectada a tus documentos y operación, automatización con N8N y ManyChat, y clones digitales para empresas en Chile."
+        title="IA Corporativa, Gobernanza e ISO/IEC 42001 | - MOT[IA]RZO - LABS"
+        description="Agentes de IA, automatización y clones digitales, más gobernanza de IA: implementación ISO/IEC 42001, riesgo ISO/IEC 23894, evaluación de impacto y EIPD Ley 21.719 para empresas en Chile."
         path="/servicios/ia-corporativa"
+        jsonLd={{"@context":"https://schema.org","@type":"Service","name":"Inteligencia Artificial Corporativa","serviceType":"Gobernanza, auditoría y ciberseguridad de IA","areaServed":"CL","provider":{"@type":"Organization","name":"- MOT[IA]RZO - LABS SpA","url":"https://www.independenciadigital.cl"},"url":"https://www.independenciadigital.cl/servicios/ia-corporativa","description":"Agentes de IA, automatización y clones digitales, más gobernanza de IA: implementación ISO/IEC 42001, riesgo ISO/IEC 23894, evaluación de impacto y EIPD Ley 21.719 para empresas en Chile.","hasOfferCatalog":{"@type":"OfferCatalog","name":"Gobernanza y ciberseguridad de IA","itemListElement":AI_GOVERNANCE_SERVICES.map((s)=>({"@type":"Offer","itemOffered":{"@type":"Service","name":s.title,"description":s.text}}))}}}
       />
 
       <SiteNavbarView />
@@ -682,6 +688,8 @@ const IaCorporativaServiceView = () => {
           </div>
         </div>
       </section>
+
+      <AiGovernanceServicesSection variant="ia" />
 
       {/* ============ HERRAMIENTAS ============ */}
       <section className="py-16 md:py-20 bg-background">

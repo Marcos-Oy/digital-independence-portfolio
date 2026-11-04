@@ -3,6 +3,7 @@ import PageMeta from "@/views/shared/PageMeta";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import ScrollReveal from "@/views/shared/ScrollReveal";
+import AiGovernanceServicesSection, { AI_GOVERNANCE_SERVICES } from "@/views/shared/AiGovernanceServicesSection";
 import {
   Accordion,
   AccordionContent,
@@ -316,6 +317,10 @@ const TRUST_PRINCIPLES = [
 
 const FAQ_ITEMS = [
   {
+    q: "¿Pueden proteger y auditar los sistemas de inteligencia artificial de mi empresa?",
+    a: "Sí. Aplicamos ISO/IEC 27090 (ciberseguridad de la IA), ISO/IEC 42001 (sistema de gestión de IA) e ISO/IEC 23894 (riesgo de IA) para proteger tus modelos y asistentes frente a inyección de prompts, envenenamiento de datos, fuga de información y fraudes con deepfakes, y realizamos auditorías internas con evidencias para preparar la certificación.",
+  },
+  {
     q: "¿La Ley Marco de Ciberseguridad aplica a todas las empresas?",
     a: "No necesariamente. La aplicabilidad y las obligaciones dependen de la naturaleza, actividad y clasificación de cada entidad. Por eso el primer paso es siempre evaluar tu contexto: tipo de organización, servicios que entregas y condición regulatoria, para determinar qué obligaciones efectivamente te corresponden.",
   },
@@ -396,9 +401,10 @@ const CiberseguridadServiceView = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageMeta
-        title="Ciberseguridad, Gestión y Estrategia | - MOT[IA]RZO - LABS"
-        description="Diagnóstico, gestión de riesgos, estrategia de ciberseguridad, protección de datos, preparación ante incidentes y alineamiento con ISO 27001 y normativa chilena."
+        title="Ciberseguridad e ISO 27001 / 42001 / 27090 para IA | - MOT[IA]RZO - LABS"
+        description="Ciberseguridad, gestión de riesgos, ISO 27001 y ciberseguridad de la IA (ISO/IEC 27090, 42001, 23894). Auditoría de IA, EIPD Ley 21.719, Ley 21.663 y prevención de deepfakes en Chile."
         path="/servicios/ciberseguridad"
+        jsonLd={{"@context":"https://schema.org","@type":"Service","name":"Ciberseguridad, Gestión y Estrategia","serviceType":"Gobernanza, auditoría y ciberseguridad de IA","areaServed":"CL","provider":{"@type":"Organization","name":"- MOT[IA]RZO - LABS SpA","url":"https://www.independenciadigital.cl"},"url":"https://www.independenciadigital.cl/servicios/ciberseguridad","description":"Ciberseguridad, gestión de riesgos, ISO 27001 y ciberseguridad de la IA (ISO/IEC 27090, 42001, 23894). Auditoría de IA, EIPD Ley 21.719, Ley 21.663 y prevención de deepfakes en Chile.","hasOfferCatalog":{"@type":"OfferCatalog","name":"Gobernanza y ciberseguridad de IA","itemListElement":AI_GOVERNANCE_SERVICES.map((s)=>({"@type":"Offer","itemOffered":{"@type":"Service","name":s.title,"description":s.text}}))}}}
       />
 
       <SiteNavbarView />
@@ -978,6 +984,8 @@ const CiberseguridadServiceView = () => {
           </div>
         </div>
       </section>
+
+      <AiGovernanceServicesSection variant="ciberseguridad" />
 
       {/* ============ CAPACITACIÓN ============ */}
       <section className="py-16 md:py-20 bg-muted">
