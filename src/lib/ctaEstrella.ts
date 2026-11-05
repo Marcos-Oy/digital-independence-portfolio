@@ -32,13 +32,13 @@ export type EstrellaStyle = {
 export const CTA_ESTRELLA_SELECTOR = ".cta-estrella, .js-agendar-diagnostico";
 
 const MARGIN = 48;
-const ANCHO_BASE = 2.2;
+const ANCHO_BASE = 1.5;
 const LARGO_COLA = 0.42;
 const DURACION_VUELTA = 600;
 const DURACION_DESTELLO = 700;
 const DURACION_ONDA = 900;
-const RADIO_HALO = 36;
-const RADIO_NUCLEO = 14;
+const RADIO_HALO = 26;
+const RADIO_NUCLEO = 9;
 
 const rgba = (c: [number, number, number], a: number) =>
   `rgba(${c[0]},${c[1]},${c[2]},${a})`;
@@ -228,7 +228,7 @@ const dibujar = (
     grad.addColorStop(0, rgba(c, 0));
     grad.addColorStop(1, rgba(c, 0.85));
     ctx.strokeStyle = grad;
-    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 5 * fuerza);
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 3.2 * fuerza);
     ctx.strokeStyle = rgba(c, 0.9);
     trazarCola(ctx, camino, estado.fase, ANCHO_BASE * fuerza);
 
@@ -241,24 +241,24 @@ const dibujar = (
 
     // Aura ancha: sobre fondo claro es lo que hace visible la luz por fuera.
     ctx.strokeStyle = rgba(c, 0.22);
-    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 7);
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 4.2);
 
     // Sombra azulada que da profundidad al borde iluminado.
     ctx.strokeStyle = rgba([0, 51, 153], 0.2);
-    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 3.6);
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 2.4);
 
     // El borde iluminado en sí.
     const grad = ctx.createLinearGradient(p.x - 40, p.y - 40, p.x + 40, p.y + 40);
     grad.addColorStop(0, rgba(c, 0));
     grad.addColorStop(1, rgba(c, 1));
     ctx.strokeStyle = grad;
-    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 2.2);
+    trazarCola(ctx, camino, estado.fase, ANCHO_BASE * 1.6);
 
     // Frente de la luz: un punto saturado con su centro más claro.
-    halo(ctx, p.x, p.y, 22, c, 0.75);
+    halo(ctx, p.x, p.y, 15, c, 0.75);
     ctx.fillStyle = rgba([255, 255, 255], 0.95);
     ctx.beginPath();
-    ctx.arc(p.x, p.y, 2.6, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
     ctx.fill();
   }
 
@@ -281,8 +281,8 @@ const dibujar = (
       ctx.save();
       ctx.translate(estado.flash.x, estado.flash.y);
       ctx.strokeStyle = rgba(c, 0.4 * a);
-      ctx.lineWidth = 1.4;
-      const largo = 28 * (1 - u * 0.5);
+      ctx.lineWidth = 0.9;
+      const largo = 20 * (1 - u * 0.5);
       for (const ang of [0, Math.PI / 2, Math.PI, Math.PI * 1.5]) {
         ctx.beginPath();
         ctx.moveTo(Math.cos(ang) * 3, Math.sin(ang) * 3);
@@ -295,11 +295,11 @@ const dibujar = (
 
   for (const o of estado.ondas) {
     const u = Math.min(1, (tiempo - o.t) / DURACION_ONDA);
-    const radio = 10 + u * 48;
+    const radio = 8 + u * 40;
     const a = Math.pow(1 - u, 1.6) * (oscuro ? 0.55 : 0.4);
     // El degradado vuelve a transparente en el borde exterior: si terminara en
     // un color opaco, las esquinas del recuadro pintado se verían como un cuadro.
-    const g = ctx.createRadialGradient(o.x, o.y, Math.max(0, radio - 7), o.x, o.y, radio);
+    const g = ctx.createRadialGradient(o.x, o.y, Math.max(0, radio - 4.5), o.x, o.y, radio);
     g.addColorStop(0, rgba(c, 0));
     g.addColorStop(0.75, rgba(c, a));
     g.addColorStop(1, rgba(c, 0));
