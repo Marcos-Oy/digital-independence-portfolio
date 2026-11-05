@@ -70,6 +70,22 @@ Se pinta distinto según la clase `.dark` de `<html>`
 Si se cambia la paleta de la marca, los colores están en `colorDe()` y en los
 `rgba([0, 51, 153], ...)` de la rama clara.
 
+## Grosor de la luz (ajustado a pedido del dueño)
+
+El dueño pidió que la luz y los destellos se vean **delgados**, no gruesos.
+Los valores viven arriba de `src/lib/ctaEstrella.ts`:
+
+- `ANCHO_BASE = 1.5` es el grosor del borde iluminado; las pasadas suaves son
+  múltiplos de él (`* 3.2` en oscuro; `* 4.2` de aura, `* 2.4` de sombra y
+  `* 1.6` de borde en claro).
+- `RADIO_HALO = 26` y `RADIO_NUCLEO = 9` son el tamaño del frente de la luz y
+  del destello del clic (el destello y las ondas los heredan, así que achicarlos
+  achica todo a la vez).
+- Las ondas del clic miden `8 + u * 40` px de radio con un aro de 4,5 px.
+
+Si alguien vuelve a subir estos números, la luz se ve gruesa otra vez: subirlos
+solo con permiso expreso del dueño.
+
 ## Reglas para no romperlo
 
 - **No poner `overflow: hidden`** a un botón con la luz: recorta el halo. El
