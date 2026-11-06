@@ -251,6 +251,17 @@ const HomeView = () => {
             </div>
           </div>
           <div className="max-w-6xl mx-auto mt-12 md:mt-16">
+            <ScrollReveal id="segmentos" className="mb-8 scroll-mt-24">
+              <h2 className="font-heading font-bold text-lg text-secondary mb-4">A quién servimos</h2>
+              <ul className="flex divide-x divide-border">
+                {SEGMENTS.map((segment) => (
+                  <li key={segment.id} className="flex-1 min-w-0 px-2 sm:px-5 first:pl-0 last:pr-0">
+                    <h3 className="font-heading font-semibold text-xs sm:text-base text-foreground">{segment.shortTitle}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed hidden sm:block">{segment.description}</p>
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
             <ScrollReveal className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 mb-4">
               {ABOUT_PILLARS.map((p) => (
                 <div key={p.n} className="w-60 shrink-0 lg:w-auto lg:flex-1 snap-start border border-border rounded-lg bg-card p-4 group hover:bg-muted/50 transition-colors duration-200">
@@ -268,56 +279,6 @@ const HomeView = () => {
           </div>
         </div>
         <LayeredWaveDivider seed={1} className="absolute bottom-0 left-0 w-full h-28 md:h-40" />
-      </section>
-
-      {/* Segmentos */}
-      <section id="segmentos" className="relative py-20 md:py-28 bg-muted/50 overflow-hidden">
-        <SoftBlob shape={6} className="w-[340px] h-[420px] top-0 -right-32" />
-        <AccentBlob shape={1} color="secondary" className="hidden md:block w-12 h-16 top-24 left-8 opacity-90" />
-        <div className="relative container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <ScrollReveal className="mb-12">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
-                <TypewriterText text="A quién servimos" />
-              </p>
-              <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-tight">
-                Cuatro segmentos,<br className="hidden md:block" /> un mismo método.
-              </h2>
-            </ScrollReveal>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              {SEGMENTS.map((s, i) => {
-                const Icon = s.icon;
-                return (
-                  <ScrollReveal key={s.id} delay={i * 80} variant="scale">
-                    <Link
-                      to={`/segmentos/${s.slug}`}
-                      className="group bg-card border border-border rounded-2xl p-7 hover:border-primary/30 hover:shadow-card-hover transition-all duration-300 flex gap-5 items-start"
-                    >
-                      <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
-                        <DrawIcon icon={Icon} className="w-5 h-5 text-primary" active={explored} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-2 mb-1.5">
-                          <h3 className="font-heading font-bold text-base text-foreground">{s.shortTitle}</h3>
-                          <span className="text-xs text-muted-foreground shrink-0 hidden sm:block">
-                            {s.ticket}
-                          </span>
-                        </div>
-                        <p className="text-xs text-secondary font-semibold mb-2.5 uppercase tracking-wide">{s.audience}</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">{s.description}</p>
-                        <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold mt-3">
-                          Ver segmento <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
-                        </span>
-                      </div>
-                    </Link>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-        <LayeredWaveDivider seed={2} className="absolute bottom-0 left-0 w-full h-20 md:h-28" />
       </section>
 
       {/* Servicios — 15 service cards con imagen */}
