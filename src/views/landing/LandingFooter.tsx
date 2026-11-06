@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const LandingFooter = () => (
-  <footer className="py-10 bg-background border-t border-border">
+  <footer data-floating-booking-hide className="py-10 bg-background border-t border-border">
     <div className="container mx-auto px-4 max-w-4xl text-center">
       <img src={logo} alt="- MOT[IA]RZO - LABS" className="h-8 w-8 mx-auto mb-3" />
       <p className="text-xs text-muted-foreground max-w-lg mx-auto leading-relaxed mb-3">

@@ -2,9 +2,27 @@ import { useEffect, useState } from "react";
 import { CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
-import { intersectsViewport, shouldShowFloatingBooking } from "@/lib/floatingBooking";
+import {
+  FLOATING_BOOKING_HIDE_ATTR,
+  intersectsViewport,
+  shouldShowFloatingBooking,
+} from "@/lib/floatingBooking";
 
-const selector = `.${BOOKING_TRIGGER_CLASS}:not([data-floating-booking])`;
+const bookingSelector = `.${BOOKING_TRIGGER_CLASS}:not([data-floating-booking])`;
+const hideZoneSelector = `[${FLOATING_BOOKING_HIDE_ATTR}]`;
+
+function isVisibleInViewport(element: HTMLElement): boolean {
+  if (!intersectsViewport(element.getBoundingClientRect(), window.innerWidth, window.innerHeight)) return false;
+  for (let node: HTMLElement | null = element; node; node = node.parentElement) {
+    const style = getComputedStyle(node);
+    if (style.display === "none" || style.visibility === "hidden" || Number(style.opacity) === 0) return false;
+  }
+  return true;
+}
+
+function anyVisible(selector: string): boolean {
+  return Array.from(document.querySelectorAll<HTMLElement>(selector)).some(isVisibleInViewport);
+}
 
 export default function FloatingBookingCta() {
   const [visible, setVisible] = useState(false);
@@ -13,15 +31,9 @@ export default function FloatingBookingCta() {
     let frame = 0;
     const update = () => {
       frame = 0;
-      const hasVisibleCta = Array.from(document.querySelectorAll<HTMLElement>(selector)).some((element) => {
-        if (!intersectsViewport(element.getBoundingClientRect(), window.innerWidth, window.innerHeight)) return false;
-        for (let node: HTMLElement | null = element; node; node = node.parentElement) {
-          const style = getComputedStyle(node);
-          if (style.display === "none" || style.visibility === "hidden" || Number(style.opacity) === 0) return false;
-        }
-        return true;
-      });
-      setVisible(shouldShowFloatingBooking(mobile.matches, hasVisibleCta));
+      const hasVisibleCta = anyVisible(bookingSelector);
+      const hideZone = anyVisible(hideZoneSelector);
+      setVisible(shouldShowFloatingBooking(mobile.matches, hasVisibleCta, hideZone));
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -29,7 +41,7 @@ export default function FloatingBookingCta() {
     const intersection = new IntersectionObserver(schedule, { threshold: [0, 0.01, 1] });
     const observe = () => {
       intersection.disconnect();
-      document.querySelectorAll(selector).forEach((element) => intersection.observe(element));
+      document.querySelectorAll(`${bookingSelector}, ${hideZoneSelector}`).forEach((element) => intersection.observe(element));
       schedule();
     };
     const mutations = new MutationObserver(observe);
