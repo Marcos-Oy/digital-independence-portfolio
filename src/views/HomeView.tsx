@@ -188,8 +188,8 @@ const HomeView = () => {
               </ScrollReveal>
 
               {/* Cohete sólido, sin desvanecer, formando parte del grupo centrado */}
-              <LaunchingRocket className="md:hidden mx-auto mb-5 w-28 h-28" />
-              <ScrollReveal variant="scale" delay={100} className="flex items-center justify-center gap-4 sm:gap-6">
+              <LaunchingRocket compact className="md:hidden relative mx-auto mb-5 w-24 h-24" />
+              <ScrollReveal variant="scale" delay={100} className="flex items-center justify-center gap-4 sm:gap-6 md:gap-4">
                 <div className="shrink-0 flex flex-col gap-3">
                   {[
                     { n: String(SERVICES.length), label: "Servicios especializados" },
@@ -213,7 +213,7 @@ const HomeView = () => {
                   loading="lazy"
                   className="w-full max-w-[17rem] min-w-0 h-auto rounded-lg shadow-brand"
                 />
-                <LaunchingRocket className="hidden md:block shrink-0 w-32 h-40" />
+                <LaunchingRocket compact className="hidden md:block relative shrink-0 self-stretch w-28 xl:w-32" />
               </ScrollReveal>
             </div>
 
