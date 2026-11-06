@@ -37,7 +37,7 @@ interface GlowOrbProps {
  * "planeta" de acento. Anima un pulso suave y continuo. */
 export const GlowOrb = ({ className = "", color = "secondary" }: GlowOrbProps) => (
   <div
-    className={`rounded-full pointer-events-none animate-glow-pulse ${className}`}
+    className={`glow-orb-live rounded-full pointer-events-none ${className}`}
     style={{
       background: `radial-gradient(circle at 32% 28%, hsl(var(--${color}) / 0.95), hsl(var(--${color}) / 0.6) 55%, hsl(var(--${color}) / 0.2) 100%)`,
       boxShadow: `0 0 40px 8px hsl(var(--${color}) / 0.45), 0 0 80px 26px hsl(var(--${color}) / 0.2)`,
@@ -53,7 +53,7 @@ interface SparkleDotsProps {
 
 /** Puntitos/estrellas dispersas, como acento suelto cerca de otras manchas. */
 export const SparkleDots = ({ className = "", color = "secondary" }: SparkleDotsProps) => (
-  <svg viewBox="0 0 200 200" className={className} aria-hidden="true">
+  <svg viewBox="0 0 200 200" className={`sparkles-live ${className}`} aria-hidden="true">
     <circle cx="20" cy="34" r="4" fill={`hsl(var(--${color}))`} opacity="0.85" />
     <circle cx="168" cy="52" r="3" fill={`hsl(var(--${color}))`} opacity="0.6" />
     <circle cx="92" cy="150" r="5" fill={`hsl(var(--${color}))`} opacity="0.7" />
@@ -167,7 +167,7 @@ export const WaveDivider = ({ className = "", fillClassName = "text-background",
     <svg
       viewBox="0 0 1440 120"
       preserveAspectRatio="none"
-      className={`w-full ${gradient ? "" : fillClassName} ${flip ? "-scale-y-100" : ""} ${className}`}
+      className={`wave-live w-full ${gradient ? "" : fillClassName} ${flip ? "-scale-y-100" : ""} ${className}`}
       aria-hidden="true"
     >
       {gradient && (
@@ -204,7 +204,7 @@ export const LayeredWaveDivider = ({ className = "", seed = 1 }: LayeredWaveDivi
   const gradId = useId();
   const { back, mid, light, front } = LAYERED_WAVE_SEEDS[seed];
   return (
-    <div className={`pointer-events-none ${className}`} aria-hidden="true">
+    <div className={`waves-live pointer-events-none ${className}`} aria-hidden="true">
       <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-full opacity-30">
         <path fill="hsl(var(--primary))" d={WAVE_PATHS[back]} />
       </svg>
