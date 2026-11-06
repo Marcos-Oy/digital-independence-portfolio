@@ -74,7 +74,7 @@ const HomeView = () => {
       <SiteNavbarView />
 
       {/* Hero */}
-      <section className="relative min-h-[100dvh] max-sm:h-[100dvh] max-sm:items-stretch max-sm:pb-6 flex items-center pt-24 pb-20 md:pt-28 md:pb-28 lg:h-[100dvh] lg:min-h-[600px] lg:flex-col lg:items-stretch lg:pt-24 lg:pb-0 overflow-hidden">
+      <section className="relative min-h-[100dvh] max-sm:h-[100dvh] max-sm:items-stretch max-sm:pb-6 flex items-center pt-24 pb-20 md:pt-28 md:pb-28 lg:h-[100dvh] lg:min-h-[600px] lg:flex-col lg:items-stretch lg:pt-[5.5rem] lg:pb-0 overflow-hidden">
         <div
           aria-hidden="true"
           className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${explored ? "opacity-100" : "opacity-0"}`}
@@ -115,7 +115,7 @@ const HomeView = () => {
 
           <div className="order-2 lg:order-1 max-sm:shrink-0 flex flex-col items-center text-center lg:items-start lg:text-left">
           <h1
-            className={`font-heading font-extrabold text-[1.6rem] sm:text-3xl md:text-5xl lg:text-[3.4rem] leading-[1.1] tracking-tight max-w-3xl mb-3 sm:mb-6 text-foreground ${explored ? "animate-fade-in-up" : "opacity-0"}`}
+            className={`font-heading font-extrabold text-[1.6rem] sm:text-3xl md:text-5xl lg:text-[clamp(1.9rem,6vh,3.4rem)] leading-[1.1] tracking-tight max-w-3xl mb-3 sm:mb-6 text-foreground ${explored ? "animate-fade-in-up" : "opacity-0"}`}
             style={{ animationDelay: "0.1s" }}
           >
             Diseñamos y construimos con servicios integrales tu{" "}
