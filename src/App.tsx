@@ -77,7 +77,7 @@ const AppLayout = () => {
       <AnimatedRoutes />
       {!hideChrome && <WhatsAppButtonView />}
       {!hideChat && <ChatBotView />}
-      {!hideChat && <FloatingBookingCta />}
+      {!hideChat && <FloatingBookingCta label={isLandingFunnel ? "Quiero mi diagnóstico" : undefined} />}
       {!hideWelcomeModal && <WelcomeModalView />}
       <CookieNoticeView waitForWelcomeModal={!hideWelcomeModal} />
       <BookingFormModal />
