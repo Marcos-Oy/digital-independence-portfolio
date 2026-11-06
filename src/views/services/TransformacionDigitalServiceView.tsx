@@ -352,7 +352,7 @@ const TransformacionDigitalServiceView = () => {
                   src={tdHero}
                   shape={5}
                   alt="Equipo colaborando en la transformación digital de su empresa en una oficina moderna y luminosa"
-                  className="w-full aspect-[4/3] shadow-card-hover"
+                  className="w-full lg:w-[min(100%,calc((100vh-15rem)*4/3))] lg:mx-auto aspect-[4/3] shadow-card-hover"
                 />
                 <RingLoop color="secondary" className="absolute -bottom-2 -left-2 w-24 h-24" />
                 <AccentBlob shape={6} color="secondary" className="absolute bottom-4 right-4 w-7 h-5 opacity-80" />
