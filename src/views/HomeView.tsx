@@ -176,7 +176,7 @@ const HomeView = () => {
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                   <TypewriterText text="Quiénes somos" />
                 </p>
-                <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
+                <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5 texto-sobre-mancha">
                   Tu asesor en tecnologías de la información,<br className="hidden md:block" />
                   sin el costo de uno a tiempo completo.
                 </h2>
