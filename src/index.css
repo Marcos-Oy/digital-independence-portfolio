@@ -459,12 +459,9 @@ body { top: 0 !important; position: static !important; }
    la página y dejaba el aviso de privacidad fuera de escala. */
 html, body { overflow-x: clip; }
 
-/* Letra sobre la mancha de marca del cohete (sección Quiénes somos): halo del
-   color de fondo para que el título se lea aunque la mancha esté a plena
-   opacidad, en modo claro y oscuro. */
+/* Letra sobre la mancha de marca del cohete (sección Quiénes somos): contorno
+   fino del color de fondo para que las palabras que caen encima se lean, sin
+   que se vea borroso sobre el fondo blanco. */
 .texto-sobre-mancha {
-  text-shadow:
-    0 0 4px hsl(var(--background)),
-    0 0 9px hsl(var(--background)),
-    0 0 16px hsl(var(--background));
+  text-shadow: 0 0 2px hsl(var(--background)), 0 0 5px hsl(var(--background));
 }

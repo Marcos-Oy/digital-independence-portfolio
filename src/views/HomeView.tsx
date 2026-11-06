@@ -170,8 +170,8 @@ const HomeView = () => {
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-x-16 gap-y-14">
             <div>
               <ScrollReveal className="relative">
-                {/* Cohete sólido, sin desvanecer, detrás del encabezado */}
-                <LaunchingRocket className="absolute left-[24%] top-0 w-40 h-40 md:w-48 md:h-48" />
+                {/* Cohete sólido, sin desvanecer, asomando por la esquina del encabezado */}
+                <LaunchingRocket className="absolute right-0 -top-14 w-52 h-52" />
                 <div className="relative">
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                   <TypewriterText text="Quiénes somos" />
