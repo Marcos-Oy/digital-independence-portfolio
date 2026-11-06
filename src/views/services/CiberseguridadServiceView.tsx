@@ -531,64 +531,6 @@ const CiberseguridadServiceView = () => {
           </div>
         </div>
       </section>
-
-      {/* ============ NO EMPIEZA EN EL FIREWALL (diagrama radial) ============ */}
-      <section className="py-16 md:py-24 bg-background overflow-hidden">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <ScrollReveal className="text-center mb-14 max-w-3xl mx-auto">
-            <PillLabel>No se trata solamente de tecnología</PillLabel>
-            <h2 className="font-heading font-bold text-2xl md:text-4xl text-foreground mt-5 mb-5 leading-tight">
-              La ciberseguridad no empieza en el firewall
-            </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Empieza entendiendo qué información tienes, quién puede acceder a
-              ella, qué procesos dependen de tus sistemas y qué ocurriría si
-              dejaran de funcionar.
-            </p>
-          </ScrollReveal>
-
-          {/* Diagrama radial (desktop) — misma técnica que "Cómo trabajamos" */}
-          <ScrollReveal variant="scale" className="hidden md:block">
-            <RadialOrbitDiagram
-              nodes={RISK_LAYERS}
-              centerIcon={ShieldCheck}
-              centerTitle="Gestión del riesgo"
-              className="mx-auto w-full max-w-[560px]"
-            />
-          </ScrollReveal>
-
-          {/* Flujo vertical (mobile) */}
-          <div className="md:hidden max-w-xs mx-auto">
-            {RISK_LAYERS.map((layer, i) => (
-              <ScrollReveal key={layer.label} delay={i * 70}>
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center gap-3 bg-card border border-border rounded-2xl px-5 py-3.5 shadow-card w-full">
-                    <span className="inline-flex w-10 h-10 rounded-xl bg-primary/8 border border-primary/15 items-center justify-center shrink-0">
-                      <layer.icon className="w-5 h-5 text-primary" strokeWidth={1.7} />
-                    </span>
-                    <span className="font-heading font-bold text-sm uppercase tracking-[0.14em] text-foreground">
-                      {layer.label}
-                    </span>
-                  </div>
-                  {i < RISK_LAYERS.length - 1 ? (
-                    <ChevronDown className="w-5 h-5 text-secondary my-1.5" />
-                  ) : (
-                    <>
-                      <ChevronDown className="w-5 h-5 text-secondary my-1.5" />
-                      <div className="gradient-brand rounded-2xl px-6 py-4 shadow-brand text-center w-full">
-                        <p className="font-heading font-extrabold text-brand-foreground text-xs uppercase tracking-[0.14em]">
-                          Gestión del riesgo
-                        </p>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ============ NUESTRO ENFOQUE (5 pilares) ============ */}
       <section id="enfoque" className="py-16 md:py-24 bg-muted scroll-mt-20">
         <div className="container mx-auto px-4 max-w-6xl">
