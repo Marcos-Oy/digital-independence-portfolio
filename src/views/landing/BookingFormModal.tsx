@@ -121,7 +121,7 @@ const BookingFormModal = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-[200] flex items-center justify-center p-4 transition-opacity duration-200 ${
+      className={`fixed inset-0 z-[200] flex items-center justify-center p-2 sm:p-4 transition-opacity duration-200 ${
         open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}
       aria-hidden={!open}
@@ -131,16 +131,16 @@ const BookingFormModal = () => {
           HubSpot vive en un iframe de otro dominio cuyo color de texto es
           fijo (pensado para fondos claros). Si el modal heredara el tema
           oscuro del sitio, ese texto quedaría ilegible. */}
-      <div className="relative bg-white w-full max-w-lg rounded-2xl shadow-card-hover max-h-[90vh] flex flex-col overflow-hidden">
+      <div className="relative bg-white w-full max-w-lg rounded-2xl shadow-card-hover max-h-[96dvh] sm:max-h-[90vh] flex flex-col overflow-hidden">
         <button
           type="button"
           onClick={() => setOpen(false)}
           aria-label="Cerrar"
-          className="absolute right-4 top-4 z-10 text-neutral-400 hover:text-neutral-600 transition-colors"
+          className="absolute right-2 top-2 sm:right-4 sm:top-4 z-10 p-1 text-neutral-400 hover:text-neutral-600 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
-        <div className="overflow-y-auto p-6 pt-10">
+        <div className="overflow-y-auto px-0 pt-7 pb-2 sm:p-6 sm:pt-10">
           <div ref={clipWrapperRef} className="overflow-hidden">
             {activeFormId && (
               <div
