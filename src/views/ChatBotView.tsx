@@ -36,7 +36,7 @@ const ChatBotView = () => {
       <button
         onClick={handleToggle}
         data-skip-click-sound
-        className="cta-estrella fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform gradient-brand"
+        data-flotante className="cta-estrella fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform gradient-brand"
         aria-label="Abrir chat"
       >
         {open ? <X className="w-6 h-6 text-primary-foreground" /> : <RobotIcon className="w-7 h-7 text-primary-foreground" />}
