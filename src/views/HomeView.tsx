@@ -99,7 +99,7 @@ const HomeView = () => {
             alt="- MOT[IA]RZO - LABS"
             width={1536}
             height={1024}
-            className={`w-44 sm:w-64 md:w-80 lg:w-full lg:max-w-lg max-w-full h-auto object-contain mb-2 sm:mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}
+            className={`w-56 sm:w-64 md:w-80 lg:w-full lg:max-w-lg max-w-full h-auto object-contain mb-2 sm:mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}
           />
 
           {/* Eyebrow tag */}
