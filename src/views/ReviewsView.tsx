@@ -1,4 +1,6 @@
 import { Star, Send, Quote, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -132,13 +134,21 @@ const ReviewsView = () => {
         </div>
 
         {/* Formulario */}
-        <div className="max-w-2xl mx-auto bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm">
-          <div className="text-center mb-6">
-            <h3 className="font-heading font-bold text-2xl text-foreground">Deja tu reseña</h3>
-            <p className="text-sm text-muted-foreground mt-1">
-              Tu opinión ayuda a otras personas a confiar en nosotros.
-            </p>
+        <Dialog>
+          <div className="flex justify-center">
+            <DialogTrigger asChild>
+              <Button className="cta-estrella gradient-brand shadow-brand" size="lg">
+                <Send /> Deja tu reseña
+              </Button>
+            </DialogTrigger>
           </div>
+          <DialogContent className="w-[calc(100%-2rem)] max-w-2xl max-h-[85dvh] overflow-y-auto rounded-lg p-5 sm:p-6">
+          <DialogHeader>
+            <DialogTitle className="font-heading font-bold text-2xl text-foreground">Deja tu reseña</DialogTitle>
+            <DialogDescription>
+              Tu opinión ayuda a otras personas a confiar en nosotros.
+            </DialogDescription>
+          </DialogHeader>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid md:grid-cols-2 gap-4">
@@ -204,16 +214,17 @@ const ReviewsView = () => {
               </p>
             </div>
 
-            <button
+            <Button
               type="submit"
               disabled={submitting}
               className="cta-estrella w-full gradient-brand text-primary-foreground font-heading font-semibold text-base py-3 rounded-lg shadow-brand hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
               {submitting ? "Publicando…" : "Publicar reseña"}
-            </button>
+            </Button>
           </form>
-        </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

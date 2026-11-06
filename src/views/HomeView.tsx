@@ -190,7 +190,7 @@ const HomeView = () => {
               </ScrollReveal>
 
               <ScrollReveal variant="scale" delay={100} className="flex items-center gap-4 sm:gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="shrink-0 flex flex-col gap-3">
                   {[
                     { n: String(SERVICES.length), label: "Servicios especializados" },
                     { n: String(AREAS.length), label: "Áreas de consultoría" },
@@ -198,7 +198,7 @@ const HomeView = () => {
                   ].map(({ n, label }) => (
                     <div
                       key={label}
-                      className="flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-3.5 shadow-card"
+                      className="w-24 sm:w-28 aspect-square flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-card p-2 shadow-card text-center"
                     >
                       <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-none shrink-0">
                         {n}
@@ -211,7 +211,7 @@ const HomeView = () => {
                   src={robotImg}
                   alt="Autonomía Digital"
                   loading="lazy"
-                  className="w-24 sm:w-28 md:w-32 h-auto rounded-2xl shadow-brand shrink-0"
+                  className="w-full max-w-[17rem] min-w-0 h-auto rounded-lg shadow-brand"
                 />
               </ScrollReveal>
             </div>
@@ -251,14 +251,14 @@ const HomeView = () => {
             </div>
           </div>
           <div className="max-w-6xl mx-auto mt-12 md:mt-16">
-            <ScrollReveal className="grid sm:grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden mb-8">
+            <ScrollReveal className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 mb-4">
               {ABOUT_PILLARS.map((p) => (
-                <div key={p.n} className="bg-card p-7 group hover:bg-muted/50 transition-colors duration-200">
-                  <span className="font-heading font-extrabold text-3xl text-border group-hover:text-primary/30 transition-colors duration-200 leading-none block mb-4 select-none">
+                <div key={p.n} className="w-60 shrink-0 lg:w-auto lg:flex-1 snap-start border border-border rounded-lg bg-card p-4 group hover:bg-muted/50 transition-colors duration-200">
+                  <span className="font-heading font-extrabold text-xl text-border group-hover:text-primary/30 transition-colors duration-200 leading-none block mb-3 select-none">
                     {p.n}
                   </span>
-                  <h3 className="font-heading font-bold text-base text-foreground mb-2">{p.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                  <h3 className="font-heading font-bold text-sm text-foreground mb-2">{p.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
                 </div>
               ))}
             </ScrollReveal>
