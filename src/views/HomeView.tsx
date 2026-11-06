@@ -12,7 +12,9 @@ import { useSiteExplored } from "@/controllers/useSiteExplored";
 import SiteNavbarView from "@/views/SiteNavbarView";
 import SiteFooterView from "@/views/SiteFooterView";
 import SafeTechLogosCarousel from "@/views/shared/SafeTechLogosCarousel";
-import AboutBrandSectionView from "@/views/AboutBrandSectionView";
+import LaunchingRocket from "@/views/shared/LaunchingRocket";
+import robotImg from "@/assets/autonomia-digital-robot.png";
+import { ABOUT_PILLARS } from "@/models/aboutPillars";
 import ReviewsView from "@/views/ReviewsView";
 import logoVertical from "@/assets/motiarzo-logo-vertical.webp";
 import bannerHero from "@/assets/banner-hero.png";
@@ -165,6 +167,15 @@ const HomeView = () => {
         <SoftBlob shape={4} color="secondary" className="w-64 h-80 bottom-0 -left-24" />
         <SoftBlob shape={5} color="primary" className="w-72 h-96 -bottom-24 -right-24" />
         <div className="relative container mx-auto px-4">
+          <div className="max-w-6xl mx-auto flex items-center justify-between gap-6 mb-10 md:mb-12">
+            <LaunchingRocket className="relative w-44 h-44 md:w-56 md:h-56 shrink-0" />
+            <img
+              src={robotImg}
+              alt="Autonomía Digital"
+              loading="lazy"
+              className="w-32 sm:w-40 md:w-48 h-auto rounded-2xl shadow-brand"
+            />
+          </div>
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-x-16 gap-y-14">
             <div>
               <ScrollReveal>
@@ -176,9 +187,10 @@ const HomeView = () => {
                   sin el costo de uno a tiempo completo.
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-10">
-                  - MOT[IA]RZO - LABS es una consultora tecnológica chilena que atiende personas
-                  naturales y jurídicas, incluyendo el sector público mediante licitaciones en
-                  Mercado Público. Prestamos servicios desde 2020.
+                  - MOT[IA]RZO - LABS es una consultora tecnológica chilena que diseña y construye
+                  con servicios integrales la infraestructura tecnológica de emprendedores,
+                  profesionales independientes, PyMEs, grandes empresas y organismos del sector
+                  público, incluyendo licitaciones en Mercado Público. Prestamos servicios desde 2020.
                 </p>
               </ScrollReveal>
 
@@ -229,6 +241,22 @@ const HomeView = () => {
                 <AnimatedProcessCircle steps={METHOD_STEPS} className="w-72 h-72 sm:w-80 sm:h-80 md:w-[26rem] md:h-[26rem] mx-auto" enabled={explored} />
               </ScrollReveal>
             </div>
+          </div>
+          <div className="max-w-6xl mx-auto mt-12 md:mt-16">
+            <ScrollReveal className="grid sm:grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden mb-8">
+              {ABOUT_PILLARS.map((p) => (
+                <div key={p.n} className="bg-card p-7 group hover:bg-muted/50 transition-colors duration-200">
+                  <span className="font-heading font-extrabold text-3xl text-border group-hover:text-primary/30 transition-colors duration-200 leading-none block mb-4 select-none">
+                    {p.n}
+                  </span>
+                  <h3 className="font-heading font-bold text-base text-foreground mb-2">{p.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                </div>
+              ))}
+            </ScrollReveal>
+            <Link to="/fundador" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors duration-200">
+              Conoce al fundador <ChevronRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
         <LayeredWaveDivider seed={1} className="absolute bottom-0 left-0 w-full h-28 md:h-40" />
@@ -421,9 +449,6 @@ const HomeView = () => {
         </div>
       </section>
 
-
-      {/* Sobre la marca */}
-      <AboutBrandSectionView />
 
       {/* Reseñas */}
       <ReviewsView />
