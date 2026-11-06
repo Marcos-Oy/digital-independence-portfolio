@@ -21,10 +21,12 @@ function isVisibleInViewport(element: HTMLElement): boolean {
 }
 
 function anyVisible(selector: string): boolean {
-  return Array.from(document.querySelectorAll<HTMLElement>(selector)).some(isVisibleInViewport);
+  return Array.from(document.querySelectorAll<HTMLElement>(selector))
+    .filter((el) => !el.closest("[data-floating-booking-ignore]"))
+    .some(isVisibleInViewport);
 }
 
-export default function FloatingBookingCta() {
+export default function FloatingBookingCta({ label = "Agendar diagnóstico gratis" }: { label?: string }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const mobile = window.matchMedia("(max-width: 767px)");
@@ -74,7 +76,7 @@ export default function FloatingBookingCta() {
       }`}
     >
       <CalendarDays aria-hidden="true" />
-      <span>Agendar diagnóstico gratis</span>
+      <span>{label}</span>
     </Button>
   );
 }
