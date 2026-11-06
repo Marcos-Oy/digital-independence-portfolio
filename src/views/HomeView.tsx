@@ -213,6 +213,7 @@ const HomeView = () => {
                   loading="lazy"
                   className="w-full max-w-[17rem] min-w-0 h-auto rounded-lg shadow-brand"
                 />
+                <LaunchingRocket className="hidden md:block shrink-0 w-32 h-40" />
               </ScrollReveal>
             </div>
 
