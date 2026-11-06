@@ -167,18 +167,12 @@ const HomeView = () => {
         <SoftBlob shape={4} color="secondary" className="w-64 h-80 bottom-0 -left-24" />
         <SoftBlob shape={5} color="primary" className="w-72 h-96 -bottom-24 -right-24" />
         <div className="relative container mx-auto px-4">
-          <div className="max-w-6xl mx-auto flex items-center justify-between gap-6 mb-10 md:mb-12">
-            <LaunchingRocket className="relative w-44 h-44 md:w-56 md:h-56 shrink-0" />
-            <img
-              src={robotImg}
-              alt="Autonomía Digital"
-              loading="lazy"
-              className="w-32 sm:w-40 md:w-48 h-auto rounded-2xl shadow-brand"
-            />
-          </div>
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-x-16 gap-y-14">
             <div>
-              <ScrollReveal>
+              <ScrollReveal className="relative">
+                {/* Cohete detrás del texto, asomando entre "Quiénes somos" y "Tu Asesor…" */}
+                <LaunchingRocket className="absolute left-[38%] -top-6 w-36 h-36 md:w-44 md:h-44 opacity-35 md:opacity-45" />
+                <div className="relative">
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                   <TypewriterText text="Quiénes somos" />
                 </p>
