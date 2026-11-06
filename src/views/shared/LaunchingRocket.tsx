@@ -8,6 +8,10 @@ interface LaunchingRocketProps {
   /** Espeja todo el conjunto horizontalmente, para variar la composición
    * cuando se reutiliza en otra parte del sitio. */
   mirror?: boolean;
+  /** Versión compacta para bandas estrechas (p. ej. junto a las tarjetas de
+   * "Quiénes somos"): mancha sin giro marcado para no desbordar, cohete más
+   * chico y despegue más corto, todo dentro del propio contenedor. */
+  compact?: boolean;
 }
 
 /**
@@ -18,7 +22,7 @@ interface LaunchingRocketProps {
  * lanzamiento. Pensado para rellenar zonas vacías con un efecto más
  * vistoso que un blob estático.
  */
-const LaunchingRocket = ({ className = "", mirror = false }: LaunchingRocketProps) => {
+const LaunchingRocket = ({ className = "", mirror = false, compact = false }: LaunchingRocketProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [launched, setLaunched] = useState(false);
 
@@ -41,16 +45,16 @@ const LaunchingRocket = ({ className = "", mirror = false }: LaunchingRocketProp
     <div ref={ref} className={`pointer-events-none ${mirror ? "scale-x-[-1]" : ""} ${className}`} aria-hidden="true">
       {/* Mancha diagonal, plataforma de lanzamiento */}
       <div
-        className="absolute inset-0 opacity-90 dark:opacity-80"
+        className={`absolute opacity-90 dark:opacity-80 ${compact ? "inset-[8%]" : "inset-0"}`}
         style={{
           borderRadius: "42% 58% 66% 34% / 56% 38% 62% 44%",
           background: "linear-gradient(140deg, hsl(var(--primary)), hsl(var(--secondary)))",
-          transform: "rotate(-14deg)",
+          transform: compact ? "rotate(-5deg)" : "rotate(-14deg)",
         }}
       />
 
       {/* Esfera de acento y estrellitas, como la referencia */}
-      <GlowOrb color="secondary" className="absolute w-10 h-10 md:w-14 md:h-14 left-[8%] bottom-[10%]" />
+      <GlowOrb color="secondary" className={`absolute ${compact ? "w-6 h-6 left-[10%] bottom-[8%]" : "w-10 h-10 md:w-14 md:h-14 left-[8%] bottom-[10%]"}`} />
       <SparkleDots color="secondary" className="absolute inset-0 w-full h-full text-white" />
 
       {/* Estela de partículas */}
@@ -58,11 +62,11 @@ const LaunchingRocket = ({ className = "", mirror = false }: LaunchingRocketProp
         <motion.span
           key={i}
           className="absolute rounded-full bg-white/70 blur-[2px]"
-          style={{ width: 16 - i * 3, height: 16 - i * 3, left: "36%", bottom: "26%" }}
+          style={{ width: compact ? 9 - i * 2 : 16 - i * 3, height: compact ? 9 - i * 2 : 16 - i * 3, left: "36%", bottom: "26%" }}
           initial={{ opacity: 0, x: 0, y: 0 }}
           animate={
             launched
-              ? { opacity: [0, 0.7, 0], x: -30 - i * 14, y: 40 + i * 18 }
+              ? { opacity: [0, 0.7, 0], x: compact ? -12 - i * 6 : -30 - i * 14, y: compact ? 18 + i * 8 : 40 + i * 18 }
               : { opacity: 0 }
           }
           transition={{
@@ -79,7 +83,7 @@ const LaunchingRocket = ({ className = "", mirror = false }: LaunchingRocketProp
         className="absolute"
         style={{ left: "28%", bottom: "16%" }}
         initial={{ x: 0, y: 0, opacity: 0 }}
-        animate={launched ? { x: [0, 65, 72], y: [0, -76, -84], opacity: [0, 1, 1] } : { opacity: 0 }}
+        animate={launched ? { x: compact ? [0, 26, 30] : [0, 65, 72], y: compact ? [0, -50, -56] : [0, -76, -84], opacity: [0, 1, 1] } : { opacity: 0 }}
         transition={{ duration: 1.3, delay: 0.3, ease: [0.34, 1.15, 0.64, 1], times: [0, 0.85, 1] }}
       >
         <motion.div
@@ -90,7 +94,7 @@ const LaunchingRocket = ({ className = "", mirror = false }: LaunchingRocketProp
             filter: "drop-shadow(0 0 14px hsl(var(--secondary) / 0.85)) drop-shadow(0 0 28px hsl(var(--primary) / 0.5))",
           }}
         >
-          <Rocket className="w-16 h-16 md:w-24 md:h-24 text-white" strokeWidth={1.5} />
+          <Rocket className={compact ? "w-9 h-9 text-white" : "w-16 h-16 md:w-24 md:h-24 text-white"} strokeWidth={1.5} />
         </motion.div>
       </motion.div>
     </div>
