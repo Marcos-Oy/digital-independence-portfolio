@@ -194,7 +194,7 @@ Debe devolver `200` con SSE `data: {...}` chunks y un `data: [DONE]` final.
 ### Lovable (preview + `lovable.app`)
 Auto: cada cambio se publica. Las edge functions se redeployan solas.
 
-### Cloudflare Pages (`www.independenciadigital.cl`)
+### Cloudflare Pages (`www.motiarzo.cl`)
 1. Build command: `bun install --frozen-lockfile && bun run build`
 2. Output: `dist`
 3. **Asegurarse de tener las `VITE_*` en Environment Variables**

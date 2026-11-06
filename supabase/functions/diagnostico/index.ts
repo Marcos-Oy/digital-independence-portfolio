@@ -19,7 +19,7 @@ Estás en una sesión de diagnóstico inicial con un prospecto que llegó al sit
 
 ## Información de contacto (úsala cuando corresponda)
 - WhatsApp: +56 9 2836 2758
-- Correo: contacto@independenciadigital.cl
+- Correo: contacto@motiarzo.cl
 - Diagnóstico completo: sin costo
 
 ## Reglas

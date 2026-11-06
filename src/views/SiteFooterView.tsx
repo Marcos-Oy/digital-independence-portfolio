@@ -95,10 +95,10 @@ const SiteFooterView = () => {
               </li>
               <li>
                 <a
-                  href="mailto:contacto@independenciadigital.cl"
+                  href="mailto:contacto@motiarzo.cl"
                   className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <Mail className="w-4 h-4" /> contacto@independenciadigital.cl
+                  <Mail className="w-4 h-4" /> contacto@motiarzo.cl
                 </a>
               </li>
             </ul>

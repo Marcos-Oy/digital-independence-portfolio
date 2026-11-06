@@ -13,7 +13,7 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.independenciadigital.cl/sitemap.xml
+Sitemap: https://www.motiarzo.cl/sitemap.xml
 
 User-agent: GPTBot
 Allow: /

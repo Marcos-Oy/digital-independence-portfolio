@@ -47,7 +47,7 @@ const PrivacidadView = () => {
         <div className="container mx-auto px-4 max-w-3xl">
           <Section title="1. Quiénes somos">
             <p>
-              Este sitio (<strong>independenciadigital.cl</strong>) es operado por{" "}
+              Este sitio (<strong>motiarzo.cl</strong>) es operado por{" "}
               <strong>- MOT[IA]RZO - LABS SpA</strong>, RUT <strong>78.430.447-7</strong>, consultora
               tecnológica con domicilio en Santiago, Región Metropolitana, Chile. Para efectos de esta
               política, somos el "responsable del tratamiento" de los datos personales que recopilamos a
@@ -56,8 +56,8 @@ const PrivacidadView = () => {
             <p>
               Ante cualquier duda sobre esta política, el tratamiento de tus datos o para ejercer tus
               derechos, puedes escribirnos a{" "}
-              <a href="mailto:contacto@independenciadigital.cl" className="text-primary hover:underline">
-                contacto@independenciadigital.cl
+              <a href="mailto:contacto@motiarzo.cl" className="text-primary hover:underline">
+                contacto@motiarzo.cl
               </a>
               . Esta misma casilla concentra hoy las funciones de contacto para materias de privacidad de
               la empresa.
@@ -191,8 +191,8 @@ const PrivacidadView = () => {
             <p>
               Para ejercer cualquiera de estos derechos —incluida la solicitud de una copia completa de tus
               datos— escríbenos a{" "}
-              <a href="mailto:contacto@independenciadigital.cl" className="text-primary hover:underline">
-                contacto@independenciadigital.cl
+              <a href="mailto:contacto@motiarzo.cl" className="text-primary hover:underline">
+                contacto@motiarzo.cl
               </a>{" "}
               indicando tu nombre (o razón social) y el derecho que deseas ejercer. No cobramos nada por
               atender esta solicitud. Nos comprometemos a responder dentro de un plazo máximo de{" "}
@@ -226,8 +226,8 @@ const PrivacidadView = () => {
           <Section title="11. Contacto">
             <p>
               Si tienes preguntas sobre esta política o el tratamiento de tus datos personales, escríbenos a{" "}
-              <a href="mailto:contacto@independenciadigital.cl" className="text-primary hover:underline">
-                contacto@independenciadigital.cl
+              <a href="mailto:contacto@motiarzo.cl" className="text-primary hover:underline">
+                contacto@motiarzo.cl
               </a>
               .
             </p>

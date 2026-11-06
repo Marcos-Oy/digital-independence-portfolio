@@ -490,11 +490,11 @@ const HomeView = () => {
                     </a>
                     <span className="hidden sm:block text-border">·</span>
                     <a
-                      href="mailto:contacto@independenciadigital.cl"
+                      href="mailto:contacto@motiarzo.cl"
                       className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
                     >
                       <Mail className="w-4 h-4" />
-                      <span>contacto@independenciadigital.cl</span>
+                      <span>contacto@motiarzo.cl</span>
                     </a>
                   </div>
 
