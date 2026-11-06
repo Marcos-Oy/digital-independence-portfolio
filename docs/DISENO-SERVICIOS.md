@@ -44,7 +44,7 @@ reemplace por ruta. Rutas internas/funnel usan `noindex`.
 refs). `HelmetProvider` en `src/main.tsx`. Cada vista define `<Helmet>` con
 title/description/canonical/og:*. NO reponer `<link rel="canonical">` en
 index.html (lo maneja Helmet por ruta). Dominio canonical:
-`https://www.independenciadigital.cl`.
+`https://www.motiarzo.cl`.
 
 ## Imágenes
 Generar 5 fotorealistas por servicio con imagegen: hero, problema, solución,

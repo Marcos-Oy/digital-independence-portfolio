@@ -57,11 +57,11 @@ const ServicioView = ({ service }: Props) => {
           name: service.title,
           serviceType: service.areaLabel,
           description: service.summary,
-          url: `https://www.independenciadigital.cl/servicios/${service.slug}`,
+          url: `https://www.motiarzo.cl/servicios/${service.slug}`,
           provider: {
             "@type": "Organization",
             name: "- MOT[IA]RZO - LABS SpA",
-            url: "https://www.independenciadigital.cl",
+            url: "https://www.motiarzo.cl",
           },
           areaServed: { "@type": "Country", name: "Chile" },
         }}

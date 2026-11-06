@@ -1,6 +1,6 @@
 # - MOT[IA]RZO - LABS SpA
 
-> Consultora tecnológica chilena (antes Independencia Digital), fundada por Marcos Alberto Oyarzo Alvarez. Prestamos servicios desde 2020. Resultados concretos en los primeros 90 días. Sitio: https://www.independenciadigital.cl
+> Consultora tecnológica chilena (antes Independencia Digital), fundada por Marcos Alberto Oyarzo Alvarez. Prestamos servicios desde 2020. Resultados concretos en los primeros 90 días. Sitio: https://www.motiarzo.cl
 
 ## Servicios destacados: Gobernanza, auditoría y ciberseguridad de la IA
 - Implementación de Sistema de Gestión de IA ISO/IEC 42001 (AIMS, 38 controles, declaración de aplicabilidad) y preparación para certificación.
@@ -13,20 +13,20 @@
 - No somos organismo certificador; la certificación la otorga una entidad acreditada.
 
 ## Páginas
-- [Ciberseguridad, Gestión y Estrategia](https://www.independenciadigital.cl/servicios/ciberseguridad): riesgos, ISO 27001, Ley 21.663/21.719, BIA, EIPD, SIEM/SOC, ciberseguridad de la IA.
-- [Inteligencia Artificial Corporativa](https://www.independenciadigital.cl/servicios/ia-corporativa): agentes con memoria, clones digitales, automatización, gobernanza ISO/IEC 42001.
-- [Arquitectura TI](https://www.independenciadigital.cl/servicios/arquitectura-ti): diseño de infraestructura, nube (AWS, Azure, Google Cloud) y continuidad operativa.
-- [Transformación Digital](https://www.independenciadigital.cl/servicios/transformacion-digital): hoja de ruta y digitalización de procesos.
-- [Dirección de Departamento TI y Talento](https://www.independenciadigital.cl/servicios/direccion-ti): director de TI externo, gestión de equipos y proveedores.
-- [Reducción de Costos TI](https://www.independenciadigital.cl/servicios/optimizacion-costos-ti): auditoría de licencias, contratos y nube.
-- [Creación y Posicionamiento de Páginas Web](https://www.independenciadigital.cl/servicios/presencia-digital): sitios web, SEO, GEO y marketing digital.
-- [Desarrollo de Software](https://www.independenciadigital.cl/servicios/desarrollo-software): software a medida, apps web y portales.
-- [Vigilancia e Innovación Tecnológica](https://www.independenciadigital.cl/servicios/vigilancia-innovacion): inteligencia estratégica y madurez tecnológica.
-- [Integración de Plataformas y Bases de Datos](https://www.independenciadigital.cl/servicios/integracion-plataformas): APIs, ERP, CRM y migración de datos.
-- [Automatización de Procesos](https://www.independenciadigital.cl/servicios/automatizacion-procesos): flujos automáticos y eliminación de tareas manuales.
-- [Dashboards y KPI](https://www.independenciadigital.cl/servicios/dashboards-kpi): indicadores y paneles de gestión en tiempo real.
-- Públicos atendidos: emprendedores, PyMEs, grandes empresas y sector público. Información en el pilar «A quién atendemos» de [Quiénes somos](https://www.independenciadigital.cl/#quienes-somos).
-- [Inicio](https://www.independenciadigital.cl/)
+- [Ciberseguridad, Gestión y Estrategia](https://www.motiarzo.cl/servicios/ciberseguridad): riesgos, ISO 27001, Ley 21.663/21.719, BIA, EIPD, SIEM/SOC, ciberseguridad de la IA.
+- [Inteligencia Artificial Corporativa](https://www.motiarzo.cl/servicios/ia-corporativa): agentes con memoria, clones digitales, automatización, gobernanza ISO/IEC 42001.
+- [Arquitectura TI](https://www.motiarzo.cl/servicios/arquitectura-ti): diseño de infraestructura, nube (AWS, Azure, Google Cloud) y continuidad operativa.
+- [Transformación Digital](https://www.motiarzo.cl/servicios/transformacion-digital): hoja de ruta y digitalización de procesos.
+- [Dirección de Departamento TI y Talento](https://www.motiarzo.cl/servicios/direccion-ti): director de TI externo, gestión de equipos y proveedores.
+- [Reducción de Costos TI](https://www.motiarzo.cl/servicios/optimizacion-costos-ti): auditoría de licencias, contratos y nube.
+- [Creación y Posicionamiento de Páginas Web](https://www.motiarzo.cl/servicios/presencia-digital): sitios web, SEO, GEO y marketing digital.
+- [Desarrollo de Software](https://www.motiarzo.cl/servicios/desarrollo-software): software a medida, apps web y portales.
+- [Vigilancia e Innovación Tecnológica](https://www.motiarzo.cl/servicios/vigilancia-innovacion): inteligencia estratégica y madurez tecnológica.
+- [Integración de Plataformas y Bases de Datos](https://www.motiarzo.cl/servicios/integracion-plataformas): APIs, ERP, CRM y migración de datos.
+- [Automatización de Procesos](https://www.motiarzo.cl/servicios/automatizacion-procesos): flujos automáticos y eliminación de tareas manuales.
+- [Dashboards y KPI](https://www.motiarzo.cl/servicios/dashboards-kpi): indicadores y paneles de gestión en tiempo real.
+- Públicos atendidos: emprendedores, PyMEs, grandes empresas y sector público. Información en el pilar «A quién atendemos» de [Quiénes somos](https://www.motiarzo.cl/#quienes-somos).
+- [Inicio](https://www.motiarzo.cl/)
 
 ## Contacto
 - Agendar diagnóstico: https://independencia-digital.systeme.io/registro

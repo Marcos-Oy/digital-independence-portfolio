@@ -143,7 +143,7 @@ export const useChatBotController = () => {
     } catch (err) {
       console.error("Chat IA falló:", err);
       const text =
-        "Disculpa, tuve un problema para responder ahora mismo. Por favor escríbenos a **contacto@independenciadigital.cl** o usa el botón de contacto del sitio.";
+        "Disculpa, tuve un problema para responder ahora mismo. Por favor escríbenos a **contacto@motiarzo.cl** o usa el botón de contacto del sitio.";
       setMessages((prev) => {
         const copy = [...prev];
         if (copy[copy.length - 1]?.role === "assistant" && !copy[copy.length - 1].content) {

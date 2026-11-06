@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-export const SITE_URL = "https://www.independenciadigital.cl";
+export const SITE_URL = "https://www.motiarzo.cl";
 const OG_IMAGE = `${SITE_URL}/og-image-logo-v2.png`;
 
 interface PageMetaProps {

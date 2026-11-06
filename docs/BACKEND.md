@@ -147,7 +147,7 @@ integrado de Lovable.
 - **Anon / publishable key** (segura para frontend, expuesta vía RLS):
   ver `src/integrations/supabase/client.ts` o `.env` (variable
   `VITE_SUPABASE_PUBLISHABLE_KEY`).
-- **Dominio público**: `https://www.independenciadigital.cl` (Cloudflare Pages).
+- **Dominio público**: `https://www.motiarzo.cl` (Cloudflare Pages).
 
 ### Hablando con el usuario
 - Nunca lo llames "Supabase" frente al usuario final. Usa **"backend"**,
