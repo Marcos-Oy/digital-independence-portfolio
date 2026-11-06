@@ -1,4 +1,5 @@
 # Project conventions
+- Mount mobile floating booking centrally in AppLayout except the diagnostic session; detect all existing booking triggers, exclude the floating trigger itself, and reuse BOOKING_TRIGGER_CLASS so every booking entry opens the same form.
 - Use shared lateral BrandLogo for navigation and the optimized bundled vertical WebP for home and welcome; the bundled derivative preserves the uploaded logo and loads on Cloudflare without Lovable asset routing.
 - Localization uses one Google Translate widget loaded by LanguageSelector after LanguageProvider country detection; set googtrans before initialization and reload on manual changes to avoid restoring Google-mutated React nodes. LanguageProvider maps data-no-translate to notranslate/translate=no; use stable full text instead of typewriter fragments outside Spanish. The browser no longer calls site-translate.
 - Translation cache and gateway pause state are service-role-only RLS tables; terminal gateway failures pause all new translation requests until the owner restores access and explicitly clears the pause record.
