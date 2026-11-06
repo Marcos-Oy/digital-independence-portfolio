@@ -21,6 +21,7 @@ import CookieNoticeView from "@/views/CookieNoticeView";
 import BookingFormModal from "@/views/landing/BookingFormModal";
 import GlobalClickSound from "@/views/shared/GlobalClickSound";
 import CtaEstrellaEffect from "@/views/shared/CtaEstrellaEffect";
+import FloatingBookingCta from "@/views/shared/FloatingBookingCta";
 import { LanguageProvider } from "@/controllers/LanguageProvider";
 
 const queryClient = new QueryClient();
@@ -76,6 +77,7 @@ const AppLayout = () => {
       <AnimatedRoutes />
       {!hideChrome && <WhatsAppButtonView />}
       {!hideChat && <ChatBotView />}
+      {!hideChat && <FloatingBookingCta />}
       {!hideWelcomeModal && <WelcomeModalView />}
       <CookieNoticeView waitForWelcomeModal={!hideWelcomeModal} />
       <BookingFormModal />
