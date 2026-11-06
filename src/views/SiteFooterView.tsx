@@ -47,16 +47,11 @@ const SiteFooterView = () => {
 
           {/* Segmentos */}
           <div>
-            <h4 className="font-heading font-bold text-sm text-foreground mb-4">Segmentos</h4>
+            <h4 className="font-heading font-bold text-sm text-foreground mb-4">A quién servimos</h4>
             <ul className="space-y-2">
               {SEGMENTS.map((s) => (
                 <li key={s.id}>
-                  <Link
-                    to={`/segmentos/${s.slug}`}
-                    className="text-xs text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {s.shortTitle}
-                  </Link>
+                  <span className="text-xs text-muted-foreground">{s.shortTitle}</span>
                 </li>
               ))}
               <li className="pt-2 border-t border-border mt-3">

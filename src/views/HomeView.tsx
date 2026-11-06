@@ -251,17 +251,19 @@ const HomeView = () => {
             </div>
           </div>
           <div className="max-w-6xl mx-auto mt-12 md:mt-16">
-            <ScrollReveal id="segmentos" className="mb-8 scroll-mt-24">
+            <div id="segmentos" className="mb-8 scroll-mt-24">
+            <ScrollReveal>
               <h2 className="font-heading font-bold text-lg text-secondary mb-4">A quién servimos</h2>
-              <ul className="flex divide-x divide-border">
+              <ul className="flex divide-x divide-border overflow-x-auto pb-2">
                 {SEGMENTS.map((segment) => (
-                  <li key={segment.id} className="flex-1 min-w-0 px-2 sm:px-5 first:pl-0 last:pr-0">
-                    <h3 className="font-heading font-semibold text-xs sm:text-base text-foreground">{segment.shortTitle}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed hidden sm:block">{segment.description}</p>
+                  <li key={segment.id} className="w-52 shrink-0 sm:w-auto sm:flex-1 sm:min-w-0 px-4 sm:px-5 first:pl-0 last:pr-0">
+                    <h3 className="font-heading font-semibold text-base text-foreground">{segment.shortTitle}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{segment.description}</p>
                   </li>
                 ))}
               </ul>
             </ScrollReveal>
+            </div>
             <ScrollReveal className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 mb-4">
               {ABOUT_PILLARS.map((p) => (
                 <div key={p.n} className="w-60 shrink-0 lg:w-auto lg:flex-1 snap-start border border-border rounded-lg bg-card p-4 group hover:bg-muted/50 transition-colors duration-200">

@@ -31,7 +31,7 @@ const ALL_RESULTS: SearchResult[] = [
   ...SEGMENTS.map((s) => ({
     label: s.title,
     sublabel: s.description.slice(0, 80) + "…",
-    href: `/segmentos/${s.slug}`,
+    href: "/#segmentos",
     type: "segmento" as const,
   })),
   ...STATIC_PAGES,
