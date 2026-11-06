@@ -454,3 +454,7 @@ iframe.skiptranslate, #goog-gt-tt, .goog-te-balloon-frame, .goog-tooltip,
 .VIpgJd-yAWNEb-L7lbkb, #google_translate_element { display: none !important; visibility: hidden !important; }
 body { top: 0 !important; position: static !important; }
 .goog-text-highlight, font[style] { background: transparent !important; box-shadow: none !important; }
+
+/* Evita desborde horizontal en móvil (luces de CTA, carruseles) que achicaba
+   la página y dejaba el aviso de privacidad fuera de escala. */
+html, body { overflow-x: clip; }

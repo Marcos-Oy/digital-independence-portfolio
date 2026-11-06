@@ -300,7 +300,7 @@ const DashboardsKpiServiceView = () => {
       <SiteNavbarView />
 
       {/* ============ HERO ============ */}
-      <section className="relative pt-24 sm:pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden bg-background">
+      <section className="relative pt-24 sm:pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden bg-background">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
           <div className="hero-orb w-96 h-96 bg-primary/8 top-1/4 -left-20 animate-float" />
           <div className="hero-orb w-72 h-72 bg-secondary/8 top-1/3 right-0 animate-float" style={{ animationDelay: "2s" }} />
@@ -312,20 +312,22 @@ const DashboardsKpiServiceView = () => {
           <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={70} />
         </div>
         <div className="relative container mx-auto px-4">
-          <Link
-            to="/#servicios"
-            className="group inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground hover:text-primary border border-border/60 hover:border-primary/50 bg-card/50 backdrop-blur-sm rounded-full pl-3.5 pr-4 py-2 mb-4 sm:mb-10 transition-all duration-300 hover:shadow-card"
-          >
-            <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
-            Volver a Servicios
-          </Link>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal>
-              <PillLabel>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <PillLabel>
                 <LineChart className="w-3.5 h-3.5" />
                 Dashboards y KPI
               </PillLabel>
+                <Link
+                  to="/#servicios"
+                  className="group inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-primary border border-border/60 hover:border-primary/50 bg-card/50 backdrop-blur-sm rounded-full pl-3 pr-3.5 py-1.5 transition-colors"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+                  Volver a Servicios
+                </Link>
+              </div>
               <h1 className="font-heading font-extrabold text-[1.6rem] sm:text-3xl md:text-5xl text-foreground mt-3 mb-3 sm:mt-5 sm:mb-5 leading-[1.12] tracking-tight">
                 Tus datos ya existen. El problema es que nadie los ve en tiempo
                 real y de la misma forma
