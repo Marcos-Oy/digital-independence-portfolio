@@ -173,11 +173,11 @@ const HomeView = () => {
                 {/* Cohete sólido, sin desvanecer, detrás del encabezado */}
                 <LaunchingRocket className="absolute left-[24%] top-0 w-40 h-40 md:w-48 md:h-48" />
                 <div className="relative">
-                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4 texto-sobre-mancha">
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                   <TypewriterText text="Quiénes somos" />
                 </p>
-                <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5 texto-sobre-mancha">
-                  Tu asesor en tecnologías de la información,<br className="hidden md:block" />
+                <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
+                  Tu asesor en tecnologías de la información,<br className="hidden md:block" />{" "}
                   sin el costo de uno a tiempo completo.
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-10">
