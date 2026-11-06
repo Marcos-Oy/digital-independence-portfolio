@@ -52,9 +52,15 @@ export default function FloatingBookingCta() {
     };
   }, []);
 
-  if (!visible) return null;
   return (
-    <Button data-floating-booking className={`${BOOKING_TRIGGER_CLASS} cta-estrella fixed bottom-6 right-24 z-50 h-14 max-w-[calc(100%-7rem)] gap-2 whitespace-normal rounded-full gradient-brand px-4 text-[13px] font-heading font-semibold text-primary-foreground shadow-brand md:hidden`}>
+    <Button
+      data-floating-booking
+      aria-hidden={!visible}
+      tabIndex={visible ? 0 : -1}
+      className={`${BOOKING_TRIGGER_CLASS} cta-estrella fixed bottom-6 right-24 z-50 h-14 max-w-[calc(100%-7rem)] gap-2 whitespace-normal rounded-full gradient-brand px-4 text-[13px] font-heading font-semibold text-primary-foreground shadow-brand md:hidden transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ${
+        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
+      }`}
+    >
       <CalendarDays aria-hidden="true" />
       <span>Agendar diagnóstico gratis</span>
     </Button>
