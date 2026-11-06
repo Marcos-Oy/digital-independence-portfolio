@@ -1,6 +1,6 @@
 # Cambios de marca
 - [x] Agrandar robot, cuadrar cifras, compactar pilares en fila y abrir reseñas en modal; verificar en PC y celular.
-- [x] Cohete sólido sin desvanecer, centrado junto a las cifras y el robot; verificar en PC y celular.
+- [x] Cohete sólido detrás del encabezado (esquina superior derecha), cifras y robot centrados, título en minúscula de oración; verificar en PC, celular y modo oscuro.
 - [x] Unificar Sobre nosotros en Quiénes somos y mover allí el cohete y el robot.
 - [x] Añadir y verificar diagnóstico flotante en celular cuando no haya otro CTA de diagnóstico visible.
 - [x] Quitar la bandera chilena de navegación, pie y landing.

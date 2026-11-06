@@ -170,12 +170,14 @@ const HomeView = () => {
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-x-16 gap-y-14">
             <div>
               <ScrollReveal className="relative">
+                {/* Cohete sólido, sin desvanecer, asomando por la esquina del encabezado */}
+                <LaunchingRocket className="absolute right-0 -top-14 w-52 h-52" />
                 <div className="relative">
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                   <TypewriterText text="Quiénes somos" />
                 </p>
-                <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5">
-                  Tu Asesor en Tecnologías de la Información,<br className="hidden md:block" />
+                <h2 className="font-heading font-extrabold text-3xl md:text-4xl leading-tight text-foreground mb-5 texto-sobre-mancha">
+                  Tu asesor en tecnologías de la información,<br className="hidden md:block" />{" "}
                   sin el costo de uno a tiempo completo.
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-10">
@@ -187,8 +189,6 @@ const HomeView = () => {
                 </div>
               </ScrollReveal>
 
-              {/* Cohete sólido, sin desvanecer, formando parte del grupo centrado */}
-              <LaunchingRocket compact className="md:hidden relative mx-auto mb-5 w-28 h-28" />
               <ScrollReveal variant="scale" delay={100} className="flex items-center justify-center gap-4 sm:gap-6 md:gap-4">
                 <div className="shrink-0 flex flex-col gap-3">
                   {[
@@ -213,7 +213,6 @@ const HomeView = () => {
                   loading="lazy"
                   className="w-full max-w-[17rem] min-w-0 h-auto rounded-lg shadow-brand"
                 />
-                <LaunchingRocket compact className="hidden md:block relative shrink-0 self-stretch w-28 xl:w-32" />
               </ScrollReveal>
             </div>
 
