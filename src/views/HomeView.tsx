@@ -92,13 +92,14 @@ const HomeView = () => {
           <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={70} active={explored} />
         </div>
 
-        <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
+        <div className="relative container mx-auto px-4 grid lg:grid-cols-[1.25fr_1fr] gap-10 lg:gap-12 items-center">
+          <div className="order-1 lg:order-2 flex flex-col items-center text-center">
           <img
             src={logoVertical}
             alt="- MOT[IA]RZO - LABS"
             width={1536}
             height={1024}
-            className={`w-64 md:w-80 max-w-full h-auto object-contain mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}
+            className={`w-56 md:w-72 lg:w-full lg:max-w-md max-w-full h-auto object-contain mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}
           />
 
           {/* Eyebrow tag */}
@@ -110,8 +111,11 @@ const HomeView = () => {
             )}
           </span>
 
+          </div>
+
+          <div className="order-2 lg:order-1 flex flex-col items-center text-center lg:items-start lg:text-left">
           <h1
-            className={`font-heading font-extrabold text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight max-w-5xl mb-6 text-foreground ${explored ? "animate-fade-in-up" : "opacity-0"}`}
+            className={`font-heading font-extrabold text-3xl md:text-5xl lg:text-[3.4rem] leading-[1.1] tracking-tight max-w-3xl mb-6 text-foreground ${explored ? "animate-fade-in-up" : "opacity-0"}`}
             style={{ animationDelay: "0.1s" }}
           >
             Diseñamos y construimos con servicios integrales tu{" "}
@@ -142,6 +146,7 @@ const HomeView = () => {
             >
               Ver servicios
             </a>
+          </div>
           </div>
         </div>
       </section>
