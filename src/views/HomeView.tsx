@@ -171,7 +171,7 @@ const HomeView = () => {
             <div>
               <ScrollReveal className="relative">
                 {/* Cohete detrás del texto, asomando entre "Quiénes somos" y "Tu Asesor…" */}
-                <LaunchingRocket className="absolute left-[38%] -top-6 w-36 h-36 md:w-44 md:h-44 opacity-35 md:opacity-45" />
+                <LaunchingRocket className="absolute left-[30%] -top-2 w-40 h-40 md:w-48 md:h-48 opacity-55 md:opacity-60" />
                 <div className="relative">
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                   <TypewriterText text="Quiénes somos" />
