@@ -186,19 +186,33 @@ const HomeView = () => {
                   profesionales independientes, PyMEs, grandes empresas y organismos del sector
                   público, incluyendo licitaciones en Mercado Público. Prestamos servicios desde 2020.
                 </p>
+                </div>
               </ScrollReveal>
 
-              <ScrollReveal variant="scale" delay={100} className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
-                {[
-                  { n: String(SERVICES.length), label: "Servicios especializados" },
-                  { n: String(AREAS.length), label: "Áreas de consultoría" },
-                  { n: "4", label: "Segmentos atendidos" },
-                ].map(({ n, label }) => (
-                  <div key={label} className="bg-card px-4 py-8 text-center">
-                    <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground mb-1.5">{n}</p>
-                    <p className="text-xs text-muted-foreground leading-snug">{label}</p>
-                  </div>
-                ))}
+              <ScrollReveal variant="scale" delay={100} className="flex items-center gap-4 sm:gap-6">
+                <div className="flex-1 flex flex-col gap-3">
+                  {[
+                    { n: String(SERVICES.length), label: "Servicios especializados" },
+                    { n: String(AREAS.length), label: "Áreas de consultoría" },
+                    { n: "4", label: "Segmentos atendidos" },
+                  ].map(({ n, label }) => (
+                    <div
+                      key={label}
+                      className="flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-3.5 shadow-card"
+                    >
+                      <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-none shrink-0">
+                        {n}
+                      </p>
+                      <p className="text-xs text-muted-foreground leading-snug">{label}</p>
+                    </div>
+                  ))}
+                </div>
+                <img
+                  src={robotImg}
+                  alt="Autonomía Digital"
+                  loading="lazy"
+                  className="w-24 sm:w-28 md:w-32 h-auto rounded-2xl shadow-brand shrink-0"
+                />
               </ScrollReveal>
             </div>
 
