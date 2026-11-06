@@ -404,6 +404,7 @@ const HomeView = () => {
             )}
           </div>
         </div>
+        <LayeredWaveDivider seed={1} className="absolute bottom-0 left-0 w-full h-28 md:h-40 pointer-events-none" />
       </section>
 
 

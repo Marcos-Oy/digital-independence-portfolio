@@ -25,7 +25,7 @@
 - [Integración de Plataformas y Bases de Datos](https://www.independenciadigital.cl/servicios/integracion-plataformas): APIs, ERP, CRM y migración de datos.
 - [Automatización de Procesos](https://www.independenciadigital.cl/servicios/automatizacion-procesos): flujos automáticos y eliminación de tareas manuales.
 - [Dashboards y KPI](https://www.independenciadigital.cl/servicios/dashboards-kpi): indicadores y paneles de gestión en tiempo real.
-- Públicos atendidos: emprendedores, PyMEs, grandes empresas y sector público. Información en [A quién servimos](https://www.independenciadigital.cl/#segmentos).
+- Públicos atendidos: emprendedores, PyMEs, grandes empresas y sector público. Información en el pilar «A quién atendemos» de [Quiénes somos](https://www.independenciadigital.cl/#quienes-somos).
 - [Inicio](https://www.independenciadigital.cl/)
 
 ## Contacto

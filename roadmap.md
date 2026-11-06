@@ -1,4 +1,5 @@
 # Cambios de marca
+- [ ] Quitar bloque A quién servimos y accesos, añadir ondas al pie de Servicios y subir carrusel de PC sin agrandarlo; verificar.
 - [x] Restaurar tamaño anterior del carrusel.
 - [x] Mover públicos informativos sobre los pilares, en fila con separadores verticales sin tarjetas.
 - [x] Eliminar páginas de segmentos y sus enlaces; verificado PC y celular, 30 pruebas correctas.
