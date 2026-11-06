@@ -1,4 +1,5 @@
 # Cambios de marca
+- [ ] Agrandar el carrusel de tecnologías en PC aprovechando el espacio de la portada; verificar distintos tamaños sin cambiar celular.
 - [x] Agrandar robot, cuadrar cifras, compactar pilares en fila y abrir reseñas en modal; verificar en PC y celular.
 - [x] Cohete sólido detrás del encabezado (esquina superior derecha), cifras y robot centrados, título en minúscula de oración; verificar en PC, celular y modo oscuro.
 - [x] Unificar Sobre nosotros en Quiénes somos y mover allí el cohete y el robot.
