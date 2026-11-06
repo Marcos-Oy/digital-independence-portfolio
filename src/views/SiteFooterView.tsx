@@ -3,7 +3,6 @@ import BrandLogo from "@/views/shared/BrandLogo";
 
 import { Instagram, Facebook, Linkedin, Mail } from "lucide-react";
 import { SERVICES } from "@/models/services";
-import { SEGMENTS } from "@/models/segments";
 
 const SiteFooterView = () => {
   return (
@@ -45,16 +44,14 @@ const SiteFooterView = () => {
             </ul>
           </div>
 
-          {/* Segmentos */}
+          {/* Información */}
           <div>
-            <h4 className="font-heading font-bold text-sm text-foreground mb-4">A quién servimos</h4>
+            <h4 className="font-heading font-bold text-sm text-foreground mb-4">Información</h4>
             <ul className="space-y-2">
-              {SEGMENTS.map((s) => (
-                <li key={s.id}>
-                  <span className="text-xs text-muted-foreground">{s.shortTitle}</span>
-                </li>
-              ))}
-              <li className="pt-2 border-t border-border mt-3">
+              <li>
+                <Link to="/#quienes-somos" className="text-xs text-muted-foreground hover:text-primary transition-colors">Quiénes somos</Link>
+              </li>
+              <li>
                 <Link to="/fundador" className="text-xs text-muted-foreground hover:text-primary transition-colors">
                   Fundador
                 </Link>
