@@ -11,7 +11,6 @@ import ServiceLandingRouteView from "@/views/landing/ServiceLandingRouteView";
 import FundadorView from "@/views/FundadorView";
 import PrivacidadView from "@/views/PrivacidadView";
 import ServicioRouteView from "@/views/ServicioRouteView";
-import SegmentoRouteView from "@/views/SegmentoRouteView";
 import DiagnosticoView from "@/views/DiagnosticoView";
 import NotFoundView from "@/views/NotFoundView";
 import WhatsAppButtonView from "@/views/WhatsAppButtonView";
@@ -47,7 +46,6 @@ const AnimatedRoutes = () => {
         <Route path="/fundador" element={<FundadorView />} />
         <Route path="/privacidad" element={<PrivacidadView />} />
         <Route path="/servicios/:slug" element={<ServicioRouteView />} />
-        <Route path="/segmentos/:slug" element={<SegmentoRouteView />} />
         <Route path="/arquitecturati" element={<Navigate to="/servicios/arquitectura-ti" replace />} />
         <Route path="/presenciadigital" element={<Navigate to="/servicios/presencia-digital" replace />} />
         <Route path="/ciberseguridad" element={<Navigate to="/servicios/ciberseguridad" replace />} />

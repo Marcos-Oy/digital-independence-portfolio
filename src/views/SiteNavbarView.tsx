@@ -5,7 +5,6 @@ import ThemeToggleView from "@/views/ThemeToggleView";
 import LanguageSelector from "@/views/shared/LanguageSelector";
 import { ChevronDown, X, Search } from "lucide-react";
 import { SERVICES } from "@/models/services";
-import { SEGMENTS } from "@/models/segments";
 import { TYPE_LABEL } from "@/models/search";
 import { useSiteNavbarController } from "@/controllers/useSiteNavbarController";
 import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
@@ -90,30 +89,10 @@ const SiteNavbarView = () => {
                   </div>
                 )}
               </li>
-              <li
-                className="relative"
-                onMouseEnter={() => setOpenMenu("segmentos")}
-                onMouseLeave={() => setOpenMenu(null)}
-              >
-                <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-1">
-                  Segmentos
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openMenu === "segmentos" ? "rotate-180" : ""}`} />
+              <li>
+                <button onClick={() => goSection("segmentos")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+                  A quién servimos
                 </button>
-                {openMenu === "segmentos" && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 animate-slide-up">
-                    <div className="bg-card border border-border rounded-xl shadow-card-hover p-2 min-w-[220px] grid">
-                      {SEGMENTS.map((s) => (
-                        <Link
-                          key={s.id}
-                          to={`/segmentos/${s.slug}`}
-                          className="px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-colors duration-150"
-                        >
-                          {s.title}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </li>
               <li>
                 <Link to="/fundador" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
@@ -277,24 +256,9 @@ const SiteNavbarView = () => {
                 </details>
               </li>
               <li>
-                <details className="group">
-                  <summary className="flex items-center justify-between px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted rounded-lg cursor-pointer list-none transition-colors">
-                    Segmentos
-                    <ChevronDown className="w-4 h-4 text-muted-foreground group-open:rotate-180 transition-transform duration-200" />
-                  </summary>
-                  <div className="pl-4 pt-1 pb-2 flex flex-col gap-0.5">
-                    {SEGMENTS.map((s) => (
-                      <Link
-                        key={s.id}
-                        to={`/segmentos/${s.slug}`}
-                        onClick={() => setOpen(false)}
-                        className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
-                      >
-                        {s.title}
-                      </Link>
-                    ))}
-                  </div>
-                </details>
+                <button onClick={() => goSection("segmentos")} className="w-full text-left px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted rounded-lg transition-colors">
+                  A quién servimos
+                </button>
               </li>
               <li>
                 <Link
