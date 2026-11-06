@@ -1,4 +1,5 @@
 import AiGovernanceServicesSection from "@/views/shared/AiGovernanceServicesSection";
+import CybersecurityServicesSection from "@/views/shared/CybersecurityServicesSection";
 import {
   CheckCircle2,
   Clock3,
@@ -441,6 +442,8 @@ const CiberseguridadLandingView = () => {
       </section>
 
       <AiGovernanceServicesSection variant="ciberseguridad" />
+
+      <CybersecurityServicesSection cta={<LandingCtaButton />} />
 
       {/* ============ SATISFACCIÓN ============ */}
       <section className="relative py-16 md:py-24 bg-background overflow-hidden">

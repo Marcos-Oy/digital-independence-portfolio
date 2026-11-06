@@ -51,19 +51,8 @@ import {
   SparkleDots,
   StripeAccent,
 } from "@/views/shared/BackgroundBlobs";
-import {
-  Bug as SvcBug,
-  Globe as SvcGlobe,
-  FileCheck2 as SvcPolicy,
-  Siren as SvcSiren,
-  Server as SvcServer,
-  ShieldPlus as SvcAntivirus,
-  MailWarning as SvcPhishing,
-  Headset as SvcExpert,
-  GraduationCap as SvcTraining,
-  Wrench as SvcExec,
-} from "lucide-react";
 import ParticleNetworkBackground from "@/views/shared/ParticleNetworkBackground";
+import CybersecurityServicesSection, { CYBERSECURITY_SERVICES } from "@/views/shared/CybersecurityServicesSection";
 import RadialOrbitDiagram from "@/views/shared/RadialOrbitDiagram";
 import csHero from "@/assets/ciberseguridad-hero.jpg";
 import csRiesgo from "@/assets/ciberseguridad-riesgo.jpg";
@@ -73,19 +62,6 @@ import csResultado from "@/assets/ciberseguridad-resultado.jpg";
 import csCta from "@/assets/ciberseguridad-cta.jpg";
 
 /* ------------------------------ content ------------------------------ */
-
-const SECURITY_SERVICES = [
-  { icon: SvcBug, title: "Ethical Hacking", desc: "Pruebas de penetración proactivas que simulan ataques reales para identificar vulnerabilidades críticas y fortalecer la seguridad de tus sistemas." },
-  { icon: SvcGlobe, title: "Monitoreo de dominios", desc: "Vigilancia continua mediante SIEM (Security Information and Event Management) para detectar accesos no autorizados, vulnerabilidades y amenazas en tiempo real." },
-  { icon: SvcPolicy, title: "Políticas de ciberseguridad", desc: "Diseño de un Sistema de Gestión de Seguridad de la Información (SGSI) alineado con ISO/IEC 27001, garantizando cumplimiento y estructura organizacional." },
-  { icon: SvcSiren, title: "Gestión ante incidentes", desc: "Respuesta rápida para mitigar ataques de phishing, ransomware o consultas técnicas, minimizando el impacto operativo y financiero." },
-  { icon: SvcServer, title: "Monitoreo de servidores", desc: "Protección de infraestructura crítica mediante SIEM, monitoreando servidores por IP para prevenir intrusiones y fallos de seguridad." },
-  { icon: SvcAntivirus, title: "Administración de antivirus", desc: "Gestión proactiva de soluciones antivirus con actualizaciones automatizadas, análisis de amenazas y reportes de incidentes (no incluye licencia)." },
-  { icon: SvcPhishing, title: "Simulacro de phishing", desc: "Evaluación del riesgo humano mediante simulaciones personalizadas de phishing, con métricas para mejorar la concienciación de tu equipo." },
-  { icon: SvcExpert, title: "Contacto con expertos", desc: "Acceso prioritario a especialistas en ciberseguridad para asesoría técnica, resolución de emergencias y estrategias preventivas." },
-  { icon: SvcTraining, title: "Capacitación en ciberseguridad", desc: "Programas de formación adaptados: cursos en plataforma digital y sesiones prácticas para reducir riesgos por errores humanos." },
-  { icon: SvcExec, title: "Ejecución de servicios", desc: "Implementación integral de soluciones por nuestro equipo técnico, asegurando un despliegue eficiente y sin interrupciones." },
-];
 
 const PROBLEMS = [
   {
@@ -429,7 +405,7 @@ const CiberseguridadServiceView = () => {
         title="Ciberseguridad e ISO 27001 / 42001 / 27090 para IA | - MOT[IA]RZO - LABS"
         description="Ciberseguridad, gestión de riesgos, ISO 27001 y ciberseguridad de la IA (ISO/IEC 27090, 42001, 23894). Auditoría de IA, EIPD Ley 21.719, Ley 21.663 y prevención de deepfakes en Chile."
         path="/servicios/ciberseguridad"
-        jsonLd={{"@context":"https://schema.org","@type":"Service","name":"Ciberseguridad, Gestión y Estrategia","serviceType":"Gobernanza, auditoría y ciberseguridad de IA","areaServed":"CL","provider":{"@type":"Organization","name":"- MOT[IA]RZO - LABS SpA","url":"https://www.independenciadigital.cl"},"url":"https://www.independenciadigital.cl/servicios/ciberseguridad","description":"Ciberseguridad, gestión de riesgos, ISO 27001 y ciberseguridad de la IA (ISO/IEC 27090, 42001, 23894). Auditoría de IA, EIPD Ley 21.719, Ley 21.663 y prevención de deepfakes en Chile.","hasOfferCatalog":{"@type":"OfferCatalog","name":"Gobernanza y ciberseguridad de IA","itemListElement":AI_GOVERNANCE_SERVICES.map((s)=>({"@type":"Offer","itemOffered":{"@type":"Service","name":s.title,"description":s.text}}))}}}
+        jsonLd={{"@context":"https://schema.org","@type":"Service","name":"Ciberseguridad, Gestión y Estrategia","serviceType":"Gobernanza, auditoría y ciberseguridad de IA","areaServed":"CL","provider":{"@type":"Organization","name":"- MOT[IA]RZO - LABS SpA","url":"https://www.independenciadigital.cl"},"url":"https://www.independenciadigital.cl/servicios/ciberseguridad","description":"Ciberseguridad, gestión de riesgos, ISO 27001 y ciberseguridad de la IA (ISO/IEC 27090, 42001, 23894). Auditoría de IA, EIPD Ley 21.719, Ley 21.663 y prevención de deepfakes en Chile.","hasOfferCatalog":{"@type":"OfferCatalog","name":"Ciberseguridad y gobernanza de IA","itemListElement":[...AI_GOVERNANCE_SERVICES.map((s)=>({"@type":"Offer","itemOffered":{"@type":"Service","name":s.title,"description":s.text}})),...CYBERSECURITY_SERVICES.map((s)=>({"@type":"Offer","itemOffered":{"@type":"Service","name":s.title,"description":s.desc}}))]}}}
       />
 
       <SiteNavbarView />
@@ -830,29 +806,7 @@ const CiberseguridadServiceView = () => {
       </section>
 
       {/* ============ SERVICIOS DE CIBERSEGURIDAD ============ */}
-      <section id="servicios-ciberseguridad" className="py-16 md:py-24 bg-muted scroll-mt-20">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <ScrollReveal className="text-center mb-12">
-            <PillLabel>Servicios</PillLabel>
-            <h2 className="font-heading font-bold text-2xl md:text-4xl text-foreground mt-5 leading-tight max-w-2xl mx-auto">
-              Servicios de ciberseguridad que puedes contratar
-            </h2>
-          </ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-            {SECURITY_SERVICES.map((svc, i) => (
-              <ScrollReveal key={svc.title} delay={(i % 5) * 70}>
-                <article className="h-full bg-card border border-border rounded-2xl p-5 shadow-card">
-                  <span className="inline-flex w-10 h-10 rounded-lg gradient-brand items-center justify-center shadow-brand mb-4">
-                    <svc.icon className="w-4.5 h-4.5 text-primary-foreground" strokeWidth={1.8} />
-                  </span>
-                  <h3 className="font-heading font-bold text-sm text-foreground mb-2">{svc.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{svc.desc}</p>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CybersecurityServicesSection />
 
       {/* ============ CIBERSEGURIDAD DIFERENCIAL ============ */}
       <section className="py-16 md:py-24 bg-muted">
