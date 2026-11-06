@@ -8,7 +8,7 @@ const WhatsAppButtonView = () => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      data-flotante className="wa-llamada fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+      className="wa-llamada fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
       aria-label="Contactar por WhatsApp"
     >
       {/* Ondas que salen como cuando entra una llamada */}
