@@ -83,7 +83,7 @@ const LaunchingRocket = ({ className = "", mirror = false, compact = false }: La
         className="absolute"
         style={{ left: "28%", bottom: "16%" }}
         initial={{ x: 0, y: 0, opacity: 0 }}
-        animate={launched ? { x: compact ? [0, 18, 22] : [0, 65, 72], y: compact ? [0, -34, -38] : [0, -76, -84], opacity: [0, 1, 1] } : { opacity: 0 }}
+        animate={launched ? { x: compact ? [0, 12, 15] : [0, 65, 72], y: compact ? [0, -24, -28] : [0, -76, -84], opacity: [0, 1, 1] } : { opacity: 0 }}
         transition={{ duration: 1.3, delay: 0.3, ease: [0.34, 1.15, 0.64, 1], times: [0, 0.85, 1] }}
       >
         <motion.div

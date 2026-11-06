@@ -188,7 +188,7 @@ const HomeView = () => {
               </ScrollReveal>
 
               {/* Cohete sólido, sin desvanecer, formando parte del grupo centrado */}
-              <LaunchingRocket compact className="md:hidden relative mx-auto mb-5 w-24 h-24" />
+              <LaunchingRocket compact className="md:hidden relative mx-auto mb-5 w-28 h-28" />
               <ScrollReveal variant="scale" delay={100} className="flex items-center justify-center gap-4 sm:gap-6 md:gap-4">
                 <div className="shrink-0 flex flex-col gap-3">
                   {[
