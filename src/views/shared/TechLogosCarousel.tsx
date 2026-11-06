@@ -258,7 +258,7 @@ const TechLogosCarousel = ({ embedded = false }: { embedded?: boolean }) => {
           Tecnologías que implementamos
         </p>
       </div>
-      <div className={embedded ? "bg-tech-carousel/80 backdrop-blur-sm py-[1.6vh]" : "bg-tech-carousel py-6"}>
+      <div className={embedded ? "bg-tech-carousel py-[1.6vh]" : "bg-tech-carousel py-6"}>
         <div
           className="relative touch-pan-y select-none cursor-grab active:cursor-grabbing"
           onPointerDown={handlePointerDown}
@@ -279,7 +279,7 @@ const TechLogosCarousel = ({ embedded = false }: { embedded?: boolean }) => {
             {[...logos, ...logos, ...logos].map((logo, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 mx-4 flex items-center justify-center ${embedded ? "h-[clamp(2rem,6vh,4rem)] w-[clamp(5rem,15vh,8rem)]" : "h-16 w-32"} opacity-80 hover:opacity-100 transition-opacity duration-300"
+                className={`flex-shrink-0 mx-4 flex items-center justify-center ${embedded ? "h-[clamp(2rem,6vh,4rem)] w-[clamp(5rem,15vh,8rem)]" : "h-16 w-32"} opacity-80 hover:opacity-100 transition-opacity duration-300`}
               >
                 <img
                   src={logo.src}
