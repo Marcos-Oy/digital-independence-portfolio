@@ -16,6 +16,10 @@ const HUBSPOT_PORTAL_ID = "51925077";
 // diseño de ese pie, este número podría necesitar ajuste.
 const HUBSPOT_BRANDING_HEIGHT_PX = 90;
 
+// HubSpot deja ~40px vacíos sobre el logo dentro del iframe; subimos el
+// iframe esta cantidad (recortado por el wrapper) para no desperdiciar espacio.
+const HUBSPOT_TOP_TRIM_PX = 28;
+
 // Modal de agendamiento con el formulario embebido de HubSpot. Se monta una
 // sola vez a nivel de la app (ver App.tsx) y permanece siempre en el DOM;
 // se muestra u oculta con clases CSS en vez de montar/desmontar. Cualquier
@@ -69,8 +73,9 @@ const BookingFormModal = () => {
 
     const applyClip = () => {
       const height = frame.offsetHeight;
-      if (height > HUBSPOT_BRANDING_HEIGHT_PX) {
-        wrapper.style.maxHeight = `${height - HUBSPOT_BRANDING_HEIGHT_PX}px`;
+      const cut = HUBSPOT_BRANDING_HEIGHT_PX + HUBSPOT_TOP_TRIM_PX;
+      if (height > cut) {
+        wrapper.style.maxHeight = `${height - cut}px`;
       }
     };
 
@@ -140,13 +145,14 @@ const BookingFormModal = () => {
         >
           <X className="w-5 h-5" />
         </button>
-        <div className="overflow-y-auto px-0 pt-7 pb-2 sm:p-6 sm:pt-10">
+        <div className="overflow-y-auto px-0 pt-2 pb-2 sm:p-6 sm:pt-6">
           <div ref={clipWrapperRef} className="overflow-hidden">
             {activeFormId && (
               <div
                 key={activeFormId}
                 ref={formFrameRef}
                 className="hs-form-frame"
+                style={{ marginTop: -HUBSPOT_TOP_TRIM_PX }}
                 data-region={HUBSPOT_REGION}
                 data-form-id={activeFormId}
                 data-portal-id={HUBSPOT_PORTAL_ID}
