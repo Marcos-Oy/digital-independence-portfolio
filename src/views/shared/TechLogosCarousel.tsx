@@ -202,7 +202,7 @@ const logos = shuffleArray(baseLogos);
 const ITEM_WIDTH = 160; // w-32 (128px) + mx-4 (32px)
 const SPEED = 0.5; // px per frame
 
-const TechLogosCarousel = () => {
+const TechLogosCarousel = ({ embedded = false }: { embedded?: boolean }) => {
   const trackRef = useRef<HTMLDivElement>(null);
   const offsetRef = useRef(0);
   const animRef = useRef<number>(0);
@@ -252,13 +252,13 @@ const TechLogosCarousel = () => {
   };
 
   return (
-    <section className="py-12 overflow-hidden">
-      <div className="container mx-auto px-4 mb-6">
+    <section className={embedded ? "overflow-hidden pt-[1.5vh] pb-[2vh]" : "py-12 overflow-hidden"}>
+      <div className={`container mx-auto px-4 ${embedded ? "mb-[1.2vh]" : "mb-6"}`}>
         <p className="text-center text-sm font-semibold tracking-widest uppercase text-muted-foreground">
           Tecnologías que implementamos
         </p>
       </div>
-      <div className="bg-tech-carousel py-6">
+      <div className={embedded ? "bg-tech-carousel py-[1.6vh]" : "bg-tech-carousel py-6"}>
         <div
           className="relative touch-pan-y select-none cursor-grab active:cursor-grabbing"
           onPointerDown={handlePointerDown}
@@ -279,7 +279,7 @@ const TechLogosCarousel = () => {
             {[...logos, ...logos, ...logos].map((logo, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 mx-4 flex items-center justify-center h-16 w-32 opacity-80 hover:opacity-100 transition-opacity duration-300"
+                className={`flex-shrink-0 mx-4 flex items-center justify-center ${embedded ? "h-[clamp(2rem,6vh,4rem)] w-[clamp(5rem,15vh,8rem)]" : "h-16 w-32"} opacity-80 hover:opacity-100 transition-opacity duration-300`}
               >
                 <img
                   src={logo.src}

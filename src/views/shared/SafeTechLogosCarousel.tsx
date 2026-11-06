@@ -1,7 +1,7 @@
 import { useEffect, useState, type ComponentType } from "react";
 
-const SafeTechLogosCarousel = () => {
-  const [Carousel, setCarousel] = useState<ComponentType | null>(null);
+const SafeTechLogosCarousel = ({ embedded = false }: { embedded?: boolean }) => {
+  const [Carousel, setCarousel] = useState<ComponentType<{ embedded?: boolean }> | null>(null);
   const [isUnavailable, setIsUnavailable] = useState(false);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const SafeTechLogosCarousel = () => {
   }, []);
 
   if (Carousel) {
-    return <Carousel />;
+    return <Carousel embedded={embedded} />;
   }
 
   return (
