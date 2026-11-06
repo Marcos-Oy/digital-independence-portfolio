@@ -19,9 +19,8 @@ El efecto se monta solo en los botones que llevan alguna de estas dos clases:
 1. `js-agendar-diagnostico` (constante `BOOKING_TRIGGER_CLASS` en
    `src/lib/booking.ts`): la usan los botones que abren el formulario de
    diagnóstico. **No hay que hacer nada**, ya reciben la luz.
-2. `cta-estrella`: para cualquier otro botón de acción (Ver servicios, Volver a
-   servicios, Enviar reseña, la burbuja del chatbot, el botón del modal de
-   bienvenida...).
+2. `cta-estrella`: para cualquier otro botón de acción (Ver servicios, Enviar
+   reseña, la burbuja del chatbot, el botón del modal de bienvenida...).
 
 ```tsx
 <button className="cta-estrella inline-flex ...">Acción</button>
@@ -42,6 +41,19 @@ Todo eso vive en `src/index.css` bajo las clases `.wa-llamada`,
 `wa-destello`, `wa-auricular`; ciclo de 2,6 s). Si algún día vuelve a querer la
 luz del borde, hay que devolverle la clase `cta-estrella` y quitar esas tres
 clases.
+
+## Excepción: el botón "Volver a Servicios"
+
+El enlace **← Volver a Servicios** que encabeza cada página de servicio
+(`src/views/ServicioView.tsx` y las 12 vistas de `src/views/services/`) **no
+lleva `cta-estrella`**. A pedido del dueño del sitio (6 nov 2026) no necesita
+destellos: es un enlace de navegación, no una llamada a la acción, y su flecha
+ya se mueve al pasar el mouse.
+
+Si algún día vuelve a querer la luz ahí, basta con devolver la clase
+`cta-estrella` al `<Link>` de esas 13 vistas (todas comparten el mismo
+`className` que empieza por `group inline-flex items-center gap-2 text-xs
+font-semibold text-muted-foreground`).
 
 ## Qué hace por dentro
 
