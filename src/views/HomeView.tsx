@@ -99,7 +99,7 @@ const HomeView = () => {
             alt="- MOT[IA]RZO - LABS"
             width={1536}
             height={1024}
-            className={`w-32 sm:w-56 md:w-72 lg:w-full lg:max-w-md max-w-full h-auto object-contain mb-2 sm:mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}
+            className={`w-44 sm:w-64 md:w-80 lg:w-full lg:max-w-lg max-w-full h-auto object-contain mb-2 sm:mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}
           />
 
           {/* Eyebrow tag */}
@@ -131,18 +131,18 @@ const HomeView = () => {
           </p>
 
           <div
-            className={`flex flex-col sm:flex-row items-center gap-3 pr-20 sm:pr-0 ${explored ? "animate-fade-in-up" : "opacity-0"}`}
+            className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pr-20 sm:pr-0 ${explored ? "animate-fade-in-up" : "opacity-0"}`}
             style={{ animationDelay: "0.3s" }}
           >
             <button
-              className={`${BOOKING_TRIGGER_CLASS} inline-flex items-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-[13px] sm:text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
+              className={`${BOOKING_TRIGGER_CLASS} inline-flex items-center justify-center gap-3 gradient-brand text-primary-foreground font-heading font-semibold text-[13px] sm:text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-full shadow-brand hover:opacity-90 active:scale-[0.97] transition-all duration-200`}
             >
               Agendar diagnóstico gratis
               <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs">→</span>
             </button>
             <a
               href="#servicios"
-              className="cta-estrella inline-flex items-center gap-2 border border-border bg-card text-foreground font-heading font-semibold text-[13px] sm:text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-full hover:bg-muted active:scale-[0.97] transition-all duration-200"
+              className="cta-estrella inline-flex items-center justify-center gap-2 border border-border bg-card text-foreground font-heading font-semibold text-[13px] sm:text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-full hover:bg-muted active:scale-[0.97] transition-all duration-200"
             >
               Ver servicios
             </a>
