@@ -1,7 +1,7 @@
 # Cambios de marca
-- [ ] Restaurar tamaño anterior del carrusel.
-- [ ] Mover públicos informativos sobre los pilares, en fila con separadores verticales sin tarjetas.
-- [ ] Eliminar páginas de segmentos y sus enlaces; verificar PC y celular.
+- [x] Restaurar tamaño anterior del carrusel.
+- [x] Mover públicos informativos sobre los pilares, en fila con separadores verticales sin tarjetas.
+- [x] Eliminar páginas de segmentos y sus enlaces; verificado PC y celular, 30 pruebas correctas.
 - [x] Agrandar robot, cuadrar cifras, compactar pilares en fila y abrir reseñas en modal; verificar en PC y celular.
 - [x] Cohete sólido detrás del encabezado (esquina superior derecha), cifras y robot centrados, título en minúscula de oración; verificar en PC, celular y modo oscuro.
 - [x] Unificar Sobre nosotros en Quiénes somos y mover allí el cohete y el robot.
