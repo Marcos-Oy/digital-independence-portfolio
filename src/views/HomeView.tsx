@@ -74,7 +74,7 @@ const HomeView = () => {
       <SiteNavbarView />
 
       {/* Hero */}
-      <section className="relative min-h-[100dvh] max-sm:h-[100dvh] max-sm:items-stretch max-sm:pb-6 flex items-center pt-24 pb-20 md:pt-28 md:pb-28 lg:min-h-0 lg:pt-32 lg:pb-12 overflow-hidden">
+      <section className="relative min-h-[100dvh] max-sm:h-[100dvh] max-sm:items-stretch max-sm:pb-6 flex items-center pt-24 pb-20 md:pt-28 md:pb-28 lg:h-[100dvh] lg:min-h-[600px] lg:flex-col lg:items-stretch lg:pt-24 lg:pb-0 overflow-hidden">
         <div
           aria-hidden="true"
           className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${explored ? "opacity-100" : "opacity-0"}`}
@@ -92,14 +92,14 @@ const HomeView = () => {
           <ParticleNetworkBackground className="absolute inset-0 w-full h-full" density={70} active={explored} />
         </div>
 
-        <div className="relative container lg:max-w-6xl mx-auto px-4 lg:px-6 max-sm:flex max-sm:flex-col max-sm:h-full grid lg:grid-cols-[1.25fr_1fr] gap-3 sm:gap-10 lg:gap-12 items-center">
+        <div className="relative container lg:flex-1 lg:min-h-0 lg:content-center lg:max-w-6xl mx-auto px-4 lg:px-6 max-sm:flex max-sm:flex-col max-sm:h-full grid lg:grid-cols-[1.25fr_1fr] gap-3 sm:gap-10 lg:gap-12 items-center">
           <div className="order-1 lg:order-2 flex flex-col items-center text-center max-sm:flex-1 max-sm:min-h-0">
           <img
             src={logoVertical}
             alt="- MOT[IA]RZO - LABS"
             width={1536}
             height={1024}
-            className={`max-sm:flex-1 max-sm:min-h-[4rem] max-sm:w-full max-sm:max-w-[20rem] w-56 sm:w-64 md:w-80 lg:w-full lg:max-w-md max-w-full h-auto object-contain mb-2 sm:mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}
+            className={`max-sm:flex-1 max-sm:min-h-[4rem] max-sm:w-full max-sm:max-w-[20rem] w-56 sm:w-64 md:w-80 lg:w-auto lg:max-h-[36vh] lg:max-w-md max-w-full h-auto object-contain mb-2 sm:mb-6 ${explored ? "animate-fade-in" : "opacity-0"}`}
           />
 
           {/* Eyebrow tag */}
@@ -149,10 +149,15 @@ const HomeView = () => {
           </div>
           </div>
         </div>
+        <div className="relative hidden lg:block">
+          <SafeTechLogosCarousel embedded />
+        </div>
       </section>
 
-      {/* Tecnologías */}
-      <SafeTechLogosCarousel />
+      {/* Tecnologías (móvil/tablet; en PC va dentro de la portada) */}
+      <div className="lg:hidden">
+        <SafeTechLogosCarousel />
+      </div>
 
       {/* Quiénes somos + Cómo trabajamos — mismo bloque para reducir el scroll */}
       <section id="quienes-somos" className="relative py-20 md:py-28 bg-background overflow-hidden">
