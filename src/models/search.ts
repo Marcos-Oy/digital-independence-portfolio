@@ -1,16 +1,14 @@
 import { SERVICES, SEARCH_TAGS } from "@/models/services";
-import { SEGMENTS } from "@/models/segments";
 
 export interface SearchResult {
   label: string;
   sublabel: string;
   href: string;
-  type: "servicio" | "segmento" | "pagina";
+  type: "servicio" | "pagina";
 }
 
 export const TYPE_LABEL: Record<SearchResult["type"], string> = {
   servicio: "Servicio",
-  segmento: "Segmento",
   pagina: "Página",
 };
 
@@ -27,12 +25,6 @@ const ALL_RESULTS: SearchResult[] = [
     sublabel: s.summary ?? s.tagline ?? "",
     href: `/servicios/${s.slug}`,
     type: "servicio" as const,
-  })),
-  ...SEGMENTS.map((s) => ({
-    label: s.title,
-    sublabel: s.description.slice(0, 80) + "…",
-    href: "/#segmentos",
-    type: "segmento" as const,
   })),
   ...STATIC_PAGES,
 ];

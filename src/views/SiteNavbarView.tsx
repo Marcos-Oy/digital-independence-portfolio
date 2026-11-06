@@ -90,11 +90,6 @@ const SiteNavbarView = () => {
                 )}
               </li>
               <li>
-                <button onClick={() => goSection("segmentos")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  A quién servimos
-                </button>
-              </li>
-              <li>
                 <Link to="/fundador" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
                   Fundador
                 </Link>
@@ -164,7 +159,7 @@ const SiteNavbarView = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Buscar servicios, segmentos, páginas…"
+                placeholder="Buscar servicios, páginas…"
                 className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
               />
               <button
@@ -254,11 +249,6 @@ const SiteNavbarView = () => {
                     ))}
                   </div>
                 </details>
-              </li>
-              <li>
-                <button onClick={() => goSection("segmentos")} className="w-full text-left px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-muted rounded-lg transition-colors">
-                  A quién servimos
-                </button>
               </li>
               <li>
                 <Link

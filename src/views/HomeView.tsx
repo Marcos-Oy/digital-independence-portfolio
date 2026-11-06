@@ -22,7 +22,6 @@ import bannerPlan360 from "@/assets/banner-plan360.png";
 import { ChevronRight, ChevronDown, Instagram, Facebook, Linkedin, Mail, Search, X } from "lucide-react";
 import { AREAS, SERVICES, type ServiceArea } from "@/models/services";
 import { filterAndSortServices } from "@/models/serviceSearch";
-import { SEGMENTS } from "@/models/segments";
 import { FAQS } from "@/models/faq";
 import { METHOD_STEPS } from "@/models/method";
 import { BOOKING_TRIGGER_CLASS } from "@/lib/booking";
@@ -151,7 +150,7 @@ const HomeView = () => {
           </div>
           </div>
         </div>
-        <div className="relative hidden lg:block">
+        <div className="relative hidden lg:block lg:mb-8">
           <SafeTechLogosCarousel embedded />
         </div>
       </section>
@@ -251,19 +250,6 @@ const HomeView = () => {
             </div>
           </div>
           <div className="max-w-6xl mx-auto mt-12 md:mt-16">
-            <div id="segmentos" className="mb-8 scroll-mt-24">
-            <ScrollReveal>
-              <h2 className="font-heading font-bold text-lg text-secondary mb-4">A quién servimos</h2>
-              <ul className="flex divide-x divide-border overflow-x-auto pb-2">
-                {SEGMENTS.map((segment) => (
-                  <li key={segment.id} className="w-52 shrink-0 sm:w-auto sm:flex-1 sm:min-w-0 px-4 sm:px-5 first:pl-0 last:pr-0">
-                    <h3 className="font-heading font-semibold text-base text-foreground">{segment.shortTitle}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{segment.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
-            </div>
             <ScrollReveal className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 mb-4">
               {ABOUT_PILLARS.map((p) => (
                 <div key={p.n} className="w-60 shrink-0 lg:w-auto lg:flex-1 snap-start border border-border rounded-lg bg-card p-4 group hover:bg-muted/50 transition-colors duration-200">
@@ -284,7 +270,7 @@ const HomeView = () => {
       </section>
 
       {/* Servicios — 15 service cards con imagen */}
-      <section id="servicios" className="relative py-20 md:py-28 bg-background overflow-hidden">
+      <section id="servicios" className="relative pt-20 pb-36 md:pt-28 md:pb-48 bg-background overflow-hidden">
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-96 pointer-events-none">
           <img src={bannerPlan360} alt="" className="w-full h-full object-cover opacity-40 dark:opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
@@ -418,6 +404,7 @@ const HomeView = () => {
             )}
           </div>
         </div>
+        <LayeredWaveDivider seed={1} className="absolute bottom-0 left-0 w-full h-28 md:h-40 pointer-events-none" />
       </section>
 
 
