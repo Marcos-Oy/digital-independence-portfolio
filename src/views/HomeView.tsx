@@ -167,18 +167,12 @@ const HomeView = () => {
         <SoftBlob shape={4} color="secondary" className="w-64 h-80 bottom-0 -left-24" />
         <SoftBlob shape={5} color="primary" className="w-72 h-96 -bottom-24 -right-24" />
         <div className="relative container mx-auto px-4">
-          <div className="max-w-6xl mx-auto flex items-center justify-between gap-6 mb-10 md:mb-12">
-            <LaunchingRocket className="relative w-44 h-44 md:w-56 md:h-56 shrink-0" />
-            <img
-              src={robotImg}
-              alt="Autonomía Digital"
-              loading="lazy"
-              className="w-32 sm:w-40 md:w-48 h-auto rounded-2xl shadow-brand"
-            />
-          </div>
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-x-16 gap-y-14">
             <div>
-              <ScrollReveal>
+              <ScrollReveal className="relative">
+                {/* Cohete detrás del texto, asomando entre "Quiénes somos" y "Tu Asesor…" */}
+                <LaunchingRocket className="absolute left-[24%] top-0 w-40 h-40 md:w-48 md:h-48 opacity-45 md:opacity-50 dark:opacity-80 dark:md:opacity-85" />
+                <div className="relative">
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary mb-4">
                   <TypewriterText text="Quiénes somos" />
                 </p>
@@ -192,19 +186,33 @@ const HomeView = () => {
                   profesionales independientes, PyMEs, grandes empresas y organismos del sector
                   público, incluyendo licitaciones en Mercado Público. Prestamos servicios desde 2020.
                 </p>
+                </div>
               </ScrollReveal>
 
-              <ScrollReveal variant="scale" delay={100} className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
-                {[
-                  { n: String(SERVICES.length), label: "Servicios especializados" },
-                  { n: String(AREAS.length), label: "Áreas de consultoría" },
-                  { n: "4", label: "Segmentos atendidos" },
-                ].map(({ n, label }) => (
-                  <div key={label} className="bg-card px-4 py-8 text-center">
-                    <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground mb-1.5">{n}</p>
-                    <p className="text-xs text-muted-foreground leading-snug">{label}</p>
-                  </div>
-                ))}
+              <ScrollReveal variant="scale" delay={100} className="flex items-center gap-4 sm:gap-6">
+                <div className="flex-1 flex flex-col gap-3">
+                  {[
+                    { n: String(SERVICES.length), label: "Servicios especializados" },
+                    { n: String(AREAS.length), label: "Áreas de consultoría" },
+                    { n: "4", label: "Segmentos atendidos" },
+                  ].map(({ n, label }) => (
+                    <div
+                      key={label}
+                      className="flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-3.5 shadow-card"
+                    >
+                      <p className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-none shrink-0">
+                        {n}
+                      </p>
+                      <p className="text-xs text-muted-foreground leading-snug">{label}</p>
+                    </div>
+                  ))}
+                </div>
+                <img
+                  src={robotImg}
+                  alt="Autonomía Digital"
+                  loading="lazy"
+                  className="w-24 sm:w-28 md:w-32 h-auto rounded-2xl shadow-brand shrink-0"
+                />
               </ScrollReveal>
             </div>
 
