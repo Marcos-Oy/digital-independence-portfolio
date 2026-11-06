@@ -108,6 +108,26 @@ Editar la constante `SYSTEM_PROMPT` al inicio de `supabase/functions/chat/index.
 supabase--deploy_edge_functions { function_names: ["chat"] }
 ```
 
+### Regla: la antigüedad (2020) solo bajo pregunta explícita
+
+El `SYSTEM_PROMPT` de `chat` y de `diagnostico` guarda "prestamos servicios
+desde 2020" como **dato reservado**: se dice **únicamente** si el usuario
+pregunta explícitamente desde cuándo operan, hace cuánto existen o desde qué
+año trabajan. En cualquier otro mensaje no se menciona, no se repite y no se
+cierra la respuesta con esa frase. **Nunca** se calculan ni citan años de
+experiencia ("cuatro años", "seis años", etc.).
+
+Por eso la frase **no** debe aparecer en la línea de identidad del prompt
+(antes estaba en "# Qué somos" y el modelo la repetía en casi todas las
+respuestas). Si se vuelve a poner ahí, el bug vuelve.
+
+Comprobación rápida tras editar el prompt (desplegar primero):
+
+```
+pregunta común ("¿qué servicios ofrecen?")  → sin "2020"
+"¿desde cuándo operan?"                     → "prestamos servicios desde 2020"
+```
+
 ### Cómo cambiar de modelo
 
 Cambiar el campo `model` en el body. Modelos chat disponibles vía Lovable AI Gateway:
